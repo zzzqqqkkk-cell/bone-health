@@ -83,9 +83,9 @@
         var t = (xc - viewCenter) / half;
         if (t > 1.35) t = 1.35; if (t < -1.35) t = -1.35;
         var ac = Math.min(1, Math.abs(t));
-        var ky = 0.80 + 0.30 * ac * ac;      // 上下高度：中间 0.80，两侧 1.10
-        var kx = 0.98 + 0.04 * ac;
-        var ry = -t * 11;
+        var ky = 0.90 + 0.13 * ac * ac;      // 上下高度：中间 0.90，两侧 1.03（相差 1.14 倍）
+        var kx = 0.99 + 0.025 * ac;
+        var ry = -t * 8;
         // 弧形：上下两行随位置上下偏移，行距保持不变
         var h = el.offsetHeight || 0;
         var row = i % 3;
