@@ -241,16 +241,14 @@ footer b{color:var(--mute);font-weight:600}
 
 
 
-/* 全身骨骼图 + 部位标注（进场依次点亮） */
+/* 全身骨骼图 + 部位标注（红色、进场依次点亮） */
 .bodyfig{position:relative;margin:24px 0 4px;border:1px solid #1B2530;border-radius:16px;
-  overflow:hidden;background:#000}
+  overflow:hidden;background:#000;--mk:#FF4D4D;--mk-rgb:255,77,77}
 .bodyfig img{width:100%;display:block}
 .bodyfig figcaption{padding:10px 14px;font-size:11px;line-height:1.7;color:#8A99A8;
   border-top:1px solid rgba(27,37,48,.85);background:rgba(10,15,20,.55)}
 
-.mark{position:absolute;transform:translate(-50%,-50%);
-  animation-fill-mode:both}
-/* 仅当脚本判定“还没滚到”时才隐藏，避免 JS 失效导致看不见 */
+.mark{position:absolute;transform:translate(-50%,-50%);animation-fill-mode:both}
 .bodyfig.pre .mark{opacity:0;transform:translate(-50%,-50%) scale(.25)}
 .bodyfig.in .mark{animation:mkin .78s cubic-bezier(.2,.85,.25,1) both}
 .bodyfig.in .mark:nth-of-type(2){animation-delay:.5s}
@@ -261,13 +259,14 @@ footer b{color:var(--mute);font-weight:600}
   100%{opacity:1;transform:translate(-50%,-50%) scale(1)}
 }
 
-/* 核心点 + 双层水波 */
+/* 核心红点 + 双层水波 */
 .mark i{position:relative;display:block;width:12px;height:12px;border-radius:50%;
-  background:#00E5C0;
-  box-shadow:0 0 0 2px rgba(0,229,192,.35),0 0 22px rgba(0,229,192,.95),0 0 44px rgba(0,229,192,.4)}
+  background:var(--mk);
+  box-shadow:0 0 0 2px rgba(var(--mk-rgb),.35),0 0 22px rgba(var(--mk-rgb),.95),
+    0 0 44px rgba(var(--mk-rgb),.45)}
 .mark i::before,.mark i::after{content:"";position:absolute;left:50%;top:50%;
   width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:50%;
-  border:1px solid rgba(0,229,192,.65);animation:ripple 2.6s ease-out infinite}
+  border:1px solid rgba(var(--mk-rgb),.7);animation:ripple 2.6s ease-out infinite}
 .mark i::after{animation-delay:1.3s}
 @keyframes ripple{
   0%{transform:scale(.45);opacity:.95}
@@ -277,21 +276,20 @@ footer b{color:var(--mute);font-weight:600}
 
 /* 引线 */
 .mark::after{content:"";position:absolute;top:50%;left:9px;width:26px;height:1px;
-  background:linear-gradient(90deg,rgba(0,229,192,.9),rgba(0,229,192,.05));
+  background:linear-gradient(90deg,rgba(var(--mk-rgb),.9),rgba(var(--mk-rgb),.05));
   transform:translateY(-50%)}
 .mark.l::after{left:auto;right:9px;
-  background:linear-gradient(270deg,rgba(0,229,192,.9),rgba(0,229,192,.05))}
+  background:linear-gradient(270deg,rgba(var(--mk-rgb),.9),rgba(var(--mk-rgb),.05))}
 
 /* 标签 */
 .mark .lb{position:absolute;top:50%;left:40px;transform:translateY(-50%);white-space:nowrap;
   display:flex;align-items:baseline;gap:6px;
   padding:6px 12px;border-radius:10px;font-size:13px;line-height:1.35;
-  background:rgba(5,10,14,.88);border:1px solid rgba(0,229,192,.4);
-  box-shadow:0 6px 20px rgba(0,0,0,.55),0 0 0 1px rgba(0,229,192,.08) inset}
+  background:rgba(14,6,8,.9);border:1px solid rgba(var(--mk-rgb),.55);
+  box-shadow:0 6px 20px rgba(0,0,0,.6),0 0 14px rgba(var(--mk-rgb),.16) inset}
 .mark.l .lb{left:auto;right:40px}
-.mark .lb b{color:#EAF7F4;font-weight:800;letter-spacing:.02em}
-.mark .lb em{font-style:normal;color:#00E5C0;font-size:12px;font-weight:700}
-.mark .lb em::before{content:"";}
+.mark .lb b{color:#FFE9E9;font-weight:800;letter-spacing:.02em}
+.mark .lb em{font-style:normal;color:var(--mk);font-size:12px;font-weight:700}
 @media (max-width:430px){
   .mark .lb{font-size:12px;padding:5px 9px;gap:5px}
   .mark .lb em{font-size:11px}
