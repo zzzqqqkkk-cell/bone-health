@@ -81,9 +81,10 @@
         var t = (s.left + s.width / 2 - cx) / (box.width / 2);
         if (t > 1.35) t = 1.35; if (t < -1.35) t = -1.35;
         var a = Math.abs(t);
-        var ky = 1 + 0.12 * a * a;              // 上下加宽
-        var kx = 1 + 0.015 * a;                 // 略微放大
-        var ry = -t * 7;                        // 外侧向后收，形成弧面
+        var ac = Math.min(1, a);
+        var ky = 1 + 0.20 * ac * ac;            // 上下加宽
+        var kx = 1 + 0.03 * ac;                 // 略微放大
+        var ry = -t * 9;                        // 外侧向后收，形成弧面
         shots[i].style.transform =
           'perspective(900px) rotateY(' + ry.toFixed(2) + 'deg) scaleY(' +
           ky.toFixed(3) + ') scaleX(' + kx.toFixed(3) + ')';

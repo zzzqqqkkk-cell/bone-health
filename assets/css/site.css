@@ -204,10 +204,10 @@ footer b{color:var(--mute);font-weight:600}
 .gallery{margin:24px 0 4px;border:1px solid var(--line);border-radius:18px;
   background:radial-gradient(120% 140% at 50% 0%,#0A1017,#04070A 70%);
   overflow:hidden;position:relative}
-.gallery::before,.gallery::after{content:"";position:absolute;top:0;bottom:42px;width:54px;
+.gallery::before,.gallery::after{content:"";position:absolute;top:0;bottom:44px;width:46px;
   pointer-events:none;z-index:3}
-.gallery::before{left:0;background:linear-gradient(270deg,rgba(4,7,10,.96),rgba(4,7,10,0))}
-.gallery::after{right:0;background:linear-gradient(90deg,rgba(4,7,10,.96),rgba(4,7,10,0))}
+.gallery::before{left:0;background:linear-gradient(90deg,rgba(4,7,10,.97),rgba(4,7,10,0))}
+.gallery::after{right:0;background:linear-gradient(270deg,rgba(4,7,10,.97),rgba(4,7,10,0))}
 .gallery figcaption{grid-column:auto}
 .gallery-track{display:grid;grid-auto-flow:column;grid-template-rows:repeat(3,auto);
   grid-auto-columns:calc((100% - 42px) / 4);gap:14px;padding:20px 26px;
@@ -236,5 +236,5 @@ footer b{color:var(--mute);font-weight:600}
 .wthumb:active{cursor:grabbing}
 
 @media (max-width:900px){
-  .gallery-track{grid-auto-columns:calc((100% - 28px) / 3)}
+  .gallery-track{grid-auto-columns:calc((100% - 28px) / 3);gap:28px 14px;padding:28px 26px}
 }
