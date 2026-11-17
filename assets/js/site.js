@@ -50,38 +50,44 @@
   }
 })();
 
-/* 相片墙：进入视口后缓慢自动横向滚动（时间驱动 + 可视区自检） */
+/* 相片墙：多排墙 + 自动左右巡游（时间驱动，rAF 与定时器双保险） */
 (function () {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   var tracks = document.querySelectorAll('.gallery-track');
   if (!tracks.length) return;
-  var SPEED = 26; // 像素/秒
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var SPEED = reduce ? 12 : 26; // 像素/秒
 
   Array.prototype.forEach.call(tracks, function (track) {
-    var paused = false, timer = null, dir = 1, last = 0;
+    var paused = false, timer = null, dir = 1, last = 0, started = 0;
 
     function pause() {
       paused = true;
       if (timer) clearTimeout(timer);
-      timer = setTimeout(function () { paused = false; }, 2000);
+      timer = setTimeout(function () { paused = false; }, 1800);
     }
     ['pointerdown', 'touchstart', 'wheel', 'mouseenter'].forEach(function (ev) {
       track.addEventListener(ev, pause, { passive: true });
     });
 
-    setInterval(function () {
+    function step() {
       var now = performance.now();
-      var dt = last ? Math.min((now - last) / 1000, 0.25) : 0;
+      var dt = last ? Math.min((now - last) / 1000, 0.3) : 0;
       last = now;
-      if (paused || !dt) return;
-      var r = track.getBoundingClientRect();
-      if (r.bottom < 40 || r.top > (window.innerHeight || 800) - 40) return;
+      if (!dt) return;
       var max = track.scrollWidth - track.clientWidth;
       if (max < 8) return;
+      if (paused) return;
+      var r = track.getBoundingClientRect();
+      if (r.bottom < 40 || r.top > (window.innerHeight || 800) - 40) return;
+      if (!started) started = now;
       var next = track.scrollLeft + SPEED * dt * dir;
       if (next >= max) { next = max; dir = -1; }
       else if (next <= 0) { next = 0; dir = 1; }
       track.scrollLeft = next;
-    }, 40);
+    }
+
+    // 双驱动：rAF 负责顺滑，定时器兜底（后台/降帧时仍前进）
+    (function loop() { step(); requestAnimationFrame(loop); })();
+    setInterval(step, 120);
   });
 })();

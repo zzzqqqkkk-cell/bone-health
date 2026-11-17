@@ -198,13 +198,18 @@ footer b{color:var(--mute);font-weight:600}
   .wall > .w-hero{aspect-ratio:16/10}
 }
 
-/* ---------- 相片墙：横向画廊 ---------- */
+
+/* ---------- 相片墙：多排多列 + 左右滚动 ---------- */
 .gallery{margin:24px 0 4px;border:1px solid var(--line);border-radius:16px;background:#04070A;overflow:hidden;position:relative}
-.gallery::after{content:"";position:absolute;right:0;top:0;bottom:30px;width:56px;pointer-events:none;
-  background:linear-gradient(90deg,transparent,rgba(5,7,10,.94))}
-.gallery-track{display:flex;gap:8px;padding:8px 8px 6px;overflow-x:auto;overflow-y:hidden;
-  scroll-snap-type:x proximity;scrollbar-width:none}
+.gallery::after{content:"";position:absolute;right:0;top:0;bottom:30px;width:52px;pointer-events:none;
+  background:linear-gradient(90deg,transparent,rgba(5,7,10,.95))}
+.gallery-track{display:grid;grid-auto-flow:column;grid-template-rows:repeat(3,auto);
+  grid-auto-columns:calc((100% - 24px) / 4);gap:8px;padding:8px;
+  overflow-x:auto;overflow-y:hidden;scrollbar-width:none}
 .gallery-track::-webkit-scrollbar{display:none}
-.shot{flex:0 0 auto;width:200px;aspect-ratio:4/3;border-radius:10px;overflow:hidden;background:#0A0F14;scroll-snap-align:start}
+.shot{border-radius:10px;overflow:hidden;background:#0A0F14;aspect-ratio:4/3}
 .shot img{width:100%;height:100%;object-fit:cover;display:block}
-.gallery figcaption{padding:6px 12px 10px;font-size:11.5px;color:var(--dim)}
+.gallery figcaption{padding:7px 12px 10px;font-size:11.5px;color:var(--dim)}
+@media (max-width:900px){
+  .gallery-track{grid-auto-columns:calc((100% - 16px) / 3)}
+}
