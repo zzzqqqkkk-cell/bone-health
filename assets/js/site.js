@@ -49,3 +49,39 @@
     render();
   }
 })();
+
+/* 相片墙：进入视口后缓慢自动横向滚动（时间驱动 + 可视区自检） */
+(function () {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var tracks = document.querySelectorAll('.gallery-track');
+  if (!tracks.length) return;
+  var SPEED = 26; // 像素/秒
+
+  Array.prototype.forEach.call(tracks, function (track) {
+    var paused = false, timer = null, dir = 1, last = 0;
+
+    function pause() {
+      paused = true;
+      if (timer) clearTimeout(timer);
+      timer = setTimeout(function () { paused = false; }, 2000);
+    }
+    ['pointerdown', 'touchstart', 'wheel', 'mouseenter'].forEach(function (ev) {
+      track.addEventListener(ev, pause, { passive: true });
+    });
+
+    setInterval(function () {
+      var now = performance.now();
+      var dt = last ? Math.min((now - last) / 1000, 0.25) : 0;
+      last = now;
+      if (paused || !dt) return;
+      var r = track.getBoundingClientRect();
+      if (r.bottom < 40 || r.top > (window.innerHeight || 800) - 40) return;
+      var max = track.scrollWidth - track.clientWidth;
+      if (max < 8) return;
+      var next = track.scrollLeft + SPEED * dt * dir;
+      if (next >= max) { next = max; dir = -1; }
+      else if (next <= 0) { next = 0; dir = 1; }
+      track.scrollLeft = next;
+    }, 40);
+  });
+})();
