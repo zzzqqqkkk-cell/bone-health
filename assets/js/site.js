@@ -73,22 +73,27 @@
 
     /* ---- 立体：越靠边，上下越高、外侧微收 ---- */
     function shape() {
-      var box = track.getBoundingClientRect();
-      var cx = box.left + box.width / 2;
       var shots = track.querySelectorAll('.shot');
+      var viewCenter = track.scrollLeft + track.clientWidth / 2;
+      var half = track.clientWidth / 2;
       for (var i = 0; i < shots.length; i++) {
-        var s = shots[i].getBoundingClientRect();
-        var t = (s.left + s.width / 2 - cx) / (box.width / 2);
+        var el = shots[i];
+        // 用布局坐标计算，避免读取被 transform 影响后的位置
+        var xc = el.offsetLeft + el.offsetWidth / 2 + (el.offsetParent === track ? 0 : 0);
+        var t = (xc - viewCenter) / half;
         if (t > 1.35) t = 1.35; if (t < -1.35) t = -1.35;
-        var a = Math.abs(t);
-        var ac = Math.min(1, a);
-        var ky = 0.80 + 0.30 * ac * ac;         // 中间略收、两侧加高（相差 1.38 倍）
-        var kx = 0.98 + 0.04 * ac;              // 略微放大
-        var ry = -t * 11;                       // 外侧向后收，形成弧面
-        shots[i].style.transform =
-          'perspective(900px) rotateY(' + ry.toFixed(2) + 'deg) scaleY(' +
-          ky.toFixed(3) + ') scaleX(' + kx.toFixed(3) + ')';
-        shots[i].style.zIndex = String(Math.round(20 - a * 10));
+        var ac = Math.min(1, Math.abs(t));
+        var ky = 0.80 + 0.30 * ac * ac;      // 上下高度：中间 0.80，两侧 1.10
+        var kx = 0.98 + 0.04 * ac;
+        var ry = -t * 11;
+        // 弧形：上下两行随位置上下偏移，行距保持不变
+        var h = el.offsetHeight || 0;
+        var row = i % 3;
+        var dy = (row === 0 ? 1 : (row === 2 ? -1 : 0)) * h * (1 - ky);
+        el.style.transform =
+          'translateY(' + dy.toFixed(1) + 'px) perspective(900px) rotateY(' +
+          ry.toFixed(2) + 'deg) scaleY(' + ky.toFixed(3) + ') scaleX(' + kx.toFixed(3) + ')';
+        el.style.zIndex = String(Math.round(20 - ac * 10));
       }
     }
 
