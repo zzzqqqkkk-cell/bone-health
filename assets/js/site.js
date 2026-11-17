@@ -197,3 +197,25 @@
     setTimeout(function () { shape(); sync(); }, 300);
   });
 })();
+
+/* 全身骨骼图：进入视口后依次点亮三处部位 */
+(function () {
+  var figs = document.querySelectorAll('.bodyfig');
+  if (!figs.length || !window.IntersectionObserver) {
+    Array.prototype.forEach.call(figs, function (f) { f.classList.add('in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (e.isIntersecting) {
+        e.target.classList.remove('pre');
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.35 });
+  Array.prototype.forEach.call(figs, function (f) {
+    f.classList.add('pre');
+    io.observe(f);
+  });
+})();
