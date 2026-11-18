@@ -57,6 +57,31 @@
   }
 })();
 
+
+  /* ---------- OSTA 速算 ---------- */
+  (function(){
+    var age = document.getElementById('ostaAge');
+    var wt = document.getElementById('ostaWt');
+    var btn = document.getElementById('ostaBtn');
+    var out = document.getElementById('ostaRes');
+    if (!btn) return;
+    function calc(){
+      var a = parseFloat(age.value), w = parseFloat(wt.value);
+      if (!(a > 0 && w > 0)) { out.textContent = '请输入年龄与体重。'; return; }
+      var idx = (w - a) * 0.2;
+      var s = idx.toFixed(1);
+      var txt;
+      if (idx > -1) txt = '低风险（指数 ' + s + '）：按年龄常规筛查即可，女性 65 岁、男性 70 岁后每 1–2 年查一次。';
+      else if (idx >= -4) txt = '中等风险（指数 ' + s + '）：建议做一次 DXA 建立基线，同时评估跌倒风险。';
+      else txt = '高风险（指数 ' + s + '）：建议尽快做 DXA，并由骨科 / 骨质疏松专科评估是否需要治疗。';
+      out.textContent = txt;
+    }
+    btn.addEventListener('click', calc);
+    [age, wt].forEach(function(el){
+      el.addEventListener('keydown', function(e){ if (e.key === 'Enter') calc(); });
+    });
+  })();
+
 /* 相片墙：大荧幕立体 + 自动巡游 + 鼠标拖动 + 滑块 */
 (function () {
   var figs = document.querySelectorAll('.gallery');
