@@ -38,14 +38,6 @@
         b.classList.add('on');
         var male = b.dataset.sex === 'm';
         box.classList.toggle('male', male);
-        var fe = box.querySelectorAll('[data-only="f"]');
-        [].forEach.call(fe, function (el) {
-          el.hidden = male;
-          if (male) {
-            var inp = el.querySelector('input');
-            if (inp) { inp.checked = false; }
-          }
-        });
         box.dispatchEvent(new Event('change', { bubbles: true }));
       });
     });
