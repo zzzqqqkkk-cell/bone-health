@@ -120,16 +120,19 @@
           <label><input type="checkbox" data-hi="1"><span>连续 3 个月以上口服泼尼松（或等效激素）≥ 5 mg/天</span></label>
           <label><input type="checkbox" data-hi="1"><span>身高比年轻时矮了 3 厘米以上，或背越来越驼</span></label>
           <label><input type="checkbox" data-hi="1"><span>有过一次“轻轻一跌”就骨折（腕部、髋部或椎体）</span></label>
-          <label><input type="checkbox" data-hi="1"><span>腰背痛持续 3 个月以上，休息不缓解，或同时伴有身高下降 / 驼背</span></label>
+          <label><input type="checkbox" data-hi="1"><span>腰背痛持续 3 个月以上，休息也不缓解</span></label>
           <div class="qgroup">其他危险因素</div>
-          <label><input type="checkbox" data-hi="0"><span>女性已绝经，或男性年龄 ≥ 70 岁</span></label>
-          <label><input type="checkbox" data-hi="0"><span>女性 45 岁前绝经，或做过双侧卵巢切除</span></label>
+          <label><input type="checkbox" data-hi="0"><span>女性已绝经，或男性年龄 ≥ 70 岁 <i class="sex">按性别回答</i></span></label>
+          <label><input type="checkbox" data-hi="0"><span>女性 45 岁前绝经，或做过双侧卵巢切除 <i class="sex">仅女士回答，男士请选否</i></span></label>
           <label><input type="checkbox" data-hi="0"><span>体重偏轻（BMI &lt; 19），或近一年明显消瘦</span></label>
           <label><input type="checkbox" data-hi="0"><span>老人的<b>父母</b>有过髋部骨折，或父母确诊骨质疏松</span></label>
           <label><input type="checkbox" data-hi="0"><span>长期吸烟、每天饮酒 ≥ 2 两，或有甲亢 / 甲旁亢 / 类风湿 / 糖尿病 / 慢性肾病</span></label>
           <label><input type="checkbox" data-hi="0"><span>几乎不晒太阳、很少运动，或长期吃质子泵抑制剂</span></label>
           <label><input type="checkbox" data-hi="0"><span>近一年跌倒过，或走路变慢、开始怕摔</span></label>
         </div>
+        <details class="rules"><summary>自测的判定规则与依据（点开查看）</summary>
+          <p>红旗项采用“任一条为是即提示需要评估”的思路，与 IOF 骨质疏松一分钟测试（任一题“是”即阳性、建议查骨密度）一致；其他危险因素 ≥ 3 条只是“值得尽早建基线”的保守切点，不是经过队列校准的评分。本页不计算 FRAX 的 10 年骨折概率，OSTA 指数（体重−年龄）×0.2 仅作极简参考。最终诊断与用药决策需 DXA 与医生评估。</p>
+        </details>
         <p class="hit" id="checkHit"></p>
         <p id="checkResult"></p>
     <div class="osta" id="osta">
