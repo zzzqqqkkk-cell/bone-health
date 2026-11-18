@@ -120,7 +120,7 @@
           <label><input type="checkbox" data-hi="1"><span>连续 3 个月以上口服泼尼松（或等效激素）≥ 5 mg/天</span></label>
           <label><input type="checkbox" data-hi="1"><span>身高比年轻时矮了 3 厘米以上，或背越来越驼</span></label>
           <label><input type="checkbox" data-hi="1"><span>有过一次“轻轻一跌”就骨折（腕部、髋部或椎体）</span></label>
-          <label><input type="checkbox" data-hi="1"><span>腰背痛持续 3 个月以上，休息也不缓解</span></label>
+          <label><input type="checkbox" data-hi="1"><span>腰背痛持续 3 个月以上，休息不缓解，或同时伴有身高下降 / 驼背</span></label>
           <div class="qgroup">其他危险因素 · ≥ 3 条建议近期筛查</div>
           <label><input type="checkbox" data-hi="0"><span>女性已绝经，或男性年龄 ≥ 70 岁</span></label>
           <label><input type="checkbox" data-hi="0"><span>女性 45 岁前绝经，或做过双侧卵巢切除</span></label>
@@ -133,13 +133,14 @@
         <p id="checkResult"></p>
     <div class="osta" id="osta">
       <div class="osta-hd">只记得一件事：OSTA 速算</div>
-      <p class="osta-sub">亚洲绝经后女性筛查研究的经验公式，只需年龄和体重两项：<b>指数 =（体重 kg − 年龄）× 0.2</b>。切点 −1 与 −4。</p>
+      <p class="osta-sub">亚洲绝经后女性筛查研究的经验公式，只需年龄和体重两项：<b>指数 =（体重 kg − 年龄）× 0.2</b>，切点 −1 与 −4。<b>仅适用于绝经后女性</b>；男性请直接参考上方自测结果。</p>
       <div class="osta-row">
         <label>年龄<input id="ostaAge" type="number" inputmode="numeric" min="40" max="110" placeholder="65"><span>岁</span></label>
         <label>体重<input id="ostaWt" type="number" inputmode="decimal" min="25" max="160" placeholder="55"><span>kg</span></label>
         <button id="ostaBtn" type="button">算一下</button>
       </div>
       <p class="osta-why">为什么是“体重减年龄”：体重轻和年龄大，是骨量下降最硬的两个信号。公式里 5 公斤体重差不多抵 5 岁年龄——<b>体重每比同龄人轻 5 公斤，风险约等于老了 5 岁</b>。两个不利条件同时叠加，指数就越往负走。</p>
+      <p class="osta-note">如与上方自测结果不一致，<b>以上方自测和医生评估为准</b>——OSTA 只看年龄和体重，不包含红旗信号。</p>
       <p class="osta-res" id="ostaRes">填两个数字，立刻给出指数与建议。</p>
     </div>
 
