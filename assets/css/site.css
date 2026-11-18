@@ -327,3 +327,8 @@ footer b{color:var(--mute);font-weight:600}
 
 .osta-why{margin:10px 0 0;font-size:12px;line-height:1.75;color:var(--mute)}
 .osta-note{margin:10px 0 0;font-size:11.5px;line-height:1.7;color:var(--mute);border-left:2px solid rgba(0,229,192,.45);padding-left:10px}
+.hit{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 10px;font-size:12px;line-height:1.6}
+.hit span{padding:3px 10px;border-radius:999px;border:1px solid transparent;letter-spacing:.02em}
+.hit .hit-red{color:#FF7A7A;border-color:rgba(255,122,122,.5);background:rgba(255,122,122,.10);font-weight:600}
+.hit .hit-mute{color:var(--mute);border-color:rgba(255,255,255,.14)}
+.hit .hit-off{color:#4C5762;border-color:rgba(255,255,255,.07)}

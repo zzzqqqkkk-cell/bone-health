@@ -50,7 +50,13 @@
       } else {
         t = '目前低风险：保持负重运动与日照，女性 65 岁、男性 70 岁后每 1–2 年筛查一次。';
       }
-      res.textContent = '已选 ' + yes.length + ' 项 · ' + t;
+      var hitEl = document.getElementById('checkHit');
+      if (hitEl) {
+        hitEl.innerHTML =
+          '<span class="' + (flags ? 'hit-red' : 'hit-off') + '">红旗 ' + flags + ' 条</span>' +
+          '<span class="' + (others ? 'hit-mute' : 'hit-off') + '">其他危险因素 ' + others + ' 条</span>';
+      }
+      res.textContent = t;
     }
     box.addEventListener('change', render);
     render();
