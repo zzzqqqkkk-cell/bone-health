@@ -362,3 +362,5 @@ details.rules[open] summary{border-bottom:1px solid rgba(255,255,255,.07)}
 .osta.disabled{opacity:.42}
 .osta.disabled input,.osta.disabled button{cursor:not-allowed}
 .res-note{margin:12px 0 0;padding-top:10px;font-size:11.5px;line-height:1.75;color:var(--mute);border-top:1px solid rgba(255,255,255,.07)}
+.osta-hint{margin:9px 0 0;font-size:11.5px;line-height:1.7;color:var(--mute)}
+.osta-hint b{color:var(--accent);font-weight:600}

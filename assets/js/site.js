@@ -53,6 +53,12 @@
               ? 'OSTA 仅适用于绝经后女性，男性请参考上方自测结果。'
               : '填两个数字，立刻给出指数与建议。';
           }
+          var oh2 = document.getElementById('ostaHint');
+          if (oh2) {
+            oh2.innerHTML = male
+              ? '男性不适用：本指数基于亚洲绝经后女性研究，请参考上方自测结果。'
+              : '填年龄和体重即可计算，<b>不必答完上面的题</b>。';
+          }
         }
         box.dispatchEvent(new Event('change', { bubbles: true }));
       });
