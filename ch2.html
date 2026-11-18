@@ -114,19 +114,21 @@
       <section class="sec" id="s3">
         <div class="kicker">03 / 自测</div>
         <h2>1 分钟，给家里老人测一测</h2>
-        <p class="p">勾选符合的项目，下方会给出风险档位与下一步建议。本自测仅供科普参考，不能替代诊断。</p>
+        <p class="p">勾选符合的项目。规则很简单：<b>4 条红旗信号任一条命中，建议直接就诊</b>；其余危险因素累计 <b>≥ 3 条</b>，建议近期做一次骨密度。本自测仅供科普参考，不能替代诊断。</p>
         <div class="check" id="checkList">
+          <div class="qgroup">红旗信号 · 任一条为“是”就建议就诊</div>
+          <label><input type="checkbox" data-hi="1"><span>连续 3 个月以上口服泼尼松（或等效激素）≥ 5 mg/天</span></label>
+          <label><input type="checkbox" data-hi="1"><span>身高比年轻时矮了 3 厘米以上，或背越来越驼</span></label>
+          <label><input type="checkbox" data-hi="1"><span>有过一次“轻轻一跌”就骨折（腕部、髋部或椎体）</span></label>
+          <label><input type="checkbox" data-hi="1"><span>腰背痛持续 3 个月以上，休息也不缓解</span></label>
+          <div class="qgroup">其他危险因素 · ≥ 3 条建议近期筛查</div>
           <label><input type="checkbox" data-hi="0"><span>女性已绝经，或男性年龄 ≥ 70 岁</span></label>
           <label><input type="checkbox" data-hi="0"><span>女性 45 岁前绝经，或做过双侧卵巢切除</span></label>
           <label><input type="checkbox" data-hi="0"><span>体重偏轻（BMI &lt; 19），或近一年明显消瘦</span></label>
-          <label><input type="checkbox" data-hi="1"><span>连续 ≥ 3 个月用过糖皮质激素（如泼尼松）</span></label>
-          <label><input type="checkbox" data-hi="0"><span>父母曾发生过髋部骨折</span></label>
+          <label><input type="checkbox" data-hi="0"><span>父母有髋部骨折，或父母确诊骨质疏松</span></label>
           <label><input type="checkbox" data-hi="0"><span>长期吸烟、每天饮酒 ≥ 2 两，或有甲亢 / 甲旁亢 / 类风湿 / 糖尿病 / 慢性肾病</span></label>
           <label><input type="checkbox" data-hi="0"><span>几乎不晒太阳、很少运动，或长期吃质子泵抑制剂</span></label>
-          <label><input type="checkbox" data-hi="1"><span>身高比年轻时矮了 3 厘米以上，或背越来越驼</span></label>
-          <label><input type="checkbox" data-hi="1"><span>有过一次“轻轻一跌”就骨折（腕部、髋部或椎体）</span></label>
           <label><input type="checkbox" data-hi="0"><span>近一年跌倒过，或走路变慢、开始怕摔</span></label>
-          <label><input type="checkbox" data-hi="1"><span>腰背痛持续 3 个月以上，休息也不缓解</span></label>
         </div>
         <p id="checkResult"></p>
               <div class="extread">
