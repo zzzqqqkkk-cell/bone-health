@@ -36,6 +36,12 @@ body{color:#E9EFF4;font:14px/1.6 -apple-system,BlinkMacSystemFont,"PingFang SC",
   .tip{font-size:10.5px;padding:8px 12px 20px}
   .backbig{margin:20px 14px 8px;padding:16px 14px;font-size:16px;border-radius:12px}
 }
+.mob .bar{padding:9px 12px;font-size:12px}
+.mob .bar b{font-size:12.5px}
+.mob .bar a{font-size:12.5px}
+.mob .notice{padding:8px 12px;font-size:11px;line-height:1.6}
+.mob .tip{font-size:10.5px;padding:8px 12px 20px}
+.mob .backbig{margin:20px 14px 8px;padding:16px 14px;font-size:16px;border-radius:12px}
 </style>
 </head>
 <body>
@@ -84,6 +90,18 @@ body{color:#E9EFF4;font:14px/1.6 -apple-system,BlinkMacSystemFont,"PingFang SC",
     this.remove();
     document.body.insertAdjacentHTML('beforeend','<div class="notfound">图片未找到。</div>');
   };
+})();
+</script>
+
+<script>
+(function(){
+  // 不依赖媒体查询：按实际宽度加类，兼容某些内置浏览器
+  function apply(){
+    var w = Math.min(window.innerWidth, document.documentElement.clientWidth || 9999);
+    document.documentElement.classList.toggle('mob', w <= 520);
+  }
+  apply();
+  window.addEventListener('resize', apply);
 })();
 </script>
 </body>
