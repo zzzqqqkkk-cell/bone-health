@@ -347,3 +347,15 @@ details.rules summary::after{content:"";display:none}
 details.rules[open] summary{border-bottom:1px solid rgba(255,255,255,.07)}
 
 .check .sex,.sex{display:inline-block;margin-left:8px;font-style:normal;font-size:11px;color:var(--accent);border:1px solid rgba(0,229,192,.35);border-radius:6px;padding:1px 6px;vertical-align:middle}
+.check .qm{display:none}
+.check.male .qf{display:none}
+.check.male .qm{display:inline}
+.check [data-only="f"][hidden]{display:none}
+
+/* 受测者性别切换 */
+.sexpick{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:18px 0 6px;
+  font-size:12.5px;color:var(--mute)}
+.sexpick button{padding:7px 16px;border-radius:999px;border:1px solid rgba(255,255,255,.14);
+  font-size:13px;color:var(--mute);background:none;cursor:pointer}
+.sexpick button.on{background:var(--accent);color:#04120F;border-color:var(--accent);font-weight:600}
+.sexpick i{font-style:normal;font-size:11px;color:#5E6C79}

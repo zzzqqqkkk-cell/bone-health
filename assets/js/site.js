@@ -29,6 +29,28 @@
   }
 
   // 3) 自测（章节页 ch2）：红旗触发 + 普通危险因素计数
+  var sexPick2 = document.getElementById('sexPick2');
+  if (sexPick2) {
+    var sBtns = sexPick2.querySelectorAll('button');
+    [].forEach.call(sBtns, function (b) {
+      b.addEventListener('click', function () {
+        [].forEach.call(sBtns, function (x) { x.classList.remove('on'); });
+        b.classList.add('on');
+        var male = b.dataset.sex === 'm';
+        box.classList.toggle('male', male);
+        var fe = box.querySelectorAll('[data-only="f"]');
+        [].forEach.call(fe, function (el) {
+          el.hidden = male;
+          if (male) {
+            var inp = el.querySelector('input');
+            if (inp) { inp.checked = false; }
+          }
+        });
+        box.dispatchEvent(new Event('change', { bubbles: true }));
+      });
+    });
+  }
+
   var box = document.getElementById('checkList');
   if (box) {
     var res = document.getElementById('checkResult');
