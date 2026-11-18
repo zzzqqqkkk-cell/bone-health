@@ -359,3 +359,5 @@ details.rules[open] summary{border-bottom:1px solid rgba(255,255,255,.07)}
   font-size:13px;color:var(--mute);background:none;cursor:pointer}
 .sexpick button.on{background:var(--accent);color:#04120F;border-color:var(--accent);font-weight:600}
 .sexpick i{font-style:normal;font-size:11px;color:#5E6C79}
+.osta.disabled{opacity:.42}
+.osta.disabled input,.osta.disabled button{cursor:not-allowed}

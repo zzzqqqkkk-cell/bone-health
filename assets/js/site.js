@@ -38,6 +38,22 @@
         b.classList.add('on');
         var male = b.dataset.sex === 'm';
         box.classList.toggle('male', male);
+        // 题干随性别变化的那一项，切回时必须取消勾选
+        var first = box.querySelector('input');
+        if (first && first.checked) {
+          first.checked = false;
+        }
+        var osta = document.getElementById('osta');
+        if (osta) {
+          osta.classList.toggle('disabled', male);
+          [].forEach.call(osta.querySelectorAll('input,button'), function (el) { el.disabled = male; });
+          var ores = document.getElementById('ostaRes');
+          if (ores) {
+            ores.textContent = male
+              ? 'OSTA 仅适用于绝经后女性，男性请参考上方自测结果。'
+              : '填两个数字，立刻给出指数与建议。';
+          }
+        }
         box.dispatchEvent(new Event('change', { bubbles: true }));
       });
     });
@@ -94,6 +110,10 @@
       if (idx > -1) txt = '低风险（指数 ' + s + '）：按年龄常规筛查即可，女性 65 岁、男性 70 岁后每 1–2 年查一次。';
       else if (idx >= -4) txt = '中等风险（指数 ' + s + '）：建议做一次 DXA 建立基线，同时评估跌倒风险。';
       else txt = '高风险（指数 ' + s + '）：建议尽快做 DXA，并由骨科 / 骨质疏松专科评估是否需要治疗。';
+      var box2 = document.getElementById('checkList');
+      if (box2 && box2.classList.contains('male')) {
+        txt += '（本指数仅适用于绝经后女性，男性结果仅供参考，请以上方自测和医生评估为准。）';
+      }
       out.textContent = txt;
     }
     btn.addEventListener('click', calc);
