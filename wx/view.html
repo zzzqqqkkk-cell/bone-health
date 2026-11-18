@@ -31,6 +31,18 @@ body{color:#E9EFF4;font:14px/1.6 -apple-system,BlinkMacSystemFont,"PingFang SC",
   var a = document.getElementById('back');
   if (back) a.setAttribute('href', back);
   else if (document.referrer) a.setAttribute('href', document.referrer);
+  // 同源有历史记录时走 history.back()，浏览器会还原原来的滚动位置
+  a.addEventListener('click', function(e){
+    var sameOrigin = false;
+    try {
+      sameOrigin = document.referrer &&
+                   new URL(document.referrer).origin === location.origin;
+    } catch (err) { sameOrigin = false; }
+    if (sameOrigin && history.length > 1) {
+      e.preventDefault();
+      history.back();
+    }
+  });
   var img = document.getElementById('shot');
   if (!i || !/^\d{1,2}$/.test(i)) {
     img.remove();

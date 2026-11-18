@@ -317,5 +317,40 @@
   document.addEventListener('keydown', function(e){ if (e.key === 'Escape') close(); });
 })();
 </script>
+
+<script>
+(function(){
+  var KEY = 'wxScrollBack';
+  // 打开长图前记录位置
+  document.addEventListener('click', function(e){
+    var a = e.target.closest && e.target.closest('a.wxcard');
+    if (!a) return;
+    try {
+      sessionStorage.setItem(KEY, JSON.stringify({
+        u: location.href.split('#')[0],
+        y: window.scrollY || window.pageYOffset || 0
+      }));
+    } catch (err) {}
+  });
+  // 回到本页时还原
+  try {
+    var raw = sessionStorage.getItem(KEY);
+    if (raw) {
+      var s = JSON.parse(raw);
+      if (s && s.u === location.href.split('#')[0]) {
+        var go = function(){
+          window.scrollTo(0, s.y || 0);
+          document.documentElement.scrollTop = s.y || 0;
+          document.body.scrollTop = s.y || 0;
+        };
+        go();
+        setTimeout(go, 60);
+        setTimeout(go, 220);
+        sessionStorage.removeItem(KEY);
+      }
+    }
+  } catch (err) {}
+})();
+</script>
 </body>
 </html>
