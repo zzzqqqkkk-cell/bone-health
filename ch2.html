@@ -31,6 +31,19 @@
 .extread li a.wxcard:hover span.t{color:#EAF0F5}
 .extread li a.wxcard:hover img{border-color:rgba(0,229,192,.4)}
 </style>
+<style>
+.wxview{position:fixed;inset:0;z-index:9999;background:#070A0F;display:none;flex-direction:column}
+.wxview.on{display:flex}
+.wxview-bar{flex:none;display:flex;align-items:center;justify-content:space-between;
+ padding:12px 16px;border-bottom:1px solid rgba(255,255,255,.08);font-size:13px;
+ color:#8A99A8;background:#070A0F}
+.wxview-bar b{color:#E9EFF4;font-weight:600;font-size:13.5px}
+.wxview-bar button{background:none;border:0;color:#00E5C0;font-size:20px;line-height:1;padding:4px 8px;cursor:pointer}
+.wxview-body{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;background:#070A0F}
+.wxview-body{max-width:100vw;overflow-x:hidden}
+.wxview-body img{display:block !important;width:100vw !important;max-width:100vw !important;height:auto !important;margin:0 auto}
+.wxview-tip{flex:none;text-align:center;font-size:11.5px;color:#4E6072;padding:8px 0 14px}
+</style>
 </head>
 <body>
 <div id="bar"></div>
@@ -115,11 +128,11 @@
               <div class="extread">
           <div class="extread-hd">拓展阅读<b>公众号原文</b></div>
           <ul>
-            <li><a class="wxcard" href="assets/wx/15.jpg" target="_blank" rel="noopener"><img src="assets/wx/th_15.jpg" alt="" loading="lazy"><span class="t">骨松科普丨家中骨折三杀手，半数老人中招！</span></a></li>
-            <li><a class="wxcard" href="assets/wx/28.jpg" target="_blank" rel="noopener"><img src="assets/wx/th_28.jpg" alt="" loading="lazy"><span class="t">骨松科普丨老年人预防骨折：日常干预指南</span></a></li>
-            <li><a class="wxcard" href="assets/wx/22.jpg" target="_blank" rel="noopener"><img src="assets/wx/th_22.jpg" alt="" loading="lazy"><span class="t">骨松科普丨别只盯着骨头！想要不骨折肌肉同样重要！！</span></a></li>
-            <li><a class="wxcard" href="assets/wx/14.jpg" target="_blank" rel="noopener"><img src="assets/wx/th_14.jpg" alt="" loading="lazy"><span class="t">骨松科普丨春季补钙全攻略：选对钙剂，不花冤枉钱</span></a></li>
-            <li><a class="wxcard" href="assets/wx/30.jpg" target="_blank" rel="noopener"><img src="assets/wx/th_30.jpg" alt="" loading="lazy"><span class="t">骨松科普丨每天运动，骨头反而变脆了？</span></a></li>
+            <li><a class="wxcard" href="wx/view.html?i=15" target="_blank" rel="noopener"><img src="wx/th_15.jpg" alt="" loading="lazy"><span class="t">骨松科普丨家中骨折三杀手，半数老人中招！</span></a></li>
+            <li><a class="wxcard" href="wx/view.html?i=28" target="_blank" rel="noopener"><img src="wx/th_28.jpg" alt="" loading="lazy"><span class="t">骨松科普丨老年人预防骨折：日常干预指南</span></a></li>
+            <li><a class="wxcard" href="wx/view.html?i=22" target="_blank" rel="noopener"><img src="wx/th_22.jpg" alt="" loading="lazy"><span class="t">骨松科普丨别只盯着骨头！想要不骨折肌肉同样重要！！</span></a></li>
+            <li><a class="wxcard" href="wx/view.html?i=14" target="_blank" rel="noopener"><img src="wx/th_14.jpg" alt="" loading="lazy"><span class="t">骨松科普丨春季补钙全攻略：选对钙剂，不花冤枉钱</span></a></li>
+            <li><a class="wxcard" href="wx/view.html?i=30" target="_blank" rel="noopener"><img src="wx/th_30.jpg" alt="" loading="lazy"><span class="t">骨松科普丨每天运动，骨头反而变脆了？</span></a></li>
           </ul>
         </div>
       </section>
@@ -153,6 +166,34 @@
     });
   }, { threshold: 0.35 });
   Array.prototype.forEach.call(figs, function (f) { io.observe(f); });
+})();
+</script>
+<div class="wxview" id="wxview" aria-hidden="true">
+  <div class="wxview-bar"><b>公众号长图</b><button id="wxclose" aria-label="关闭">✕</button></div>
+  <div class="wxview-body" id="wxbody"><img id="wximg" alt="公众号长图"></div>
+  <div class="wxview-tip">上下滑动查看全文 · 点右上角 ✕ 关闭</div>
+</div>
+<script>
+(function(){
+  var v = document.getElementById('wxview'), img = document.getElementById('wximg'),
+      body = document.getElementById('wxbody');
+  if (!v) return;
+  document.addEventListener('click', function(e){
+    var a = e.target.closest && e.target.closest('a.wxcard');
+    if (!a) return;
+    var href = a.getAttribute('href') || '';
+    if (!/\.jpe?g$/i.test(href)) return;
+    e.preventDefault();
+    img.src = href; body.scrollTop = 0;
+    v.classList.add('on'); v.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+  });
+  function close(){
+    v.classList.remove('on'); v.setAttribute('aria-hidden','true');
+    document.body.style.overflow = ''; img.removeAttribute('src');
+  }
+  document.getElementById('wxclose').addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') close(); });
 })();
 </script>
 </body>
