@@ -1110,6 +1110,38 @@ details.flow .vnote{margin:12px 0 0}
 }
 </style>
 <style>
+/* 手机端相片墙：完全交给系统滚动（吸附翻页），不做 3D 变形 */
+@media (max-width:1023px){
+  .gallery-track{
+    perspective:none!important;
+    touch-action:pan-x;
+    scroll-snap-type:x mandatory;
+    overscroll-behavior-x:contain;
+    -webkit-overflow-scrolling:auto;
+    cursor:auto;
+    padding:16px 14px;
+    gap:10px 10px;
+  }
+  .gallery-track .shot{
+    scroll-snap-align:start;
+    will-change:auto!important;
+    box-shadow:none!important;
+    transform:none!important;
+    transition:none!important;
+  }
+  .gallery .wrail,.gallery .wbtn{display:none!important}
+  .gallery{border-radius:14px}
+}
+</style>
+<style>
+@media (max-width:1023px){
+  .rv{transition:opacity .3s ease!important;transform:none!important}
+}
+</style>
+<style>
+@media (max-width:1023px){ .onlydesk{display:none} }
+</style>
+<style>
 .ov-role,.ov-stage{margin:26px 0 22px}
 .ov-hd{font-size:17px;font-weight:700;color:#EAF0F5;margin:0 0 8px}
 .ov-sub{font-size:13.5px;line-height:1.78;color:#9FB0BF;margin:0 0 14px}
@@ -2186,7 +2218,7 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
           <div class="shot"><img src="assets/wall_11.jpg" alt="基层影像检查现场" loading="lazy"></div>
           <div class="shot"><img src="assets/wall_21.jpg" alt="社区骨松风险筛查现场" loading="lazy"></div>
         </div>
-        <figcaption>基层义诊现场 · 资料照片（15 张） · 可左右拖动，或拖下方滑块</figcaption>
+        <figcaption>基层义诊现场 · 资料照片（15 张） · 可左右拖动<span class="onlydesk">，或拖下方滑块</span></figcaption>
         <div class="wallbar">
           <button class="wbtn" type="button" data-dir="-1" aria-label="向左">‹</button>
           <div class="wrail"><div class="wthumb"></div></div>
@@ -2878,6 +2910,11 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
     window.scrollTo({top:0, behavior: reduce ? 'auto' : 'smooth'});
   });
 
+  /* 触屏判定：手机端跳过视差等装饰性计算 */
+  function isCoarse(){
+    return window.matchMedia('(pointer: coarse)').matches || ('ontouchstart' in window) || (navigator.maxTouchPoints || 0) > 0;
+  }
+
   /* 2) 首屏模型轻微视差 */
   var heroVid = document.getElementById('heroVid');
   var heroWrap = heroVid ? heroVid.parentElement : null;
@@ -2885,7 +2922,7 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
   function onScroll(){
     var y = window.scrollY || document.documentElement.scrollTop;
     if (btn) btn.classList.toggle('on', y > 640);
-    if (heroWrap && !reduce && y < 900){
+    if (heroWrap && !reduce && !isCoarse() && y < 900){
       heroWrap.style.transform = 'translate3d(0,' + (y * 0.06) + 'px,0) scale(' + (1 + y * 0.00006) + ')';
     }
     ticking = false;
@@ -2902,7 +2939,8 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
   var figs = document.querySelectorAll('.gallery');
   if (!figs.length) return;
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var isTouch = window.matchMedia('(pointer: coarse)').matches;
+  var isTouch = window.matchMedia('(pointer: coarse)').matches ||
+                ('ontouchstart' in window) || (navigator.maxTouchPoints || 0) > 0;
   var SPEED = reduce ? 10 : 24; // 像素/秒
 
   Array.prototype.forEach.call(figs, function (fig) {
@@ -2922,6 +2960,9 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
     /* ---- 立体：越靠边，上下越高、外侧微收 ---- */
     var shots = [].slice.call(track.querySelectorAll('.shot'));
     var geo = [], geoHalf = 1;
+    if (isTouch) {
+      shots.forEach(function (el) { el.style.transform = ''; el.style.zIndex = ''; });
+    }
 
     /* 只量一次布局，拖动时不再读取 offsetLeft（否则每帧强制重排导致掉帧） */
     function measure() {
@@ -2930,6 +2971,7 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
     }
 
     function shape() {
+      if (isTouch) return;          /* 触屏不做 3D 变形：24 张图各自变换会拖垮合成器 */
       var viewCenter = track.scrollLeft + geoHalf;
       var half = geoHalf;
       for (var i = 0; i < shots.length; i++) {
