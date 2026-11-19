@@ -1094,6 +1094,22 @@ details.flow .vnote{margin:12px 0 0}
 .quote{color:#EFF5F9}
 </style>
 <style>
+.hero3d .hero-layer{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  border-radius:inherit;pointer-events:none;display:block}
+</style>
+<style>
+@media (max-width:1023px){
+  #jump .jump-rail,#jump .jump-toggle,#jump .jump-panel{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+  #jump .jump-rail,#jump .jump-toggle{background:#0B1118!important}
+  #jump .jump-panel{background:#070C11!important}
+}
+</style>
+<style>
+@media (max-width:1023px){
+  #jump .jump-rail{display:none!important}
+}
+</style>
+<style>
 .ov-role,.ov-stage{margin:26px 0 22px}
 .ov-hd{font-size:17px;font-weight:700;color:#EAF0F5;margin:0 0 8px}
 .ov-sub{font-size:13.5px;line-height:1.78;color:#9FB0BF;margin:0 0 14px}
@@ -1237,6 +1253,7 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
              aria-label="正常腰椎 L1–L5 三维示意模型：五节椎体与四片椎间盘，保持原始解剖形态，未叠加病灶">
         <source src="assets/spine_hero/turntable.mp4" type="video/mp4">
       </video>
+      <img id="heroImg" class="hero-layer" alt="" hidden>
       <span class="herotip">← 左右拖动，模型会跟着转 · 360° →</span>
     </div>
     <h1 class="title">从骨量流失，<br><span class="cut">到不再骨折。</span></h1>
@@ -2372,64 +2389,75 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
   secs.forEach(function(s){ io.observe(s); });
   document.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
 
-  /* ---------- 首屏 3D 脊柱（序列帧旋转） ---------- */
+  /* ---------- 首屏 3D 脊柱（空闲播视频，拖动切序列帧） ---------- */
   var hero = document.getElementById('hero3d');
   if (hero) {
     var hv = document.getElementById('heroVid');
-    if (hv) {
-      var hDur = 10, hDragging = false, hStartX = 0, hStartT = 0, hIdle = null;
+    var hi = document.getElementById('heroImg');
+    var N = 30, cur = 0, dragging = false, startX = 0, startIdx = 0;
 
-      function hPlay(){
-        var pr = hv.play();
-        if (pr && pr.catch) pr.catch(function(){});
-      }
-      hv.addEventListener('loadedmetadata', function(){ if (hv.duration) hDur = hv.duration; });
-      hv.addEventListener('canplay', hPlay, { once: true });
-      hPlay();
+    function framePath(k){ return 'assets/spine_frames/f' + (k < 10 ? '0' : '') + k + '.webp'; }
+    var FRAMES = (window.__heroFrames && window.__heroFrames.length === N)
+      ? window.__heroFrames
+      : (function(){ var a = []; for (var k = 0; k < N; k++) a.push(framePath(k)); return a; })();
 
-      function hResume(){ clearTimeout(hIdle); hIdle = setTimeout(hPlay, 2000); }
-
-      hero.addEventListener('pointerdown', function(e){
-        hDragging = true;
-        clearTimeout(hIdle);
-        try { hv.pause(); } catch (err) {}
-        hero.classList.add('dragging', 'touched');
-        hStartX = e.clientX;
-        hStartT = hv.currentTime || 0;
-        if (hero.setPointerCapture){ try { hero.setPointerCapture(e.pointerId); } catch (err) {} }
-        e.preventDefault();
+    (function preload(){
+      if (!hi) return;
+      var idle = window.requestIdleCallback || function(f){ setTimeout(f, 500); };
+      idle(function(){
+        for (var k = 0; k < N; k++){
+          var im = new Image();
+          im.src = FRAMES[k];
+          if (im.decode) im.decode().catch(function(){});
+        }
       });
+    })();
 
-      /* 拖动：每帧最多 seek 一次，并按 1/30 秒量化，避免手机连续 seek 卡顿 */
-      var hPending = null, hRaf = 0;
-      function applySeek(){
-        hRaf = 0;
-        if (hPending === null) return;
-        var t = hPending; hPending = null;
-        try {
-          if (typeof hv.fastSeek === 'function') hv.fastSeek(t);
-          else hv.currentTime = t;
-        } catch (err) {}
-      }
-      hero.addEventListener('pointermove', function(e){
-        if (!hDragging) return;
-        var t = hStartT + ((e.clientX - hStartX) / 320) * hDur;
-        t = ((t % hDur) + hDur) % hDur;
-        t = Math.round(t * 30) / 30;
-        hPending = t;
-        if (!hRaf) hRaf = requestAnimationFrame(applySeek);
-        e.preventDefault();
-      }, { passive: false });
-
-      function hEndDrag(){
-        if (!hDragging) return;
-        hDragging = false;
-        hero.classList.remove('dragging');
-        hResume();
-      }
-      window.addEventListener('pointerup', hEndDrag);
-      window.addEventListener('pointercancel', hEndDrag);
+    function showFrame(k){
+      if (!hi) return;
+      k = ((k % N) + N) % N;
+      if (k === cur && !hi.hidden) return;
+      cur = k;
+      hi.hidden = false;
+      hi.src = FRAMES[k];
     }
+
+    function playVideo(){ if (hv) { try { hv.play(); } catch (e) {} } }
+    if (hv){
+      hv.addEventListener('canplay', function(){ if (!dragging) playVideo(); }, { once: true });
+      playVideo();
+    }
+
+    hero.addEventListener('pointerdown', function(e){
+      dragging = true;
+      startX = e.clientX;
+      startIdx = cur;
+      if (hv) { try { hv.pause(); } catch (err) {} }
+      hero.classList.add('dragging', 'touched');
+      showFrame(cur);
+      if (hero.setPointerCapture){ try { hero.setPointerCapture(e.pointerId); } catch (err) {} }
+      e.preventDefault();
+    }, { passive: false });
+
+    hero.addEventListener('pointermove', function(e){
+      if (!dragging) return;
+      var step = (e.clientX - startX) / 320;
+      showFrame(startIdx + Math.round(step * N));
+      e.preventDefault();
+    }, { passive: false });
+
+    function endDrag(){
+      if (!dragging) return;
+      dragging = false;
+      hero.classList.remove('dragging');
+      if (hv){
+        try { hv.currentTime = (cur / N) * (hv.duration || 10); } catch (err) {}
+        playVideo();
+      }
+      if (hi) hi.hidden = true;
+    }
+    window.addEventListener('pointerup', endDrag);
+    window.addEventListener('pointercancel', endDrag);
   }
 
   /* ---------- 第 05 屏：影像读片 ---------- */
@@ -2874,6 +2902,7 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
   var figs = document.querySelectorAll('.gallery');
   if (!figs.length) return;
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var isTouch = window.matchMedia('(pointer: coarse)').matches;
   var SPEED = reduce ? 10 : 24; // 像素/秒
 
   Array.prototype.forEach.call(figs, function (fig) {
@@ -2955,13 +2984,20 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
         if (!inView) last = 0;
       }, { rootMargin: '160px' }).observe(fig);
     }
-    (function loop() {
-      if (inView) step();
-      requestAnimationFrame(loop);
-    })();
+    if (!isTouch) {
+      (function loop() {
+        if (inView) step();
+        requestAnimationFrame(loop);
+      })();
+    }
 
-    var shapeQueued = false;
+    var shapeQueued = false, touchTimer = 0;
     function onScroll() {
+      if (isTouch) {                       /* 触屏：滚动停下再算一次，滚动中不做样式计算 */
+        clearTimeout(touchTimer);
+        touchTimer = setTimeout(function () { shape(); sync(); }, 140);
+        return;
+      }
       if (shapeQueued) return;
       shapeQueued = true;
       requestAnimationFrame(function () { shapeQueued = false; shape(); sync(); });
@@ -2972,8 +3008,10 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
     window.addEventListener('resize', function () { measure(); shape(); sync(); });
     window.addEventListener('load', function () { measure(); shape(); sync(); });
 
-    /* ---- 鼠标 / 手指拖动 ---- */
-    track.addEventListener('pointerdown', function (e) {
+    /* ---- 鼠标 / 手指拖动（触屏交给原生滚动，更跟手） ---- */
+    if (isTouch) {
+      /* 滑块仍可用，这里直接跳过拖拽绑定 */
+    } else track.addEventListener('pointerdown', function (e) {
       if (e.pointerType === 'mouse' && e.button !== 0) return;
       drag = { x: e.clientX, left: track.scrollLeft };
       track.classList.add('dragging');
