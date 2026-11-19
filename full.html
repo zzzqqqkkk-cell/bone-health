@@ -1110,6 +1110,9 @@ details.flow .vnote{margin:12px 0 0}
 .wxcard img.wxlogo{filter:brightness(.78) saturate(.92) contrast(1.06)}
 </style>
 <style>
+.gallery-track.dragging .shot{box-shadow:none!important;will-change:auto!important}
+</style>
+<style>
 .ov-role,.ov-stage{margin:26px 0 22px}
 .ov-hd{font-size:17px;font-weight:700;color:#EAF0F5;margin:0 0 8px}
 .ov-sub{font-size:13.5px;line-height:1.78;color:#9FB0BF;margin:0 0 14px}
@@ -2416,7 +2419,7 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
 
     (function preload(){
       if (!hi) return;
-      var idle = window.requestIdleCallback || function(f){ setTimeout(f, 500); };
+      var idle = function(f){ setTimeout(f, 0); };
       idle(function(){
         for (var k = 0; k < N; k++){
           var im = new Image();
@@ -2429,7 +2432,8 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
     function showFrame(k){
       if (!hi) return;
       k = ((k % N) + N) % N;
-      if (k === cur && !hi.hidden) return;
+      if (k === cur && !hi.hidden && hi.getAttribute('data-k') === String(k)) return;
+      hi.setAttribute('data-k', String(k));
       cur = k;
       hi.hidden = false;
       hi.src = FRAMES[k];
@@ -2444,6 +2448,10 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
     hero.addEventListener('pointerdown', function(e){
       dragging = true;
       startX = e.clientX;
+      /* 先把视频当前角度换算成帧号，保证按下去的那一帧和正在播放的画面一致 */
+      if (hv && hv.duration){
+        cur = Math.round((hv.currentTime / hv.duration) * N) % N;
+      }
       startIdx = cur;
       if (hv) { try { hv.pause(); } catch (err) {} }
       hero.classList.add('dragging', 'touched');
@@ -3029,11 +3037,13 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
 
     var shapeQueued = false, touchTimer = 0;
     function onScroll() {
+      sync();
+      if (drag || thumbDrag) return;          /* 拖动中不做 3D 计算，避免掉帧 */
       if (shapeQueued) return;
       shapeQueued = true;
-      requestAnimationFrame(function () { shapeQueued = false; shape(); sync(); });
-      sync();
+      requestAnimationFrame(function () { shapeQueued = false; shape(); });
     }
+    function settleShape(){ setTimeout(function(){ shape(); sync(); }, 90); }
     track.addEventListener('scroll', onScroll, { passive: true });
     measure();
     window.addEventListener('resize', function () { measure(); shape(); sync(); });
@@ -3064,6 +3074,7 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
       drag = null;
       track.classList.remove('dragging');
       pause(1800);
+      settleShape();
     }
     track.addEventListener('pointerup', endDrag);
     track.addEventListener('pointercancel', endDrag);
