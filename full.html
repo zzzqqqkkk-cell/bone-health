@@ -165,8 +165,8 @@ details[open] summary{border-bottom:1px solid var(--line)}
 .seqfilm svg{width:100%;height:auto;display:block;overflow:visible}
 .seqfilm .grid line{stroke:#1B2530;stroke-width:1}
 .seqfilm .grid .gline{stroke:#141D26;stroke-dasharray:3 5}
-.seqfilm .ax{fill:#A9BAC8;font-size:11.5px;letter-spacing:.04em}
-.seqfilm .ax.start{fill:#9FC2D2;font-size:10.5px}
+.seqfilm .ax{fill:#C6D4E0;font-size:13px;letter-spacing:.03em}
+.seqfilm .ax.start{fill:#AFC8D8;font-size:12px}
 .seqfilm .curve{fill:none;stroke-width:2.8;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1}
 .seqfilm .rise{stroke:#4E7A8A}
 .seqfilm .green{stroke:#00E5C0;filter:drop-shadow(0 0 4px rgba(0,229,192,.55))}
@@ -176,7 +176,7 @@ details[open] summary{border-bottom:1px solid var(--line)}
 .seqfilm .handoff{opacity:0;transition:opacity .5s}
 .seqfilm .handoff.on{opacity:1}
 .seqfilm .handoff line{stroke:#00E5C0;stroke-width:1;stroke-dasharray:4 4;opacity:.45}
-.seqfilm .handoff text{fill:#00E5C0;font-size:11px;font-weight:400;letter-spacing:.10em}
+.seqfilm .handoff text{fill:#37F2D2;font-size:12.5px;font-weight:600;letter-spacing:.05em}
 .seqfilm .handoff circle{fill:#05080B;stroke:#00E5C0;stroke-width:2.2}
 .seqfilm .gap{opacity:0;transition:opacity .5s}
 .seqfilm .gap.on{opacity:1}
@@ -184,17 +184,17 @@ details[open] summary{border-bottom:1px solid var(--line)}
 .seqfilm .gap path{fill:#FF6B57;opacity:.85}
 .seqfilm .lab{opacity:0;transform:translateY(5px);transition:opacity .45s,transform .45s cubic-bezier(.2,.9,.3,1.2)}
 .seqfilm .lab.on{opacity:1;transform:translateY(0)}
-.seqfilm .lab text{font-size:15.5px;font-weight:400;letter-spacing:.05em}
-.seqfilm .lab .sub{font-size:11.5px;font-weight:400;opacity:.92;letter-spacing:.09em}
-.seqfilm .lab .bg{fill:#05080B;opacity:.78}
+.seqfilm .lab text{font-size:17px;font-weight:600;letter-spacing:.03em}
+.seqfilm .lab .sub{font-size:13px;font-weight:400;opacity:1;letter-spacing:.06em}
+.seqfilm .lab .bg{fill:#05080B;opacity:.9}
 .seqfilm .lab.green text{fill:#00E5C0}
 .seqfilm .lab.red text{fill:#FF6B57}
 .seqfilm .crashring{transition:none}
 .seqfilm.crash{animation:seqShake .55s ease-in-out}
 @keyframes seqShake{0%,100%{transform:translate(0,0)}12%{transform:translate(-5px,2px)}26%{transform:translate(5px,-2px)}42%{transform:translate(-3.5px,1px)}60%{transform:translate(3px,-1px)}78%{transform:translate(-1.5px,0)}}
-.seqcap{margin-top:16px;font-size:15.5px;font-weight:800;line-height:1.6;color:#68757F;transition:color .5s,transform .5s}
+.seqcap{margin-top:16px;font-size:16.5px;font-weight:800;line-height:1.6;color:#7C8A96;transition:color .5s,transform .5s}
 .seqcap.on{color:var(--text);transform:none}
-.seqsub{margin-top:5px;font-size:14px;font-weight:800;color:#68757F;transition:color .5s}
+.seqsub{margin-top:5px;font-size:15px;font-weight:800;color:#7C8A96;transition:color .5s}
 .seqsub.on{color:var(--accent)}
 .seqbar{margin-top:12px;height:2px;border-radius:2px;background:#131B23;overflow:hidden}
 .seqbar i{display:block;height:100%;width:0;background:var(--accent)}
@@ -1094,20 +1094,20 @@ details.flow .vnote{margin:12px 0 0}
 .quote{color:#EFF5F9}
 </style>
 <style>
-.hero3d .hero-layer{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
-  border-radius:inherit;pointer-events:none;display:block}
+.hero3d .hero-layer{position:absolute;top:0;left:0;width:100%;height:auto;
+  aspect-ratio:640/960;object-fit:cover;border-radius:inherit;pointer-events:none;display:block}
 </style>
 <style>
-/* 公众号缩略牌：深绿底 + 白字，原亮绿底上白字发虚 */
-.wxlogo{
-  width:56px;height:56px;border-radius:10px;flex:none;
-  border:1px solid rgba(255,255,255,.14);
-  background:linear-gradient(160deg,#0B4F41,#073A30);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  color:#F4F9F7;font-size:11.5px;font-weight:800;letter-spacing:.06em;line-height:1.18;
-  text-align:center;
-}
-.wxlogo i{font-style:normal;display:block}
+.tiernote{margin:30px 0 4px;padding:26px 20px 24px;border-radius:16px;text-align:center;
+  border:1px solid rgba(0,229,192,.22);
+  background:linear-gradient(180deg,rgba(0,229,192,.07),rgba(255,255,255,.012))}
+.tiernote b{display:block;font-size:19px;letter-spacing:.04em;color:var(--text);margin-bottom:10px}
+.tiernote .tn-sub{display:block;font-size:12.5px;line-height:1.9;color:#9FADBA;margin-bottom:16px}
+.tiernote .share-link{font-size:13.5px}
+</style>
+<style>
+/* 公众号缩略图：保留原图，压暗绿底让白字更清楚 */
+.wxcard img.wxlogo{filter:brightness(.78) saturate(.92) contrast(1.06)}
 </style>
 <style>
 .ov-role,.ov-stage{margin:26px 0 22px}
@@ -1154,6 +1154,19 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
 .sitehdr nav a{padding:7px 11px;border-radius:8px;font-size:13px;color:var(--mute);text-decoration:none;white-space:nowrap}
 .sitehdr nav a:hover{color:var(--text);background:rgba(255,255,255,.05)}
 .sitehdr nav a.on{color:var(--accent);background:rgba(0,229,192,.1)}
+.sitehdr .lg span{white-space:nowrap}
+.sitehdr .lg small{white-space:nowrap}
+.sitehdr nav a{position:relative}
+.sitehdr nav a::after{content:"";position:absolute;left:10px;right:10px;bottom:3px;height:2px;
+  border-radius:2px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .25s ease}
+.sitehdr nav a.cur{color:#EAF1F6}
+.sitehdr nav a.cur::after{transform:scaleX(1)}
+@media (max-width:1023px){
+  .sitehdr .lg small{font-size:9px;letter-spacing:.04em}
+  .sitehdr .lg b{font-size:14px}
+  .sitehdr nav a{font-size:12px;padding:6px 7px}
+}
+
 
 /* 目录：桌面左侧固定，手机隐藏 */
 .toc{display:none}
@@ -1233,14 +1246,14 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
 <nav id="jump" aria-label="快速跳转"></nav>
 <header class="sitehdr">
   <a class="lg" href="index.html"><i></i><span><b>医心护骨</b><small>骨松全链条科普</small></span></a>
-  <nav>
-    <a href="index.html">首页</a>
-    <a href="ch1.html">病</a>
-    <a href="ch2.html">防</a>
-    <a href="ch3.html">事件</a>
-    <a href="ch4.html">结局</a>
-    <a href="ch5.html">长期</a>
-    <a href="full.html" class="on">全篇</a>
+  <nav id="sitenav">
+    <a href="index.html" data-from="1" data-to="1">首页</a>
+    <a href="ch1.html" data-from="2" data-to="4">病</a>
+    <a href="ch2.html" data-from="5" data-to="7">防</a>
+    <a href="ch3.html" data-from="8" data-to="9">事件</a>
+    <a href="ch4.html" data-from="10" data-to="12">结局</a>
+    <a href="ch5.html" data-from="13" data-to="16">长期</a>
+    <a href="full.html" class="on" data-from="0" data-to="0">全篇</a>
   </nav>
 </header>
 <aside class="toc" id="toc" aria-label="目录"><div class="thd">目录 · 17 屏</div></aside>
@@ -1297,8 +1310,8 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
       <div class="extread">
       <div class="extread-hd">拓展阅读<b>公众号推文</b></div>
       <ul>
-        <li><a class="wxcard" href="assets/wx/view.html?i=06&back=../../full.html&v=3" ><span class="wxlogo" aria-hidden="true"><i>骨松</i><i>科普</i></span><span class="t">骨松科普丨骨质疏松是“沉默杀手”，不是老了才要管</span></a></li>
-        <li><a class="wxcard" href="assets/wx/view.html?i=01&back=../../full.html&v=3" ><span class="wxlogo" aria-hidden="true"><i>骨松</i><i>科普</i></span><span class="t">骨松科普 | 身高矮了、背驼了，不是“正常变老”</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=06&back=../../full.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普丨骨质疏松是“沉默杀手”，不是老了才要管</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=01&back=../../full.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普 | 身高矮了、背驼了，不是“正常变老”</span></a></li>
       </ul>
     </div>
 
@@ -1323,8 +1336,8 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
       <div class="extread">
       <div class="extread-hd">拓展阅读<b>公众号推文</b></div>
       <ul>
-        <li><a class="wxcard" href="assets/wx/view.html?i=03&back=../../full.html&v=3" ><span class="wxlogo" aria-hidden="true"><i>骨松</i><i>科普</i></span><span class="t">骨松科普丨骨折接好了，病还没好：骨质疏松得按“慢病”管，不能“治一阵子”</span></a></li>
-        <li><a class="wxcard" href="assets/wx/view.html?i=21&back=../../full.html&v=3" ><span class="wxlogo" aria-hidden="true"><i>骨松</i><i>科普</i></span><span class="t">骨松科普丨一边补钙，一边“拆骨”：你的身体到底在经历什么？</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=03&back=../../full.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普丨骨折接好了，病还没好：骨质疏松得按“慢病”管，不能“治一阵子”</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=21&back=../../full.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普丨一边补钙，一边“拆骨”：你的身体到底在经历什么？</span></a></li>
       </ul>
     </div>
 
@@ -1356,9 +1369,9 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
       <div class="extread">
       <div class="extread-hd">拓展阅读<b>公众号推文</b></div>
       <ul>
-        <li><a class="wxcard" href="assets/wx/view.html?i=25&back=../../full.html&v=3" ><span class="wxlogo" aria-hidden="true"><i>骨松</i><i>科普</i></span><span class="t">骨松科普丨指挥你骨骼拆建的，竟是你从未听过的“它”？</span></a></li>
-        <li><a class="wxcard" href="assets/wx/view.html?i=18&back=../../full.html&v=3" ><span class="wxlogo" aria-hidden="true"><i>骨松</i><i>科普</i></span><span class="t">补钙总是收效甚微？你可能忽略了骨骼的“引路人”——维生素K2</span></a></li>
-        <li><a class="wxcard" href="assets/wx/view.html?i=21&back=../../full.html&v=3" ><span class="wxlogo" aria-hidden="true"><i>骨松</i><i>科普</i></span><span class="t">骨松科普丨一边补钙，一边“拆骨”：你的身体到底在经历什么？</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=25&back=../../full.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普丨指挥你骨骼拆建的，竟是你从未听过的“它”？</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=18&back=../../full.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">补钙总是收效甚微？你可能忽略了骨骼的“引路人”——维生素K2</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=21&back=../../full.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普丨一边补钙，一边“拆骨”：你的身体到底在经历什么？</span></a></li>
       </ul>
     </div>
 
@@ -1383,11 +1396,11 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
       <div class="extread">
       <div class="extread-hd">拓展阅读<b>公众号推文</b></div>
       <ul>
-        <li><a class="wxcard" href="assets/wx/view.html?i=15&back=../../full.html&v=3" ><span class="wxlogo" aria-hidden="true"><i>骨松</i><i>科普</i></span><span class="t">骨松科普丨家中骨折三杀手，半数老人中招！</span></a></li>
-        <li><a class="wxcard" href="assets/wx/view.html?i=28&back=../../full.html&v=3" ><span class="wxlogo" aria-hidden="true"><i>骨松</i><i>科普</i></span><span class="t">骨松科普丨老年人预防骨折：日常干预指南</span></a></li>
-        <li><a class="wxcard" href="assets/wx/view.html?i=22&back=../../full.html&v=3" ><span class="wxlogo" aria-hidden="true"><i>骨松</i><i>科普</i></span><span class="t">骨松科普丨别只盯着骨头！想要不骨折肌肉同样重要！！</span></a></li>
-        <li><a class="wxcard" href="assets/wx/view.html?i=14&back=../../full.html&v=3" ><span class="wxlogo" aria-hidden="true"><i>骨松</i><i>科普</i></span><span class="t">骨松科普丨春季补钙全攻略：选对钙剂，不花冤枉钱</span></a></li>
-        <li><a class="wxcard" href="assets/wx/view.html?i=30&back=../../full.html&v=3" ><span class="wxlogo" aria-hidden="true"><i>骨松</i><i>科普</i></span><span class="t">骨松科普丨每天运动，骨头反而变脆了？</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=15&back=../../full.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普丨家中骨折三杀手，半数老人中招！</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=28&back=../../full.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普丨老年人预防骨折：日常干预指南</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=22&back=../../full.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普丨别只盯着骨头！想要不骨折肌肉同样重要！！</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=14&back=../../full.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普丨春季补钙全攻略：选对钙剂，不花冤枉钱</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=30&back=../../full.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普丨每天运动，骨头反而变脆了？</span></a></li>
       </ul>
     </div>
 
@@ -1422,9 +1435,9 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
       <div class="extread">
       <div class="extread-hd">拓展阅读<b>公众号推文</b></div>
       <ul>
-        <li><a class="wxcard" href="assets/wx/view.html?i=13&back=../../full.html&v=3" ><span class="wxlogo" aria-hidden="true"><i>骨松</i><i>科普</i></span><span class="t">骨松科普丨手腕最常见的骨折——Colles骨折</span></a></li>
-        <li><a class="wxcard" href="assets/wx/view.html?i=26&back=../../full.html&v=3" ><span class="wxlogo" aria-hidden="true"><i>骨松</i><i>科普</i></span><span class="t">骨松科普丨滑雪热背后的“骨科冷思考” ——从雪道到街头的冬季骨骼保护指南</span></a></li>
-        <li><a class="wxcard" href="assets/wx/view.html?i=19&back=../../full.html&v=3" ><span class="wxlogo" aria-hidden="true"><i>骨松</i><i>科普</i></span><span class="t">骨松科普丨老人骨折后别大意！这些并发症与注意事项要点一定要记牢</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=13&back=../../full.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普丨手腕最常见的骨折——Colles骨折</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=26&back=../../full.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普丨滑雪热背后的“骨科冷思考” ——从雪道到街头的冬季骨骼保护指南</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=19&back=../../full.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普丨老人骨折后别大意！这些并发症与注意事项要点一定要记牢</span></a></li>
       </ul>
     </div>
 
@@ -1521,7 +1534,7 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
       <div class="extread">
       <div class="extread-hd">拓展阅读<b>公众号推文</b></div>
       <ul>
-        <li><a class="wxcard" href="assets/wx/view.html?i=15&back=../../full.html&v=3" ><span class="wxlogo" aria-hidden="true"><i>骨松</i><i>科普</i></span><span class="t">骨松科普丨家中骨折三杀手，半数老人中招！</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=15&back=../../full.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普丨家中骨折三杀手，半数老人中招！</span></a></li>
       </ul>
     </div>
 
@@ -1604,8 +1617,8 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
     <div class="extread">
       <div class="extread-hd">拓展阅读<b>公众号推文</b></div>
       <ul>
-        <li><a class="wxcard" href="assets/wx/view.html?i=03&back=../../full.html&v=3" ><span class="wxlogo" aria-hidden="true"><i>骨松</i><i>科普</i></span><span class="t">骨松科普丨骨折接好了，病还没好：骨质疏松得按“慢病”管，不能“治一阵子”</span></a></li>
-        <li><a class="wxcard" href="assets/wx/view.html?i=19&back=../../full.html&v=3" ><span class="wxlogo" aria-hidden="true"><i>骨松</i><i>科普</i></span><span class="t">骨松科普丨老人骨折后别大意！这些并发症与注意事项要点一定要记牢</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=03&back=../../full.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普丨骨折接好了，病还没好：骨质疏松得按“慢病”管，不能“治一阵子”</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=19&back=../../full.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普丨老人骨折后别大意！这些并发症与注意事项要点一定要记牢</span></a></li>
       </ul>
     </div>
   </div>
@@ -1652,8 +1665,8 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
       <div class="extread">
       <div class="extread-hd">拓展阅读<b>公众号推文</b></div>
       <ul>
-        <li><a class="wxcard" href="assets/wx/view.html?i=19&back=../../full.html&v=3" ><span class="wxlogo" aria-hidden="true"><i>骨松</i><i>科普</i></span><span class="t">骨松科普丨老人骨折后别大意！这些并发症与注意事项要点一定要记牢</span></a></li>
-        <li><a class="wxcard" href="assets/wx/view.html?i=11&back=../../full.html&v=3" ><span class="wxlogo" aria-hidden="true"><i>骨松</i><i>科普</i></span><span class="t">骨松科普 | 骨质疏松椎体骨折后 怎么康复锻炼？</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=19&back=../../full.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普丨老人骨折后别大意！这些并发症与注意事项要点一定要记牢</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=11&back=../../full.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普 | 骨质疏松椎体骨折后 怎么康复锻炼？</span></a></li>
       </ul>
     </div>
 
@@ -1689,7 +1702,7 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
       <div class="extread">
       <div class="extread-hd">拓展阅读<b>公众号推文</b></div>
       <ul>
-        <li><a class="wxcard" href="assets/wx/view.html?i=25&back=../../full.html&v=3" ><span class="wxlogo" aria-hidden="true"><i>骨松</i><i>科普</i></span><span class="t">骨松科普丨指挥你骨骼拆建的，竟是你从未听过的“它”？</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=25&back=../../full.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普丨指挥你骨骼拆建的，竟是你从未听过的“它”？</span></a></li>
       </ul>
     </div>
 
@@ -1850,13 +1863,13 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
     <div class="extread">
       <div class="extread-hd">拓展阅读<b>公众号推文</b></div>
       <ul>
-        <li><a class="wxcard" href="assets/wx/view.html?i=05&back=../../full.html&v=3" ><span class="wxlogo" aria-hidden="true"><i>骨松</i><i>科普</i></span><span class="t">骨松科普 | 骨头汤“以形补形”是最大误会：一碗汤的钙，抵不上一口牛奶</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=05&back=../../full.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普 | 骨头汤“以形补形”是最大误会：一碗汤的钙，抵不上一口牛奶</span></a></li>
       
-        <li><a class="wxcard" href="assets/wx/view.html?i=1&back=../../full.html&v=3" ><span class="wxlogo" aria-hidden="true"><i>骨松</i><i>科普</i></span><span class="t">骨松科普 | 身高矮了、背驼了，不是“正常变老”</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=1&back=../../full.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普 | 身高矮了、背驼了，不是“正常变老”</span></a></li>
       
-        <li><a class="wxcard" href="assets/wx/view.html?i=3&back=../../full.html&v=3" ><span class="wxlogo" aria-hidden="true"><i>骨松</i><i>科普</i></span><span class="t">骨松科普丨骨折接好了，病还没好：骨质疏松得按“慢病”管，不能“治一阵子”</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=3&back=../../full.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普丨骨折接好了，病还没好：骨质疏松得按“慢病”管，不能“治一阵子”</span></a></li>
       
-        <li><a class="wxcard" href="assets/wx/view.html?i=21&back=../../full.html&v=3" ><span class="wxlogo" aria-hidden="true"><i>骨松</i><i>科普</i></span><span class="t">骨松科普丨一边补钙，一边“拆骨”：你的身体到底在经历什么？</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=21&back=../../full.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普丨一边补钙，一边“拆骨”：你的身体到底在经历什么？</span></a></li>
       </ul>
     </div>
 
@@ -1956,9 +1969,9 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
       <div class="extread">
       <div class="extread-hd">拓展阅读<b>公众号推文</b></div>
       <ul>
-        <li><a class="wxcard" href="assets/wx/view.html?i=08&back=../../full.html&v=3" ><span class="wxlogo" aria-hidden="true"><i>骨松</i><i>科普</i></span><span class="t">骨松科普丨止痛药与骨骼健康：长期用药需警惕，别让骨头悄悄“流失”</span></a></li>
-        <li><a class="wxcard" href="assets/wx/view.html?i=04&back=../../full.html&v=3" ><span class="wxlogo" aria-hidden="true"><i>骨松</i><i>科普</i></span><span class="t">骨松科普 | 老鼠药也能治病？聊聊骨科里的华法林</span></a></li>
-        <li><a class="wxcard" href="assets/wx/view.html?i=25&back=../../full.html&v=3" ><span class="wxlogo" aria-hidden="true"><i>骨松</i><i>科普</i></span><span class="t">骨松科普丨指挥你骨骼拆建的，竟是你从未听过的“它”？</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=08&back=../../full.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普丨止痛药与骨骼健康：长期用药需警惕，别让骨头悄悄“流失”</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=04&back=../../full.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普 | 老鼠药也能治病？聊聊骨科里的华法林</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=25&back=../../full.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普丨指挥你骨骼拆建的，竟是你从未听过的“它”？</span></a></li>
       </ul>
     </div>
 
@@ -2083,10 +2096,10 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
       <div class="extread">
       <div class="extread-hd">拓展阅读<b>公众号推文</b></div>
       <ul>
-        <li><a class="wxcard" href="assets/wx/view.html?i=11&back=../../full.html&v=3" ><span class="wxlogo" aria-hidden="true"><i>骨松</i><i>科普</i></span><span class="t">骨松科普 | 骨质疏松椎体骨折后 怎么康复锻炼？</span></a></li>
-        <li><a class="wxcard" href="assets/wx/view.html?i=09&back=../../full.html&v=3" ><span class="wxlogo" aria-hidden="true"><i>骨松</i><i>科普</i></span><span class="t">骨松科普 | 腰椎术后怎么锻炼——写给老年朋友的康复指南</span></a></li>
-        <li><a class="wxcard" href="assets/wx/view.html?i=10&back=../../full.html&v=3" ><span class="wxlogo" aria-hidden="true"><i>骨松</i><i>科普</i></span><span class="t">脊柱科普丨颈椎术后别乱动！分阶段康复锻炼全攻略</span></a></li>
-        <li><a class="wxcard" href="assets/wx/view.html?i=22&back=../../full.html&v=3" ><span class="wxlogo" aria-hidden="true"><i>骨松</i><i>科普</i></span><span class="t">骨松科普丨别只盯着骨头！想要不骨折肌肉同样重要！！</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=11&back=../../full.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普 | 骨质疏松椎体骨折后 怎么康复锻炼？</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=09&back=../../full.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普 | 腰椎术后怎么锻炼——写给老年朋友的康复指南</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=10&back=../../full.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">脊柱科普丨颈椎术后别乱动！分阶段康复锻炼全攻略</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=22&back=../../full.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普丨别只盯着骨头！想要不骨折肌肉同样重要！！</span></a></li>
       </ul>
     </div>
 
@@ -2199,7 +2212,7 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
     <div class="extread">
       <div class="extread-hd">拓展阅读<b>公众号推文</b></div>
       <ul>
-        <li><a class="wxcard" href="assets/wx/view.html?i=03&back=../../full.html&v=3" ><span class="wxlogo" aria-hidden="true"><i>骨松</i><i>科普</i></span><span class="t">骨松科普丨骨折接好了，病还没好：骨质疏松得按“慢病”管，不能“治一阵子”</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=03&back=../../full.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普丨骨折接好了，病还没好：骨质疏松得按“慢病”管，不能“治一阵子”</span></a></li>
       </ul>
     </div>
 </div>
@@ -2298,6 +2311,22 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
       <b style="color:#8A99A6">免责声明</b>　本页面为健康科普内容，不构成任何诊疗建议，不作为诊断或用药依据。如有相关症状，请及时到正规医疗机构就诊。
     </p>
 
+      <div class="extread">
+        <div class="extread-hd">更多同系列科普<b>公众号推文</b></div>
+        <ul>
+        <li><a class="wxcard" href="assets/wx/view.html?i=2&back=../../full.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普 | 高血糖不止伤血管！糖尿病在悄悄啃噬你的骨关节</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=7&back=../../full.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普 丨 更年期关节痛别硬扛！分清更年期关节痛与类风湿关节炎，守护你的关节健康</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=16&back=../../full.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普丨老年人膝关节骨性关节炎防治建议</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=17&back=../../full.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普丨腰肌劳损别硬扛，拖久易腰突</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=23&back=../../full.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普丨关于痛风，这些关键认知你可能从未真正搞懂</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=20&back=../../full.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普丨春季养骨正当时：科学护关节，别再交“智商税”</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=12&back=../../full.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普 | 人老了身高一年比一年矮？这不一定是正常的</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=24&back=../../full.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">一杯咖啡，到底会“偷”走多少钙？</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=27&back=../../full.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普丨骨头在“无声呐喊”：每天坐8小时，你的骨骼正在悄悄变脆！</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=29&back=../../full.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普丨骨科常见疑问大揭秘：这些“常识”可能都是错的！</span></a></li>
+        </ul>
+      </div>
+
     <div class="follow">
       <div class="qrw">
         <img src="assets/qr_blur.png" alt="公众号二维码，已作模糊处理，无法扫描" width="480" height="480" loading="lazy">
@@ -2311,24 +2340,7 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
       </div>
     </div>
 
-      <div class="extread">
-        <div class="extread-hd">更多同系列科普<b>公众号推文</b></div>
-        <ul>
-        <li><a class="wxcard" href="assets/wx/view.html?i=2&back=../../full.html&v=3" ><span class="wxlogo" aria-hidden="true"><i>骨松</i><i>科普</i></span><span class="t">骨松科普 | 高血糖不止伤血管！糖尿病在悄悄啃噬你的骨关节</span></a></li>
-        <li><a class="wxcard" href="assets/wx/view.html?i=7&back=../../full.html&v=3" ><span class="wxlogo" aria-hidden="true"><i>骨松</i><i>科普</i></span><span class="t">骨松科普 丨 更年期关节痛别硬扛！分清更年期关节痛与类风湿关节炎，守护你的关节健康</span></a></li>
-        <li><a class="wxcard" href="assets/wx/view.html?i=16&back=../../full.html&v=3" ><span class="wxlogo" aria-hidden="true"><i>骨松</i><i>科普</i></span><span class="t">骨松科普丨老年人膝关节骨性关节炎防治建议</span></a></li>
-        <li><a class="wxcard" href="assets/wx/view.html?i=17&back=../../full.html&v=3" ><span class="wxlogo" aria-hidden="true"><i>骨松</i><i>科普</i></span><span class="t">骨松科普丨腰肌劳损别硬扛，拖久易腰突</span></a></li>
-        <li><a class="wxcard" href="assets/wx/view.html?i=23&back=../../full.html&v=3" ><span class="wxlogo" aria-hidden="true"><i>骨松</i><i>科普</i></span><span class="t">骨松科普丨关于痛风，这些关键认知你可能从未真正搞懂</span></a></li>
-        <li><a class="wxcard" href="assets/wx/view.html?i=20&back=../../full.html&v=3" ><span class="wxlogo" aria-hidden="true"><i>骨松</i><i>科普</i></span><span class="t">骨松科普丨春季养骨正当时：科学护关节，别再交“智商税”</span></a></li>
-        <li><a class="wxcard" href="assets/wx/view.html?i=12&back=../../full.html&v=3" ><span class="wxlogo" aria-hidden="true"><i>骨松</i><i>科普</i></span><span class="t">骨松科普 | 人老了身高一年比一年矮？这不一定是正常的</span></a></li>
-        <li><a class="wxcard" href="assets/wx/view.html?i=24&back=../../full.html&v=3" ><span class="wxlogo" aria-hidden="true"><i>骨松</i><i>科普</i></span><span class="t">一杯咖啡，到底会“偷”走多少钙？</span></a></li>
-        <li><a class="wxcard" href="assets/wx/view.html?i=27&back=../../full.html&v=3" ><span class="wxlogo" aria-hidden="true"><i>骨松</i><i>科普</i></span><span class="t">骨松科普丨骨头在“无声呐喊”：每天坐8小时，你的骨骼正在悄悄变脆！</span></a></li>
-        <li><a class="wxcard" href="assets/wx/view.html?i=29&back=../../full.html&v=3" ><span class="wxlogo" aria-hidden="true"><i>骨松</i><i>科普</i></span><span class="t">骨松科普丨骨科常见疑问大揭秘：这些“常识”可能都是错的！</span></a></li>
-        </ul>
-      </div>
-
-      <div class="tiernote"><b>这份科普到这里结束</b>　前面每一句话的出处，都在上面的附录里。<br>
-    <button class="share-link" id="backTop" type="button">回到开头，再看一遍</button></div>
+      <div class="tiernote"><b>这份科普到这里结束</b><span class="tn-sub">前面每一句话的出处，都在上面的附录里。</span><button class="share-link" id="backTop" type="button">回到开头，再看一遍</button></div>
     </div>
     </section>
 </main>
@@ -2339,6 +2351,7 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
     <b>网址</b>　<a href="https://zzzqqqkkk-cell.github.io/bone-health/" target="_blank" rel="noopener" style="color:#00E5C0;text-decoration:none">zzzqqqkkk-cell.github.io/bone-health</a>
   </p>
 </footer>
+<script>window.__galleryAuto=false;</script>
 <script>
 (function(){
   "use strict";
@@ -3006,10 +3019,13 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
         if (!inView) last = 0;
       }, { rootMargin: '160px' }).observe(fig);
     }
-    (function loop() {
-      if (inView) step();
-      requestAnimationFrame(loop);
-    })();
+    /* 依需求：不再自动巡游，改为手动拖动 / 底部滑块 / 左右按钮 */
+    if (window.__galleryAuto !== false) {
+      (function loop() {
+        if (inView) step();
+        requestAnimationFrame(loop);
+      })();
+    }
 
     var shapeQueued = false, touchTimer = 0;
     function onScroll() {
@@ -3354,6 +3370,36 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
   }, { passive: true });
 })();
 </script>
+
+<script>
+/* 顶部导航：滚到哪一章，哪一项下方亮绿线 */
+(function(){
+  var nav = document.getElementById('sitenav');
+  if (!nav) return;
+  var links = [].slice.call(nav.querySelectorAll('a[data-from]'));
+  var secs = [].slice.call(document.querySelectorAll('section'));
+  var last = -1;
+  function sync(){
+    var mid = window.innerHeight * 0.42, idx = 1;
+    for (var i = 0; i < secs.length; i++){
+      if (secs[i].getBoundingClientRect().top - mid <= 0) idx = i + 1;
+    }
+    if (idx === last) return;
+    last = idx;
+    links.forEach(function(a){
+      var f = +a.getAttribute('data-from'), t2 = +a.getAttribute('data-to');
+      a.classList.toggle('cur', !!f && idx >= f && idx <= t2);
+    });
+  }
+  var timer = 0;
+  window.addEventListener('scroll', function(){
+    if (timer) return;
+    timer = setTimeout(function(){ timer = 0; sync(); }, 80);
+  }, { passive: true });
+  sync();
+})();
+</script>
+</body>
 
 <script>
 /* ===== 桌面目录：滚动高亮 ===== */
