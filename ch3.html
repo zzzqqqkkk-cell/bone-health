@@ -59,9 +59,6 @@
 .cement .cement-k{padding-top:10px;border-top:1px solid rgba(255,255,255,.08);color:#EAF0F5}
 </style><style>
 /* 时间轴：再次发病节点波纹 */
-.tl .node.hot::after{content:"";position:absolute;left:-26px;top:4px;width:19px;height:19px;
-  border-radius:50%;border:1px solid var(--accent);opacity:0;
-  animation:tlRipple 2.4s cubic-bezier(.2,.6,.3,1) infinite;pointer-events:none}
 @keyframes tlRipple{
   0%{transform:scale(.55);opacity:.8}
   70%{transform:scale(1.95);opacity:0}
@@ -71,7 +68,6 @@
   .tl .node.hot::after{animation:none}
 }
 </style><style>
-.tl .node.hot::before{animation:tlPulse 2.4s ease-out infinite}
 @keyframes tlPulse{
   0%{box-shadow:0 0 0 0 rgba(0,229,192,.55)}
   70%{box-shadow:0 0 0 13px rgba(0,229,192,0)}
@@ -92,7 +88,6 @@
   transition:transform .9s cubic-bezier(.3,.7,.3,1) .1s}
 .rv.in .tl::before{transform:scaleY(1)}
 /* 波纹等节点出现后再起 */
-.tl .node.hot::after{animation-delay:1.6s}
 .tl .node.hot::before{animation-delay:1.6s}
 @media (prefers-reduced-motion: reduce){
   .tl .node,.tl::before{opacity:1!important;transform:none!important;
