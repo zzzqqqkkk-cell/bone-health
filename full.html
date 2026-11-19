@@ -1073,6 +1073,27 @@ details.flow .vnote{margin:12px 0 0}
 }
 </style>
 <style>
+/* ===== 手机可读性增强：加深色底文字/描边对比 ===== */
+:root{
+  --mute:#A6B3C0;                 /* 次级文字：原 #75828F，太浅读不清 */
+  --line:#27333F;                 /* 分隔线 */
+  --panel:#101720;                /* 卡片底 */
+}
+.card,.mq-item,.fi,.wxcard,.ai,.sys,.flow,.svcblock,.dbody{
+  background-color:#0F161E;
+  border-color:rgba(255,255,255,.16)!important;
+}
+.card{background-image:none!important}
+.mq-item{background-image:none!important}
+.vnote,.tag,.extread-hd,.fnote,.qrcap,.tiernote,.flow-foot,.ph,.dbody .ph,.sub,.cap{
+  color:#A3B0BD;
+}
+.tag i{color:#00E5C0}
+.step .txt,.act .txt,.mq-txt,.ox{color:#C7D2DC}
+.pill,.chip{color:#C7D2DC;border-color:rgba(255,255,255,.18)}
+.quote{color:#EFF5F9}
+</style>
+<style>
 .ov-role,.ov-stage{margin:26px 0 22px}
 .ov-hd{font-size:17px;font-weight:700;color:#EAF0F5;margin:0 0 8px}
 .ov-sub{font-size:13.5px;line-height:1.78;color:#9FB0BF;margin:0 0 14px}
@@ -2379,13 +2400,26 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
         e.preventDefault();
       });
 
+      /* 拖动：每帧最多 seek 一次，并按 1/30 秒量化，避免手机连续 seek 卡顿 */
+      var hPending = null, hRaf = 0;
+      function applySeek(){
+        hRaf = 0;
+        if (hPending === null) return;
+        var t = hPending; hPending = null;
+        try {
+          if (typeof hv.fastSeek === 'function') hv.fastSeek(t);
+          else hv.currentTime = t;
+        } catch (err) {}
+      }
       hero.addEventListener('pointermove', function(e){
         if (!hDragging) return;
         var t = hStartT + ((e.clientX - hStartX) / 320) * hDur;
         t = ((t % hDur) + hDur) % hDur;
-        try { hv.currentTime = t; } catch (err) {}
+        t = Math.round(t * 30) / 30;
+        hPending = t;
+        if (!hRaf) hRaf = requestAnimationFrame(applySeek);
         e.preventDefault();
-      });
+      }, { passive: false });
 
       function hEndDrag(){
         if (!hDragging) return;
@@ -2728,8 +2762,18 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
         es.forEach(function(en){
           if (en.isIntersecting){ play(); io.disconnect(); }
         });
-      }, { threshold: 0.45 });
+      }, { threshold: 0.05, rootMargin: '0px 0px -8% 0px' });
       io.observe(box);
+      /* 兜底：个别机型 IO 不回调，滚到附近也播放一次 */
+      var seqFallback = false;
+      window.addEventListener('scroll', function(){
+        if (seqFallback) return;
+        var r = box.getBoundingClientRect();
+        if (r.top < (window.innerHeight || 800) - 40 && r.bottom > 0){
+          seqFallback = true;
+          if (!running) play();
+        }
+      }, { passive: true });
     }
     if (btn) btn.addEventListener('click', function(e){ e.preventDefault(); running = false; play(); });
   })();
@@ -2847,14 +2891,21 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
     }
 
     /* ---- 立体：越靠边，上下越高、外侧微收 ---- */
+    var shots = [].slice.call(track.querySelectorAll('.shot'));
+    var geo = [], geoHalf = 1;
+
+    /* 只量一次布局，拖动时不再读取 offsetLeft（否则每帧强制重排导致掉帧） */
+    function measure() {
+      geoHalf = Math.max(1, track.clientWidth / 2);
+      geo = shots.map(function (el) { return el.offsetLeft + el.offsetWidth / 2; });
+    }
+
     function shape() {
-      var shots = track.querySelectorAll('.shot');
-      var viewCenter = track.scrollLeft + track.clientWidth / 2;
-      var half = track.clientWidth / 2;
+      var viewCenter = track.scrollLeft + geoHalf;
+      var half = geoHalf;
       for (var i = 0; i < shots.length; i++) {
         var el = shots[i];
-        // 用布局坐标计算，避免读取被 transform 影响后的位置
-        var xc = el.offsetLeft + el.offsetWidth / 2 + (el.offsetParent === track ? 0 : 0);
+        var xc = geo[i] != null ? geo[i] : 0;
         var t = (xc - viewCenter) / half;
         if (t > 1.35) t = 1.35; if (t < -1.35) t = -1.35;
         var ac = Math.min(1, Math.abs(t));
@@ -2896,8 +2947,18 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
       else if (next <= 0) { next = 0; dir = 1; }
       track.scrollLeft = next;
     }
-    (function loop() { step(); requestAnimationFrame(loop); })();
-    setInterval(step, 120);
+    /* 只在可见时自动巡游；去掉与 rAF 重复的 setInterval 驱动 */
+    var inView = true;
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (en) {
+        inView = en[0].isIntersecting;
+        if (!inView) last = 0;
+      }, { rootMargin: '160px' }).observe(fig);
+    }
+    (function loop() {
+      if (inView) step();
+      requestAnimationFrame(loop);
+    })();
 
     var shapeQueued = false;
     function onScroll() {
@@ -2907,7 +2968,9 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
       sync();
     }
     track.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', function () { shape(); sync(); });
+    measure();
+    window.addEventListener('resize', function () { measure(); shape(); sync(); });
+    window.addEventListener('load', function () { measure(); shape(); sync(); });
 
     /* ---- 鼠标 / 手指拖动 ---- */
     track.addEventListener('pointerdown', function (e) {
@@ -2917,12 +2980,18 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
       try { track.setPointerCapture(e.pointerId); } catch (err) {}
       last = 0;
     });
+    var dragRaf = 0;
     track.addEventListener('pointermove', function (e) {
       if (!drag) return;
       var dx = e.clientX - drag.x;
       if (Math.abs(dx) > 2) e.preventDefault();
-      track.scrollLeft = drag.left - dx;
-    });
+      drag.dx = dx;
+      if (dragRaf) return;
+      dragRaf = requestAnimationFrame(function () {
+        dragRaf = 0;
+        if (drag) track.scrollLeft = drag.left - drag.dx;
+      });
+    }, { passive: false });
     function endDrag() {
       if (!drag) return;
       drag = null;
@@ -2989,7 +3058,7 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
         io.unobserve(e.target);
       }
     });
-  }, { threshold: 0.35 });
+  }, { threshold: 0.05, rootMargin: '0px 0px -8% 0px' });
   Array.prototype.forEach.call(figs, function (f) {
     f.classList.add('pre');
     io.observe(f);
@@ -3207,6 +3276,31 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
   window.addEventListener('resize', sync);
   window.addEventListener('hashchange', sync);
   sync();
+})();
+</script>
+<script>
+/* 兜底：个别机型 IntersectionObserver 触发延迟，进视口后仍是空框 —— 加载后与滚动时各补一次 */
+(function(){
+  function force(){
+    var rv = document.querySelectorAll('.rv:not(.in)');
+    Array.prototype.forEach.call(rv, function(el){
+      var r = el.getBoundingClientRect();
+      if (r.top < (window.innerHeight || 800) && r.bottom > 0) el.classList.add('in');
+    });
+    var bf = document.querySelectorAll('.bodyfig.pre');
+    Array.prototype.forEach.call(bf, function(el){
+      var r = el.getBoundingClientRect();
+      if (r.top < (window.innerHeight || 800) && r.bottom > -80){
+        el.classList.remove('pre'); el.classList.add('in');
+      }
+    });
+  }
+  window.addEventListener('load', function(){ setTimeout(force, 1000); });
+  window.addEventListener('scroll', function(){
+    if (window.__forceT) return;
+    window.__forceT = 1;
+    requestAnimationFrame(function(){ window.__forceT = 0; force(); });
+  }, { passive: true });
 })();
 </script>
 
