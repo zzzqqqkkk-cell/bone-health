@@ -78,6 +78,26 @@
   100%{box-shadow:0 0 0 0 rgba(0,229,192,0)}
 }
 @media (prefers-reduced-motion: reduce){.tl .node.hot::before{animation:none}}
+</style><style>
+/* 时间轴：按顺序依次出现 */
+.tl .node{opacity:0;transform:translateY(10px);
+  transition:opacity .55s ease, transform .55s ease}
+.rv.in .tl .node{opacity:1;transform:none}
+.rv.in .tl .node:nth-child(1){transition-delay:.15s}
+.rv.in .tl .node:nth-child(2){transition-delay:.62s}
+.rv.in .tl .node:nth-child(3){transition-delay:1.09s}
+.rv.in .tl .node:nth-child(4){transition-delay:1.56s}
+/* 竖线从上往下画出来 */
+.tl::before{transform-origin:top;transform:scaleY(0);
+  transition:transform .9s cubic-bezier(.3,.7,.3,1) .1s}
+.rv.in .tl::before{transform:scaleY(1)}
+/* 波纹等节点出现后再起 */
+.tl .node.hot::after{animation-delay:1.6s}
+.tl .node.hot::before{animation-delay:1.6s}
+@media (prefers-reduced-motion: reduce){
+  .tl .node,.tl::before{opacity:1!important;transform:none!important;
+    transition:none!important}
+}
 </style></head>
 <body>
 <div id="bar"></div>
