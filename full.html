@@ -1134,6 +1134,21 @@ details.flow .vnote{margin:12px 0 0}
 }
 </style>
 <style>
+/* 16 屏：成果与推广 */
+.docfig{margin:18px 0 6px;padding:10px;border-radius:14px;background:#F4F7FB;
+  border:1px solid rgba(255,255,255,.14);overflow:hidden}
+.docfig img{display:block;width:100%;height:auto;border-radius:8px}
+.docfig figcaption{margin-top:9px;font-size:11.5px;line-height:1.7;color:#7C8A96;text-align:center}
+.outreach{margin:20px 0 6px;padding:16px 16px 6px;border:1px solid rgba(0,229,192,.24);
+  border-radius:14px;background:linear-gradient(180deg,rgba(0,229,192,.06),rgba(255,255,255,.01))}
+.outreach .oh{font-size:13px;font-weight:800;color:var(--text);margin-bottom:12px}
+.outreach .og{display:grid;grid-template-columns:1fr 1fr;gap:12px 10px}
+.outreach .oi b{display:block;font-size:20px;font-weight:800;color:var(--accent);line-height:1.2}
+.outreach .oi span{display:block;font-size:11.5px;color:#9FADBA;line-height:1.6;margin-top:3px}
+.outreach .on{margin:12px 0 10px;font-size:12px;line-height:1.8;color:#A3B0BD}
+@media (min-width:1024px){.outreach .og{grid-template-columns:repeat(3,1fr)}}
+</style>
+<style>
 .ov-role,.ov-stage{margin:26px 0 22px}
 .ov-hd{font-size:17px;font-weight:700;color:#EAF0F5;margin:0 0 8px}
 .ov-sub{font-size:13.5px;line-height:1.78;color:#9FB0BF;margin:0 0 14px}
@@ -2191,6 +2206,11 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
           康复训练率从约 <b>10%</b> 提升到 <b>68%</b>。</p>
         </div></div>
 
+
+        <figure class="docfig">
+          <img src="assets/ai_loop.jpg" alt="六个 AI 智能体构成的闭环：患者就诊诉求 → 智问骨松（AI 问诊）→ 智诊骨松（诊断）→ AI 辅助手术规划 → 气囊式智能支具 → 智能随访 → 个性化科普 → 回到患者诉求" loading="lazy">
+          <figcaption>AI 辅助生成 · 六个智能体串成的全病程闭环：问诊 → 诊断 → 手术规划 → 支具 → 随访 → 科普，再回到患者</figcaption>
+        </figure>
         <div class="flow-foot">
           <b>这套模式在崂山跑通了，正在往外推</b>
           <span>从一个区起步，先在最基层的卫生室里落地，再一层一层走通转诊与回访；模式已连续运行 <b>5 年</b>，
@@ -2207,6 +2227,25 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
           <span><b>正在</b> 向其他地区推广</span>
         </div>
 
+
+        <div class="outreach">
+          <div class="oh">成果 · 这套东西走到了哪里</div>
+          <div class="og">
+            <div class="oi"><b>196</b><span>场义诊与健康宣讲</span></div>
+            <div class="oi"><b>128 万</b><span>人次接受过现场或线上科普</span></div>
+            <div class="oi"><b>69</b><span>场基层医生培训</span></div>
+            <div class="oi"><b>16</b><span>个地级市已铺开（覆盖山东全省）</span></div>
+            <div class="oi"><b>33</b><span>家合作医院（不逐一列名）</span></div>
+            <div class="oi"><b>2 万+</b><span>例患者纳入长期管理</span></div>
+          </div>
+          <p class="on">宣讲不是只在大医院讲：从社区讲堂、村卫生室，讲到县级医院的医生培训。山东 16 个地级市已经全部铺开，
+          合作机构数量按大赛脱敏要求不逐一列出。</p>
+        </div>
+
+        <figure class="docfig">
+          <img src="assets/sd_map.jpg" alt="山东省地图示意图：16 个地级市均标注了推广点位" loading="lazy">
+          <figcaption>山东省 16 个地级市覆盖示意 · 每个红色标记为一处已开展筛查／转诊／随访的网点；具体机构名称不逐一标注</figcaption>
+        </figure>
         <p class="vnote">这项制度叫骨折联络服务（FLS）：主动找到骨折患者、评估、启动治疗、长期随访。大型队列中，标准化的 FLS 与后续脆性骨折风险降低约 <b>10%–13%</b>、全因死亡率降低约 <b>15%–18%</b> 相关；这是观察性数据，提示关联而非因果。</p>
       </div>
     </details>
@@ -3007,9 +3046,8 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
         var xc = geo[i] != null ? geo[i] : 0;
         var t = (xc - viewCenter) / half;
         if (t > 1.35) t = 1.35; if (t < -1.35) t = -1.35;
-        /* 以第一列位置为“边缘”归一化：中间 0.84、两侧 1.04，视觉差约 24% */
-        var ac = Math.min(1, Math.abs(t) / 0.62);
-        var ky = 0.84 + 0.20 * ac * ac;
+        var ac = Math.min(1, Math.abs(t));
+        var ky = 0.90 + 0.13 * ac * ac;      // 上下高度：中间 0.90，两侧 1.03（相差 1.14 倍）
         var kx = 0.99 + 0.025 * ac;
         var ry = -t * 8;
         // 弧形：上下两行随位置上下偏移，行距保持不变
