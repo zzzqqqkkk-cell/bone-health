@@ -1240,6 +1240,15 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
   border-radius:2px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .25s ease}
 .sitehdr nav a.cur{color:#EAF1F6}
 .sitehdr nav a.cur::after{transform:scaleX(1)}
+
+@media (max-width:430px){
+  .sitehdr{padding:0 10px;gap:6px}
+  .sitehdr .lg b{font-size:13px}
+  .sitehdr .lg small{font-size:8.5px;letter-spacing:.02em}
+  .sitehdr nav a{font-size:11px;padding:5px 5px}
+  .sitehdr nav a[href="#s1"].on{display:none}
+}
+
 @media (max-width:1023px){
   .sitehdr .lg small{font-size:9px;letter-spacing:.04em}
   .sitehdr .lg b{font-size:14px}
@@ -1324,15 +1333,15 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
 <div id="bar"></div>
 <nav id="jump" aria-label="快速跳转"></nav>
 <header class="sitehdr">
-  <a class="lg" href="index.html"><i></i><span><b>医心护骨</b><small>骨松全链条科普</small></span></a>
+  <a class="lg" href="#s1"><i></i><span><b>医心护骨</b><small>骨松全链条科普</small></span></a>
   <nav id="sitenav">
-    <a href="index.html" data-from="1" data-to="1">首页</a>
-    <a href="ch1.html" data-from="2" data-to="4">疾病</a>
-    <a href="ch2.html" data-from="5" data-to="7">预防</a>
-    <a href="ch3.html" data-from="8" data-to="9">事件</a>
-    <a href="ch4.html" data-from="10" data-to="12">结局</a>
-    <a href="ch5.html" data-from="13" data-to="16">长期</a>
-    <a href="full.html" class="on" data-from="0" data-to="0">全篇</a>
+    <a href="#s2"  data-from="2"  data-to="4">疾病</a>
+    <a href="#s3p" data-from="5"  data-to="7">预防</a>
+    <a href="#sTx" data-from="8"  data-to="8">治疗</a>
+    <a href="#sCase" data-from="9" data-to="12">事件</a>
+    <a href="#s7"  data-from="13" data-to="16">长期</a>
+    <a href="#s13" data-from="17" data-to="17">附录</a>
+    <a href="#s1" class="on" data-from="0" data-to="0">全篇</a>
   </nav>
 </header>
 <aside class="toc" id="toc" aria-label="目录"><div class="thd">目录 · 17 屏</div></aside>
@@ -1358,7 +1367,7 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
 </section>
 <section id="s2">
   <div class="rv">
-    <div class="tag"><span>02 / 17</span><i>病</i></div>
+    <div class="tag"><span>02 / 17</span><i>疾病</i></div>
     
     <h2>老龄化社会里，<br>它被叫作<em>“隐形杀手”</em></h2>
     <p class="lead">骨质疏松早期几乎没有症状。等疼了、矮了、摔了，往往已经发生了骨折。它不是一个罕见并发症，而是一个正在加速的公共卫生负担。</p>
@@ -1399,7 +1408,7 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
     </section>
 <section id="sSlow">
   <div class="rv">
-    <div class="tag"><span>03 / 17</span><i>病</i></div>
+    <div class="tag"><span>03 / 17</span><i>疾病</i></div>
     
     <h2>它为什么是<em>慢病</em></h2>
     <p class="lead">骨质疏松的“慢”，不是“慢慢会好”，而是“一直在”。它有三个特征，决定了不能按“一次骨折”来处理。</p>
@@ -1425,7 +1434,7 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
     </section>
 <section id="s3a">
   <div class="rv">
-    <div class="tag"><span>04 / 17</span><i>病</i></div>
+    <div class="tag"><span>04 / 17</span><i>疾病</i></div>
     
     <h2>骨头是怎么<em>变脆</em>的</h2>
     <p class="lead">骨质疏松不是“骨头变软”，是骨头<b>变空</b>——承重的“钢筋网”一根根断掉，断了就补不回来。</p>
@@ -1459,7 +1468,7 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
     </section>
 <section id="s3p">
   <div class="rv">
-    <div class="tag"><span>05 / 17</span><i>防</i></div>
+    <div class="tag"><span>05 / 17</span><i>预防</i></div>
     
     <h2>还没骨折，<br>现在能<em>做什么</em></h2>
     <p class="lead">一级预防的目标只有一个：把第一次骨折往后推，最好推到最后都没发生。下面三件事，性价比最高。</p>
@@ -1488,7 +1497,7 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
     </section>
 <section id="s3b">
   <div class="rv">
-    <div class="tag"><span>06 / 17</span><i>防</i></div>
+    <div class="tag"><span>06 / 17</span><i>预防</i></div>
     
     <h2>一次跌倒，<br>塌的可能<em>不只是一块骨头</em></h2>
     <p class="lead">脆性骨折有三个高发部位，后果完全不同——而最隐蔽的那个，恰恰在脊柱。</p>
@@ -1525,7 +1534,7 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
     </section>
 <section id="sQuiz">
   <div class="rv">
-    <div class="tag"><span>07 / 17</span><i>防</i></div>
+    <div class="tag"><span>07 / 17</span><i>预防</i></div>
 <h2>花 1 分钟，<br>算一次<em>骨折风险</em></h2>
 <p class="lead">10 个问题，替家里长辈答或给自己答都可以。答完给一个建议，判定规则见页面底部的折叠块。</p>
 <div class="sexpick" id="sexPick">
@@ -1622,7 +1631,7 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
     </section>
 <section id="sTx">
   <div class="rv">
-    <div class="tag"><span>08 / 17</span><i>治</i></div>
+    <div class="tag"><span>08 / 17</span><i>治疗</i></div>
 
     <h2>刚骨折，<br>先要做一个<em>选择</em></h2>
     <p class="lead">椎体压缩骨折之后，不是“躺着等它长好”一条路。分岔点看三件事：<b>疼到什么程度、椎体塌了多少、还在继续塌吗</b>。</p>
@@ -1774,7 +1783,7 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
     </section>
 <section id="s4">
   <div class="rv">
-    <div class="tag"><span>10 / 17</span><i>不愈合</i></div>
+    <div class="tag"><span>10 / 17</span><i>事件</i></div>
     
     <h2>这条缝，<br>为什么<em>长不好</em></h2>
     <p class="lead">不愈合不是“运气差”。是血供、力学稳定性、全身骨质量三个层面，同时出了问题。</p>
@@ -1810,7 +1819,7 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
     </section>
 <section id="s5">
   <div class="rv">
-    <div class="tag"><span>11 / 17</span><i>不愈合</i></div>
+    <div class="tag"><span>11 / 17</span><i>事件</i></div>
     <h2>影像上那处亮影，<br>只是<em>一个线索</em></h2>
     <p class="lead">如果你或家人正属于那 10–13%，接下来医生会看的，就是这样的片子。X 线上，它有时表现为一条透亮带——即椎体内裂隙征（IVC）；在 MRI 上，则是含液与水肿的高信号。<strong>不管哪种片子，指向的是同一件事：那里没长好。</strong></p>
 
@@ -1893,7 +1902,7 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
     </section>
 <section id="s6">
   <div class="rv">
-    <div class="tag"><span>12 / 17</span><i>不愈合</i></div>
+    <div class="tag"><span>12 / 17</span><i>事件</i></div>
 
     <h2>确诊不愈合，<br>不等于<em>必须开刀</em></h2>
     <p class="lead">治疗仍是那三条路——但换到不愈合身上，<strong>每一条的门槛都变了</strong>。判断依据是骨折稳不稳、裂隙在哪、后凸有没有进展。</p>
@@ -3730,7 +3739,37 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
   sync();
 })();
 </script>
-</body>
+
+<script>
+/* 顶部导航：点击后精确滚到目标屏（留出吸顶栏高度） */
+(function(){
+  var nav = document.getElementById('sitenav');
+  if (!nav) return;
+  nav.addEventListener('click', function(e){
+    var a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
+    if (!a) return;
+    var id = a.getAttribute('href').slice(1);
+    var el = document.getElementById(id);
+    if (!el) return;
+    e.preventDefault();
+    var header = document.querySelector('.sitehdr');
+    var off = (header ? header.getBoundingClientRect().height : 60) + 8;
+    var top = el.getBoundingClientRect().top + window.pageYOffset - off;
+    var before = window.pageYOffset;
+    window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+    setTimeout(function(){
+      if (Math.abs(window.pageYOffset - before) < 4){
+        var doc = document.documentElement;
+        var prevBeh = doc.style.scrollBehavior;
+        doc.style.scrollBehavior = 'auto';
+        window.scrollTo(0, Math.max(0, top));
+        doc.style.scrollBehavior = prevBeh;
+      }
+    }, 420);
+    if (history.replaceState) history.replaceState(null, '', '#' + id);
+  });
+})();
+</script>
 
 <script>
 /* ===== 桌面目录：滚动高亮 ===== */
