@@ -1113,6 +1113,19 @@ details.flow .vnote{margin:12px 0 0}
 .gallery-track.dragging .shot{box-shadow:none!important;will-change:auto!important}
 </style>
 <style>
+/* ===== 朗读本屏 ===== */
+#ttsBtn{position:fixed;left:14px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:97;
+  display:flex;align-items:center;gap:6px;padding:9px 13px;border-radius:999px;
+  border:1px solid rgba(0,229,192,.34);background:rgba(8,12,17,.86);color:var(--accent);
+  font-size:12.5px;font-weight:700;letter-spacing:.02em;cursor:pointer;
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:background .2s,color .2s}
+#ttsBtn i{font-style:normal;font-size:13px;line-height:1}
+#ttsBtn.on{background:rgba(0,229,192,.18);color:#BFF9EC}
+#ttsBtn:active{transform:scale(.97)}
+@media (min-width:1024px){#ttsBtn{left:auto;right:16px;bottom:76px;border-radius:999px;width:auto;height:auto;padding:9px 13px}#ttsBtn b{display:inline}}
+@media (max-width:1023px){#ttsBtn{width:40px;height:40px;padding:0;border-radius:50%;justify-content:center;gap:0}#ttsBtn b{display:none}#ttsBtn i{font-size:15px}}
+</style>
+<style>
 .ov-role,.ov-stage{margin:26px 0 22px}
 .ov-hd{font-size:17px;font-weight:700;color:#EAF0F5;margin:0 0 8px}
 .ov-sub{font-size:13.5px;line-height:1.78;color:#9FB0BF;margin:0 0 14px}
@@ -3379,6 +3392,133 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
     window.__forceT = 1;
     requestAnimationFrame(function(){ window.__forceT = 0; force(); });
   }, { passive: true });
+})();
+</script>
+<script>
+/* ---------- 朗读本屏：系统语音（Web Speech API），无音频素材 ---------- */
+(function(){
+  if (!('speechSynthesis' in window) || !window.SpeechSynthesisUtterance) return;
+
+  var btn = document.createElement('button');
+  btn.id = 'ttsBtn';
+  btn.type = 'button';
+  btn.setAttribute('aria-pressed', 'false');
+  btn.setAttribute('aria-label', '朗读本屏（使用系统语音）');
+  btn.innerHTML = '<i aria-hidden="true">🔊</i><b>朗读本屏</b>';
+  document.body.appendChild(btn);
+
+  var syn = window.speechSynthesis;
+  var speaking = false, curSec = null, zhVoice = null;
+
+  function pickVoice(){
+    var vs = syn.getVoices() || [];
+    for (var i = 0; i < vs.length; i++){
+      if (/^zh(-|_)?(CN|Hans)?/i.test(vs[i].lang)) { zhVoice = vs[i]; return; }
+    }
+    for (var j = 0; j < vs.length; j++){
+      if (/zh/i.test(vs[j].lang)) { zhVoice = vs[j]; return; }
+    }
+  }
+  pickVoice();
+  if (syn.onvoiceschanged !== undefined) syn.onvoiceschanged = pickVoice;
+
+  function currentSection(){
+    var secs = document.querySelectorAll('section');
+    var mid = window.innerHeight * 0.45, best = secs[0];
+    for (var i = 0; i < secs.length; i++){
+      if (secs[i].getBoundingClientRect().top - mid <= 0) best = secs[i];
+    }
+    return best;
+  }
+
+  /* 去掉不适合朗读的块（链接列表、脚注、扩展阅读等） */
+  function plainText(sec){
+    var clone = sec.cloneNode(true);
+    ['.tag', '.extread', '.vnote', '.fnote', '.qrcap', '.follow', '.tiernote',
+     '.herotip', '.hint', '.hero-note', 'button', 'nav', 'svg', 'script', 'style'
+    ].forEach(function(sel){
+      Array.prototype.forEach.call(clone.querySelectorAll(sel), function(el){ el.remove(); });
+    });
+    var txt = (clone.textContent || '').replace(/\s+/g, ' ').trim();
+    return txt;
+  }
+
+  /* 术语与单位的口语化，避免系统念错 */
+  var FIX = [
+    [/OVCF/g, '骨质疏松性椎体压缩骨折'],
+    [/PVP/g, 'P V P'],
+    [/PKP/g, 'P K P'],
+    [/DXA/g, 'D X A'],
+    [/Kümmell/gi, '库梅尔'],
+    [/FRAX/g, '弗拉克斯'],
+    [/μg/g, '微克'],
+    [/mmol\/L/g, '毫摩尔每升'],
+    [/mg\/dL/g, '毫克每分升'],
+    [/mg/g, '毫克'],
+    [/(\d)\s*%/g, '$1%'],
+    [/\+\+/g, ''],
+    [/[·•]/g, '，']
+  ];
+
+  function prepare(txt){
+    FIX.forEach(function(p){ txt = txt.replace(p[0], p[1]); });
+    return txt.replace(/[ \t]+/g, ' ').slice(0, 1600);
+  }
+
+  function setState(on){
+    speaking = on;
+    btn.classList.toggle('on', on);
+    btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    btn.querySelector('b').textContent = on ? '停止朗读' : '朗读本屏';
+  }
+
+  function stop(){
+    try { syn.cancel(); } catch (e) {}
+    setState(false);
+  }
+
+  function speak(sec){
+    var text = prepare(plainText(sec));
+    if (!text) return;
+    try { syn.cancel(); } catch (e) {}
+    var parts = text.match(/[^。！？；!?;]+[。！？；!?;]?/g) || [text];
+    setState(true);
+    parts.forEach(function(p, idx){
+      var s = p.trim();
+      if (!s) return;
+      var u = new SpeechSynthesisUtterance(s);
+      u.lang = 'zh-CN';
+      u.rate = 0.95;
+      u.pitch = 1;
+      if (zhVoice) u.voice = zhVoice;
+      if (idx === parts.length - 1) u.onend = function(){ setState(false); };
+      syn.speak(u);
+    });
+    curSec = sec;
+  }
+
+  btn.addEventListener('click', function(){
+    if (speaking) { stop(); return; }
+    speak(currentSection());
+  });
+
+  /* 换屏就停，避免继续念上一屏 */
+  var lastSec = currentSection(), scrollTimer = 0;
+  window.addEventListener('scroll', function(){
+    if (!speaking) { lastSec = currentSection(); return; }
+    clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(function(){
+      var now = currentSection();
+      if (now !== curSec) stop();
+    }, 320);
+  }, { passive: true });
+
+  /* 视频播放时让路 */
+  Array.prototype.forEach.call(document.querySelectorAll('video'), function(v){
+    v.addEventListener('play', function(){ if (speaking) stop(); });
+  });
+
+  window.addEventListener('pagehide', function(){ try { syn.cancel(); } catch (e) {} });
 })();
 </script>
 
