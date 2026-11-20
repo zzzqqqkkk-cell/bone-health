@@ -2479,7 +2479,6 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
     <b>网址</b>　<a href="https://zzzqqqkkk-cell.github.io/bone-health/" target="_blank" rel="noopener" style="color:#00E5C0;text-decoration:none">zzzqqqkkk-cell.github.io/bone-health</a>
   </p>
 </footer>
-<script>window.__galleryAuto=false;</script>
 <script>
 (function(){
   "use strict";
@@ -3070,8 +3069,6 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
   var figs = document.querySelectorAll('.gallery');
   if (!figs.length) return;
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var isTouch = window.matchMedia('(pointer: coarse)').matches ||
-                ('ontouchstart' in window) || (navigator.maxTouchPoints || 0) > 0;
   var SPEED = reduce ? 10 : 24; // 像素/秒
 
   Array.prototype.forEach.call(figs, function (fig) {
@@ -3089,26 +3086,19 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
     }
 
     /* ---- 立体：越靠边，上下越高、外侧微收 ---- */
-    var shots = [].slice.call(track.querySelectorAll('.shot'));
-    var geo = [], geoHalf = 1;
-
-    /* 只量一次布局，拖动时不再读取 offsetLeft（否则每帧强制重排导致掉帧） */
-    function measure() {
-      geoHalf = Math.max(1, track.clientWidth / 2);
-      geo = shots.map(function (el) { return el.offsetLeft + el.offsetWidth / 2; });
-    }
-
     function shape() {
-      var viewCenter = track.scrollLeft + geoHalf;
-      var half = geoHalf;
+      var shots = track.querySelectorAll('.shot');
+      var viewCenter = track.scrollLeft + track.clientWidth / 2;
+      var half = track.clientWidth / 2;
       for (var i = 0; i < shots.length; i++) {
         var el = shots[i];
-        var xc = geo[i] != null ? geo[i] : 0;
+        // 用布局坐标计算，避免读取被 transform 影响后的位置
+        var xc = el.offsetLeft + el.offsetWidth / 2 + (el.offsetParent === track ? 0 : 0);
         var t = (xc - viewCenter) / half;
         if (t > 1.35) t = 1.35; if (t < -1.35) t = -1.35;
-        var ac = Math.min(1, Math.abs(t) / 0.62);   // 以可见第一列为“边缘”
-        var sc = 0.82 + 0.22 * ac * ac;             // 等比缩放：中间 0.82、两侧 1.04
-        var ky = sc, kx = sc;
+        var ac = Math.min(1, Math.abs(t));
+        var ky = 0.90 + 0.13 * ac * ac;      // 上下高度：中间 0.90，两侧 1.03（相差 1.14 倍）
+        var kx = 0.99 + 0.025 * ac;
         var ry = -t * 8;
         // 弧形：上下两行随位置上下偏移，行距保持不变
         var h = el.offsetHeight || 0;
@@ -3145,71 +3135,38 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
       else if (next <= 0) { next = 0; dir = 1; }
       track.scrollLeft = next;
     }
-    /* 只在可见时自动巡游；去掉与 rAF 重复的 setInterval 驱动 */
-    var inView = true;
-    if ('IntersectionObserver' in window) {
-      new IntersectionObserver(function (en) {
-        inView = en[0].isIntersecting;
-        if (!inView) last = 0;
-      }, { rootMargin: '160px' }).observe(fig);
-    }
-    /* 依需求：不再自动巡游，改为手动拖动 / 底部滑块 / 左右按钮 */
-    if (window.__galleryAuto !== false) {
-      (function loop() {
-        if (inView) step();
-        requestAnimationFrame(loop);
-      })();
-    }
+    (function loop() { step(); requestAnimationFrame(loop); })();
+    setInterval(step, 120);
 
-    var shapeQueued = false, touchTimer = 0;
+    var shapeQueued = false;
     function onScroll() {
-      sync();
-      if (drag || thumbDrag) return;          /* 拖动中不做 3D 计算，避免掉帧 */
       if (shapeQueued) return;
       shapeQueued = true;
-      requestAnimationFrame(function () { shapeQueued = false; shape(); });
+      requestAnimationFrame(function () { shapeQueued = false; shape(); sync(); });
+      sync();
     }
-    function settleShape(){ setTimeout(function(){ shape(); sync(); }, 90); }
     track.addEventListener('scroll', onScroll, { passive: true });
-    measure();
-    window.addEventListener('resize', function () { measure(); shape(); sync(); });
-    window.addEventListener('load', function () { measure(); shape(); sync(); });
-    /* 图片解码完成或容器尺寸变化后补测一次，避免 geo 过期导致“变形失效” */
-    setTimeout(function(){ measure(); shape(); sync(); }, 600);
-    if ('ResizeObserver' in window){
-      new ResizeObserver(function(){ measure(); shape(); sync(); }).observe(track);
-    }
-    Array.prototype.forEach.call(shots, function(el){
-      var im = el.querySelector('img');
-      if (im && !im.complete) im.addEventListener('load', function(){ measure(); shape(); }, { once: true });
-    });
+    window.addEventListener('resize', function () { shape(); sync(); });
 
-    /* ---- 鼠标拖动（触屏交给原生滚动，否则会被 pointercapture 吃掉手势） ---- */
-    if (!isTouch) track.addEventListener('pointerdown', function (e) {
+    /* ---- 鼠标 / 手指拖动 ---- */
+    track.addEventListener('pointerdown', function (e) {
       if (e.pointerType === 'mouse' && e.button !== 0) return;
       drag = { x: e.clientX, left: track.scrollLeft };
       track.classList.add('dragging');
       try { track.setPointerCapture(e.pointerId); } catch (err) {}
       last = 0;
     });
-    var dragRaf = 0;
     track.addEventListener('pointermove', function (e) {
       if (!drag) return;
       var dx = e.clientX - drag.x;
       if (Math.abs(dx) > 2) e.preventDefault();
-      drag.dx = dx;
-      if (dragRaf) return;
-      dragRaf = requestAnimationFrame(function () {
-        dragRaf = 0;
-        if (drag) track.scrollLeft = drag.left - drag.dx;
-      });
-    }, { passive: false });
+      track.scrollLeft = drag.left - dx;
+    });
     function endDrag() {
       if (!drag) return;
       drag = null;
       track.classList.remove('dragging');
       pause(1800);
-      settleShape();
     }
     track.addEventListener('pointerup', endDrag);
     track.addEventListener('pointercancel', endDrag);
