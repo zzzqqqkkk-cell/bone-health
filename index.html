@@ -1,105 +1,4044 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>从骨量流失到不再骨折 · 骨质疏松全链条科普</title>
-<meta name="description" content="从骨质疏松、脆性骨折，到不愈合与长期管理：一部面向基层与家庭的骨松全链条科普。">
-<meta property="og:title" content="从骨量流失到不再骨折 · 骨质疏松全链条科普">
-<meta property="og:description" content="从骨质疏松、脆性骨折，到不愈合与长期管理：一部面向基层与家庭的骨松全链条科普。">
-<meta property="og:image" content="assets/hero_poster.jpg">
-<link rel="stylesheet" href="assets/css/site.css">
+<meta name="theme-color" content="#05070A">
+<meta name="description" content="骨质疏松性椎体压缩骨折（OVCF）全链条科普：从骨量流失、脆性骨折、不愈合到长期管理，17 屏完整版。">
+<title>从骨量流失到不再骨折 · 骨质疏松椎体压缩性骨折全链条科普</title>
 <style>
-/* OVCF 聚焦 */
-.hero-focus{margin:14px 0 0;font-size:12.5px;line-height:1.75;color:var(--mute,#8A99A8)}
-.hero-focus b{color:var(--accent,#00E5C0);font-weight:600}
-.ovcf{margin:16px 0 6px;padding:14px 16px;border-left:3px solid var(--accent,#00E5C0);
-  border-radius:0 10px 10px 0;background:rgba(0,229,192,.05);
-  font-size:13.5px;line-height:1.85;color:#C7D5E1}
+:root{
+  --bg:#05070A; --panel:#0C1116; --line:#1B2530;
+  --accent:#00E5C0; --accent-dim:rgba(0,229,192,.14);
+  --text:#E9EFF4; --mute:#BCC9D5; --warn:#FF6B57;
+  --max:520px;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{background:var(--bg);color:var(--text)}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  line-height:1.75;overflow-x:hidden;-webkit-font-smoothing:antialiased;
+}
+img,svg,video{display:block;max-width:100%}
+button{font-family:inherit;color:inherit;background:none;border:none;cursor:pointer}
+
+/* ===== 顶部进度 ===== */
+#bar{position:fixed;top:0;left:0;height:2px;width:0;background:var(--accent);z-index:99;box-shadow:0 0 12px var(--accent);transition:width .1s linear}
+
+/* ===== 右侧导航 ===== */
+
+/* ===== 节 ===== */
+section{position:relative;padding:58px 22px 66px;max-width:var(--max);margin:0 auto}
+.tag{font-size:11px;letter-spacing:.22em;color:var(--accent);text-transform:uppercase;font-weight:600;margin-bottom:14px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.tag::before{content:"";width:16px;height:1px;background:var(--accent);display:block;flex:none}
+h2{font-size:clamp(21px,6vw,26px);font-weight:800;line-height:1.36;letter-spacing:-.01em}
+h2 em{font-style:normal;color:var(--accent)}
+p.lead{color:var(--mute);font-size:15px;margin-top:14px}
+p.lead strong{color:var(--text);font-weight:600}
+
+/* ===== 01 封面 ===== */
+#s1{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding-top:36px;padding-bottom:36px;max-width:none}
+#s1 .inner{max-width:var(--max);margin:0 auto;width:100%;padding:0 22px}
+.hero3d{width:min(88vw,360px);margin:0 auto 2px;position:relative;touch-action:none}
+.hero3d video{width:100%;height:auto;display:block;user-select:none;-webkit-user-drag:none;cursor:grab;background:transparent}
+.hero3d.dragging video{cursor:grabbing}
+.hero-note{margin-top:10px;font-size:10.5px;line-height:1.6;letter-spacing:.04em;color:#5A6874}
+.hero-note b{color:#7C8B98;font-weight:600}
+.herotip{position:absolute;left:0;right:0;bottom:6px;text-align:center;font-size:10.5px;letter-spacing:.16em;color:#4E6470;pointer-events:none;transition:opacity .5s}
+.hero3d.touched .hero-note{margin-top:10px;font-size:10.5px;line-height:1.6;letter-spacing:.04em;color:#5A6874}
+.hero-note b{color:#7C8B98;font-weight:600}
+.herotip{position:static;display:block;margin:9px 0 0;text-align:center;font-size:11px;letter-spacing:.14em;color:#5F7180;pointer-events:none}
+.title{font-size:clamp(33px,10vw,45px);font-weight:900;line-height:1.16;letter-spacing:-.02em}
+.title .cut{color:var(--accent);text-shadow:0 0 28px rgba(0,229,192,.45)}
+.hero-sub{margin-top:16px;color:var(--mute);font-size:14px}
+.hero-sub b{color:var(--text);font-weight:600}
+.hint{margin-top:32px;display:flex;align-items:center;gap:9px;color:var(--accent);font-size:12px;letter-spacing:.16em}
+.hint i{width:1px;height:26px;background:linear-gradient(var(--accent),transparent);display:block;animation:drop 1.8s ease-in-out infinite}
+@keyframes drop{0%,100%{opacity:.25;transform:scaleY(.6)}50%{opacity:1;transform:scaleY(1)}}
+
+/* ===== 02 时间轴 ===== */
+.tl{margin-top:26px;position:relative;padding-left:24px}
+.tl::before{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:1px;background:var(--line)}
+.tl .node{position:relative;padding-bottom:22px}
+.tl .node:last-child{padding-bottom:0}
+.tl .node::before{content:"";position:absolute;left:-25px;top:8px;width:11px;height:11px;border-radius:50%;background:#0B1116;border:1px solid #36485A}
+.tl .node.hot::before{background:var(--accent);border-color:var(--accent);box-shadow:0 0 10px rgba(0,229,192,.6)}
+.tl .when{font-size:11px;letter-spacing:.1em;color:var(--accent);font-weight:700}
+.tl .what{font-size:14px;font-weight:700;margin-top:2px}
+.tl .note{font-size:12.5px;color:var(--mute);margin-top:2px;line-height:1.6}
+.quote{margin-top:24px;border-left:2px solid var(--accent);padding:4px 0 4px 14px;font-size:15px;font-weight:600;line-height:1.7}
+.quote span{color:var(--mute);font-weight:400;font-size:12.5px;display:block;margin-top:8px}
+.pivot{margin-top:24px;font-size:15px;font-weight:700;line-height:1.75;color:var(--text);letter-spacing:.01em}
+.pivot b,.pivot strong{color:var(--accent)}
+
+/* ===== 04 真实影像读片 ===== */
+.film{position:relative;margin-top:24px;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#000}
+.film img{width:100%;display:block;filter:contrast(1.06) saturate(.92) brightness(.98)}
+.figrow{display:flex;gap:14px;margin-top:18px;align-items:stretch}
+.figrow .film{flex:none;width:42%;margin-top:0}
+.figrow.stacked{flex-direction:column}
+.figrow.stacked .film{width:100%}
+.figrow.stacked .film img{border-radius:14px}
+.figrow.stacked .resultpanel{margin-top:14px}
+.figrow.stacked .filmcap{position:static;background:none;padding:8px 2px 2px;font-size:10.5px;color:var(--mute)}
+.figrow.stacked .film{margin-bottom:0}
+.figrow .filmcap{font-size:9px;padding:16px 7px 6px;line-height:1.35;letter-spacing:.04em}
+.resultpanel{flex:1;min-width:0;border:1px solid var(--line);border-radius:13px;background:var(--panel);
+  padding:14px 14px;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
+.rp-hint{font-size:10.5px;color:#8F9EAC;letter-spacing:.1em;margin-bottom:12px;display:flex;align-items:center;gap:7px;transition:.35s}
+.rp-hint::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent);flex:none;animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:.35}50%{opacity:1}}
+.film.done ~ .resultpanel .rp-hint{opacity:0;margin-bottom:0;height:0;overflow:hidden}
+.figrow .result{flex:1;min-width:0;margin-top:0;gap:10px}
+.figrow .rline{font-size:12px;line-height:1.55;align-items:flex-start;opacity:1;border-left-color:transparent}
+.figrow .rline b{color:#8F9EAC;transition:color .4s}
+.figrow .rline span{opacity:0;transition:opacity .45s}
+.figrow .rline .dot{opacity:.25;transition:opacity .4s}
+.figrow .rline .dot{margin-top:5px}
+.figrow .rline b{display:block;margin-bottom:2px}
+section.compact{padding-top:46px;padding-bottom:52px}
+.filmScan{
+  position:absolute;left:0;right:0;height:2px;top:0;opacity:0;pointer-events:none;
+  background:linear-gradient(90deg,transparent,var(--accent),transparent);
+  box-shadow:0 0 16px var(--accent);z-index:2;
+}
+.film.scanning .filmScan{opacity:1;animation:scan 1.5s cubic-bezier(.4,0,.6,1) forwards}
+.filmcap{
+  position:absolute;left:0;right:0;bottom:0;padding:24px 14px 9px;
+  font-size:10.5px;letter-spacing:.08em;color:#9FB0BD;
+  background:linear-gradient(transparent,rgba(5,7,10,.94));
+}
+.film.done ~ .resultpanel .rline{opacity:1;transform:none;border-left-color:var(--line)}
+.film.done ~ .resultpanel .rline b{color:var(--text)}
+.film.done ~ .resultpanel .rline span{opacity:1}
+.film.done ~ .resultpanel .rline .dot{opacity:1}
+@keyframes scan{from{top:6%}to{top:94%}}
+.result{margin-top:14px;display:flex;flex-direction:column;gap:8px}
+.rline{display:flex;align-items:center;gap:10px;font-size:13px;opacity:0;transform:translateY(6px);transition:.45s;border-left:2px solid var(--line);padding-left:12px}
+.rline b{color:var(--text);font-weight:600}
+.rline span{color:var(--mute)}
+.rline .dot{width:5px;height:5px;border-radius:50%;background:var(--accent);flex:none;box-shadow:0 0 8px var(--accent)}
+.result .rline:nth-child(1){transition-delay:.05s}
+.result .rline:nth-child(2){transition-delay:.18s}
+.result .rline:nth-child(3){transition-delay:.31s}
+
+.btn{margin-top:20px;width:100%;padding:15px;border-radius:12px;background:var(--accent);color:#04110E;font-weight:800;font-size:15px;letter-spacing:.06em;transition:.25s;box-shadow:0 8px 28px rgba(0,229,192,.22)}
+.btn:active{transform:scale(.985)}
+.btn[disabled]{background:#16211C;color:#4E5F58;box-shadow:none}
+
+/* ===== 折叠 ===== */
+details{margin-top:20px;border:1px solid var(--line);border-radius:12px;background:var(--panel);overflow:hidden}
+summary{padding:14px 16px;font-size:13.5px;font-weight:600;cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:10px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--accent);font-size:17px;font-weight:400;line-height:1}
+details[open] summary::after{content:"–"}
+details[open] summary{border-bottom:1px solid var(--line)}
+.dbody{padding:16px}
+
+/* ===== 卡片通用 ===== */
+.cards{margin-top:24px;display:flex;flex-direction:column;gap:10px}
+.card{border:1px solid var(--line);background:var(--panel);border-radius:14px;padding:16px 18px;position:relative;overflow:hidden}
+.card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--accent);opacity:.65}
+.card h3{font-size:15px;font-weight:700;margin-bottom:5px}
+/* 06 治疗分岔：三路径横向并列 + 大括号收口 + 药物治疗底座 */
+.branches{margin-top:24px}
+.brs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.br{border:1px solid var(--line);background:var(--panel);border-radius:13px;padding:13px 11px;display:flex;flex-direction:column;gap:7px}
+.bn{font-size:10px;font-weight:800;letter-spacing:.1em;color:#2E3A47}
+.br h3{font-size:12.5px;font-weight:700;line-height:1.4;letter-spacing:.01em}
+.br p{font-size:11.5px;color:var(--mute);line-height:1.62}
+.br p b{color:var(--accent);font-weight:600}
+.brace{height:16px;margin-top:10px;border-left:1px solid rgba(0,229,192,.55);border-right:1px solid rgba(0,229,192,.55);border-bottom:1px solid rgba(0,229,192,.55);border-radius:0 0 12px 12px}
+.basebar{margin-top:-1px;border:1px solid rgba(0,229,192,.45);background:var(--accent-dim);border-radius:14px;padding:16px 18px}
+.basebar .bt{font-size:10.5px;font-weight:800;letter-spacing:.14em;color:var(--accent);margin-bottom:8px}
+.basebar h3{font-size:15.5px;font-weight:800;margin-bottom:6px;color:var(--text)}
+.basebar p{font-size:13px;color:#B9C6D2;line-height:1.65}
+.basebar p b{color:var(--accent)}
+/* 10 屏：序贯动画 */
+.seqblock{margin-top:30px;border-top:1px solid var(--line);padding-top:22px}
+.seqhd{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:4px}
+.seqtt{font-size:14px;font-weight:800;letter-spacing:.02em;color:var(--text)}
+.seqmeta{font-size:10.5px;color:#93A1AE;letter-spacing:.1em}
+.seqfilm{position:relative;border:1px solid var(--line);border-radius:13px;background:linear-gradient(180deg,#0A141C,#04070A);padding:12px 10px 8px;will-change:transform;transform-origin:50% 50%}
+.seqfilm.zap{animation:seqZap .42s cubic-bezier(.2,.9,.3,1.4)}
+@keyframes seqZap{0%{transform:scale(1)}32%{transform:scale(1.055)}100%{transform:scale(1)}}
+.seqfilm svg{width:100%;height:auto;display:block;overflow:visible}
+.seqfilm .grid line{stroke:#1B2530;stroke-width:1}
+.seqfilm .grid .gline{stroke:#141D26;stroke-dasharray:3 5}
+.seqfilm .ax{fill:#C6D4E0;font-size:13px;letter-spacing:.03em}
+.seqfilm .ax.start{fill:#AFC8D8;font-size:12px}
+.seqfilm .curve{fill:none;stroke-width:2.8;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1}
+.seqfilm .rise{stroke:#4E7A8A}
+.seqfilm .green{stroke:#00E5C0;filter:drop-shadow(0 0 4px rgba(0,229,192,.55))}
+.seqfilm .red{stroke:#FF6B57;filter:drop-shadow(0 0 4px rgba(255,107,87,.55))}
+.seqfilm .area{opacity:0;transition:opacity .8s}
+.seqfilm .area.on{opacity:1}
+.seqfilm .handoff{opacity:0;transition:opacity .5s}
+.seqfilm .handoff.on{opacity:1}
+.seqfilm .handoff line{stroke:#00E5C0;stroke-width:1;stroke-dasharray:4 4;opacity:.45}
+.seqfilm .handoff text{fill:#37F2D2;font-size:12.5px;font-weight:600;letter-spacing:.05em}
+.seqfilm .handoff circle{fill:#05080B;stroke:#00E5C0;stroke-width:2.2}
+.seqfilm .gap{opacity:0;transition:opacity .5s}
+.seqfilm .gap.on{opacity:1}
+.seqfilm .gap line{stroke:#FF6B57;stroke-width:1.2;stroke-dasharray:3 3;opacity:.6}
+.seqfilm .gap path{fill:#FF6B57;opacity:.85}
+.seqfilm .lab{opacity:0;transform:translateY(5px);transition:opacity .45s,transform .45s cubic-bezier(.2,.9,.3,1.2)}
+.seqfilm .lab.on{opacity:1;transform:translateY(0)}
+.seqfilm .lab text{font-size:17px;font-weight:600;letter-spacing:.03em}
+.seqfilm .lab .sub{font-size:13px;font-weight:400;opacity:1;letter-spacing:.06em}
+.seqfilm .lab .bg{fill:#05080B;opacity:.9}
+.seqfilm .lab.green text{fill:#00E5C0}
+.seqfilm .lab.red text{fill:#FF6B57}
+.seqfilm .crashring{transition:none}
+.seqfilm.crash{animation:seqShake .55s ease-in-out}
+@keyframes seqShake{0%,100%{transform:translate(0,0)}12%{transform:translate(-5px,2px)}26%{transform:translate(5px,-2px)}42%{transform:translate(-3.5px,1px)}60%{transform:translate(3px,-1px)}78%{transform:translate(-1.5px,0)}}
+.seqcap{margin-top:16px;font-size:16.5px;font-weight:800;line-height:1.6;color:#A6B4C1;transition:color .5s,transform .5s}
+.seqcap.on{color:var(--text);transform:none}
+.seqsub{margin-top:5px;font-size:15px;font-weight:800;color:#A6B4C1;transition:color .5s}
+.seqsub.on{color:var(--accent)}
+.seqbar{margin-top:12px;height:2px;border-radius:2px;background:#131B23;overflow:hidden}
+.seqbar i{display:block;height:100%;width:0;background:var(--accent)}
+.seqfoot{margin-top:11px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.seqbtn{border:1px solid rgba(0,229,192,.5);color:var(--accent);background:rgba(0,229,192,.08);border-radius:999px;padding:7px 15px;font-size:12px;font-weight:700;letter-spacing:.06em}
+.seqbtn:active{transform:scale(.97)}
+.seqnote{font-size:10.5px;color:#8F9EAC;line-height:1.5;flex:1;min-width:150px}
+/* 06 屏：PVP/PKP 透视动画（折叠 + 视频 + 同步字幕） */
+.svcblock{margin-top:30px}
+.svcblock > summary{font-size:13.5px;line-height:1.6;letter-spacing:.02em;color:#9FB0BD;
+  padding:14px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);cursor:pointer}
+.svcblock[open] > summary{border-bottom:none;color:var(--text)}
+.svchd{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin:16px 0 10px}
+.svceyebrow{font-family:"Songti SC","Source Han Serif SC","SimSun",serif;
+  font-size:11.5px;letter-spacing:.30em;color:#7E8C99}
+.svcmeta{font-size:10px;letter-spacing:.16em;color:#4E5A66}
+.svcfilm{position:relative;border:1px solid var(--line);border-radius:10px;background:#05080B;overflow:hidden;line-height:0}
+.svcfilm video{width:100%;height:auto;display:block}
+.svcplay{position:absolute;inset:0;width:100%;height:100%;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:12px;background:rgba(5,8,11,.55);
+  color:var(--accent);font-size:13px;letter-spacing:.18em;border:0;
+  font-family:"Songti SC","SimSun",serif;transition:opacity .35s}
+.svcplay .tri{width:0;height:0;border-left:16px solid var(--accent);
+  border-top:10px solid transparent;border-bottom:10px solid transparent;margin-left:4px}
+.svcplay.hide{opacity:0;pointer-events:none}
+.svccaps{position:relative;height:100px;margin-top:20px}
+.svccap{position:absolute;left:0;right:0;top:0;margin:0;
+  font-family:"Songti SC","Source Han Serif SC","SimSun",serif;
+  font-size:17px;line-height:1.55;letter-spacing:.04em;color:var(--text);
+  max-width:100%;word-break:break-word;overflow-wrap:anywhere;
+  opacity:0;transform:translateY(6px);transition:opacity .5s ease,transform .5s ease}
+.svccap.on{opacity:1;transform:translateY(0)}
+.svccap em{font-style:normal;color:var(--accent)}
+.svcbar{margin-top:6px;height:1px;background:#1B2530;overflow:hidden}
+.svcbar i{display:block;height:100%;width:0;background:var(--accent)}
+.svcfoot{margin-top:14px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.svcbtn{font-family:"Songti SC","SimSun",serif;font-size:11.5px;letter-spacing:.18em;
+  color:var(--accent);background:rgba(0,229,192,.06);border:1px solid rgba(0,229,192,.45);
+  border-radius:999px;padding:6px 15px}
+.svcbtn:active{opacity:.7}
+.svcnote{font-size:10.5px;color:#8F9EAC;letter-spacing:.03em;line-height:1.75;flex:1 1 100%;margin-top:4px}
+@media (max-width:380px){
+  .brs{gap:6px}
+  .br{padding:11px 9px}
+  .br h3{font-size:11.5px}
+  .br p{font-size:10.5px}
+}
+.card p{font-size:13.5px;color:var(--mute);line-height:1.65}
+.card .idx{position:absolute;right:14px;top:12px;font-size:11px;color:#2E3A47;font-weight:800;letter-spacing:.1em}
+.base-tag{display:inline-block;margin-bottom:9px;padding:3px 10px;border-radius:999px;background:var(--accent-dim);border:1px solid rgba(0,229,192,.45);color:var(--accent);font-size:10.5px;font-weight:800;letter-spacing:.14em}
+
+/* ===== 05 误区翻转 ===== */
+.myths{margin-top:24px;display:flex;flex-direction:column;gap:10px}
+.myth{border:1px solid var(--line);border-radius:14px;background:var(--panel);overflow:hidden;transition:border-color .3s}
+.myth.open{border-color:rgba(0,229,192,.45)}
+.myth .q{width:100%;text-align:left;padding:15px 17px;display:flex;gap:11px;align-items:flex-start}
+.myth .q .mk{flex:none;font-size:11px;font-weight:800;color:#7A4B44;background:rgba(255,107,87,.10);border:1px solid rgba(255,107,87,.28);border-radius:5px;padding:1px 6px;margin-top:2px;letter-spacing:.06em}
+.myth .q .txt{font-size:14px;font-weight:600;line-height:1.6}
+.myth .q .chev{flex:none;margin-left:auto;color:var(--accent);font-size:16px;line-height:1.4;transition:.3s}
+.myth.open .q .chev{transform:rotate(45deg)}
+.myth .a{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.myth.open .a{max-height:280px}
+.myth .a .in{padding:0 17px 16px;border-top:1px solid var(--line);margin-top:0}
+.myth .a .in p{font-size:13.2px;color:var(--mute);line-height:1.7;padding-top:12px}
+.myth .a .in b{color:var(--accent);font-weight:600}
+
+/* ===== 06 信号 ===== */
+.sig{margin-top:24px;display:flex;flex-direction:column;gap:12px}
+.sig .item{border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:linear-gradient(160deg,rgba(0,229,192,.06),transparent 70%);position:relative}
+.sig .item .big{font-size:26px;font-weight:900;color:var(--accent);letter-spacing:-.02em;line-height:1.1}
+.sig .item .big small{font-size:13px;margin-left:2px;font-weight:700}
+.sig .item b{display:block;font-size:14px;margin-top:8px;font-weight:700}
+.sig .item span{font-size:12.8px;color:var(--mute);line-height:1.6;display:block;margin-top:2px}
+
+/* ===== 07 自测 ===== */
+.quiz{margin-top:22px;display:flex;flex-direction:column;gap:12px}
+.q{border:1px solid var(--line);border-radius:13px;padding:14px 16px;background:var(--panel);transition:.3s}
+.q.ans{border-color:rgba(0,229,192,.45)}
+.q p{font-size:13.8px;line-height:1.6}
+.q .yn{display:flex;gap:8px;margin-top:11px}
+.q .yn button{flex:1;padding:8px;border-radius:8px;border:1px solid var(--line);font-size:13px;color:var(--mute);transition:.2s}
+.q .yn button.on{border-color:var(--accent);color:var(--accent);background:var(--accent-dim);font-weight:700}
+#res{margin-top:16px;border-radius:14px;padding:20px;display:none;border:1px solid var(--accent);background:linear-gradient(160deg,rgba(0,229,192,.09),transparent 60%)}
+#res.show{display:block;animation:pop .4s ease}
+@keyframes pop{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+#res .lv{font-size:12px;letter-spacing:.16em;color:var(--accent);font-weight:700}
+#res h3{font-size:19px;font-weight:800;margin:7px 0 9px}
+#res p{font-size:13.5px;color:var(--mute);line-height:1.7}
+
+/* ===== 08 行动 ===== */
+.acts{margin-top:26px;display:flex;flex-direction:column;gap:0}
+.act{display:flex;gap:14px;padding:15px 0;border-top:1px solid var(--line)}
+.act .big{font-size:19px;font-weight:900;color:var(--accent);flex:none;width:42px;line-height:1.3}
+.act b{display:block;font-size:14px;margin-bottom:2px}
+.act span{font-size:12.5px;color:var(--mute);line-height:1.6}
+
+/* ===== 09 影像模态 ===== */
+.mods{margin-top:22px;display:flex;flex-direction:column;gap:10px}
+.mod{border:1px solid var(--line);border-radius:13px;padding:15px 17px;background:var(--panel)}
+.mod .hd{display:flex;align-items:center;gap:10px;margin-bottom:7px}
+.mod .hd .k{font-size:12px;font-weight:800;color:#04110E;background:var(--accent);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.mod .hd b{font-size:14px}
+.mod p{font-size:13px;color:var(--mute);line-height:1.65}
+.mod p b{color:var(--text);font-weight:600}
+
+/* ===== 10 数据 ===== */
+.stats{margin-top:26px;border-top:1px solid var(--line);padding-top:20px;display:grid;grid-template-columns:1fr 1fr;gap:18px 12px}
+.stat .n{font-size:clamp(20px,6vw,25px);font-weight:900;color:var(--accent);letter-spacing:-.02em;line-height:1.1}
+.stat .n small{font-size:13px;font-weight:700;margin-left:2px}
+.stat .l{font-size:12px;color:var(--mute);margin-top:4px;line-height:1.45}
+
+.flow{margin-top:22px;display:flex;flex-direction:column;gap:0}
+.step{display:flex;gap:14px;padding:12px 0;position:relative}
+.step:not(:last-child)::after{content:"";position:absolute;left:11px;top:36px;bottom:-2px;width:1px;background:var(--line)}
+.step .num{width:23px;height:23px;border-radius:50%;border:1px solid var(--accent);color:var(--accent);font-size:11px;font-weight:800;flex:none;display:flex;align-items:center;justify-content:center;margin-top:3px;background:#08120F}
+.step .txt b{display:block;font-size:14px;font-weight:700;margin-bottom:2px}
+.step .txt span{font-size:12.5px;color:var(--mute)}
+
+
+/* ===== 现状：落到山东 ===== */
+.local{margin-top:22px;border:1px solid var(--line);border-radius:12px;padding:14px 16px;background:var(--panel)}
+.local .lhd{font-size:10.5px;letter-spacing:.16em;color:var(--accent);font-weight:700;margin-bottom:6px}
+.local .lr{display:flex;align-items:baseline;gap:10px;padding:7px 0;border-top:1px solid rgba(27,37,48,.85)}
+.local .lhd + .lr{border-top:0;padding-top:2px}
+.local .lr b{font-size:18px;font-weight:800;color:var(--accent);letter-spacing:-.01em;flex:none;min-width:68px;line-height:1.2}
+.local .lr span{font-size:12px;color:var(--mute);line-height:1.5}
+.local .llead{font-size:12.5px;color:var(--mute);line-height:1.7;margin-bottom:8px}
+.local .llead b{color:var(--accent);font-weight:600}
+.dbody b{color:var(--text);font-weight:600}
+
+/* ===== 行动路径 ===== */
+.path{margin-top:30px;border-top:1px solid var(--line);padding-top:20px}
+.path-hd{font-size:11px;letter-spacing:.16em;color:var(--accent);font-weight:700;margin-bottom:10px}
+
+/* ===== 杂项 ===== */
+.vnote{font-size:11.5px;color:#808F9D;margin-top:12px;line-height:1.65}
+.video-wrap{margin-top:4px;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#000;position:relative;aspect-ratio:9/16}
+.video-wrap video{width:100%;height:100%;object-fit:cover}
+.vplay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:linear-gradient(180deg,rgba(5,7,10,.35),rgba(5,7,10,.85));color:var(--text);font-size:13px;letter-spacing:.08em;text-align:center;padding:0 20px}
+.vplay .circle{width:54px;height:54px;border-radius:50%;border:1px solid var(--accent);display:flex;align-items:center;justify-content:center;box-shadow:0 0 24px rgba(0,229,192,.28)}
+.vplay .circle::after{content:"";border-left:12px solid var(--accent);border-top:7px solid transparent;border-bottom:7px solid transparent;margin-left:4px}
+.ph{color:#808F9D;font-size:12px;line-height:1.7}
+
+
+footer{max-width:var(--max);margin:0 auto;padding:30px 22px 54px;border-top:1px solid var(--line)}
+footer p{font-size:11px;color:#808F9D;line-height:1.9}
+footer b{color:#6E7C89;font-weight:600}
+
+.rv{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.3,1)}
+.rv.in{opacity:1;transform:none}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .rv{opacity:1;transform:none}
+}
+.qgroup{margin-top:22px;font-size:11px;letter-spacing:.2em;color:var(--accent);font-weight:800}
+.qgroup:first-of-type{margin-top:16px}
+.qprog{margin-top:12px;font-size:11px;letter-spacing:.1em;color:var(--mute)}
+.qprog b{color:var(--accent)}
+.tag i{font-style:normal;margin-left:10px;font-size:10px;letter-spacing:.16em;color:var(--mute)}
+.bridge{margin-top:26px;padding-top:14px;border-top:1px dashed #1B2530;font-size:12px;line-height:1.75;color:var(--mute);letter-spacing:.03em}
+.bridge::before{content:"↓ ";color:var(--accent)}
+
+/* ===== 排版与滚动优化（v2） ===== */
+section{padding:76px 22px 80px}
+h2{font-size:clamp(26px,7.1vw,33px);line-height:1.34;letter-spacing:-.01em;margin-top:14px;text-wrap:balance}
+.lead{margin-top:16px;font-size:15.5px;line-height:1.95;color:var(--mute);text-wrap:pretty}
+.vnote{margin-top:16px;font-size:12px;line-height:1.85;color:#93A2B0;text-wrap:pretty}
+
+/* 章节标签做成胶囊 */
+.tag{display:inline-flex;align-items:center;gap:9px;padding:5px 12px;border-radius:999px;
+  border:1px solid rgba(0,229,192,.26);background:rgba(0,229,192,.05);margin-bottom:4px}
+.tag span{font-size:10.5px;letter-spacing:.2em;color:var(--accent);font-weight:800}
+.tag i{margin-left:0;font-size:10px;letter-spacing:.16em;color:var(--mute)}
+
+/* 卡片质感 */
+.cards{gap:11px;margin-top:22px}
+.card{border-radius:16px;padding:17px 18px;background:linear-gradient(180deg,#0E141B,#0A0F14);
+  border:1px solid #1B2530;transition:transform .35s ease,border-color .35s ease}
+.card::before{width:2px;background:linear-gradient(180deg,var(--accent),rgba(0,229,192,.05))}
+.card h3{font-size:15px;line-height:1.5}
+.card p{font-size:13px;line-height:1.78;margin-top:7px}
+
+/* 数字/要点块节奏 */
+.stats{margin-top:20px}
+.stat{padding:16px 14px}
+.stat .n{font-size:26px;letter-spacing:-.02em}
+
+/* 引文与要点 */
+.quote{font-size:15.5px;line-height:1.8;padding-left:16px}
+.pivot{margin-top:26px;font-size:16px;line-height:1.85}
+.bridge{margin-top:30px}
+
+/* 图片/视频统一圆角与描边 */
+.film,.video-wrap,figure{border-radius:16px;overflow:hidden}
+.film img{filter:contrast(1.05) saturate(.94) brightness(.99)}
+
+/* 入场：卡片错峰 */
+.rv.in .cards .card,
+.rv.in .sig .item,
+.rv.in .acts .act{animation:cardIn .62s cubic-bezier(.2,.7,.3,1) both}
+.rv.in .cards .card:nth-child(2){animation-delay:.08s}
+.rv.in .cards .card:nth-child(3){animation-delay:.16s}
+.rv.in .cards .card:nth-child(4){animation-delay:.24s}
+.rv.in .cards .card:nth-child(5){animation-delay:.3s}
+@keyframes cardIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+/* 首屏模型轻微视差 */
+#heroVid{will-change:transform}
+
+/* 回到顶部 */
+#toTop{position:fixed;right:14px;bottom:22px;width:42px;height:42px;border-radius:50%;
+  border:1px solid rgba(0,229,192,.35);background:rgba(8,12,17,.82);backdrop-filter:blur(8px);
+  color:var(--accent);font-size:16px;line-height:1;display:flex;align-items:center;justify-content:center;
+  opacity:0;transform:translateY(10px);pointer-events:none;transition:.3s;z-index:120}
+#toTop.on{opacity:1;transform:none;pointer-events:auto}
+
+/* 顶部进度条加粗一点 */
+#bar{height:2px;background:linear-gradient(90deg,var(--accent),#48F0D2);box-shadow:0 0 10px rgba(0,229,192,.55)}
+
+/* ===== 窄屏排版收紧（v2） ===== */
+@media (max-width:520px){
+  /* 三栏路径在手机上太挤 → 改竖排 */
+  .brs{grid-template-columns:1fr;gap:9px}
+  .br{display:grid;grid-template-columns:26px 1fr;gap:3px 12px;align-items:start;padding:14px}
+  .br .bn{grid-row:1 / span 2;flex:none;width:26px;height:26px;border-radius:8px;display:flex;
+    align-items:center;justify-content:center;border:1px solid rgba(0,229,192,.3);
+    color:var(--accent);font-size:11px;font-weight:800;margin:0}
+  .br h3{grid-column:2;font-size:14px;line-height:1.5;margin:0}
+  .br p{grid-column:2;font-size:12.5px;line-height:1.7;margin-top:2px}
+
+  /* 折叠标题：长标题自动换行，箭头不压字 */
+  .svcblock > summary{display:flex;align-items:center;justify-content:space-between;gap:12px;
+    padding-right:2px;line-height:1.55}
+  .svcblock > summary::after{flex:none}
+}
+
+/* 小屏数字更紧凑 */
+@media (max-width:400px){
+  .stats{gap:14px 10px}
+  .stat .n{font-size:24px}
+}
+
+/* 折叠标题：文左、号右 */
+summary{display:flex;align-items:center;justify-content:space-between;gap:12px;list-style:none}
+summary::after{flex:none}
+
+/* 实拍照片（暗调处理，融入页面） */
+.photo{margin:24px 0 6px;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#04070A}
+.photo img{width:100%;display:block;filter:contrast(1.03) saturate(.96)}
+.photo figcaption{padding:10px 14px;font-size:11px;line-height:1.7;color:var(--mute);
+  letter-spacing:.03em;border-top:1px solid rgba(27,37,48,.85);background:rgba(10,15,20,.6)}
+
+/* 相片墙 */
+.wall{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:24px 0 4px;
+  padding:6px;border:1px solid var(--line);border-radius:16px;background:#04070A}
+.wall > div{overflow:hidden;border-radius:10px;background:#0A0F14}
+.wall > .w-hero{grid-column:1 / -1;aspect-ratio:16/10}
+.wall > .w-tile{aspect-ratio:4/3}
+.wall img{width:100%;height:100%;object-fit:cover;display:block}
+.wall figcaption{grid-column:1 / -1;padding:8px 8px 2px;font-size:11px;line-height:1.7;color:var(--mute)}
+/* 末格铺满：奇数个缩略图时不留下空洞 */
+.wall > div:last-of-type{grid-column:1 / -1;aspect-ratio:16/9}
+.wall > div:nth-last-of-type(2){aspect-ratio:4/3}
+
+/* ===== 相片墙：多排墙 + 大荧幕立体效果 + 拖动 ===== */
+.gallery{margin:24px 0 4px;border:1px solid var(--line);border-radius:18px;
+  background:radial-gradient(120% 140% at 50% 0%,#0A1017,#04070A 70%);
+  overflow:hidden;position:relative}
+.gallery::before,.gallery::after{content:"";position:absolute;top:0;bottom:44px;width:46px;
+  pointer-events:none;z-index:3}
+.gallery::before{left:0;background:linear-gradient(90deg,rgba(4,7,10,.97),rgba(4,7,10,0))}
+.gallery::after{right:0;background:linear-gradient(270deg,rgba(4,7,10,.97),rgba(4,7,10,0))}
+.gallery-track{display:grid;grid-auto-flow:column;grid-template-rows:repeat(3,auto);
+  grid-auto-columns:calc((100% - 16px) / 3);gap:12px 8px;padding:24px 20px;
+  overflow-x:auto;overflow-y:hidden;scrollbar-width:none;
+  -webkit-overflow-scrolling:touch;cursor:grab;perspective:1000px}
+.gallery-track::-webkit-scrollbar{display:none}
+.gallery-track.dragging{cursor:grabbing;user-select:none}
+.shot{border-radius:10px;overflow:hidden;background:#0A0F14;aspect-ratio:4/3;
+  transform-origin:center center;will-change:transform;
+  box-shadow:0 6px 18px rgba(0,0,0,.45);transition:box-shadow .2s}
+.shot img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
+.gallery figcaption{padding:4px 14px 8px;font-size:11px;color:var(--mute)}
+/* 拖动条 */
+.wallbar{display:flex;align-items:center;gap:10px;padding:2px 14px 12px}
+.wbtn{width:26px;height:26px;border-radius:50%;border:1px solid rgba(0,229,192,.32);
+  background:rgba(0,229,192,.06);color:var(--accent);font-size:15px;line-height:1;
+  display:flex;align-items:center;justify-content:center;flex:none;cursor:pointer}
+.wbtn:active{background:rgba(0,229,192,.18)}
+.wrail{position:relative;flex:1;height:26px;border-radius:999px;background:#0A0F14;
+  border:1px solid #1B2530;cursor:pointer;overflow:hidden}
+.wrail::before{content:"";position:absolute;left:0;top:0;bottom:0;width:100%;
+  background:repeating-linear-gradient(90deg,rgba(255,255,255,.05) 0 1px,transparent 1px 12px)}
+.wthumb{position:absolute;top:3px;left:3px;height:18px;width:44px;border-radius:999px;
+  background:linear-gradient(90deg,#00E5C0,#48F0D2);box-shadow:0 0 12px rgba(0,229,192,.5);
+  cursor:grab;transition:width .1s}
+.wthumb:active{cursor:grabbing}
+
+/* 全身骨骼图 + 部位标注（红色、进场依次点亮） */
+.bodyfig{position:relative;margin:24px 0 4px;border:1px solid var(--line);border-radius:16px;
+  overflow:hidden;background:#000;--mk:#FF4D4D;--mk-rgb:255,77,77}
+.bodyfig img{width:100%;display:block}
+.bodyfig figcaption{padding:10px 14px;font-size:11px;line-height:1.7;color:var(--mute);
+  border-top:1px solid rgba(27,37,48,.85);background:rgba(10,15,20,.55)}
+
+.mark{position:absolute;transform:translate(-50%,-50%);animation-fill-mode:both}
+.bodyfig.pre .mark{opacity:0;transform:translate(-50%,-50%) scale(.25)}
+.bodyfig.in .mark{animation:mkin .78s cubic-bezier(.2,.85,.25,1) both}
+.bodyfig.in .mark:nth-of-type(2){animation-delay:.5s}
+.bodyfig.in .mark:nth-of-type(3){animation-delay:1s}
+@keyframes mkin{
+  0%{opacity:0;transform:translate(-50%,-50%) scale(.25)}
+  55%{opacity:1;transform:translate(-50%,-50%) scale(1.45)}
+  100%{opacity:1;transform:translate(-50%,-50%) scale(1)}
+}
+
+/* 核心红点 + 双层水波 */
+.mark i{position:relative;display:block;width:12px;height:12px;border-radius:50%;
+  background:var(--mk);
+  box-shadow:0 0 0 2px rgba(var(--mk-rgb),.35),0 0 22px rgba(var(--mk-rgb),.95),
+    0 0 44px rgba(var(--mk-rgb),.45)}
+.mark i::before,.mark i::after{content:"";position:absolute;left:50%;top:50%;
+  width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:50%;
+  border:1px solid rgba(var(--mk-rgb),.7);animation:ripple 2.6s ease-out infinite}
+.mark i::after{animation-delay:1.3s}
+@keyframes ripple{
+  0%{transform:scale(.45);opacity:.95}
+  70%{opacity:.18}
+  100%{transform:scale(2.1);opacity:0}
+}
+
+/* 引线 */
+.mark::after{content:"";position:absolute;top:50%;left:9px;width:26px;height:1px;
+  background:linear-gradient(90deg,rgba(var(--mk-rgb),.9),rgba(var(--mk-rgb),.05));
+  transform:translateY(-50%)}
+.mark.l::after{left:auto;right:9px;
+  background:linear-gradient(270deg,rgba(var(--mk-rgb),.9),rgba(var(--mk-rgb),.05))}
+
+/* 标签 */
+.mark .lb{position:absolute;top:50%;left:40px;transform:translateY(-50%);white-space:nowrap;
+  display:flex;align-items:baseline;gap:6px;
+  padding:6px 12px;border-radius:10px;font-size:13px;line-height:1.35;
+  background:rgba(14,6,8,.9);border:1px solid rgba(var(--mk-rgb),.55);
+  box-shadow:0 6px 20px rgba(0,0,0,.6),0 0 14px rgba(var(--mk-rgb),.16) inset}
+.mark.l .lb{left:auto;right:40px}
+.mark .lb b{color:#FFE9E9;font-weight:800;letter-spacing:.02em}
+.mark .lb em{font-style:normal;color:var(--mk);font-size:12px;font-weight:700}
+@media (max-width:430px){
+  .mark .lb{font-size:12px;padding:5px 9px;gap:5px}
+  .mark .lb em{font-size:11px}
+}
+
+/* 踝泵视频块 */
+.ankle{margin:26px 0 6px;border:1px solid var(--line);border-radius:16px;overflow:hidden;
+  background:linear-gradient(180deg,#0A1017,#06090D)}
+.ankle-hd{display:flex;align-items:baseline;justify-content:space-between;gap:10px;
+  padding:13px 16px;border-bottom:1px solid rgba(27,37,48,.9)}
+.ankle-hd b{font-size:14px;letter-spacing:.01em;color:var(--text)}
+.ankle-hd i{font-style:normal;font-size:11px;letter-spacing:.08em;color:var(--accent)}
+.ankle-vid{width:100%;height:auto;aspect-ratio:1/1;display:block;background:#04070A}
+.ankle p{padding:12px 16px 0;font-size:13px;line-height:1.9;color:var(--mute)}
+.ankle p b{color:var(--text)}
+.ankle .vnote{padding-top:8px;padding-bottom:14px;font-size:11.5px;color:#93A2B0}
+</style>
+<style>
+.ov-hd{font-size:17px;font-weight:700;color:#EAF0F5;margin:26px 0 8px}
+.ov-sub{font-size:13.5px;line-height:1.78;color:#9FB0BF;margin:0 0 14px}
+.ov-sub b{color:#E9F1F7}
+.ov-tl{position:relative;margin:8px 0 0;padding-left:16px;border-left:1px solid rgba(255,255,255,.12)}
+.ov-st{position:relative;margin:0 0 26px}
+.ov-st::before{content:"";position:absolute;left:-21px;top:7px;width:9px;height:9px;
+  border-radius:50%;background:#00E5C0;box-shadow:0 0 0 3px rgba(0,229,192,.14)}
+.ov-st h4{margin:0;font-size:15px;color:#EAF0F5}
+.ov-st h4 i{font-style:normal;font-weight:400;color:#A7B8C8;font-size:12px;margin-left:8px}
+.ov-st .ok,.ov-st .no{margin:8px 0 0;font-size:13px;line-height:1.72}
+.ov-st .ok{color:#BFD0DD}
+.ov-st .no{color:#E9A6A6}
+.ov-st .ok b,.ov-st .no b{font-weight:700}
+.ov-st .ankle{margin:14px 0 0}
+.ov-st .ankle p{font-size:12.5px}
+.ov-note{margin:16px 0 0;font-size:12px;line-height:1.7;color:#6F8496}
+</style>
+<style>
+.extread{margin:30px 0 6px;border-top:1px solid rgba(255,255,255,.08);padding-top:16px}
+.extread-hd{font-size:12.5px;letter-spacing:.08em;color:#A7B8C8;margin-bottom:10px}
+.extread-hd b{color:#00E5C0;font-weight:600;margin-left:6px;letter-spacing:0}
+.extread ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.extread li a{display:flex;gap:10px;justify-content:space-between;align-items:baseline;
+ font-size:13.5px;line-height:1.6;color:#C7D5E1;text-decoration:none;padding:10px 12px;
+ border:1px solid rgba(255,255,255,.07);border-radius:10px;background:rgba(255,255,255,.02);
+ transition:border-color .2s,color .2s}
+.extread li a:hover{color:#EAF0F5;border-color:rgba(0,229,192,.35)}
+.extread li a i{font-style:normal;color:#8494A4;font-size:11.5px;flex:none}
+</style>
+<style>
+.extread li a.wxcard{display:flex;gap:12px;align-items:center;padding:10px;text-decoration:none}
+.extread li a.wxcard img{width:56px;height:74px;object-fit:cover;object-position:top;
+ border-radius:6px;border:1px solid rgba(255,255,255,.1);flex:none;background:#111820}
+.extread li a.wxcard span.t{flex:1;font-size:13.5px;line-height:1.55;color:#C7D5E1}
+.extread li a.wxcard i{font-style:normal;color:#8494A4;font-size:11px;flex:none}
+.extread li a.wxcard:hover span.t{color:#EAF0F5}
+.extread li a.wxcard:hover img{border-color:rgba(0,229,192,.4)}
+</style>
+<style>
+.wxview{position:fixed;inset:0;z-index:9999;background:#070A0F;display:none;
+ flex-direction:column;width:100vw;max-width:100vw;overflow:hidden}
+.wxview.on{display:flex}
+.wxview-bar{flex:none;display:flex;align-items:center;justify-content:space-between;
+ padding:12px 16px;border-bottom:1px solid rgba(255,255,255,.08);
+ font-size:13px;color:#8A99A8;background:#070A0F}
+.wxview-bar b{color:#E9EFF4;font-weight:600;font-size:13.5px}
+.wxview-bar button{background:none;border:0;color:#00E5C0;font-size:20px;line-height:1;
+ padding:4px 8px;cursor:pointer}
+.wxview-body{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;background:#070A0F}
+.wxview-body{max-width:100vw;overflow-x:hidden}
+.wxview-body img{display:block !important;width:100vw !important;max-width:100vw !important;height:auto !important;margin:0 auto}
+.wxview-tip{flex:none;text-align:center;font-size:11.5px;color:#8494A4;padding:8px 0 14px}
+</style>
+<style>
+.extread li a.wxcard img.wxlogo{width:56px;height:56px;object-fit:cover;object-position:top;
+ border-radius:10px;border:1px solid rgba(255,255,255,.1);flex:none;background:#0d1a17}
+</style>
+<style>
+/* OSTA 速算 */
+.osta{margin:18px 0 6px;padding:16px 16px 14px;border:1px solid rgba(255,255,255,.08);
+  border-radius:13px;background:rgba(255,255,255,.02)}
+.osta-hd{font-size:13px;font-weight:600;color:var(--accent);letter-spacing:.02em}
+.osta-sub{margin:8px 0 12px;font-size:12.5px;line-height:1.7;color:var(--mute)}
+.osta-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.osta-row label{display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--mute)}
+.osta-row input{width:74px;padding:8px 10px;border-radius:9px;border:1px solid rgba(255,255,255,.12);
+  background:#0B1116;color:var(--text);font-size:13.5px}
+.osta-row button{padding:9px 16px;border-radius:9px;background:var(--accent);color:#04120F;
+  font-weight:600;font-size:13px}
+.osta-res{margin:12px 0 0;font-size:13px;line-height:1.7;color:var(--text)}
+</style>
+<style>
+.osta-why{margin:10px 0 0;font-size:12px;line-height:1.75;color:var(--mute)}
+</style>
+<style>.osta-note{margin:10px 0 0;font-size:11.5px;line-height:1.7;color:var(--mute);border-left:2px solid rgba(0,229,192,.45);padding-left:10px}</style>
+<style>.hit{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 10px;font-size:12px;line-height:1.6}
+.hit span{padding:3px 10px;border-radius:999px;border:1px solid transparent;letter-spacing:.02em}
+.hit .hit-red{color:#FF7A7A;border-color:rgba(255,122,122,.5);background:rgba(255,122,122,.10);font-weight:600}
+.hit .hit-mute{color:var(--mute);border-color:rgba(255,255,255,.14)}
+.hit .hit-off{color:#4C5762;border-color:rgba(255,255,255,.07)}
+</style>
+<style>
+details.rules{margin:16px 0 4px;border:1px solid rgba(255,255,255,.08);border-radius:12px;
+  padding:0 14px;background:rgba(255,255,255,.02)}
+details.rules summary{cursor:pointer;list-style:none;padding:12px 0;font-size:12.5px;
+  color:var(--mute);user-select:none;text-align:left;display:flex;align-items:center;gap:4px}
+details.rules summary::marker{content:""}
+details.rules summary::-webkit-details-marker{display:none}
+details.rules summary::before{content:"＋ ";color:var(--accent)}
+details.rules[open] summary::before{content:"－ "}
+details.rules p{margin:0 0 12px;font-size:12px;line-height:1.75;color:var(--mute)}
+details.rules summary{justify-content:flex-start;font-weight:400;border-bottom:0}
+details.rules summary::after{content:"";display:none}
+details.rules[open] summary{border-bottom:1px solid rgba(255,255,255,.07)}
+
+.sex{display:inline-block;margin-left:8px;font-style:normal;font-size:11px;color:var(--accent);border:1px solid rgba(0,229,192,.35);border-radius:6px;padding:1px 6px;vertical-align:middle}</style>
+<style>.sexpick{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:22px 0 8px;font-size:12.5px;color:var(--mute)}
+.sexpick button{padding:7px 16px;border-radius:999px;border:1px solid rgba(255,255,255,.14);font-size:13px;color:var(--mute);background:none}
+.sexpick button.on{background:var(--accent);color:#04120F;border-color:var(--accent);font-weight:600}
+.sexpick i{font-style:normal;font-size:11px;color:#93A2B0}
+[hidden]{display:none!important}</style>
+<style>#quiz .qm{display:none}
+#quiz.male .qf{display:none}
+#quiz.male .qm{display:inline}</style>
+<style>.osta.disabled{opacity:.42}
+.osta.disabled input,.osta.disabled button{cursor:not-allowed}</style>
+<style>.res-note{margin:12px 0 0;padding-top:10px;font-size:11.5px;line-height:1.75;color:var(--mute);border-top:1px solid rgba(255,255,255,.07)}
+</style>
+<style>.osta-hint{margin:9px 0 0;font-size:11.5px;line-height:1.7;color:var(--mute)}
+.osta-hint b{color:var(--accent);font-weight:600}
+</style>
+<style>.osta-hint[hidden]{display:none}</style>
+<style>.hero-focus{margin:14px 0 0;font-size:12.5px;line-height:1.7;color:var(--mute)}
+.hero-focus b{color:var(--accent);font-weight:600}
+.hero-focus span{display:block;margin-top:2px;font-size:11.5px;color:#93A2B0}
+
+.ovcf{margin:16px 0 6px;padding:14px 16px;border-left:3px solid var(--accent);border-radius:0 10px 10px 0;background:rgba(0,229,192,.05);font-size:13.5px;line-height:1.85;color:#C7D5E1}
 .ovcf b{color:#fff;font-weight:600}
-</style></head>
-<body>
+</style>
+<style>
+/* 骨水泥移位说明 */
+.cement{margin:20px 0 6px;padding:16px 18px;border:1px solid rgba(255,107,107,.28);
+  border-radius:12px;background:rgba(255,107,107,.05)}
+.cement-hd{font-size:13px;font-weight:700;color:#FF8A8A;margin-bottom:10px;letter-spacing:.02em}
+.cement p{margin:0 0 10px;font-size:13px;line-height:1.85;color:#C7D5E1}
+.cement p:last-child{margin-bottom:0}
+.cement b{color:#fff;font-weight:600}
+.cement .cement-k{padding-top:10px;border-top:1px solid rgba(255,255,255,.08);color:#EAF0F5}
+</style>
+<style>
+/* 时间轴：再次发病节点波纹 */
+.tl .node.hot::after{content:"";position:absolute;left:-29px;top:4px;width:19px;height:19px;
+  border-radius:50%;border:1px solid var(--accent);opacity:0;
+  animation:tlRipple 2.4s cubic-bezier(.2,.6,.3,1) infinite;pointer-events:none}
+@keyframes tlRipple{
+  0%{transform:scale(.55);opacity:.8}
+  70%{transform:scale(1.95);opacity:0}
+  100%{transform:scale(1.95);opacity:0}
+}
+@media (prefers-reduced-motion: reduce){
+  .tl .node.hot::after{animation:none}
+}
+</style>
+<style>
+.tl .node.hot::before{animation:tlPulse 2.4s ease-out infinite}
+@keyframes tlPulse{
+  0%{box-shadow:0 0 0 0 rgba(0,229,192,.55)}
+  70%{box-shadow:0 0 0 13px rgba(0,229,192,0)}
+  100%{box-shadow:0 0 0 0 rgba(0,229,192,0)}
+}
+@media (prefers-reduced-motion: reduce){.tl .node.hot::before{animation:none}}
+</style>
+<style>
+/* 时间轴：按顺序依次出现 */
+.tl .node{opacity:0;transform:translateY(10px);
+  transition:opacity .55s ease, transform .55s ease}
+.rv.in .tl .node{opacity:1;transform:none}
+.rv.in .tl .node:nth-child(1){transition-delay:.15s}
+.rv.in .tl .node:nth-child(2){transition-delay:.62s}
+.rv.in .tl .node:nth-child(3){transition-delay:1.09s}
+.rv.in .tl .node:nth-child(4){transition-delay:1.56s}
+/* 竖线从上往下画出来 */
+.tl::before{transform-origin:top;transform:scaleY(0);
+  transition:transform .9s cubic-bezier(.3,.7,.3,1) .1s}
+.rv.in .tl::before{transform:scaleY(1)}
+/* 波纹等节点出现后再起 */
+.tl .node.hot::after{animation-delay:1.6s}
+.tl .node.hot::before{animation-delay:1.6s}
+@media (prefers-reduced-motion: reduce){
+  .tl .node,.tl::before{opacity:1!important;transform:none!important;
+    transition:none!important}
+}
+</style>
+<style>
+details.sheet{margin:18px 0 6px;border:1px solid rgba(255,255,255,.08);border-radius:12px;
+  padding:0 14px;background:rgba(255,255,255,.02)}
+details.sheet summary{cursor:pointer;list-style:none;padding:12px 0;font-size:12.5px;
+  color:var(--mute);text-align:left;display:flex;align-items:center;gap:4px;
+  font-weight:400;border-bottom:0}
+details.sheet summary::-webkit-details-marker{display:none}
+details.sheet summary::marker{content:""}
+details.sheet summary::before{content:"＋ ";color:var(--accent)}
+details.sheet[open] summary::before{content:"－ "}
+details.sheet summary::after{content:"";display:none}
+details.sheet[open] summary{border-bottom:1px solid rgba(255,255,255,.07)}
+.sheet-grp{margin:14px 0 10px}
+.sheet-grp b{display:block;font-size:12.5px;color:var(--accent);margin-bottom:6px}
+.sheet-grp ul{margin:0;padding-left:16px}
+.sheet-grp li{font-size:12.5px;line-height:1.85;color:#C7D5E1}
+.sheet-note{margin:6px 0 14px;font-size:11.5px;color:var(--mute)}
+</style>
+<style>details.sheet summary{justify-content:flex-start!important}details.sheet summary::after{content:none!important;display:none!important;font-size:0!important}</style>
+<style>.svcnote .ln{display:flex;gap:10px;align-items:flex-start}
+.svcnote .ln + .ln{margin-top:3px}
+.svcnote .ln b{flex:none;width:3.2em;color:#8FA3B4;font-weight:700}
+.svcnote .ln i{font-style:normal;flex:1 1 auto}
+</style>
+<style>
+/* 12 屏：误区拆解 */
+.mythtell{margin:20px 0 4px;padding:15px 16px;border:1px solid var(--line);border-radius:14px;
+  background:linear-gradient(160deg,rgba(255,107,87,.06),transparent 70%)}
+.mt-q{font-size:13.5px;font-weight:700;margin:0 0 10px;color:var(--text)}
+.mt-btns{display:flex;gap:8px;flex-wrap:wrap}
+.mt-btns button{flex:1 1 auto;min-width:56px;padding:8px 10px;border-radius:10px;
+  border:1px solid rgba(255,255,255,.14);font-size:12.5px;color:var(--mute);background:none}
+.mt-btns button.on{background:var(--accent);border-color:var(--accent);color:#04120F;font-weight:700}
+.mt-fb{margin:10px 0 0;font-size:12.5px;line-height:1.7;color:var(--mute);min-height:0}
+.mt-fb b{color:var(--text)}
+/* 误区分组标题 */
+.myths .qgroup{margin:14px 0 -2px}
+.myths .qgroup:first-child{margin-top:2px}
+/* 展开后标题被划掉 */
+.myth.open .q .txt{color:#7A8A98;text-decoration:line-through;
+  text-decoration-color:rgba(255,107,87,0);text-decoration-thickness:1.5px;
+  transition:text-decoration-color .3s ease .05s}
+.myth.open .q .txt{text-decoration-color:#FF6B57}
+to{transform:scaleX(1)}}
+/* 真相区：左侧青条 + 浅青底 */
+.myth .a .in{border-left:2px solid var(--accent);background:rgba(0,229,192,.045);
+  padding-left:14px;border-radius:0 10px 10px 0}
+.myth .a .in .tk{font-size:13.5px;font-weight:700;color:var(--text);line-height:1.6;
+  padding-top:12px;margin:0 0 2px}
+/* 收束句 */
+#s7 .pivot{margin-top:18px}
+@media (prefers-reduced-motion: reduce){
+  }
+</style>
+<style>
+/* 12 屏：多选题 */
+.mquiz{margin:20px 0 4px;padding:16px;border:1px solid var(--line);border-radius:14px;
+  background:linear-gradient(160deg,rgba(0,229,192,.05),transparent 70%)}
+.mq-t{font-size:13.5px;font-weight:700;margin:0 0 12px;color:var(--text);line-height:1.6}
+.mq-t i{font-style:normal;font-size:11.5px;font-weight:400;color:var(--mute);margin-left:6px}
+.mq-opts{display:flex;flex-direction:column;gap:8px}
+.mq-opt{display:flex;align-items:flex-start;gap:10px;padding:11px 13px;border-radius:11px;
+  border:1px solid rgba(255,255,255,.12);font-size:13px;color:var(--mute);cursor:pointer;
+  transition:.2s;background:rgba(255,255,255,.02)}
+.mq-opt:hover{border-color:rgba(0,229,192,.35)}
+.mq-opt input{appearance:none;width:16px;height:16px;border-radius:4px;flex:none;margin-top:2px;
+  border:1px solid rgba(255,255,255,.22);position:relative;transition:.2s}
+.mq-opt input:checked{background:var(--accent);border-color:var(--accent)}
+.mq-opt input:checked::after{content:"";position:absolute;left:4px;top:1px;width:6px;height:10px;
+  border:2px solid #04120F;border-top:0;border-left:0;transform:rotate(42deg)}
+.mq-opt:has(input:checked){border-color:var(--accent);color:var(--text)}
+.mq-none{margin-top:2px;border-style:dashed}
+.mq-btn{margin-top:14px;width:100%;padding:11px;border-radius:11px;background:var(--accent);
+  color:#04120F;font-size:13.5px;font-weight:700}
+.mq-btn[disabled]{background:rgba(255,255,255,.08);color:#93A2B0}
+.mq-fb{margin:12px 0 0;font-size:12.8px;line-height:1.75;color:var(--mute)}
+.mq-fb b{color:var(--accent)}
+.myths[hidden]{display:none}
+</style>
+<style>
+.myths .verdict{margin:0 0 12px;font-size:13.5px;font-weight:700;color:#FF8A7A;line-height:1.6}
+.myths .pivot{margin:16px 0 0}
+</style>
+<style>
+/* 12 屏：选项内嵌真相 */
+.mq-list{display:flex;flex-direction:column;gap:10px}
+.mq-grp{margin:8px 0 0;font-size:11px;letter-spacing:.14em;color:var(--accent);font-weight:800}
+.mq-item{display:flex;flex-direction:column;gap:0}
+.mq-item .mq-opt{width:100%}
+.mq-tag{margin-left:auto;flex:none;font-size:11px;font-weight:700;color:#FF8A7A;
+  border:1px solid rgba(255,107,87,.45);border-radius:6px;padding:1px 7px;opacity:0;transition:.25s}
+.mq-item.wrong .mq-tag{opacity:1}
+.mq-item.right .mq-tag{color:var(--accent);border-color:rgba(0,229,192,.45);opacity:1}
+/* 选中且为误区：整条变红 + 文字被红线划掉 */
+.mq-item.wrong .mq-opt{border-color:rgba(255,107,87,.55);background:rgba(255,107,87,.07)}
+.mq-item.wrong .mq-opt input{background:#FF4D3D;border-color:#FF4D3D}
+.mq-item.wrong .mq-txt{position:relative;color:#FF8A7A;display:inline-block}
+.mq-item.wrong .mq-txt::after{content:"";position:absolute;left:-3px;right:-3px;top:52%;height:2px;
+  background:#FF4D3D;border-radius:2px;transform:scaleX(1);transform-origin:left center;
+  animation:mqStrike .5s cubic-bezier(.4,0,.2,1) .15s forwards}
+@keyframes mqStrike{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+/* 答对（以上都不对） */
+.mq-item.right .mq-opt{border-color:rgba(0,229,192,.55);background:rgba(0,229,192,.07);color:var(--text)}
+/* 真相块 */
+.mq-truth{display:none;margin:8px 0 2px;padding:12px 14px;border-left:2px solid var(--accent);
+  border-radius:0 10px 10px 0;background:rgba(0,229,192,.045)}
+.mquiz.revealed .mq-truth:not(.mq-truth-ok){display:block;animation:mqIn .35s ease both}
+@keyframes mqIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.mq-truth .tk{font-size:13.5px;font-weight:700;color:var(--text);margin:0 0 4px;line-height:1.6}
+.mq-truth p{font-size:12.8px;line-height:1.8;color:var(--mute);margin:0}
+.mq-truth b{color:var(--accent);font-weight:600}
+.mq-item.wrong .mq-truth{border-left-color:#FF6B57;background:rgba(255,107,87,.05)}
+.mq-item.wrong .mq-truth b{color:#FFB4A8}
+.mq-truth-ok{display:none}
+.mq-item.right .mq-truth-ok{display:block;animation:mqIn .35s ease both}
+.mq-item.right .mq-truth-ok{display:block}
+.mquiz .pivot{margin-top:16px}
+@media (prefers-reduced-motion: reduce){
+  .mq-item.wrong .mq-txt::after{animation:none;transform:scaleX(1)}
+  .mquiz.revealed .mq-truth{animation:none}
+}
+</style>
+<style>
+/* 09 屏：微环境 + 三点并列指向不愈合 */
+.me{margin:22px 0 4px;border:1px solid var(--line);border-radius:14px;overflow:hidden;
+  background:#080C10}
+.me img{display:block;width:100%;height:auto}
+.me figcaption{padding:9px 14px;font-size:11px;line-height:1.6;color:#93A2B0;
+  border-top:1px solid rgba(255,255,255,.05)}
+.cause{margin:20px 0 6px;display:grid;grid-template-columns:minmax(0,1fr) 30px auto;
+  align-items:stretch;gap:0 10px}
+.cause-list{display:flex;flex-direction:column;justify-content:space-between;gap:10px;min-width:0}
+.ci{display:flex;gap:9px;align-items:flex-start}
+.ci i{flex:none;font-style:normal;font-size:11px;font-weight:800;color:#8494A4;
+  letter-spacing:.06em;margin-top:3px}
+.ci>div{min-width:0}
+.ci b{display:block;font-size:13.5px;font-weight:700;color:var(--text);line-height:1.5}
+.ci span{display:block;font-size:12px;color:var(--mute);line-height:1.6;margin-top:1px}
+.cause-brace{width:100%;height:100%;color:var(--accent);opacity:.85}
+.cause-brace path{fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;
+  vector-effect:non-scaling-stroke}
+.cause-out{align-self:center;flex:none;writing-mode:horizontal-tb;
+  font-size:14px;font-weight:800;color:#FF8A7A;letter-spacing:.08em;
+  border:1px solid rgba(255,107,87,.45);background:rgba(255,107,87,.08);
+  border-radius:9px;padding:8px 10px;white-space:nowrap}
+@media (max-width:400px){
+  .cause{grid-template-columns:minmax(0,1fr) 22px auto;gap:0 4px}
+  .ci b{font-size:13px}
+  .ci span{font-size:11.5px}
+  .cause-out{font-size:13px;padding:7px 8px}
+}
+</style>
+<style>
+/* 09 屏：三点卡片化 */
+.cause-list{gap:9px!important}
+.ci{padding:11px 12px 12px;border:1px solid rgba(255,255,255,.09);border-radius:12px;
+  background:linear-gradient(158deg,rgba(255,255,255,.035),rgba(255,255,255,0) 68%);
+  position:relative;overflow:hidden}
+.ci::before{content:"";position:absolute;left:0;top:0;width:2px;height:100%;
+  background:linear-gradient(180deg,var(--accent),rgba(0,229,192,0));opacity:.55}
+.ci i{display:flex;align-items:center;justify-content:center;width:22px;height:22px;
+  border-radius:50%;border:1px solid rgba(0,229,192,.35);color:var(--accent);
+  font-size:10.5px;font-weight:800;letter-spacing:0;margin-top:1px;
+  background:rgba(0,229,192,.06)}
+.ci b{font-size:13.5px;margin-bottom:3px}
+.ci span{font-size:12px;line-height:1.72}
+@media (prefers-reduced-motion: no-preference){
+  .ci{transition:border-color .25s,background .25s}
+}
+</style>
+<style>.step .txt .kw{display:inline;font-weight:700;color:var(--accent)}
+</style>
+<style>
+/* 14 屏：防跌倒（与时间轴并行的另一条主线） */
+.fall{margin:16px 0 6px;display:flex;flex-direction:column;gap:8px}
+.fi{display:flex;gap:12px;align-items:flex-start;padding:11px 13px;border-radius:11px;
+  border:1px solid rgba(255,255,255,.08);
+  background:linear-gradient(158deg,rgba(0,229,192,.05),transparent 70%)}
+.fi i{flex:none;font-style:normal;font-size:11.5px;font-weight:800;color:var(--accent);
+  letter-spacing:.06em;min-width:4.2em;margin-top:2px}
+.fi span{font-size:12.8px;line-height:1.7;color:var(--mute)}
+</style>
+<style>.ov-hd.split{margin-top:26px;padding-top:18px;border-top:1px solid var(--line)}</style>
+<style>
+/* 15 屏：体系示范折叠块 */
+details.flow{margin:18px 0 6px;border:1px solid rgba(0,229,192,.22);border-radius:14px;padding:0 15px;
+  background:linear-gradient(160deg,rgba(0,229,192,.06),rgba(255,255,255,.015))}
+details.flow summary{cursor:pointer;list-style:none;padding:14px 0;font-size:13px;font-weight:700;
+  color:var(--text);text-align:left;display:flex;align-items:center;gap:8px;justify-content:flex-start;border-bottom:0}
+details.flow summary::-webkit-details-marker{display:none}
+details.flow summary::marker{content:""}
+details.flow summary::before{content:"＋ ";color:var(--accent);font-weight:800}
+details.flow[open] summary::before{content:"－ "}
+details.flow summary::after{content:"";display:none!important}
+details.flow[open] summary{border-bottom:1px solid rgba(255,255,255,.07)}
+details.flow .flow-in{padding:2px 0 14px}
+details.flow .step{margin-top:12px}
+details.flow .vnote{margin:12px 0 0}
+.flow-foot{margin:14px 0 0;padding:12px 13px;border-radius:10px;border:1px solid rgba(0,229,192,.18);background:rgba(0,229,192,.07)}
+.flow-foot > b{display:block;font-size:12.8px;color:var(--text);margin-bottom:5px;line-height:1.6}
+.flow-foot span b{display:inline;color:var(--accent);font-weight:700}
+.flow-foot span{display:block;font-size:12px;line-height:1.75;color:var(--mute)}
+.flow-stats{margin:12px 0 0;display:flex;flex-wrap:wrap;gap:7px}
+.flow-stats span{font-size:11.5px;color:var(--mute);padding:6px 10px;border-radius:8px;
+  border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.02);white-space:nowrap}
+.flow-stats b{color:var(--accent);font-size:13px;margin-right:2px}
+</style>
+<style>
+.flow-lead{margin:0 0 4px;font-size:12.3px;line-height:1.8;color:var(--mute)}
+.sys{margin:16px 0 0;padding:12px 13px;border-radius:11px;
+  border:1px solid rgba(255,255,255,.09);background:rgba(255,255,255,.025)}
+.sys > b{display:block;font-size:12.8px;color:var(--text);line-height:1.65;margin-bottom:5px}
+.sys > i{display:block;font-style:normal;font-size:12px;color:var(--mute);line-height:1.75;margin-bottom:9px}
+.sys ul{margin:0;padding-left:15px;display:flex;flex-direction:column;gap:4px}
+.sys li{font-size:12px;line-height:1.6;color:var(--mute)}
+.sys li::marker{color:var(--accent)}
+.sys .sys-num{margin:9px 0 0;font-size:11.8px;line-height:1.75;color:var(--mute)}
+.sys .sys-num b{color:var(--accent);font-size:12.6px}
+</style>
+<style>.sys .own{color:var(--accent)}</style>
+<style>
+.dbody .ph.hd{margin:0 0 13px;padding-left:9px;border-left:2px solid rgba(0,229,192,.35)}
+.dbody .ph.hd b{display:inline;color:inherit;font-size:inherit;letter-spacing:0;margin:0}
+.dbody .ph.hd > b:first-child{display:block;font-size:12.4px;color:var(--accent);letter-spacing:.02em;margin-bottom:3px}
+.dbody .ph.hd:last-child{margin-bottom:2px}
+</style>
+<style>
+.share-link{background:none;border:0;padding:0;font:inherit;color:var(--accent);
+  text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+</style>
+<style>
+.closing{margin:24px 0 4px;padding:15px 16px;border-radius:12px;font-size:13.5px;line-height:1.85;
+  color:var(--mute);border:1px solid rgba(0,229,192,.22);
+  background:linear-gradient(160deg,rgba(0,229,192,.07),rgba(255,255,255,.015))}
+.closing b{color:var(--text)}
+</style>
+<style>
+/* ===== 侧边快速跳转栏 ===== */
+#jump{position:fixed;right:9px;top:50%;transform:translateY(-50%);z-index:98;
+  display:flex;flex-direction:column;align-items:center;gap:7px}
+.jump-rail{display:flex;flex-direction:column;gap:3px;padding:6px 4px;border-radius:12px;
+  background:rgba(8,12,17,.74);backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.09);box-shadow:0 8px 24px rgba(0,0,0,.35);
+  transform:translateX(120%);opacity:0;pointer-events:none;
+  transition:transform .26s cubic-bezier(.22,.8,.3,1),opacity .22s}
+.jump-rail.show{transform:none;opacity:1;pointer-events:auto}
+.jump-rail button{width:18px;height:15px;border:0;border-radius:4px;background:transparent;
+  color:#57646F;font-size:9px;font-weight:700;line-height:15px;text-align:center;
+  cursor:pointer;transition:background .18s,color .18s,transform .12s;padding:0}
+.jump-rail button:active{transform:scale(.9)}
+.jump-rail button.on{background:rgba(0,229,192,.18);color:var(--accent)}
+.jump-toggle{width:31px;height:31px;border-radius:50%;border:1px solid rgba(0,229,192,.34);
+  background:rgba(8,12,17,.84);color:var(--accent);font-size:10.5px;font-weight:700;
+  cursor:pointer;backdrop-filter:blur(8px);line-height:1}
+.jump-mask{position:fixed;inset:0;background:rgba(0,0,0,.52);opacity:0;pointer-events:none;
+  transition:opacity .24s;z-index:110}
+.jump-mask.on{opacity:1;pointer-events:auto}
+.jump-panel{position:fixed;top:0;right:0;bottom:0;width:min(78vw,318px);z-index:120;
+  background:rgba(5,9,13,.975);backdrop-filter:blur(16px);border-left:1px solid rgba(255,255,255,.08);
+  transform:translateX(102%);transition:transform .28s cubic-bezier(.22,.8,.3,1);
+  overflow-y:auto;padding:20px 16px 30px;-webkit-overflow-scrolling:touch}
+.jump-panel.on{transform:none}
+.jump-panel h3{margin:0 0 14px;font-size:13px;color:var(--dim);font-weight:700;letter-spacing:.14em}
+.jump-item{display:flex;gap:10px;align-items:baseline;width:100%;text-align:left;
+  padding:10px 9px;border:0;border-radius:9px;background:transparent;cursor:pointer;
+  color:var(--mute);font-size:12.8px;line-height:1.55;transition:background .16s,color .16s}
+.jump-item b{flex:none;color:#4E5B67;font-size:10.5px;font-weight:800;letter-spacing:.04em}
+.jump-item i{flex:none;font-style:normal;font-size:10.5px;color:#3F7F73;margin-left:auto}
+.jump-item.on{background:rgba(0,229,192,.1);color:var(--text)}
+.jump-item.on b{color:var(--accent)}
+
+/* 矮屏：只保留目录按钮 */
+@media (max-height:560px){
+  .jump-rail{display:none}
+}
+/* 极窄：整体再收一点 */
+@media (max-width:380px){
+  #jump{right:6px}
+  .jump-rail button{width:16px;font-size:8.5px}
+  .jump-toggle{width:28px;height:28px;font-size:9.5px}
+}
+</style>
+<style>
+.hero-reader{margin:14px 0 0;font-size:12px;line-height:1.8;color:#6E7B88;
+  padding-left:10px;border-left:2px solid rgba(0,229,192,.35)}
+</style>
+<style>
+/* 12 屏：同样是三条路，门槛变了 */
+.cmp{margin:18px 0 6px;border:1px solid rgba(255,255,255,.09);border-radius:12px;overflow:hidden}
+.cmp-r{display:grid;grid-template-columns:6.4em 1fr 1fr;gap:0;
+  border-top:1px solid rgba(255,255,255,.07);font-size:11.8px;line-height:1.65}
+.cmp-r:first-child{border-top:0}
+.cmp-r > *{padding:10px 11px}
+.cmp-r i{font-style:normal;color:var(--accent);font-weight:700;white-space:nowrap;background:rgba(255,255,255,.02)}
+.cmp-r span{color:var(--mute);border-left:1px solid rgba(255,255,255,.07)}
+.cmp-r span + span{border-left:1px solid rgba(255,255,255,.07)}
+.cmp-h{background:rgba(255,255,255,.03)}
+.cmp-h b{font-size:11px;color:#8C99A6;letter-spacing:.06em}
+.cmp-h b + b{border-left:1px solid rgba(255,255,255,.07)}
+@media (max-width:400px){
+  .cmp-r{grid-template-columns:5.8em 1fr 1fr;font-size:11px}
+  .cmp-r > *{padding:9px 8px}
+}
+</style>
+<style>
+/* 16 屏：AI 智能应用 */
+.ai{margin:14px 0 0;padding:12px 13px;border-radius:11px;
+  border:1px solid rgba(0,229,192,.2);background:rgba(0,229,192,.05)}
+.ai > b{display:block;font-size:12.6px;line-height:1.65;color:var(--text);margin-bottom:9px}
+.ai-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+.ai-i{padding:8px 9px;border-radius:8px;background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.06);min-width:0}
+.ai-i i{display:block;font-style:normal;font-size:11px;font-weight:700;color:var(--accent);margin-bottom:3px}
+.ai-i span{display:block;font-size:11.2px;line-height:1.6;color:var(--mute)}
+.ai-note{margin:10px 0 0;font-size:11.5px;line-height:1.75;color:var(--mute)}
+.ai-note b{color:var(--accent)}
+@media (max-width:420px){ .ai-grid{grid-template-columns:1fr} }
+</style>
+<style>
+/* 17 屏：关注与访问 */
+.follow{margin:22px 0 8px;padding:14px;border-radius:14px;border:1px solid rgba(0,229,192,.18);
+  background:linear-gradient(160deg,rgba(0,229,192,.06),rgba(255,255,255,.015));
+  display:flex;gap:14px;align-items:center}
+.follow .qrw{flex:none;width:96px}
+.follow .qrw img{width:100%;height:auto;aspect-ratio:1/1;object-fit:contain;border-radius:9px;display:block}
+.follow .qrcap{font-size:10.5px;color:var(--dim);text-align:center;margin-top:5px}
+.follow .ftxt{min-width:0}
+.follow .ftxt > b{display:block;font-size:13px;color:var(--text);margin-bottom:6px}
+.follow .ftxt p{margin:0 0 8px;font-size:12px;line-height:1.75;color:var(--mute)}
+.follow .ftxt p b{color:var(--text);font-weight:600}
+.follow .fu{display:inline-block;font-size:11.8px;color:var(--accent);word-break:break-all;
+  text-decoration:none;border-bottom:1px dashed rgba(0,229,192,.45);padding-bottom:1px}
+.follow .fnote{margin:9px 0 0;font-size:10.8px;line-height:1.7;color:#6E7B88}
+@media (max-width:420px){
+  .follow{flex-direction:column;align-items:flex-start;gap:10px}
+  .follow .qrw{width:84px}
+}
+</style>
+<style>
+/* ===== 手机可读性增强：加深色底文字/描边对比 ===== */
+:root{
+  --mute:#BCC9D5;                 /* 次级文字：原 #75828F，太浅读不清 */
+  --line:#27333F;                 /* 分隔线 */
+  --panel:#101720;                /* 卡片底 */
+}
+.card,.mq-item,.fi,.wxcard,.ai,.sys,.flow,.svcblock,.dbody{
+  background-color:#0F161E;
+  border-color:rgba(255,255,255,.16)!important;
+}
+.card{background-image:none!important}
+.mq-item{background-image:none!important}
+.vnote,.tag,.extread-hd,.fnote,.qrcap,.tiernote,.flow-foot,.ph,.dbody .ph,.sub,.cap{
+  color:#A3B0BD;
+}
+.tag i{color:#00E5C0}
+.step .txt,.act .txt,.mq-txt,.ox{color:#C7D2DC}
+.pill,.chip{color:#C7D2DC;border-color:rgba(255,255,255,.18)}
+.quote{color:#EFF5F9}
+</style>
+<style>
+.hero3d .hero-layer{position:absolute;top:0;left:0;width:100%;height:auto;
+  aspect-ratio:640/960;object-fit:cover;border-radius:inherit;pointer-events:none;display:block}
+</style>
+<style>
+.tiernote{margin:30px 0 4px;padding:26px 20px 24px;border-radius:16px;text-align:center;
+  border:1px solid rgba(0,229,192,.22);
+  background:linear-gradient(180deg,rgba(0,229,192,.07),rgba(255,255,255,.012))}
+.tiernote b{display:block;font-size:19px;letter-spacing:.04em;color:var(--text);margin-bottom:10px}
+.tiernote .tn-sub{display:block;font-size:12.5px;line-height:1.9;color:#9FADBA;margin-bottom:16px}
+.tiernote .share-link{font-size:13.5px}
+</style>
+<style>
+/* 公众号缩略图：保留原图，压暗绿底让白字更清楚 */
+.wxcard img.wxlogo{filter:brightness(.78) saturate(.92) contrast(1.06)}
+</style>
+<style>
+.gallery-track.dragging .shot{box-shadow:none!important;will-change:auto!important}
+</style>
+<style>
+/* ===== 朗读本屏 ===== */
+#ttsBtn{position:fixed;left:14px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:97;
+  display:flex;align-items:center;gap:6px;padding:9px 13px;border-radius:999px;
+  border:1px solid rgba(0,229,192,.34);background:rgba(8,12,17,.86);color:var(--accent);
+  font-size:12.5px;font-weight:700;letter-spacing:.02em;cursor:pointer;
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:background .2s,color .2s}
+#ttsBtn i{font-style:normal;font-size:13px;line-height:1}
+#ttsBtn.on{background:rgba(0,229,192,.18);color:#BFF9EC}
+#ttsBtn:active{transform:scale(.97)}
+@media (min-width:1024px){#ttsBtn{left:auto;right:16px;bottom:76px;border-radius:999px;width:auto;height:auto;padding:9px 13px}#ttsBtn b{display:inline}}
+@media (max-width:1023px){#ttsBtn{width:40px;height:40px;padding:0;border-radius:50%;justify-content:center;gap:0}#ttsBtn b{display:none}#ttsBtn i{font-size:15px}}
+</style>
+<style>
+.svcbtn.on{border-color:rgba(0,229,192,.6);color:#BFF9EC;background:rgba(0,229,192,.14)}
+</style>
+<style>
+@media (max-width:1023px){
+  .gallery-track{touch-action:pan-x}
+}
+</style>
+<style>
+/* 16 屏：成果与推广 */
+.docfig{margin:18px 0 6px;padding:10px;border-radius:14px;background:#F4F7FB;
+  border:1px solid rgba(255,255,255,.14);overflow:hidden}
+.docfig img{display:block;width:100%;height:auto;border-radius:8px}
+.docfig figcaption{margin-top:9px;font-size:11.5px;line-height:1.7;color:#A6B4C1;text-align:center}
+.outreach{margin:20px 0 6px;padding:16px 16px 6px;border:1px solid rgba(0,229,192,.24);
+  border-radius:14px;background:linear-gradient(180deg,rgba(0,229,192,.06),rgba(255,255,255,.01))}
+.outreach .oh{font-size:13px;font-weight:800;color:var(--text);margin-bottom:12px}
+.outreach .og{display:grid;grid-template-columns:1fr 1fr;gap:12px 10px}
+.outreach .oi b{display:block;font-size:20px;font-weight:800;color:var(--accent);line-height:1.2}
+.outreach .oi span{display:block;font-size:11.5px;color:#9FADBA;line-height:1.6;margin-top:3px}
+.outreach .on{margin:12px 0 10px;font-size:12px;line-height:1.8;color:#A3B0BD}
+@media (min-width:1024px){.outreach .og{grid-template-columns:repeat(3,1fr)}}
+</style>
+<style>
+/* 折叠卡片更明显 */
+details{position:relative}
+details > summary{list-style:none;cursor:pointer;padding:14px 44px 14px 15px;border-radius:12px;
+  border:1px solid rgba(0,229,192,.28);
+  background:linear-gradient(180deg,rgba(0,229,192,.09),rgba(0,229,192,.03));
+  color:var(--text);font-weight:700;font-size:14px;line-height:1.6;position:relative;
+  transition:border-color .2s,background .2s}
+details > summary::-webkit-details-marker{display:none}
+details > summary::after{content:"";position:absolute;right:15px;top:50%;width:8px;height:8px;
+  border-right:2px solid var(--accent);border-bottom:2px solid var(--accent);
+  transform:translateY(-70%) rotate(45deg);transition:transform .25s}
+details[open] > summary::after{transform:translateY(-30%) rotate(-135deg)}
+details > summary:hover{border-color:rgba(0,229,192,.5)}
+details[open] > summary{border-color:rgba(0,229,192,.45);
+  background:linear-gradient(180deg,rgba(0,229,192,.14),rgba(0,229,192,.05))}
+details + details{margin-top:10px}
+</style>
+<style>
+.hl-warn{color:#FF6B57;font-weight:800;background:rgba(255,107,87,.12);
+  padding:1px 5px;border-radius:5px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+</style>
+<style>
+/* 第八屏：三条路径各自配一张图或一段视频 */
+#sTx .cards-path{display:flex;flex-direction:column;gap:12px}
+#sTx .cards-path .card{width:100%}
+.pathfig{margin:14px 0 2px;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#0A0F14}
+.pathfig img{display:block;width:100%;height:auto;max-height:360px;object-fit:cover;object-position:center}
+.pathfig figcaption{padding:9px 12px;font-size:11.5px;line-height:1.7;color:#8FA0AE;text-align:center}
+#sTx .card .svcblock{margin:14px 0 0}
+#sTx .card .svcblock > summary{margin-top:12px}
+#sTx .card details.dbody, #sTx .card .dbody{padding-top:10px}
+
+/* 折叠按钮与容器同宽 */
+details > summary{display:block;width:100%;box-sizing:border-box;margin-left:0;margin-right:0}
+
+/* OSTA 男性提示：唯一一条，标红 */
+.osta-hint{color:#FF6B57;font-weight:700;font-size:12.5px;line-height:1.7}
+.osta.disabled{opacity:.72}
+</style>
+<style>
+#sTx .card .svcblock .dbody{padding:10px 0 2px}
+#sTx .card .svcblock .pathfig{margin:0}
+#sTx .card .svcblock .pathfig img{max-height:320px}
+</style>
+<style>
+#sTx .card .svcblock > summary::after,
+#sTx .card .svcblock > summary:hover::after{
+  content:"\2039"!important;         /* ‹ 旋转变向下 */
+  position:absolute!important;right:15px!important;top:50%!important;
+  width:auto!important;height:auto!important;margin:-12px 0 0 0!important;
+  border:0!important;background:none!important;
+  font-size:20px!important;line-height:1!important;color:var(--accent)!important;
+  transform:rotate(-90deg)!important;
+}
+#sTx .card .svcblock[open] > summary::after{
+  content:"\2039"!important;
+  transform:rotate(90deg)!important;
+}
+</style>
+<style>
+/* 第八屏：三张折叠卡完全同款 */
+#sTx .fold{
+  margin:14px 0 0;border:1px solid rgba(0,229,192,.52);border-radius:13px;
+  background:linear-gradient(180deg,rgba(0,229,192,.26),rgba(0,229,192,.10));
+  box-shadow:0 2px 10px rgba(0,229,192,.10);
+  overflow:hidden;
+}
+#sTx .fold > summary{
+  list-style:none;cursor:pointer;position:relative;display:block;
+  margin:0;padding:13px 42px 13px 15px;
+  font-size:13.5px;font-weight:700;line-height:1.55;color:#F2FFFC;
+  border:0;background:none;
+}
+#sTx .fold > summary::-webkit-details-marker{display:none}
+#sTx .fold > summary::after{
+  content:"\2039";position:absolute;right:14px;top:50%;margin-top:-11px;
+  width:auto;height:auto;border:0;background:none;
+  font-size:21px;line-height:1;color:#63FFE0;transform:rotate(-90deg);
+}
+#sTx .fold[open] > summary::after{transform:rotate(90deg)}
+#sTx .fold > .dbody{padding:4px 12px 10px;background:none}
+#sTx .fold .pathfig{margin:0;border:0;border-radius:10px;overflow:hidden}
+#sTx .fold .pathfig img{max-height:320px}
+
+/* 按钮再亮一档 */
+.svcbtn{color:#EAFFFA!important;border-color:rgba(0,229,192,.82)!important;
+  background:rgba(0,229,192,.26)!important;font-weight:700!important}
+.svcbtn:hover{background:rgba(0,229,192,.36)!important}
+</style>
+<style>
+/* 字号调节 */
+html{--fs:1}
+section{zoom:var(--fs)}
+.fsctl{position:fixed;left:14px;bottom:calc(72px + env(safe-area-inset-bottom));z-index:96;
+  display:flex;flex-direction:column-reverse;align-items:flex-start;gap:8px}
+.fsbtn{width:40px;height:40px;border-radius:50%;cursor:pointer;
+  border:1px solid rgba(0,229,192,.5);background:rgba(6,14,18,.92);color:#5CFFDD;
+  font-size:15px;font-weight:800;line-height:1;backdrop-filter:blur(6px)}
+.fsbtn:active{transform:scale(.96)}
+.fspanel{width:208px;padding:10px 12px 12px;border-radius:12px;
+  border:1px solid rgba(255,255,255,.2);background:rgba(8,16,21,.97);
+  box-shadow:0 10px 28px rgba(0,0,0,.55)}
+.fs-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:7px;
+  font-size:11.5px;color:#C3D0DC}
+.fs-row output{color:#5CFFDD;font-weight:700;font-size:12px}
+#fsRange{width:100%;height:18px;margin:0;accent-color:#00E5C0;background:transparent}
+.fs-hint{margin:7px 0 0;font-size:10.5px;line-height:1.5;color:#9AA9B7}
+@media (min-width:1024px){.fsctl{left:20px;bottom:20px}}
+
+/* 灰色文字整体提亮一档 */
+.vnote{color:#8E9CAA!important}
+.figrow .filmcap{color:#93A2B0!important}
+.me figcaption{color:#93A2B0!important}
+.docfig figcaption{color:#55636F!important}
+.rp-hint{color:#8F9EAC!important}
+.figrow .rline b{color:#8F9EAC!important}
+.seqnote{color:#8F9EAC!important}
+.svcnote{color:#8F9EAC!important}
+.extread li a i{color:#8494A4!important}
+.ov-st h4 i{color:#A7B8C8!important}
+.extread-hd{color:#A7B8C8!important}
+.ov-item em{color:#A7B8C8!important}
+.seqcap,.seqsub{color:#A6B4C1!important}
+footer p{color:#8494A4!important}
+.tag i{color:#A9B7C4!important}
+.jump-rail button{color:#8A97A4!important}
+</style>
+<style>
+/* 相片墙：只自动巡游，隐藏手动控件 */
+.gallery .wrail,.gallery .wthumb,.gallery .wbtn{display:none!important}
+.gallery-track{cursor:default!important;touch-action:auto!important}
+</style>
+<style>
+.exnote{margin-left:8px;font-style:normal;font-size:10.5px;letter-spacing:0;
+  color:#8494A4;font-weight:400;white-space:nowrap}
+@media (max-width:420px){.exnote{display:block;margin:4px 0 0;white-space:normal}}
+.srcnote{margin:14px 0 10px;padding:13px 15px;border-radius:12px;font-size:11.5px;line-height:1.85;
+  color:#A9B8C6;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.12)}
+.srcnote b{color:var(--text);font-weight:700}
+</style>
+<style>
+.ov-role,.ov-stage{margin:26px 0 22px}
+.ov-hd{font-size:17px;font-weight:700;color:#EAF0F5;margin:0 0 8px}
+.ov-sub{font-size:13.5px;line-height:1.78;color:#9FB0BF;margin:0 0 14px}
+.ov-sub b{color:#E9F1F7}
+.ov-grid{display:grid;gap:10px}
+.ov-item{position:relative;border:1px solid rgba(255,255,255,.09);border-radius:14px;
+  padding:13px 14px 14px;background:rgba(255,255,255,.03)}
+.ov-item b{font-size:15px;color:#EAF0F5}
+.ov-item span{display:inline-block;margin-left:8px;font-size:11px;padding:2px 7px;
+  border-radius:99px;background:rgba(0,229,192,.14);color:#00E5C0;vertical-align:middle}
+.ov-item em{display:block;font-style:normal;font-size:12px;color:#A7B8C8;margin:6px 0}
+.ov-item p{margin:0;font-size:13px;line-height:1.72;color:#B9C7D4}
+.ov-item.a{border-color:rgba(0,229,192,.34);background:rgba(0,229,192,.06)}
+.ov-tl{position:relative;margin:10px 0 0;padding-left:16px;border-left:1px solid rgba(255,255,255,.12)}
+.ov-st{position:relative;margin:0 0 20px}
+.ov-st::before{content:"";position:absolute;left:-21px;top:6px;width:9px;height:9px;
+  border-radius:50%;background:#00E5C0;box-shadow:0 0 0 3px rgba(0,229,192,.14)}
+.ov-st h4{margin:0;font-size:14.5px;color:#EAF0F5}
+.ov-st h4 i{font-style:normal;font-weight:400;color:#A7B8C8;font-size:12px;margin-left:8px}
+.ov-st .ok,.ov-st .no{margin:8px 0 0;font-size:13px;line-height:1.72}
+.ov-st .ok{color:#BFD0DD}
+.ov-st .no{color:#E9A6A6}
+.ov-st .ok b,.ov-st .no b{font-weight:700}
+#s11 .rv{opacity:1!important;transform:none!important}
+.ov-note{margin:16px 0 0;font-size:12px;line-height:1.7;color:#6F8496}
+</style>
+<style>
+/* ===== 站点外壳（桌面/手机两套版式） ===== */
+:root{ --sidenav:252px; }
+html{scroll-behavior:smooth}
+body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
+
+.sitehdr{position:sticky;top:0;z-index:70;display:flex;align-items:center;gap:18px;
+  height:56px;padding:0 20px;background:rgba(5,7,10,.9);
+  backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.sitehdr .lg{display:flex;align-items:center;gap:9px;text-decoration:none;color:var(--text)}
+.sitehdr .lg i{width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent)}
+.sitehdr .lg b{font-size:15px;font-weight:700;letter-spacing:.02em}
+.sitehdr .lg small{display:block;font-size:10px;color:var(--mute);font-weight:400;letter-spacing:.06em}
+.sitehdr nav{margin-left:auto;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+.sitehdr nav::-webkit-scrollbar{display:none}
+.sitehdr nav a{padding:7px 11px;border-radius:8px;font-size:13px;color:var(--mute);text-decoration:none;white-space:nowrap}
+.sitehdr nav a:hover{color:var(--text);background:rgba(255,255,255,.05)}
+.sitehdr nav a.on{color:var(--accent);background:rgba(0,229,192,.1)}
+.sitehdr .lg span{white-space:nowrap}
+.sitehdr .lg small{white-space:nowrap}
+.sitehdr nav a{position:relative}
+.sitehdr nav a::after{content:"";position:absolute;left:10px;right:10px;bottom:3px;height:2px;
+  border-radius:2px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .25s ease}
+.sitehdr nav a.cur{color:#EAF1F6}
+.sitehdr nav a.cur::after{transform:scaleX(1)}
+
+@media (max-width:430px){
+  .sitehdr{padding:0 10px;gap:6px}
+  .sitehdr .lg b{font-size:13px}
+  .sitehdr .lg small{font-size:8.5px;letter-spacing:.02em}
+  .sitehdr nav a{font-size:11px;padding:5px 5px}
+  .sitehdr nav a[href="#s1"].on{display:none}
+}
+
+@media (max-width:1023px){
+  .sitehdr .lg small{font-size:9px;letter-spacing:.04em}
+  .sitehdr .lg b{font-size:14px}
+  .sitehdr nav a{font-size:12px;padding:6px 7px}
+}
+
+
+/* 目录：桌面左侧固定，手机隐藏 */
+.toc{display:none}
+.toc .thd{font-size:11px;letter-spacing:.2em;color:var(--mute);margin:6px 0 12px}
+.toc a{display:flex;gap:9px;align-items:baseline;padding:7px 8px;border-radius:7px;
+  font-size:12.6px;line-height:1.5;color:#8B98A5;text-decoration:none}
+.toc a b{flex:none;width:20px;font-size:10.5px;font-weight:800;color:#4E5B67}
+.toc a i{flex:none;margin-left:auto;font-style:normal;font-size:10px;color:#3F7F73}
+.toc a:hover{background:rgba(255,255,255,.04);color:var(--text)}
+.toc a.on{background:rgba(0,229,192,.1);color:var(--text)}
+.toc a.on b{color:var(--accent)}
+
+/* 手机底部进度条沿用 H5 #bar */
+@media (max-width:1023px){
+  .sitehdr{height:52px;padding:0 14px}
+  .sitehdr nav a{font-size:12.5px;padding:6px 9px}
+}
+
+/* ===== 桌面版式 ===== */
+@media (min-width:1024px){
+  :root{ --max:780px }
+  body.fullpage{font-size:16.5px}
+  #jump{display:none!important}
+
+  .sitehdr{height:60px;padding:0 26px}
+  .sitehdr .lg b{font-size:16px}
+
+  .toc{display:block;position:fixed;left:0;top:60px;bottom:0;width:var(--sidenav);
+    overflow-y:auto;padding:20px 14px 40px;background:#070A0F;border-right:1px solid var(--line);
+    scrollbar-width:thin}
+  .toc::-webkit-scrollbar{width:6px}
+  .toc::-webkit-scrollbar-thumb{background:#1B2530;border-radius:3px}
+
+  .fullmain{margin-left:var(--sidenav)}
+  section{padding:72px 46px 84px}
+  .inner{padding:0 46px}
+
+  /* 多列排布 */
+  .cards{display:grid!important;grid-template-columns:repeat(auto-fit,minmax(228px,1fr));
+    gap:14px!important;margin-top:26px}
+  .acts{display:grid!important;grid-template-columns:repeat(3,1fr);gap:14px!important}
+  .act{border-top:0!important;border:1px solid var(--line);border-radius:12px;padding:15px!important;align-items:flex-start}
+  .stats{grid-template-columns:repeat(4,1fr)!important;gap:20px 16px!important}
+  .mq-list{display:grid!important;grid-template-columns:1fr 1fr;gap:12px!important}
+  .mq-item-none{grid-column:1/-1}
+  .extread ul{grid-template-columns:1fr 1fr!important;gap:10px!important}
+  .ai-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+  .fall{display:grid!important;grid-template-columns:1fr 1fr;gap:9px!important}
+  .hero3d{width:min(46vw,420px)!important}
+  .quote{font-size:17px!important}
+  .follow{max-width:720px}
+  section > .inner, section > .rv{max-width:var(--max);margin:0 auto}
+}
+
+/* 平板：单列但更宽 */
+@media (min-width:768px) and (max-width:1023px){
+  :root{ --max:680px }
+  .cards{display:grid!important;grid-template-columns:1fr 1fr;gap:13px!important}
+  .stats{grid-template-columns:repeat(4,1fr)!important}
+  .extread ul{grid-template-columns:1fr 1fr!important}
+}
+</style>
+</head>
+<body class="fullpage">
+<svg width="0" height="0" style="position:absolute;pointer-events:none" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="bone" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#1B2632"/><stop offset=".5" stop-color="#93A7B9"/><stop offset="1" stop-color="#1B2632"/>
+    </linearGradient>
+    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="3.2" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+</svg>
 <div id="bar"></div>
-<header>
-  <nav class="nav">
-    <a class="logo" href="index.html"><i></i><span>医心护骨<small>骨松全链条科普</small></span></a>
-    <ul>
-        <li><a href="index.html" class="on">首页</a></li>
-        <li><a href="ch1.html">疾病</a></li>
-        <li><a href="ch2.html">预防</a></li>
-        <li><a href="ch3.html">事件</a></li>
-        <li><a href="ch4.html">结局</a></li>
-        <li><a href="ch5.html">长期</a></li>
-        <li><a href="full.html">全篇</a></li>
-    </ul>
-    <a class="ghostbtn" href="ch1.html">开始阅读</a>
+<nav id="jump" aria-label="快速跳转"></nav>
+<header class="sitehdr">
+  <a class="lg" href="#s1"><i></i><span><b>医心护骨</b><small>骨松全链条科普</small></span></a>
+  <nav id="sitenav">
+    <a href="#s2"  data-from="2"  data-to="4">疾病</a>
+    <a href="#s3p" data-from="5"  data-to="7">预防</a>
+    <a href="#sTx" data-from="8"  data-to="8">治疗</a>
+    <a href="#sCase" data-from="9" data-to="12">事件</a>
+    <a href="#s7"  data-from="13" data-to="16">长期</a>
+    <a href="#s13" data-from="17" data-to="17">附录</a>
+    <a href="#s1" class="on" data-from="0" data-to="0">全篇</a>
   </nav>
 </header>
+<aside class="toc" id="toc" aria-label="目录"><div class="thd">目录 · 17 屏</div></aside>
+<main class="fullmain">
+<section id="s1">
+  <div class="inner">
+    <div class="hero3d" id="hero3d">
+      <video id="heroVid" muted playsinline loop autoplay preload="auto"
+             poster="assets/spine_hero/poster.jpg" width="640" height="960"
+             aria-label="正常腰椎 L1–L5 三维示意模型：五节椎体与四片椎间盘，保持原始解剖形态，未叠加病灶">
+        <source src="assets/spine_hero/turntable.mp4" type="video/mp4">
+      </video>
+      <img id="heroImg" class="hero-layer" alt="" hidden>
+      <span class="herotip">← 左右拖动，模型会跟着转 · 360° →</span>
+    </div>
+    <h1 class="title">从骨量流失，<br><span class="cut">到不再骨折。</span></h1>
+    <p class="hero-sub">从骨质疏松、脆性骨折，到不愈合与长期管理<br>一个被<b>“歇歇就好”</b>耽误的慢病</p>
+    <p class="hero-reader">写给两类人：想替父母做点事的子女，和想自己弄明白的长辈。</p>
+    <p class="hero-focus">聚焦 · <b>骨质疏松性椎体压缩骨折（OVCF）</b><span>最常见的脆性骨折，也是最容易被漏掉的一种</span></p>
+    <p class="hero-note">三维示意 · 基于开源解剖数据模拟</p>
+    <div class="hint"><i></i><span>向下 · <b id="secCount">17</b> 屏 · 约 7 分钟</span></div>
+  </div>
+</section>
+<section id="s2">
+  <div class="rv">
+    <div class="tag"><span>02 / 17</span><i>疾病</i></div>
+    
+    <h2>老龄化社会里，<br>它被叫作<em>“隐形杀手”</em></h2>
+    <p class="lead">骨质疏松早期几乎没有症状。等疼了、矮了、摔了，往往已经发生了骨折。它不是一个罕见并发症，而是一个正在加速的公共卫生负担。</p>
 
-<main>
-  <section class="hero">
-    <div>
-      <span class="eyebrow"><i></i>骨质疏松全链条科普</span>
-      <h1>从骨量流失，<em>到不再骨折。</em></h1>
-      <p class="lead">骨质疏松不是“老了就会这样”。它静默进展，一次骨折之后风险级联，
-        而<b>“歇歇就好”</b>往往耽误了最该管的几年。<br>
-        这一站，把<b>病、防、骨折、不愈合、长期管理</b>串成一条完整的链。</p>
-      <p class="hero-focus">聚焦 · <b>骨质疏松性椎体压缩骨折（OVCF）</b>　最常见的脆性骨折，也是最容易被漏掉的一种</p>
-      <div class="cta">
-        <a class="btn" href="ch1.html">开始阅读</a>
-        <a class="btn ghost" href="#chapters">章节地图</a>
+    <div class="stats">
+      <div class="stat"><div class="n" data-cnt="9000">0<small>万</small></div><div class="l">我国骨质疏松患者</div></div>
+      <div class="stat"><div class="n" data-cnt="51.6" data-dec="1">0<small>%</small></div><div class="l">65 岁以上女性患病率</div></div>
+      <div class="stat"><div class="n" data-cnt="3">0<small>秒</small></div><div class="l"><b style="color:#C9D4DE">全球</b>平均每 3 秒，就有 1 人发生骨质疏松性骨折</div></div>
+      <div class="stat"><div class="n" data-cnt="50">0<small>%</small></div><div class="l">接受<b style="color:#C9D4DE">非手术</b>治疗的骨质疏松性椎体压缩骨折<b style="color:#C9D4DE">患者</b>，4 年死亡率约</div></div>
+    </div>
+    <p class="ovcf">这些数字最终都落在椎体上：<b>约一半以上的骨质疏松性骨折发生在椎体</b>，而<b>只有约 20% 的椎体骨折患者去医院看过</b>——剩下的人，是在驼背、变矮、腰背痛里被“熬”过去的。</p>
+    <p class="vnote">骨质疏松性骨折的医疗费用与社会负担沉重，预计 2050 年将达 1630 亿元。“每 3 秒 1 人”为国际骨质疏松基金会（IOF）全球估算，非中国单独数据；“4 年死亡率约 50%”来自非手术治疗队列，并非所有椎体压缩骨折的自然史。</p>
+
+            <div class="local">
+      <div class="lhd">落到基层 · 我们团队在崂山做的事</div>
+      <p class="llead">骨质疏松查一次就能发现，却最容易被漏掉——患者约 9000 万，而基层普遍缺设备、缺队伍、缺经验。受崂山区卫生局委托，<b>我们团队联合崂山、王哥庄、沙子口、北宅 4 家基层卫生中心及所属近 50 家卫生室</b>，把“居家问卷初筛 → 社区 DXA → 三级医院定方案”的三级联动跑通，并在 50 余个卫生室开展义诊筛查。</p>
+      <div class="lr"><b>30000</b><span>名群众完成骨密度筛查</span></div>
+      <div class="lr"><b>3500</b><span>名骨质疏松患者纳入随访</span></div>
+      <div class="lr"><b>750</b><span>名极高危患者重点盯防</span></div>
+      <p class="vnote">11.7% 的检出率，说明基层还有多少没被查到的人；750 名极高危者，一次跌倒就可能骨折。这个模式 2023 年起被列为崂山区区办实事、2024 年列为区重点医养项目，区卫生局按每年 60 万元连续支持 5 年——全国首创的基层骨松筛查与干预项目，也是乡村振兴里最实在的健康底座。</p>
+    </div>
+
+    <div class="quote">
+      而大多数人，<br>是在骨折之后才知道。
+      <span>数据来源：公开临床资料与流行病学调查；崂山三项为项目累计工作数据，统计口径以公开资料核定为准。</span>
+    </div>
+
+      <div class="extread">
+      <div class="extread-hd">拓展阅读<b>公众号推文</b><i class="exnote">原创授权 · 名称与图片水印已脱敏</i></div>
+      <ul>
+        <li><a class="wxcard" href="assets/wx/view.html?i=06&back=../../index.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普丨骨质疏松是“沉默杀手”，不是老了才要管</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=01&back=../../index.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普 | 身高矮了、背驼了，不是“正常变老”</span></a></li>
+      </ul>
+    </div>
+
+      <p class="bridge">为什么叫慢病？因为它同时满足三条：无声、终身、会级联。</p>
+    </div>
+    </section>
+<section id="sSlow">
+  <div class="rv">
+    <div class="tag"><span>03 / 17</span><i>疾病</i></div>
+    
+    <h2>它为什么是<em>慢病</em></h2>
+    <p class="lead">骨质疏松的“慢”，不是“慢慢会好”，而是“一直在”。它有三个特征，决定了不能按“一次骨折”来处理。</p>
+
+    <div class="cards">
+      <div class="card"><span class="idx">01</span><h3>无声：全程没有感觉</h3><p>骨量每年流失 1%–2%，人没有任何不适。等到疼、矮、驼，往往已经发生过一次骨折——它不是“查出来的病”，常常是“摔出来的病”。</p></div>
+      <div class="card"><span class="idx">02</span><h3>终身：不是治几个月就停</h3><p>抗骨质疏松药能在用药期间把风险压下来，但停药后骨量会回落。它像高血压、糖尿病一样，需要长期管理，而不是“疗程结束”。</p></div>
+      <div class="card"><span class="idx">03</span><h3>级联：一次之后，下一次更近</h3><p>第一次椎体压缩骨折之后，<b>1 年内再发椎体压缩骨折的风险约 22%，2 年内约 32%</b>。这不是运气问题，是风险窗口被打开了。</p></div>
+    </div>
+
+    <p class="vnote">这三条合起来，才是“慢病”的完整含义：没有症状、需要长期治、并且会复发。下一屏从最基础的问题讲起——骨头究竟是怎么变空的。</p>
+
+      <div class="extread">
+      <div class="extread-hd">拓展阅读<b>公众号推文</b><i class="exnote">原创授权 · 名称与图片水印已脱敏</i></div>
+      <ul>
+        <li><a class="wxcard" href="assets/wx/view.html?i=03&back=../../index.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普丨骨折接好了，病还没好：骨质疏松得按“慢病”管，不能“治一阵子”</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=21&back=../../index.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普丨一边补钙，一边“拆骨”：你的身体到底在经历什么？</span></a></li>
+      </ul>
+    </div>
+
+      <p class="bridge">慢病的底层，是骨量在悄悄流失。下一屏，看骨头是怎么变空的。</p>
+    </div>
+    </section>
+<section id="s3a">
+  <div class="rv">
+    <div class="tag"><span>04 / 17</span><i>疾病</i></div>
+    
+    <h2>骨头是怎么<em>变脆</em>的</h2>
+    <p class="lead">骨质疏松不是“骨头变软”，是骨头<b>变空</b>——承重的“钢筋网”一根根断掉，断了就补不回来。</p>
+
+    <figure class="photo">
+      <img src="assets/trabeculae.jpg" alt="AI 辅助生成的椎体剖面示意图：右上圆窗为正常骨（骨小梁致密），右下圆窗为骨质疏松（骨小梁稀疏、断裂、孔隙变大）" loading="lazy">
+      <figcaption>AI 辅助生成的椎体剖面示意 · 右上：正常骨 ／ 右下：骨质疏松（示意，非真实影像）</figcaption>
+    </figure>
+
+    <p class="vnote"><b>骨小梁是什么？</b>骨头里面并不是实心的：椎体这类骨头内部是海绵状的交错支架，一根根骨板和骨柱就叫<b>骨小梁</b>——它负责承重，也是全身代谢最活跃的骨组织。上窗是正常骨：骨小梁粗壮、网眼细密，力能一层层传下去；下窗是骨质疏松：骨小梁变细、断裂，孔隙越来越大，结构已经塌了。所以骨量减少不只是变少，更是<b>塌了</b>。</p>
+
+    <div class="cards">
+      <div class="card"><span class="idx">01</span><h3>骨小梁，一根根断</h3><p>椎体内部像海绵，由纵横交错的骨小梁支撑。30 岁以后骨吸收快过骨形成，骨小梁变细、断裂，断掉的那一根不会重新连上。</p></div>
+      <div class="card"><span class="idx">02</span><h3>微损伤越积越多</h3><p>日常活动会在骨小梁上留下微小裂纹，健康骨骼随时修复。骨质疏松时修复跟不上，微裂纹累积，骨头在“结构”上先塌了。</p></div>
+      <div class="card"><span class="idx">03</span><h3>从“硬”变成“脆”</h3><p>骨量减少、结构破坏，骨头能承受的力直线下降。别人摔一跤没事，你可能只是弯腰搬桶水、咳嗽一声，椎体就压塌了。</p></div>
+    </div>
+
+    <p class="vnote">所以它可怕的地方不在“疼”，而在“静默”：骨量在没有任何感觉的情况下持续流失，第一次“被发现”往往就是骨折。</p>
+
+      <div class="extread">
+      <div class="extread-hd">拓展阅读<b>公众号推文</b><i class="exnote">原创授权 · 名称与图片水印已脱敏</i></div>
+      <ul>
+        <li><a class="wxcard" href="assets/wx/view.html?i=25&back=../../index.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普丨指挥你骨骼拆建的，竟是你从未听过的“它”？</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=18&back=../../index.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">补钙总是收效甚微？你可能忽略了骨骼的“引路人”——维生素K2</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=21&back=../../index.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普丨一边补钙，一边“拆骨”：你的身体到底在经历什么？</span></a></li>
+      </ul>
+    </div>
+
+      <p class="bridge">知道了它怎么变脆，接下来回答一个更实际的问题：还没骨折的人，现在能做什么。</p>
+    </div>
+    </section>
+<section id="s3p">
+  <div class="rv">
+    <div class="tag"><span>05 / 17</span><i>预防</i></div>
+    
+    <h2>还没骨折，<br>现在能<em>做什么</em></h2>
+    <p class="lead">一级预防的目标只有一个：把第一次骨折往后推，最好推到最后都没发生。下面三件事，性价比最高。</p>
+
+    <div class="cards">
+      <div class="card"><span class="idx">01</span><h3>负重与抗阻：让骨头“受力”</h3><p>每周约 150 分钟中等强度负重运动（快走、慢跑、爬楼梯），配合每周 2–3 次抗阻训练。骨头是“用进废退”的器官，只有受力才会被提醒去重建。平衡训练（太极拳等）对减少跌倒同样有明确价值。</p></div>
+      <div class="card"><span class="idx">02</span><h3>营养：钙、维生素 D、蛋白质</h3><p>钙与维生素 D 是基础；蛋白质尤其重要——肌少症和骨质疏松常常同时存在，肌肉少了，跌倒和骨折的风险一起上来（一般建议 1.0–1.5 g/kg/天，需按营养状态个体化）。</p></div>
+      <div class="card"><span class="idx">03</span><h3>环境：把家改成“不容易摔”</h3><p>清掉地面杂物和电线、卫生间加扶手与防滑垫、夜里留一盏小灯、把常走的路走顺。花费很小，但在还没骨折的阶段做，收益远大于骨折之后再补救。</p></div>
+    </div>
+
+    <p class="vnote">这一屏讲的是<b>还没有骨折的人</b>。已经骨折过的，重点会变成防止第二次骨折——下面三件事仍然成立，只是优先级要重排。</p>
+
+      <div class="extread">
+      <div class="extread-hd">拓展阅读<b>公众号推文</b><i class="exnote">原创授权 · 名称与图片水印已脱敏</i></div>
+      <ul>
+        <li><a class="wxcard" href="assets/wx/view.html?i=15&back=../../index.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普丨家中骨折三杀手，半数老人中招！</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=28&back=../../index.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普丨老年人预防骨折：日常干预指南</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=22&back=../../index.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普丨别只盯着骨头！想要不骨折肌肉同样重要！！</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=14&back=../../index.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普丨春季补钙全攻略：选对钙剂，不花冤枉钱</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=30&back=../../index.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普丨每天运动，骨头反而变脆了？</span></a></li>
+      </ul>
+    </div>
+
+      <p class="bridge">预防之外，还得认识最隐蔽的那一种骨折——它常常没有外伤。</p>
+    </div>
+    </section>
+<section id="s3b">
+  <div class="rv">
+    <div class="tag"><span>06 / 17</span><i>预防</i></div>
+    
+    <h2>一次跌倒，<br>塌的可能<em>不只是一块骨头</em></h2>
+    <p class="lead">脆性骨折有三个高发部位，后果完全不同——而最隐蔽的那个，恰恰在脊柱。</p>
+
+    <figure class="bodyfig">
+          <img src="assets/skeleton.jpg" alt="AI 生成的全身骨骼示意图，标注三处脆性骨折高发部位：椎体、髋部、腕部" loading="lazy">
+          <div class="mark" style="left:50.8%;top:36%"><i></i><span class="lb"><b>椎体</b><em>最隐蔽</em></span></div>
+          <div class="mark l" style="left:45.2%;top:47.2%"><i></i><span class="lb"><b>髋部</b><em>最凶险</em></span></div>
+          <div class="mark l" style="left:34.6%;top:52.4%"><i></i><span class="lb"><b>腕部</b><em>最早前哨</em></span></div>
+          <figcaption>AI 生成的全身骨骼示意图 · 三处脆性骨折高发部位（示意，非真实影像）</figcaption>
+        </figure>
+
+    <div class="cards">
+      <div class="card"><span class="idx">01</span><h3>椎体 · 最隐蔽</h3><p>可能没有明显外伤，只是腰背痛了几天，翻身、起床时更明显；也可能只是身高悄悄少了 3 厘米、背越来越驼、衣服突然变长。因为没有“摔断”的画面，很多人因此错过了第一次就诊。</p></div>
+      <div class="card"><span class="idx">02</span><h3>髋部 · 最凶险</h3><p>骨折后一年内死亡率约 20–30%，即使手术成功，相当一部分人也回不到骨折前的行走能力。</p></div>
+      <div class="card"><span class="idx">03</span><h3>腕部 · 最早的前哨</h3><p>常发生在 50–60 岁，一次撑地就断。它本身不致命，但提示骨量已经在报警——后续椎体、髋部骨折的风险随之升高。</p></div>
+    </div>
+
+<p class="vnote">口径说明：髋部骨折后 1 年死亡率在不同队列为 15%–30%，与年龄、基础病、是否及时手术相关；这里取常见综述区间，不代表任何单一中心数据。</p>
+
+    <p class="vnote">这些信号单看都不像“骨折”——所以“有没有”这件事，别靠感觉判断。下一屏的 10 个问题，就是把这类情况逐条问一遍；先答题，再看后面的解释，结果会更准。</p>
+
+      <div class="extread">
+      <div class="extread-hd">拓展阅读<b>公众号推文</b><i class="exnote">原创授权 · 名称与图片水印已脱敏</i></div>
+      <ul>
+        <li><a class="wxcard" href="assets/wx/view.html?i=13&back=../../index.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普丨手腕最常见的骨折——Colles骨折</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=26&back=../../index.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普丨滑雪热背后的“骨科冷思考” ——从雪道到街头的冬季骨骼保护指南</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=19&back=../../index.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普丨老人骨折后别大意！这些并发症与注意事项要点一定要记牢</span></a></li>
+      </ul>
+    </div>
+
+      <p class="bridge">下面这 10 个问题，可以自己答，也可以替家里长辈答——1 分钟，给骨折风险打个分。</p>
+    </div>
+    </section>
+<section id="sQuiz">
+  <div class="rv">
+    <div class="tag"><span>07 / 17</span><i>预防</i></div>
+<h2>花 1 分钟，<br>算一次<em>骨折风险</em></h2>
+<p class="lead">10 个问题，替家里长辈答或给自己答都可以。答完给一个建议，判定规则见页面底部的折叠块。</p>
+<div class="sexpick" id="sexPick">
+      <span>受测者：</span>
+      <button type="button" data-sex="f" class="on">女士</button>
+      <button type="button" data-sex="m">男士</button>
+    </div>
+    <div class="quiz" id="quiz">
+      <div class="qgroup">基本情况与既往病史</div>
+      <div class="q" data-q data-flag="1"><p>连续 3 个月以上口服泼尼松（或等效激素）≥ 5 mg/天？</p><div class="yn"><button data-v="1">是</button><button data-v="0">否</button></div></div>
+      <div class="q" data-q data-flag="1"><p>身高比年轻时矮了 3 厘米以上，或背越来越驼？</p><div class="yn"><button data-v="1">是</button><button data-v="0">否</button></div></div>
+      <div class="q" data-q data-flag="1"><p>有过一次“轻轻一跌或一碰”就骨折（腕部、髋部或椎体）？</p><div class="yn"><button data-v="1">是</button><button data-v="0">否</button></div></div>
+      <div class="q" data-q data-flag="1"><p>腰背痛持续 3 个月以上，休息也不缓解？</p><div class="yn"><button data-v="1">是</button><button data-v="0">否</button></div></div>
+      <div class="qgroup">其他危险因素</div>
+      <div class="q" data-q><p><span class="qf">已绝经（包括 45 岁前早绝经、双侧卵巢切除）？</span><span class="qm">年龄 ≥ 70 岁？</span></p><div class="yn"><button data-v="1">是</button><button data-v="0">否</button></div></div>
+      <div class="q" data-q><p>体重偏轻（BMI &lt; 19），或近一年明显消瘦？</p><div class="yn"><button data-v="1">是</button><button data-v="0">否</button></div></div>
+      <div class="q" data-q><p>受测者的<b>父母</b>有髋部骨折或骨质疏松病史？</p><div class="yn"><button data-v="1">是</button><button data-v="0">否</button></div></div>
+      <div class="q" data-q><p>长期吸烟、每天饮酒 ≥ 2 两，或有甲亢 / 甲旁亢 / 类风湿 / 糖尿病 / 慢性肾病？</p><div class="yn"><button data-v="1">是</button><button data-v="0">否</button></div></div>
+      <div class="q" data-q><p>几乎不晒太阳、很少运动，或长期吃质子泵抑制剂（胃药）？</p><div class="yn"><button data-v="1">是</button><button data-v="0">否</button></div></div>
+      <div class="q" data-q><p>近一年跌倒过，或走路变慢、开始怕摔？</p><div class="yn"><button data-v="1">是</button><button data-v="0">否</button></div></div>
+    </div>
+
+    <p class="qprog" id="qprog">已答 <b>0</b> / 10 题</p>
+
+    <div id="res">
+      <p class="hit" id="hit"></p>
+      <div class="lv" id="lv"></div>
+      <h3 id="rt"></h3>
+      <p id="rd"></p>
+      <p class="res-note">如有 <b>45 岁前早绝经</b>或<b>双侧卵巢切除</b>，风险高于同龄人——这类情况建议比同龄人更早做一次骨密度筛查。</p>
+    </div>
+
+        <div class="osta" id="osta">
+      <div class="osta-hd">只记得一件事：OSTA 速算</div>
+      <p class="osta-sub">亚洲绝经后女性筛查研究的经验公式，只需年龄和体重两项：<b>指数 =（体重 kg − 年龄）× 0.2</b>，切点 −1 与 −4。仅适用于绝经后女性；男性请直接参考上方自测结果。</p>
+      <div class="osta-row">
+        <label>年龄<input id="ostaAge" type="number" inputmode="numeric" min="40" max="110" placeholder="65"><span>岁</span></label>
+        <label>体重<input id="ostaWt" type="number" inputmode="decimal" min="25" max="160" placeholder="55"><span>kg</span></label>
+        <button id="ostaBtn" type="button">算一下</button>
+      </div>
+      <p class="osta-hint" id="ostaHint" hidden></p>
+      <p class="osta-why">为什么是“体重减年龄”：体重轻和年龄大，是骨量下降最硬的两个信号。公式里 5 公斤体重差不多抵 5 岁年龄——<b>体重每比同龄人轻 5 公斤，风险约等于老了 5 岁</b>。两个不利条件同时叠加，指数就越往负走。</p>
+      <p class="osta-res" id="ostaRes">填两个数字，立刻给出指数与建议。</p>
+    </div>
+
+    <p class="osta-note">如与上方自测结果不一致，<b>以上方自测和医生评估为准</b>——OSTA 只看年龄和体重，不包含红旗信号。</p>
+
+<details class="sheet">
+      <summary>自查信号速查卡（点开）</summary>
+      <div class="sheet-grp">
+        <b>① 可能已经发生了椎体骨折</b>
+        <ul>
+          <li>身高比年轻时矮了 3 厘米以上，或一两年内明显变矮</li>
+          <li>背越来越驼，或衣服突然变长</li>
+          <li>轻轻一跌、平地一坐就骨折</li>
+          <li>突发腰背痛，翻身、起床时更明显</li>
+        </ul>
+      </div>
+      <div class="sheet-grp">
+        <b>② 骨折可能没长好（不愈合）</b>
+        <ul>
+          <li>疼痛超过 3 个月还没缓解，或好了又疼回来</li>
+          <li>起身、翻身、久坐后站起时更痛，躺下能减轻</li>
+          <li>身高继续下降、后凸加重，或同一节段反复塌陷</li>
+          <li>影像上看到椎体内裂隙征（IVC）</li>
+        </ul>
+      </div>
+      <div class="sheet-grp">
+        <b>③ 该做一次骨密度检查</b>
+        <ul>
+          <li>女性 ≥ 65 岁，或男性 ≥ 70 岁</li>
+          <li>45 岁前早绝经，或做过双侧卵巢切除</li>
+          <li>长期口服激素（泼尼松 ≥ 5 mg/天，超过 3 个月）</li>
+          <li>父母有髋部骨折，或确诊骨质疏松</li>
+          <li>低体重、吸烟饮酒、慢性病、少晒太阳、近一年跌倒</li>
+        </ul>
+      </div>
+      <p class="sheet-note">速查卡只作提示，判定以上方自测结果与医生评估为准。</p>
+    </details>
+
+        <details class="rules"><summary>自测的判定规则与依据（点开查看）</summary>
+      <p>规则是怎么定的：红旗项采用“任一条为是即提示需要评估”的思路，与 IOF 骨质疏松一分钟测试（任一题“是”即阳性、建议查骨密度）一致；其他危险因素 ≥ 3 条只是“值得尽早建基线”的保守切点，<b>不是经过队列校准的评分</b>。本页不计算 FRAX 的 10 年骨折概率（需要年龄、体重身高、地区队列等连续变量），另外单独给出 OSTA 指数（体重−年龄）×0.2 作为极简参考，它源自亚洲绝经后女性筛查研究，只用于初筛提示、不是骨折概率。最终诊断与用药决策需 DXA 骨密度与医生评估。</p>
+    </details>
+
+      <div class="extread">
+      <div class="extread-hd">拓展阅读<b>公众号推文</b><i class="exnote">原创授权 · 名称与图片水印已脱敏</i></div>
+      <ul>
+        <li><a class="wxcard" href="assets/wx/view.html?i=15&back=../../index.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普丨家中骨折三杀手，半数老人中招！</span></a></li>
+      </ul>
+    </div>
+
+      <p class="bridge">如果自测提示风险，或者已经骨折过——看看这位患者的四个月。</p>
+    </div>
+    </section>
+<section id="sTx">
+  <div class="rv">
+    <div class="tag"><span>08 / 17</span><i>治疗</i></div>
+
+    <h2>刚骨折，<br>先要做一个<em>选择</em></h2>
+    <p class="lead">椎体压缩骨折之后，不是“躺着等它长好”一条路。分岔点看三件事：<b>疼到什么程度、椎体塌了多少、还在继续塌吗</b>。</p>
+
+    <div class="cards cards-path">
+      <div class="card">
+        <span class="idx">01</span><h3>保守治疗</h3>
+        <p>支具保护 + 镇痛 + <b>尽早离床</b>。适合压缩程度轻、疼痛可控、没有进行性塌陷的人。卧床时间越短越好——长期卧床带来的肌肉萎缩与骨量流失，代价往往比骨折本身更大。</p>
+        <details class="fold">
+          <summary>保守治疗的工具：胸腰骶支具（点开看示意）</summary>
+          <div class="dbody">
+            <figure class="pathfig">
+              <img src="assets/brace.jpg" alt="胸腰骶支具（外固定）示意：白色可调式硬质支具，肩带与腰部绑带固定，用于下床活动时限制脊柱屈伸" loading="lazy">
+              <figcaption>下床时佩戴，卧床时取下（示意，具体佩戴时间由医生定）</figcaption>
+            </figure>
+          </div>
+        </details>
+      </div>
+
+      <div class="card">
+        <span class="idx">02</span><h3>微创强化 · PVP / PKP</h3>
+        <p>往椎体里注入骨水泥。适合<b>疼痛剧烈、又不耐受长期卧床</b>的高龄患者，通常在伤后数周内完成。它快速止痛、让人早离床，但<b>不治疗骨质疏松本身</b>。</p>
+<details class="fold" id="svcDetails">
+      <summary>一针骨水泥，能把塌掉的椎体撑起来吗（44″）</summary>
+      <div class="dbody">
+        <div class="svchd">
+          <span class="svceyebrow">胸腰段 · T12</span>
+          <span class="svcmeta">PKP 示意 · 44″</span>
+        </div>
+
+        <div class="svcfilm" id="svcFilm">
+          <video id="svcVid" muted playsinline preload="metadata"
+                 poster="assets/pvp_poster.jpg"
+                 aria-label="透视下的椎体后凸成形术：整段脊柱推近至塌陷椎体，套管经椎弓根进入，未充气球囊送入后撑开、部分恢复椎体高度并留下空腔，骨水泥注入空腔后固化">
+            <source src="assets/pvp.mp4" type="video/mp4">
+          </video>
+          <button class="svcplay" id="svcPlay" type="button" aria-label="播放动画">
+            <span class="tri"></span>
+            <span>播放 · 44″</span>
+          </button>
+        </div>
+
+        <div class="svccaps">
+          <p class="svccap" id="c1">胸腰段五节椎体，中间那节是 <em>T12</em>。</p>
+          <p class="svccap" id="c2"><em>T12</em> 压缩骨折：椎体被压扁，内部<b>可能</b>形成裂隙。</p>
+          <p class="svccap" id="c3">经椎弓根穿刺，工作套管进入椎体中后 1/3。</p>
+          <p class="svccap" id="c4">沿套管送入一个<b>未充气</b>的球囊。</p>
+          <p class="svccap" id="c5">球囊充气：顶起终板，椎体高度<b>部分</b>恢复。</p>
+          <p class="svccap" id="c6">撤出球囊，椎体内留下一个空腔。</p>
+          <p class="svccap" id="c7">换骨水泥输送管，对准空腔。</p>
+          <p class="svccap" id="c8">拉丝期骨水泥低量、低压缓注：少量即可撑起空腔。</p>
+          <p class="svccap" id="c9">最常见并发症是<b>骨水泥渗漏</b>；它不治疗骨质疏松本身，<em>药物仍是底座</em>。</p>
+        </div>
+
+        <div class="svcbar"><i id="svcBar"></i></div>
+        <div class="svcfoot">
+          <button class="svcbtn" id="svcBtn" type="button">重播</button>
+          <button class="svcbtn" id="svcTts" type="button" aria-pressed="false">朗读字幕</button>
+          <span class="svcnote">
+            <span class="ln"><b>说明</b><i>三维示意，非真实病例影像；模型形态、比例与操作细节均有简化，<b>并非完全拟真，仅起示意作用</b>。</i></span>
+            <span class="ln"><b>怎么选</b><i>PKP（球囊撑开）能部分恢复椎体高度与后凸角，影像学渗漏报道约 18%–30%；PVP 直接注入、操作更快，渗漏报道约 40%–55%，多数无临床症状。</i></span>
+            <span class="ln"><b>谁决定</b><i>具体方案由医生按骨折情况决定。</i></span>
+          </span>
+        </div>
+      </div>
+    </details>
+      </div>
+
+      <div class="card">
+        <span class="idx">03</span><h3>开放手术 · 少数人</h3>
+        <p>做的是<b>减压 + 复位 + 固定 + 融合</b>：后路切开，去掉压迫神经的骨块，用椎弓根螺钉把骨折椎体上下固定，再植骨让它长成一体；后凸明显时先撑开复位，骨质量太差还会加骨水泥强化螺钉。适用于<b>进行性后凸、椎体不稳、神经受压</b>，创伤和出血都明显大于微创，需要专科评估指征，不是常规选项。</p>
+        <details class="fold">
+          <summary>开放手术的影像：椎弓根螺钉 + 连接棒（点开看 X 光片）</summary>
+          <div class="dbody">
+            <figure class="pathfig">
+              <img src="assets/open_surgery.jpg" alt="腰椎侧位 X 线：五枚椎弓根螺钉与两根连接棒固定于骨折椎体上下节段，可见减压后骨性结构缺损" loading="lazy">
+              <figcaption>术后侧位 X 线，已去除标识信息，仅作示意</figcaption>
+            </figure>
+          </div>
+        </details>
       </div>
     </div>
-    <figure class="stage">
-      <video src="assets/hero.mp4" poster="assets/hero_poster.jpg" autoplay muted loop playsinline
-             preload="metadata" aria-label="正常腰椎 L1–L5 三维示意，缓慢旋转"></video>
-      <span class="badge">三维示意 · 非真实病例</span>
-      <span class="cap">正常腰椎 L1–L5 · 五节椎体与四片椎间盘</span>
-    </figure>
-  </section>
 
-  <div class="stats">
-    <div class="stat"><div class="n">9000<small>万</small></div><div class="l">我国骨质疏松患者</div></div>
+    <div class="path">
+      <div class="path-hd">医生通常会看这四项</div>
+      <div class="step"><span class="num">·</span><div class="txt"><b>疼痛强度</b><span>能不能翻身、起床，还是只能躺着不动</span></div></div>
+      <div class="step"><span class="num">·</span><div class="txt"><b>塌了多少</b><span>椎体高度丢失程度与后凸角</span></div></div>
+      <div class="step"><span class="num">·</span><div class="txt"><b>新不新</b><span>MRI 上看有没有水肿／液体信号，判断是不是新鲜骨折</span></div></div>
+      <div class="step"><span class="num">·</span><div class="txt"><b>底子如何</b><span>骨质量、基础病与能不能耐受卧床</span></div></div>
+    </div>
 
-    <div class="stat"><div class="n">51.6<small>%</small></div><div class="l">65 岁以上女性患病率</div></div>
-    <div class="stat"><div class="n">3<small>秒</small></div><div class="l">全球平均每 3 秒 1 例骨质疏松性骨折</div></div>
-    <div class="stat"><div class="n">50<small>%</small></div><div class="l">非手术治疗的脊柱骨折 4 年死亡率</div></div>
+
+        <div class="quote">
+      手术解决的是这一次，<br>药物决定的是<em>下一次</em>。
+    </div>
+
+    <p class="vnote">三条路都只是处理“已经塌掉的这一节”。无论选哪条，<b>抗骨质疏松药物治疗都要同时开始</b>——不启动规范治疗，下一次骨折只是时间问题。</p>
+
+    <p class="bridge">下面这位患者，当时选的就是微创——术后当天疼痛明显缓解。但四个月后，他回来了。</p>
+
+    <div class="extread">
+      <div class="extread-hd">拓展阅读<b>公众号推文</b><i class="exnote">原创授权 · 名称与图片水印已脱敏</i></div>
+      <ul>
+        <li><a class="wxcard" href="assets/wx/view.html?i=03&back=../../index.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普丨骨折接好了，病还没好：骨质疏松得按“慢病”管，不能“治一阵子”</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=19&back=../../index.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普丨老人骨折后别大意！这些并发症与注意事项要点一定要记牢</span></a></li>
+      </ul>
+    </div>
   </div>
-  <p class="ovcf">这些数字最终都落在椎体上：<b>约一半以上的骨质疏松性骨折发生在椎体</b>，而<b>只有约 20% 的椎体骨折患者去医院看过</b>——剩下的人，是在驼背、变矮、腰背痛里被“熬”过去的。</p>
+</section>
+<section id="sCase">
+  <div class="rv">
+    <div class="tag"><span>09 / 17</span><i>事件</i></div>
+    <h2>第一次手术后<em>四个月</em>，<br>他又回来了</h2>
+    <p class="lead">一位做了椎体成形术的患者。术后即刻，疼痛明显缓解——<strong>当时都以为治好了</strong>。</p>
+
+    <div class="tl">
+      <div class="node"><div class="when">第一次</div><div class="what">轻微外力后腰背痛</div><div class="note">影像提示椎体压缩性骨折，随后行椎体成形术（骨水泥注入）</div></div>
+      <div class="node"><div class="when">术后即刻</div><div class="what">疼痛明显缓解</div><div class="note">患者和家属都认为“问题解决了”</div></div>
+      <div class="node hot"><div class="when">术后 4 个月</div><div class="what">疼痛再次出现</div><div class="note">胸腰椎后凸、椎旁压痛，屈伸活动受限</div></div>
+      <div class="node"><div class="when">复查</div><div class="what">骨水泥位置改变</div><div class="note">影像见骨水泥移位——这通常不是孤立并发症，而是椎体内不愈合的表现</div></div>
+    </div>
+
+    <div class="cement">
+      <div class="cement-hd">骨水泥移位，不是手术“做坏了”</div>
+      <p>骨水泥注入椎体后本该与周围骨组织牢固结合、共同承重。<b>一旦移位，说明这个“结合”失败了</b>——它既是不愈合的影像信号，也是不愈合的直接结果。</p>
+      <p>在不愈合的椎体里，中间是一条由坏死骨与纤维组织构成的裂隙（IVC，即假关节）；裂隙内壁是纤维瘢痕与硬化骨，骨水泥渗不进去，只能“填”在那里，无法与周围骨小梁形成真正的机械锁扣。人一站一走，负荷就压在这团悬空的骨水泥上，松动、下沉、移位随之发生。</p>
+      <p class="cement-k">所以要解决的，从来不是那团骨水泥，而是它下面那个没长好的椎体。</p>
+    </div>
+
+    <div class="pivot">
+      疼痛缓解是手术带来的。<br>但骨质疏松本身，没有因为一次手术而被治疗。
+    </div>
+
+    <div class="quote">
+      当时以为治好了。<br>其实只是，不疼了。
+      <span>病例资料已脱敏处理，仅用于健康科普。</span>
+    </div>
 
 
-  <section class="block" id="chapters">
-    <div class="hd">
-      <h2>五个章节，<em>一条链</em></h2>
-      <p>从上游的骨量流失，到事件、结局与长期管理——每一章可单独读，也可以顺着读。</p>
-    </div>
-    <div class="chapters">
-        <a class="ch" href="ch1.html"><span class="no">01</span><span class="k">病</span><h3>它为什么是慢病</h3><p>无声、终身、会级联——先把“慢病”说清楚。</p></a>
-        <a class="ch" href="ch2.html"><span class="no">02</span><span class="k">防</span><h3>还没骨折，能做什么</h3><p>负重与抗阻、营养、居家防跌倒，以及 1 分钟自测。</p></a>
-        <a class="ch" href="ch3.html"><span class="no">03</span><span class="k">事件</span><h3>一次跌倒，塌的不只是骨头</h3><p>椎体、髋部、腕部；病例四个月后又回来了。</p></a>
-        <a class="ch" href="ch4.html"><span class="no">04</span><span class="k">结局</span><h3>那条缝，为什么长不好</h3><p>机制、影像、治疗选择：不愈合的那 10–13%。</p></a>
-        <a class="ch" href="ch5.html"><span class="no">05</span><span class="k">长期</span><h3>把风险管到底</h3><p>药为什么不能停、怎么动、谁来随访。</p></a>
-    </div>
-  </section>
+    <p class="lead">第一次椎体压缩骨折之后，<b>1 年内再发生一次椎体压缩骨折的风险约 22%，2 年内约 32%</b>。而同样是椎体压缩骨折，半年后的走向也可以完全不同——区别在于断端稳不稳、血供够不够、骨头还撑不撑得住。</p>
 
-  <section class="block">
-    <div class="hd">
-      <h2>从哪里<em>开始</em></h2>
-      <p>如果时间有限：先看第 02 章的 1 分钟自测，再回来看第 04 章的那条缝。</p>
+    <div class="cards">
+      <div class="card"><span class="idx">多数</span><h3>6–12 周，疼痛缓解</h3><p>规范保守治疗下，多数人疼痛在数周内明显减轻，影像上约 3 个月见到骨愈合。这一类人不需要手术。</p></div>
+      <div class="card"><span class="idx">少数</span><h3>10–13%，一直不愈合</h3><p>断端持续不稳、血供差，椎体内形成裂隙，即椎体内裂隙征（IVC），椎体越塌越扁。这就是下一屏要讲的 Kümmell 病。</p></div>
     </div>
-    <div class="cards" style="margin-top:22px">
-      <div class="card"><span class="idx">给家属</span><h3>1 分钟自测</h3><p>10 个问题，判断家里长辈（或你自己）属于哪一档风险，以及下一步该做什么。</p></div>
-      <div class="card"><span class="idx">给患者</span><h3>影像上的那条缝</h3><p>T1WI / T2WI / T2WI 压脂三联对照：为什么“看到高信号”不等于确诊。</p></div>
-      <div class="card"><span class="idx">给基层</span><h3>三级联动路径</h3><p>居家问卷 → 社区 DXA → 三级医院定方案 → 回社区随访。</p></div>
+
+    <p class="vnote">10–13% 取自单个 OVCF 队列中 Kümmell 病的发生率（训练集 12.6%、验证集 10.9%）；文献报道的区间更宽（约 7%–37% 均有报告），与本图口径不同，需结合影像与症状判断。</p>
+
+      <div class="extread">
+      <div class="extread-hd">拓展阅读<b>公众号推文</b><i class="exnote">原创授权 · 名称与图片水印已脱敏</i></div>
+      <ul>
+        <li><a class="wxcard" href="assets/wx/view.html?i=19&back=../../index.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普丨老人骨折后别大意！这些并发症与注意事项要点一定要记牢</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=11&back=../../index.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普 | 骨质疏松椎体骨折后 怎么康复锻炼？</span></a></li>
+      </ul>
     </div>
-  </section>
+
+      <p class="bridge">多数人会愈合，少数人会走到“不愈合”。下一屏讲：为什么长不好。</p>
+    </div>
+    </section>
+<section id="s4">
+  <div class="rv">
+    <div class="tag"><span>10 / 17</span><i>事件</i></div>
+    
+    <h2>这条缝，<br>为什么<em>长不好</em></h2>
+    <p class="lead">不愈合不是“运气差”。是血供、力学稳定性、全身骨质量三个层面，同时出了问题。</p>
+
+    <figure class="me">
+      <img src="assets/microenv.jpg" alt="AI 辅助生成的骨折端微环境示意图：一侧为血供受损的暗红区域（血供薄弱区），另一侧骨小梁稀疏、板层结构断裂，右下角圆窗显示疏松的骨小梁网络" loading="lazy">
+      <figcaption>AI 辅助生成的骨折端微环境示意 · 血供 ／ 错动 ／ 骨质量（示意，非真实影像）</figcaption>
+    </figure>
+
+    <div class="cause">
+      <div class="cause-list">
+        <div class="ci"><i>01</i><div><b>血供受损</b><span>断端的小血管与骨膜血管被撕断，形成暗红的“血供薄弱区”。负责成骨的干细胞靠血流运来，血管到不了，修复队就上不了场；缺血的骨还会坏死，占住原本要长新骨的缝隙。</span></div></div>
+        <div class="ci"><i>02</i><div><b>持续错动</b><span>坐起、翻身、走路都在给断端加载。骨面反复微动，纤维软骨刚长上就被扯开，始终过渡不到骨性愈合，最后形成一个“假关节”。</span></div></div>
+        <div class="ci"><i>03</i><div><b>骨质不良</b><span>骨小梁变细、断裂、孔隙变大（右下圆窗），成骨缺“材料”也缺“脚手架”；再加上钙与维生素 D 不足、长期用激素，土壤一直没改善。</span></div></div>
+      </div>
+      <svg class="cause-brace" viewBox="0 0 46 240" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M10 8 C 36 8, 36 74, 36 112 C 36 117, 40 120, 45 120 C 40 120, 36 123, 36 128 C 36 166, 36 232, 10 232" />
+      </svg>
+      <div class="cause-out">不愈合</div>
+    </div>
+
+    <p class="vnote">这也是为什么，治疗原则的第一条往往是“尽量减少卧床、动静结合”，而不是“躺着养”——但“动静结合”具体怎么动，后面会讲。</p>
+
+      <div class="extread">
+      <div class="extread-hd">拓展阅读<b>公众号推文</b><i class="exnote">原创授权 · 名称与图片水印已脱敏</i></div>
+      <ul>
+        <li><a class="wxcard" href="assets/wx/view.html?i=25&back=../../index.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普丨指挥你骨骼拆建的，竟是你从未听过的“它”？</span></a></li>
+      </ul>
+    </div>
+
+      <p class="bridge">机制清楚了，接下来看医生在片子上究竟找什么。</p>
+    </div>
+    </section>
+<section id="s5">
+  <div class="rv">
+    <div class="tag"><span>11 / 17</span><i>事件</i></div>
+    <h2>影像上那处亮影，<br>只是<em>一个线索</em></h2>
+    <p class="lead">如果你或家人正属于那 10–13%，接下来医生会看的，就是这样的片子。X 线上，它有时表现为一条透亮带——即椎体内裂隙征（IVC）；在 MRI 上，则是含液与水肿的高信号。<strong>不管哪种片子，指向的是同一件事：那里没长好。</strong></p>
+
+    <div class="figrow stacked">
+        <div class="film" id="stage">
+          <img id="filmImg" src="assets/film_mri3.png"
+               alt="同一病例腰椎矢状位 MRI 三联对照：中图以「11」与虚线圈标出病变椎体，右图该椎体及邻近终板呈高信号（含液与水肿）"
+    >
+          <span class="filmScan" aria-hidden="true"></span>
+          <span class="filmcap">同一病例腰椎矢状位 MRI 三联对照 · 左：脑脊液呈低信号，脂肪亮；右：皮下脂肪信号被抑制，含液与水肿区更显眼 · 具体序列命名以原影像报告为准</span>
+        </div>
+
+        <div class="resultpanel">
+          <div class="rp-hint">点击下方「开始读片」</div>
+        <div class="result">
+          <div class="rline"><i class="dot"></i><div><b>看到什么</b> <span>· 病变椎体变扁，抑脂（含水）序列上椎体内与邻近终板呈高信号（含液 / 水肿），另一序列呈低信号</span></div></div>
+          <div class="rline"><i class="dot"></i><div><b>意味着什么</b> <span>· 骨断端之间仍有水肿与液体信号，是<strong>不愈合的线索</strong>，<strong>不等于确诊</strong></span></div></div>
+          <div class="rline"><i class="dot"></i><div><b>还要看什么</b> <span>· 病史（轻微外力、迟发疼痛）、体征（后凸、椎旁压痛）、X 线 / CT 看骨性结构、骨密度看“土壤”</span></div></div>
+        </div>
+        </div>
+    </div>
+
+
+    <button class="btn" id="readBtn">开始读片</button>
+    <figure class="me">
+      <img src="assets/ai_cleft.jpg" alt="AI 辅助生成的三维示意：左侧椎体内可见一条不规则的裂隙贯穿椎体，右侧椎体内为圆形囊性空洞、上下终板呈硬化带" loading="lazy">
+      <figcaption>AI 辅助生成 · 椎体内裂隙（左）与囊腔形成（右）示意 ／ 与下面的真实 MRI 对照着看，非真实影像，不用于诊断</figcaption>
+    </figure>
+    <p class="vnote"><b style="color:var(--accent)">看到一道缝，不等于确诊；但没有被识别出的不愈合，才是真正的风险。</b></p>
+
+    <details>
+      <summary>X 光、CT、MRI 各自能看什么</summary>
+      <div class="dbody">
+        <div class="mods">
+          <div class="mod">
+            <div class="hd"><span class="k">X 线</span><b>看“形”</b></div>
+            <p>椎体<b>高度掉了多少</b>、有没有楔形变、侧位片上能不能看到椎体内裂隙征（IVC）。是最基础的一张。</p>
+          </div>
+          <div class="mod">
+            <div class="hd"><span class="k">CT</span><b>看“缝”</b></div>
+            <p>把椎体内部切开看：<b>有没有封闭的裂隙（IVC）</b>、裂隙偏向哪一侧、骨水泥在什么位置。判断不愈合的关键。</p>
+          </div>
+          <div class="mod">
+            <div class="hd"><span class="k">MRI</span><b>看“活”</b></div>
+            <p>看骨折处<b>还有没有水肿</b>（是新鲜还是陈旧）、脊髓和神经有没有被压到。决定要不要处理压迫。</p>
+          </div>
+        </div>
+        <p class="vnote">一句话：X 光看形状，CT 看裂缝，MRI 看压迫。三者互补，不能互相替代。</p>
+      </div>
+    </details>
+
+
+    <p class="vnote">本页为同一病例的腰椎矢状位 MRI 三联对照，已脱敏，序列命名以原影像报告为准。X 线上的椎体内裂隙征（IVC）敏感性较低，阴性不能排除；影像判读需结合临床，本演示不可用于诊断。</p>
+
+<p class="qgroup">片子之外，只有这三条属于“不愈合”</p>
+
+    <div class="sig">
+      <div class="item">
+        <div class="big">3<small>个月</small></div>
+        <b>疼痛超过 3 个月还没缓解，或好了又疼回来</b>
+        <span>普通椎体压缩骨折规范治疗后，疼痛多在数周内缓解；持续三个月以上，或同一处缓解后又疼起来，要想到“不愈合”。</span>
+      </div>
+      <div class="item">
+        <div class="big">越动<small>越痛</small></div>
+        <b>起身、翻身、久坐后站起时更痛</b>
+        <span>这是机械性疼痛：断端还在动，一承重就痛，躺下反而能减轻。与肌肉劳损的“越动越松”相反。</span>
+      </div>
+      <div class="item">
+        <div class="big">还在<small>塌</small></div>
+        <b>身高继续下降，后凸越来越明显</b>
+        <span>影像上椎体高度还在掉，或同一节段反复塌陷——说明塌陷没有停下来。</span>
+      </div>
+    </div>
+
+    <p class="vnote">患者自己能认出的三个词：<b style="color:var(--accent)">三个月、越动越痛、还在塌</b>。<br>
+      医生在片子上找的最硬证据，是第四个词：<b style="color:var(--accent)">一条缝</b>——椎体内裂隙征（IVC）。</p>
+
+      <p class="bridge">看到线索之后，下一个问题才是：要不要手术、怎么选。</p>
+    </div>
+    </section>
+<section id="s6">
+  <div class="rv">
+    <div class="tag"><span>12 / 17</span><i>事件</i></div>
+
+    <h2>确诊不愈合，<br>不等于<em>必须开刀</em></h2>
+    <p class="lead">治疗仍是那三条路——但换到不愈合身上，<strong>每一条的门槛都变了</strong>。判断依据是骨折稳不稳、裂隙在哪、后凸有没有进展。</p>
+
+    <div class="cmp">
+      <div class="cmp-r cmp-h"><i></i><b>新鲜骨折</b><b>不愈合</b></div>
+      <div class="cmp-r"><i>保守治疗</i><span>多数人有效，6–12 周疼痛缓解</span><span>能靠保守长上的只是少数，继续“歇着看”往往越塌越扁</span></div>
+      <div class="cmp-r"><i>微创强化</i><span>止痛、早离床</span><span>要看清裂隙位置：骨水泥容易沿裂隙渗漏，术后也可能移位</span></div>
+      <div class="cmp-r"><i>开放手术</i><span>少数：不稳、神经受压</span><span>指征明显扩大：进行性后凸、椎体不稳、神经损害</span></div>
+    </div>
+
+    <div class="basebar">
+      <div class="bt">不管是哪一种，三条路之上都有同一件事</div>
+      <h3>抗骨质疏松药物治疗</h3>
+      <p><b>不启动规范治疗，下一次骨折只是时间问题。</b></p>
+    </div>
+
+    <div class="quote">
+      不愈合不等于必须手术；<br>但它是一个需要专科评估、不能继续“歇着看”的信号。
+      <span>具体治疗选择需由专科医生根据骨折稳定性、疼痛性质、后凸进展、神经状态和骨质量个体化决定。</span>
+    </div>
+
+      <p class="bridge">在讨论治疗之前，先拆掉四个最常见的说法。</p>
+  </div>
+</section>
+<section id="s7">
+  <div class="rv">
+    <div class="tag"><span>13 / 17</span><i>长期</i></div>
+    
+    <h2>这四个说法，<br>你信过<em>哪些</em>？</h2>
+    <p class="lead">不用查资料，凭直觉选就行——选完再看答案。</p>
+
+    <div class="mquiz" id="mquiz">
+      <p class="mq-t">先别往下翻。下面这些说法，你信过哪些？<i>可多选</i></p>
+
+      <div class="mq-list">
+        <div class="mq-item" data-i="0">
+          <label class="mq-opt"><input type="checkbox" value="0"><span class="mq-txt">喝骨头汤能补钙</span><span class="mq-tag"></span></label>
+          <div class="mq-truth"><p class="tk">一碗骨头汤的钙，抵不上一口牛奶。</p><p>骨头汤里溶出的钙<b>非常少</b>，汤色发白主要来自脂肪，不是钙。补钙要靠奶制品、豆制品，以及在医生指导下使用钙剂和维生素 D。</p></div>
+        </div>
+
+        <div class="mq-item" data-i="1">
+          <label class="mq-opt"><input type="checkbox" value="1"><span class="mq-txt">补钙就够了</span><span class="mq-tag"></span></label>
+          <div class="mq-truth"><p class="tk">钙是原料，不是治疗；真正压住骨折风险的是药。</p><p>钙和维生素 D 是<b>基础</b>，但<b>不足以显著降低已经存在骨质疏松者的骨折风险</b>。真正针对骨折风险的是<b>抗骨质疏松药物</b>，需要分层选择。具体怎么选、用多久、能不能停，下一屏专门讲。</p></div>
+        </div>
+
+        <div class="mq-item" data-i="2">
+          <label class="mq-opt"><input type="checkbox" value="2"><span class="mq-txt">不疼了，就是好了</span><span class="mq-tag"></span></label>
+          <div class="mq-truth"><p class="tk">不疼，是手术的功劳；长没长上，要看片子。</p><p>疼痛缓解<b>不等于骨折愈合</b>。像上面那位患者，术后四个月疼痛又回来了——因为<b>骨质疏松本身没有被治疗</b>。判断好没好，要看影像，也要看“土壤”有没有被管住。</p></div>
+        </div>
+
+        <div class="mq-item" data-i="3">
+          <label class="mq-opt"><input type="checkbox" value="3"><span class="mq-txt">老人驼背是正常的</span><span class="mq-tag"></span></label>
+          <div class="mq-truth"><p class="tk">驼背不是“老了”，是椎体在一次次塌。</p><p>驼背很少是“自然老化”，更多是<b>椎体反复压缩骨折</b>的结果。身高一年比一年矮、背一年比一年弯，往往是骨头在悄悄塌陷。</p></div>
+        </div>
+
+        <div class="mq-item mq-item-none" data-i="none">
+          <label class="mq-opt mq-none"><input type="checkbox" value="none"><span class="mq-txt">以上都不对，我都不信</span><span class="mq-tag"></span></label>
+          <div class="mq-truth mq-truth-ok"><p class="tk">这四条你都没信过——判断力在线。</p><p>不过“没信过”和“做到了”是两件事：家里长辈——或者你自己——有没有查过骨密度、有没有在规范治疗，才是下一步要确认的。</p></div>
+        </div>
+      </div>
+
+      <button class="mq-btn" id="mqBtn" type="button">看真相</button>
+      <p class="mq-fb" id="mqFb"></p>
+
+      <div class="pivot" id="mqPivot" hidden>
+        这四个说法的共同点：都把骨质疏松当成一个“补一补、歇一歇”就能过去的事，而不是一个需要长期管理的慢病。
+      </div>
+    </div>
+
+    <div class="extread">
+      <div class="extread-hd">拓展阅读<b>公众号推文</b><i class="exnote">原创授权 · 名称与图片水印已脱敏</i></div>
+      <ul>
+        <li><a class="wxcard" href="assets/wx/view.html?i=05&back=../../index.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普 | 骨头汤“以形补形”是最大误会：一碗汤的钙，抵不上一口牛奶</span></a></li>
+      
+        <li><a class="wxcard" href="assets/wx/view.html?i=1&back=../../index.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普 | 身高矮了、背驼了，不是“正常变老”</span></a></li>
+      
+        <li><a class="wxcard" href="assets/wx/view.html?i=3&back=../../index.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普丨骨折接好了，病还没好：骨质疏松得按“慢病”管，不能“治一阵子”</span></a></li>
+      
+        <li><a class="wxcard" href="assets/wx/view.html?i=21&back=../../index.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普丨一边补钙，一边“拆骨”：你的身体到底在经历什么？</span></a></li>
+      </ul>
+    </div>
+
+      <p class="bridge">说法的背后，是一个更根本的问题：骨质疏松要不要长期治。</p>
+    </div>
+    </section>
+<section id="s10">
+  <div class="rv">
+    <div class="tag"><span>14 / 17</span><i>长期</i></div>
+    
+    <h2>骨质疏松的药，<br>为什么不能<em>“不疼了就停”</em></h2>
+    <p class="lead">前面讲“三条路都要做”时的那件事，具体长这样：已经发生过脆性骨折的人，属于<strong>极高骨折风险</strong>人群——不是“先补钙观察”的对象。药物治疗是有起效、维持、序贯逻辑的<strong>主动医疗行为</strong>，不是保健品式的“吃着就行”。</p>
+
+    <div class="path">
+      <div class="path-hd">谁用 — 用什么 — 怎么停 — 什么是基础</div>
+      <div class="step"><span class="num">1</span><div class="txt"><b>谁需要用药</b><span>符合任意一条，就该用药，而不是“先补点钙看看”：① 轻轻一摔、弯个腰就骨折过；② 骨密度检查提示骨头已经很脆；③ 医生用风险评估工具（FRAX）算过，未来 10 年骨折概率偏高。</span></div></div>
+      <div class="step"><span class="num">2</span><div class="txt"><b>用什么</b><span>骨头药分两类。<span class="kw">抗骨吸收药</span>负责拦住“拆墙队”：地舒单抗半年一针，唑来膦酸一年一次静脉输注；<span class="kw">促骨形成药</span>负责加派“施工队”：特立帕肽、罗莫佐单抗需要每天打针，且有固定疗程。初始用哪一类、哪一种，由医生按骨折风险和身体情况定。</span></div></div>
+      <div class="step"><span class="num">3</span><div class="txt"><b>为什么不能随意停</b><span>两类药的停法不一样。抗骨吸收药里，地舒单抗不能说停就停——被压住的破骨细胞会反扑，骨量掉得比用药前还快；促骨形成药有固定疗程，疗程一结束要立刻接上抗骨吸收药，把新长出来的骨头锁住，否则白长。所以关键不是“会上瘾”，而是<span class="kw">停之前必须先有下一棒接住</span>。</span></div></div>
+      <div class="step"><span class="num">4</span><div class="txt"><b>钙和维生素 D 的位置</b><span>钙是砌墙的砖，维生素 D 是把砖运进工地的车——缺了它，吃进去的钙大半从肠道排掉。它们保证“原料供应”，但管不了骨头的“拆”与“建”；真正改变骨量走向的是抗骨质疏松药物。所以：钙和维 D 是底座，药物才是承重墙——只有底座没有墙，房子照样塌。</span></div></div>
+    </div>
+
+    <div class="seqblock" id="seqBlock">
+      <div class="seqhd">
+        <span class="seqtt">为什么不能自己停</span>
+        <span class="seqmeta">序贯 · 交棒 · 15″</span>
+      </div>
+
+      <div class="seqfilm" id="seqFilm">
+        <svg viewBox="0 0 320 190" role="img"
+             aria-label="骨密度随时间变化：用药后上升；擅自停药后断崖式下降；序贯治疗后保持平稳。">
+          <defs>
+            <radialGradient id="seqBurst" cx="50%" cy="50%" r="50%">
+              <stop offset="0" stop-color="#FF6B57" stop-opacity=".55"/>
+              <stop offset="1" stop-color="#FF6B57" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+
+          <g class="grid">
+            <line x1="34" y1="24" x2="34" y2="156"/>
+            <line x1="34" y1="156" x2="306" y2="156"/>
+            <line x1="34" y1="68" x2="306" y2="68" class="gline"/>
+            <line x1="34" y1="112" x2="306" y2="112" class="gline"/>
+          </g>
+          <text class="ax" x="34" y="16">骨密度 ↑</text>
+          <text class="ax" x="306" y="172" text-anchor="end">时间 →</text>
+          <text class="ax start" x="40" y="170">开始用药</text>
+
+          <rect id="seqFlash" x="28" y="18" width="284" height="146" fill="#FF6B57" opacity="0"/>
+          <circle id="seqBurstC" cx="158" cy="152" r="0" fill="url(#seqBurst)" opacity="0"/>
+
+          <circle id="seqR1" cx="158" cy="152" r="2" fill="none" stroke="#FF6B57" stroke-width="2.4" opacity="0"/>
+          <circle id="seqR2" cx="158" cy="152" r="2" fill="none" stroke="#FF6B57" stroke-width="2" opacity="0"/>
+          <circle id="seqR3" cx="158" cy="152" r="2" fill="none" stroke="#FF6B57" stroke-width="1.6" opacity="0"/>
+
+          <path id="seqCommon" class="curve rise" pathLength="1" d="M34,156 C58,154 88,104 118,62"/>
+          <path id="seqGreen" class="curve green" pathLength="1" d="M118,62 C152,60 200,66 306,68"/>
+          <path id="seqRed" class="curve red" pathLength="1"
+                d="M118,62 C126,62 134,96 144,132 C150,148 154,152 158,152 C200,156 250,153 306,154"/>
+
+          <circle id="seqDotG" cx="118" cy="62" r="3.6" fill="#00E5C0" opacity="0"/>
+          <circle id="seqDotR" cx="118" cy="62" r="3.6" fill="#FF6B57" opacity="0"/>
+
+          <g id="seqHandoff" class="handoff">
+            <line x1="118" y1="46" x2="118" y2="158"/>
+            <rect class="bg" x="84" y="28" width="68" height="17" rx="5"/>
+            <text x="118" y="40" text-anchor="middle">序贯 · 交棒</text>
+            <circle cx="118" cy="62" r="4.2"/>
+          </g>
+
+          <g id="seqLabG" class="lab green">
+            <rect class="bg" x="222" y="22" width="86" height="40" rx="7"/>
+            <text x="304" y="38" text-anchor="end">序贯治疗</text>
+            <text class="sub" x="304" y="55" text-anchor="end">保持平稳</text>
+          </g>
+          <g id="seqLabR" class="lab red">
+            <rect class="bg" x="222" y="104" width="86" height="40" rx="7"/>
+            <text x="304" y="120" text-anchor="end">擅自停药</text>
+            <text class="sub" x="304" y="137" text-anchor="end">断崖式丢失</text>
+          </g>
+        </svg>
+      </div>
+
+      <p class="seqcap" id="seqHead">停药不是“休息”，是“接力”。</p>
+      <p class="seqsub" id="seqSub">不要自己停，也不要自己换。</p>
+
+      <div class="seqfoot">
+        <button class="seqbtn" id="seqBtn" type="button">重播</button>
+        <span class="seqnote">示意动画，非真实数据；曲线只用于讲解，不代表任何个人或药物的真实走向。</span>
+      </div>
+    </div>
+
+    <div class="quote">
+      想减量、想停药、想换药——<br>先问一句：<em>下一棒接什么？</em>
+      <span>具体用哪种药、用多久、怎么交棒，由骨质疏松专科医生按个体情况制定。本页不提供用药建议。</span>
+    </div>
+
+      <div class="extread">
+      <div class="extread-hd">拓展阅读<b>公众号推文</b><i class="exnote">原创授权 · 名称与图片水印已脱敏</i></div>
+      <ul>
+        <li><a class="wxcard" href="assets/wx/view.html?i=08&back=../../index.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普丨止痛药与骨骼健康：长期用药需警惕，别让骨头悄悄“流失”</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=04&back=../../index.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普 | 老鼠药也能治病？聊聊骨科里的华法林</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=25&back=../../index.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普丨指挥你骨骼拆建的，竟是你从未听过的“它”？</span></a></li>
+      </ul>
+    </div>
+
+      <p class="bridge">药之外，还有一件被低估的事：骨折之后到底该怎么动。</p>
+    </div>
+    </section>
+<section id="s11">
+  <div class="rv">
+    <div class="tag"><span>15 / 17</span><i>长期</i></div>
+    
+    <h2>“躺着养”，<br>可能是最<em>伤骨</em>的养法</h2>
+    <p class="lead">这里说的“躺着养”，指的是<b>没有期限的长期卧床</b>。急性期必要的短期休息和支具保护，仍然成立。</p>
+
+    <div class="cards">
+      <div class="card"><span class="idx">01</span><h3>骨量掉得更快</h3><p>骨头是“用进废退”的。不承重，骨量流失会加速，本来就在疏松的骨头变得更脆。</p></div>
+      <div class="card"><span class="idx">02</span><h3>肌肉跟着萎缩</h3><p>卧床一两周，下肢肌肉力量就会明显下降。肌力越差，越容易跌倒，越容易再骨折。</p></div>
+      <div class="card"><span class="idx">03</span><h3>心肺和情绪一起垮</h3><p>老年长期卧床容易并发肺部感染、血栓、便秘，情绪也会明显低落。</p></div>
+    </div>
+
+    <div class="path">
+      <div class="path-hd">那到底该怎么动</div>
+      <div class="step"><span class="num">·</span><div class="txt"><b>疼痛可控后尽早开始</b><span>个体化运动，不是等到完全不疼才动。</span></div></div>
+      <div class="step"><span class="num">·</span><div class="txt"><b>练什么</b><span>重点三项：腰背伸肌训练、有氧运动、平衡训练。</span></div></div>
+      <div class="step"><span class="num">·</span><div class="txt"><b>避免什么</b><span>避免腰部扭转、弯腰搬重物。</span></div></div>
+      <div class="step"><span class="num">·</span><div class="txt"><b>进度谁定</b><span>由医生根据骨折稳定性和疼痛情况决定，不是自己加量。</span></div></div>
+    </div>
+
+    <div class="ov-role">
+    <div class="ov-hd">先说清楚：这几个动作分属两个“工种”</div>
+    <p class="ov-sub"><b>踝泵是保底的安全动作</b>——防卧床并发症，不直接作用于骨折椎体；<b>五点支撑、臀桥、小燕飞是分阶段的训练动作</b>——练腰背伸肌，必须按时间窗进来。所以下面把它们放回各自该出现的阶段里。</p>
+
+    <div class="ov-hd">什么阶段做什么事</div>
+    <p class="ov-sub">同一个动作，放在不同时间窗，性质可能完全相反。按时间排，并区分<b>微创术后（PVP/PKP）</b>与<b>保守治疗</b>两条路径。</p>
+    <div class="ov-tl">
+
+      <div class="ov-st">
+        <h4>① 早期 0–2 周<i>保安全，不练腰</i></h4>
+        <p class="ok"><b>可以做：</b>踝泵、股四头肌等长收缩（绷紧 5–10 秒）、腹式呼吸；微创术后可早期做直腿抬高。</p>
+        <p class="no"><b>明确禁忌：</b>任何腰背肌训练——五点支撑、臀桥、小燕飞，以及弯腰和扭转。椎体还没获得足够力学稳定，把臀部抬离床面会在骨折椎体上产生剪切与压缩应力，风险大于收益。</p>
+        <p class="ok"><b>下地：</b>PVP/PKP 术后 1–2 天可在支具保护下下床，以不引起腰部酸胀为度；保守治疗通常需绝对卧床 2 周，之后支具保护下逐步下床。</p>
+        <div class="ankle">
+          <div class="ankle-hd"><b>踝泵：这一阶段最核心的动作</b><i>每小时 20–30 次</i></div>
+          <video class="ankle-vid" muted playsinline loop autoplay preload="metadata"
+                 poster="assets/ankle_poster.jpg" width="640" height="640"
+                 aria-label="踝泵动作示意：脚尖慢慢勾到最大（背屈），停 3–5 秒；再绷到最大（跖屈），停 3–5 秒，循环往复">
+            <source src="assets/ankle.mp4" type="video/mp4">
+          </video>
+          <p>脚尖<b>勾到最大</b>停 3–5 秒，再<b>绷到最大</b>停 3–5 秒。小腿肌肉一收一放像泵一样，把下肢的血往上推。</p>
+          <p>它的任务是<b>预防下肢深静脉血栓</b>，不直接作用于骨折椎体——让你安全度过“不能练腰”的这段窗口。早期就能做，也最不容易出错。</p>
+          <p class="vnote">已有下肢血栓、腿肿疼痛，或医生要求制动时，先问医生再练。</p>
+        </div>
+
+      </div>
+
+      <div class="ov-st">
+        <h4>② 中期 2–6 周<i>叫醒腰背肌，负荷要低</i></h4>
+        <p class="ok"><b>可以引入：</b>五点支撑的低强度预备版（头、双肘、双足支撑，抬离高度低，重点是把动作做出来）；臀桥以低强度、小幅度引入，从改良短弧开始。</p>
+        <p class="no"><b>仍要避免：</b>提重物（&gt;5 kg）、弯腰拾物（改成下蹲）、久坐超过 1 小时；支具继续佩戴。</p>
+        <p class="ok"><b>保守治疗：</b>部分方案建议伤后 4 周再逐步增加，每组 10–15 次、每日 2–3 组，以不引发剧烈疼痛为度；骨折稳定性存疑时起步更保守。</p>
+        <div class="ankle">
+          <div class="ankle-hd"><b>五点支撑 → 臀桥：支点收回，就是进阶</b><i>每组 8–12 次</i></div>
+          <video class="ankle-vid" muted playsinline loop autoplay preload="metadata"
+                 poster="assets/merge_poster.jpg" width="640" height="640"
+                 aria-label="进阶演示：先五点支撑（头、双肘、双脚五点着床）抬髋，再收回肘部支点改为臀桥（双足与肩背支撑）抬髋">
+            <source src="assets/merge.mp4" type="video/mp4">
+          </video>
+          <p>两者练的是同一件事——腰背伸肌。区别在<b>支点</b>：五点支撑用头、双肘、双脚<b>五个支点</b>把负荷分担掉，产生“肌肉夹板效应”，是入门；<b>臀桥把肘部支点收回来</b>，只靠双足和肩背，对腰椎主动稳定控制要求更高，所以是进阶，不是平行选项。</p>
+          <p>这一阶段引入时，<b>都不追求抬高</b>：五点支撑重点是把动作做出来，臀桥从“改良短弧”开始——只轻轻抬臀、不拱腰。</p>
+          <p class="vnote">需复查确认有初步骨痂、无明显静息痛、医生评估同意后再做；术后 2 周内不做。</p>
+        </div>
+
+      </div>
+
+      <div class="ov-st">
+        <h4>③ 中后期 6–12 周<i>强化，但小燕飞仍是门槛</i></h4>
+        <p class="ok"><b>可以强化：</b>五点支撑、臀桥逐渐增加抬起高度与保持时间。</p>
+        <p class="ok"><b>支具：</b>医生确认骨折稳定、疼痛可控后，再按情况去除。</p>
+        <p class="no"><b>小燕飞放在这一阶段的末尾：</b>8–12 周后、骨痂形成、影像稳定、经医生同意，才以低强度尝试。</p>
+        <div class="ankle">
+          <div class="ankle-hd"><b>小燕飞：门槛动作，别急着做</b><i>每组 8–12 次</i></div>
+          <video class="ankle-vid" muted playsinline loop autoplay preload="metadata"
+                 poster="assets/swallow_poster.jpg" width="640" height="640"
+                 aria-label="小燕飞动作示意：俯卧，双臂后伸，同时抬起上身与双腿，停 1–2 秒再落下">
+            <source src="assets/swallow.mp4" type="video/mp4">
+          </video>
+          <p>俯卧，双臂后伸贴体侧、额头轻贴床面；<b>同时抬起上身与双腿</b>，停 1–2 秒再落下。练竖脊肌和多裂肌，但它是<b>俯卧位脊柱后伸抗阻</b>，对椎体后方负荷远大于前两个。</p>
+          <p>多个来源提示：未经系统治疗的骨质疏松骨折不宜做；<b>通常 8–12 周后、骨痂形成、影像评估稳定、医生同意</b>才以低强度尝试。稳定性存疑就继续推迟。</p>
+        </div>
+
+      </div>
+
+      <div class="ov-st">
+        <h4>④ 远期 3 个月以后<i>从“练腰”转向“防跌倒、防再骨折”</i></h4>
+        <p class="ok"><b>有氧：</b>快走、游泳、固定自行车等低冲击方式，每周 5 天、每天至少 30 分钟，以“无疼痛、不疲劳”为前提。</p>
+        <p class="ok"><b>抗阻：</b>渐进式阻力训练，每周 2–3 次，针对下肢与核心。</p>
+        <p class="ok"><b>平衡与柔韧：</b>太极拳、八段锦、串联站立。跌倒是再骨折最重要的触发因素之一，平衡训练有独立价值。</p>
+        <p class="no"><b>继续避免：</b>跳跃、剧烈扭转等冲击性动作，直到医生明确 clearance。</p>
+      </div>
+
+    </div>
+    <p class="ov-note">依据：德国骨科与创伤学会（DGOU）关于骨质疏松运动治疗的建议——以强化背伸肌改善轴向稳定；以及国内 OVCF 分阶段康复与术后康复方案的常见安排。以上为一般规律，具体节奏以主刀医生和康复科评估为准。</p>
+
+    <div class="ov-hd split">另一条主线：防跌倒</div>
+    <p class="ov-sub">上面第 ④ 阶段说“转向防跌倒”——其实它不属于某个阶段，而是<b>从受伤第一天起就该并行的另一条线</b>。骨折之后它的优先级反而更高：肌力、平衡、骨量都下了一个台阶，同样一跤，后果更重。</p>
+
+    <div class="fall">
+      <div class="fi"><i>地面</i><span>清掉杂物和电线，收走容易绊脚的小地毯</span></div>
+      <div class="fi"><i>卫生间</i><span>加装扶手，淋浴区和马桶旁铺防滑垫</span></div>
+      <div class="fi"><i>夜里</i><span>走廊与床边留一盏小灯或感应灯</span></div>
+      <div class="fi"><i>常走的路</i><span>把动线走顺，家具别挡道，门槛尽量平</span></div>
+      <div class="fi"><i>鞋</i><span>换防滑、包跟的鞋，别穿拖鞋或软底鞋</span></div>
+    </div>
+    <p class="vnote">这几处加起来花费很小，但<b>每一条都直接对应一次跌倒的机会</b>——家里这五处先改完，再按上面的节奏动。</p>
+
+    </div>
+
+    <div class="quote">
+      治疗原则通常是：尽量减少卧床时间，动静结合。
+      <span>具体活动方式和强度，需要根据骨折情况由医生个体化制定。</span>
+    </div>
+
+      <div class="extread">
+      <div class="extread-hd">拓展阅读<b>公众号推文</b><i class="exnote">原创授权 · 名称与图片水印已脱敏</i></div>
+      <ul>
+        <li><a class="wxcard" href="assets/wx/view.html?i=11&back=../../index.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普 | 骨质疏松椎体骨折后 怎么康复锻炼？</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=09&back=../../index.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普 | 腰椎术后怎么锻炼——写给老年朋友的康复指南</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=10&back=../../index.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">脊柱科普丨颈椎术后别乱动！分阶段康复锻炼全攻略</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=22&back=../../index.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普丨别只盯着骨头！想要不骨折肌肉同样重要！！</span></a></li>
+      </ul>
+    </div>
+
+      <p class="bridge">接下来回到最基础的一步：怎么查、谁来管到底。</p>
+    </div>
+    </section>
+<section id="s12">
+  <div class="rv">
+    <div class="tag"><span>16 / 17</span><i>长期</i></div>
+
+    <h2>如果只做一件事，<br>问一句<em>“骨质疏松，还在治吗”</em></h2>
+    <p class="lead">查一次骨密度，是一次性的；问一句“还在治吗”，是长期的。骨质疏松是慢病，<strong>长期管理比单次检查更重要</strong>——而这句话，往往一问就问出问题：骨折后吃了一段时间药，不疼了就自己停了，复查也没人提醒。</p>
+
+    <div class="acts">
+      <div class="act"><span class="big">01</span><div><b>问一句：骨质疏松，还在治吗</b><span>不是“补补钙就行”。要问清楚：有没有在规范用药、有没有人在随访、上次复查是什么时候</span></div></div>
+      <div class="act"><span class="big">02</span><div><b>查一次骨密度（如果还没查过）</b><span>双能 X 线（DXA）是标准方法。看报告上的 T 值，T ≤ −2.5 通常提示骨质疏松，具体判断听医生</span></div></div>
+      <div class="act"><span class="big">03</span><div><b>把家里的地面清一遍</b><span>去掉松动的地毯、收好电线、卫生间加扶手和防滑垫。跌倒少了，骨折就少了</span></div></div>
+    </div>
+
+    <div class="quote">
+      骨质疏松最常见的死角，<br>不是查不出来，是<em>查出来没人管</em>。
+    </div>
+
+    <p class="vnote">一个人查骨密度，是第一步；一个村能长期管住，靠的是“筛—诊—治—管”的闭环。我们团队在崂山做的，就是把这套闭环跑通——这也是“管到底”的样子。</p>
+
+    <details class="flow">
+      <summary>怎么才能真的“管到底”？这是我们团队给的答案</summary>
+      <div class="flow-in">
+        <p class="flow-lead">“查出来没人管”，不是多查一次就能解决的。团队的做法是把患者放进一套流程里管起来：按三级联动往上转，定完方案再回社区，全程由一套系统盯着。</p>
+
+        <div class="step"><span class="num">1</span><div class="txt"><b>居家 · 问卷初筛</b><span>患者在家用问卷式筛查（OSTA 等）先把自己评一遍，把高危的人挑出来，不用一上来就往大医院跑。</span></div></div>
+        <div class="step"><span class="num">2</span><div class="txt"><b>社区医院 · 做 DXA 并协助筛查</b><span>基层完成双能 X 线骨密度检查，同时协助筛查高危患者；<span class="kw">T ≤ −2.5 或评估高危的，转上级医院</span>。</span></div></div>
+        <div class="step"><span class="num">3</span><div class="txt"><b>三级医院 · 精确定方案</b><span>作为骨松诊疗中心，按骨折风险、骨质量与合并症，制定个体化治疗方案。</span></div></div>
+        <div class="step"><span class="num">4</span><div class="txt"><b>返回社区 · 长期管理</b><span>定完方案回到社区，由联络随访中心跟进用药、复查与科普——抗骨质疏松治疗不是开一次药就结束。</span></div></div>
+
+        <div class="sys">
+          <b>承载这套流程的，是团队<span class="own">自主研发</span>的「骨质疏松全病程智慧管理系统」</b>
+          <i>联络与随访中心用的就是它：管理、沟通、随访、科普，都在同一套系统里完成，患者不会在转诊途中“掉线”。</i>
+          <ul>
+            <li>与医院 HIS 系统对接，自动抓取患者信息</li>
+            <li>患者基本信息与标签分类管理</li>
+            <li>影像、病理资料集中归档，供临床与科研调用</li>
+            <li>个体化随访与延续护理，随访计划到期自动提醒</li>
+          </ul>
+          <p class="sys-num">系统已收录骨质疏松合并慢病患者 <b>8400 余例</b>并投入临床使用；同时建立起崂山区 <b>3000 名</b>社区老人的骨松人群队列。</p>
+        
+
+        <div class="ai">
+          <b>系统里真正“智能”的部分：六个 AI 智能体，串起筛、诊、术、具、访、教</b>
+          <div class="ai-grid">
+            <div class="ai-i"><i>智问 · 智能问诊</i><span>大模型引导问诊，把既往骨折史、跌倒史、用药史自动整理成结构化病历</span></div>
+            <div class="ai-i"><i>智诊 · AI 诊断</i><span>深度学习区分骨质疏松性、肿瘤性、感染性椎体压缩，并给出可解释的识别依据</span></div>
+            <div class="ai-i"><i>手术规划</i><span>影像自动分割＋三维重建＋有限元生物力学计算，预判骨水泥分布与渗漏风险</span></div>
+            <div class="ai-i"><i>智能支具</i><span>气囊式支具内置压力与陀螺仪传感器，可远程监测跌倒并回传</span></div>
+            <div class="ai-i"><i>智能随访</i><span>AI 主动触达：电话、线上平台多渠道提醒复查与用药，覆盖诊后全周期</span></div>
+            <div class="ai-i"><i>个性化科普</i><span>按患者情况推送内容——你正在看的这份科普，也是这条链上的一环</span></div>
+          </div>
+          <p class="ai-note">六个模块对应 <b>17 项</b>发明专利与计算机软件著作权；在术后康复环节，AI 生成居家康复方案并远程指导后，
+          康复训练率从约 <b>10%</b> 提升到 <b>68%</b>。</p>
+        </div></div>
+
+
+        <figure class="docfig">
+          <img src="assets/ai_loop.jpg" alt="六个 AI 智能体构成的闭环：患者就诊诉求 → 智问骨松（AI 问诊）→ 智诊骨松（诊断）→ AI 辅助手术规划 → 气囊式智能支具 → 智能随访 → 个性化科普 → 回到患者诉求" loading="lazy">
+          <figcaption>团队自绘流程 · 六个智能体串成的全病程闭环：问诊 → 诊断 → 手术规划 → 支具 → 随访 → 科普，再回到患者</figcaption>
+        </figure>
+        <div class="flow-foot">
+          <b>这套模式在崂山跑通了，正在往外推</b>
+          <span>从一个区起步，先在最基层的卫生室里落地，再一层一层走通转诊与回访；模式已连续运行 <b>5 年</b>，
+          2023 年被列为<b>崂山区区办实事</b>、2024 年被列为<b>崂山区重点医养项目</b>，目前开始向其他地区推广。</span>
+        </div>
+
+        <div class="flow-stats">
+          <span><b>4</b> 家基层卫生中心</span>
+          <span><b>近 50</b> 家卫生室 / 所</span>
+          <span><b>3 万+</b> 人完成筛查</span>
+          <span><b>3500+</b> 名患者长期随访</span>
+          <span><b>750</b> 名极高危纳入管理</span>
+          <span><b>连续 5 年</b> · 每年 60 万元专项支持</span>
+          <span><b>正在</b> 向其他地区推广</span>
+        </div>
+
+
+        <div class="outreach">
+          <div class="oh">成果 · 这套东西走到了哪里</div>
+          <div class="og">
+            <div class="oi"><b>196</b><span>场义诊与健康宣讲</span></div>
+            <div class="oi"><b>128 万</b><span>人次接受过现场或线上科普</span></div>
+            <div class="oi"><b>69</b><span>场基层医生培训</span></div>
+            <div class="oi"><b>16</b><span>个地级市已铺开（覆盖山东全省）</span></div>
+            <div class="oi"><b>33</b><span>家合作医院（不逐一列名）</span></div>
+            <div class="oi"><b>2 万+</b><span>例患者纳入长期管理</span></div>
+          </div>
+          <p class="on">宣讲不是只在大医院讲：从社区讲堂、村卫生室，讲到县级医院的医生培训。山东 16 个地级市已经全部铺开，
+          合作机构数量按大赛脱敏要求不逐一列出。</p>
+        </div>
+
+        <figure class="docfig">
+          <img src="assets/sd_map.jpg" alt="山东省地图示意图：16 个地级市均标注了推广点位" loading="lazy">
+          <figcaption>山东省 16 个地级市覆盖示意 · 每个红色标记为一处已开展筛查／转诊／随访的网点；具体机构名称不逐一标注</figcaption>
+        </figure>
+        <p class="vnote">这项制度叫骨折联络服务（FLS）：主动找到骨折患者、评估、启动治疗、长期随访。大型队列中，标准化的 FLS 与后续脆性骨折风险降低约 <b>10%–13%</b>、全因死亡率降低约 <b>15%–18%</b> 相关；这是观察性数据，提示关联而非因果。</p>
+      </div>
+    </details>
+
+    <figure class="gallery">
+        <div class="gallery-track">
+          <div class="shot"><img src="assets/wall_1.jpg" alt="基层义诊现场"></div>
+          <div class="shot"><img src="assets/wall_3.jpg" alt="门诊大厅义诊" loading="lazy"></div>
+          <div class="shot"><img src="assets/wall_4.jpg" alt="村口义诊：老人围坐听讲解" loading="lazy"></div>
+          <div class="shot"><img src="assets/wall_5.jpg" alt="村卫生室门口：逐一解答" loading="lazy"></div>
+          <div class="shot"><img src="assets/wall_6.jpg" alt="社区义诊：现场读片" loading="lazy"></div>
+          <div class="shot"><img src="assets/wall_7.jpg" alt="户外义诊帐篷前的筛查队伍" loading="lazy"></div>
+          <div class="shot"><img src="assets/wall_8.jpg" alt="室内义诊现场" loading="lazy"></div>
+          <div class="shot"><img src="assets/wall_9.jpg" alt="基层康复指导" loading="lazy"></div>
+          <div class="shot"><img src="assets/wall_10.jpg" alt="村居讲堂：骨松科普宣教" loading="lazy"></div>
+          <div class="shot"><img src="assets/wall_12.jpg" alt="基层医师培训授课" loading="lazy"></div>
+          <div class="shot"><img src="assets/wall_14.jpg" alt="义诊现场合影" loading="lazy"></div>
+          <div class="shot"><img src="assets/wall_15.jpg" alt="义诊现场合影" loading="lazy"></div>
+          <div class="shot"><img src="assets/wall_16.jpg" alt="学术活动现场合影" loading="lazy"></div>
+          <div class="shot"><img src="assets/wall_11.jpg" alt="基层影像检查现场" loading="lazy"></div>
+          <div class="shot"><img src="assets/wall_21.jpg" alt="社区骨松风险筛查现场" loading="lazy"></div>
+        </div>
+        <figcaption>基层义诊现场 · 资料照片（15 张） · 自动轮播</figcaption>
+        <div class="wallbar">
+          <button class="wbtn" type="button" data-dir="-1" aria-label="向左">‹</button>
+          <div class="wrail"><div class="wthumb"></div></div>
+          <button class="wbtn" type="button" data-dir="1" aria-label="向右">›</button>
+        </div>
+      </figure>
+
+    <p class="closing">如果家里有这样的人——<b>总说“没事”、摔了也不肯查</b>——转发给他看。</p>
+
+    <div class="extread">
+      <div class="extread-hd">拓展阅读<b>公众号推文</b><i class="exnote">原创授权 · 名称与图片水印已脱敏</i></div>
+      <ul>
+        <li><a class="wxcard" href="assets/wx/view.html?i=03&back=../../index.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普丨骨折接好了，病还没好：骨质疏松得按“慢病”管，不能“治一阵子”</span></a></li>
+      </ul>
+    </div>
+</div>
+</section>
+<section id="s13">
+  <div class="rv">
+    <div class="tag"><span>17 / 17</span><i>附录</i></div>
+    
+    <h2>关于这份科普</h2>
+    <p class="lead">这份科普以一个具体的病为主线：<b>骨质疏松性椎体压缩骨折（OVCF）</b>，以及它最常见的两个结局——不愈合与长期卧床。下面把每一句话的出处写清楚。</p>
+
+    <details>
+      <summary>公益科普与推广规模</summary>
+      <div class="dbody">
+        <p class="ph hd"><b>科普与义诊</b><br>
+        2016 年起，主办覆盖全省的骨质疏松科普义诊 <b>196 场</b>，累计参与人群 <b>128 万人次</b>。</p>
+
+        <p class="ph hd"><b>基层培训</b><br>
+        主办骨质疏松诊疗技术基层医师培训 <b>69 场</b>，提高基层医师对骨质疏松的识别与处理能力。</p>
+
+        <p class="ph hd"><b>区域协同网络</b><br>
+        形成覆盖 <b>16 个地级市、28 家医疗机构</b> 的骨质疏松防治区域协同网络，并推广至全国 <b>33 家医院</b>，
+        累计管理患者 <b>2 万余例</b>。</p>
+
+        <p class="ph hd"><b>指南与巡讲</b><br>
+        团队牵头制定<b>《骨质疏松性椎体骨折不愈合临床诊疗指南（2025 版）》</b>——2025 年 9 月 25 日发布，
+        2025 年 10 月发表于《中华创伤杂志》第 41 卷第 10 期；目前已在青岛、长春、石家庄、昆明、贵阳、重庆等地
+        开展 <b>12 站</b>巡讲。</p>
+
+        <p class="ph hd"><b>AI 智能管理系统</b><br>
+        团队<b>自主研发</b>的「骨质疏松全病程智慧管理系统」已投入临床：与医院 HIS 系统对接、自动抓取患者信息，
+        按标签分类管理，影像与病理资料集中归档；随访由 <b>AI 智能随访体系</b>主动触达——电话、线上平台多渠道推送提醒，
+        把筛查出来的人真正留在管理里。配套成果还包括 <b>AI 智能问诊</b>、<b>AI 辅助术前规划</b>与<b>术后康复系统</b>，
+        已获多项计算机软件著作权。</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>三维模型来源与许可</summary>
+      <div class="dbody">
+        <p class="ph">
+        首页脊柱三维模型基于 <b>BodyParts3D</b> 解剖数据制作。<br><br>
+        原始数据：BodyParts3D, © The Database Center for Life Science (DBCLS), 日本<br>
+        许可协议：<b>CC BY-SA 2.1 Japan</b><br>
+        数据来源：https://lifesciencedb.jp/bp3d/<br><br>
+        踝泵动作的<b>人体皮肤</b>使用 MakeHuman / MPFB2 基底网格（CC0 1.0 公有领域，来源 github.com/nirholas/three.ws，vendored from naver/anny）；<b>胫骨、腓骨、距骨、跟骨</b>取自 <b>Z-Anatomy</b> 解剖模型库（由 BodyParts3D 衍生，© Gauthier Kervyn / Marcin Zielinski，<b>CC BY-SA 4.0</b>，来源 github.com/Z-Anatomy/Models-of-human-anatomy）。<br>本页所示的踝泵动画为上述素材的改编作品，同样以 CC BY-SA 4.0 提供。<br><br>
+        本项目使用胸腰段 T10–L2 五节椎体（FJ3154 / FJ3155 / FJ3156 / FJ3157 / FJ3159）与 四片椎间盘（FJ3209 / FJ3210 / FJ3211 / FJ3212），
+        保持原始解剖形态与相对位置，仅做取景、布光与渲染，<b>未对骨体做压缩或变形处理</b>。
+        椎体内部的高亮「裂隙」为示意性叠加，用于呈现椎体内裂隙征（IVC）这一征象。<br><br>
+        <b>本模型为示意，非真实病例影像，亦非影像重建结果；形态、比例与操作细节均有简化，并非完全拟真，仅起示意作用。</b><br>
+        依 CC BY-SA 2.1 JP 要求，上述衍生模型同样以 CC BY-SA 协议提供。
+        </p>
+      </div>
+    </details>
+
+    <details>
+      <summary>参考资料与数据来源</summary>
+      <div class="dbody">
+        <p class="ph">
+        《骨质疏松性椎体骨折不愈合临床诊疗指南（2025 版）》，中华创伤杂志 2025 年第 41 卷第 10 期。<br>
+        · 诊断部分：影像学与椎体内裂隙征（IVC）的定位、CT / MRI 的互补价值、不愈合的判断需综合临床<br>
+        · 治疗部分：保守、微创强化（PVP / PKP）与开放手术的分层指征<br>
+        · 康复部分：尽量减少卧床时间、动静结合、腰背伸肌与平衡训练<br>
+        · 药物部分：极高骨折风险人群的初始治疗选择、促骨形成药物的疗程与序贯、地舒单抗无药物假期的说明<br><br>
+        中华医学会骨质疏松和骨矿盐疾病分会相关诊疗指南与共识。<br><br>
+        国际骨质疏松基金会（IOF）全球骨折流行病学估算数据（“每 3 秒 1 人”）。<br><br>
+        全国骨质疏松流行病学与疾病负担相关公开资料。<br><br>
+        青岛崂山区基层骨质疏松筛查与干预项目公开数据（筛查人数、卫生室覆盖、随访人数）。<br><br>
+        所有页面数据口径以公开资料最终核定为准。
+        </p>
+      </div>
+    </details>
+
+    <details>
+      <summary>AI 大模型使用说明</summary>
+      <div class="dbody">
+        <p class="ph">
+        本页面的文案初稿、信息架构、前端代码与视觉素材，由 AI 大模型辅助生成；<br>
+        医学内容、术语表述与结论，由临床医生逐句审核定稿。<br><br>
+        详细的人机协作环节、提示词工程记录与占比说明，见随作品提交的《AI 大模型应用说明文档》。
+        </p>
+      </div>
+    </details>
+
+    <details>
+      <summary>学术支持与审核</summary>
+      <div class="dbody">
+        <p class="ph">
+        学术支持：《骨质疏松性椎体骨折不愈合临床诊疗指南（2025 版）》<br>
+        内容审核：临床医生
+        </p>
+      </div>
+    </details>
+
+    <p class="vnote" style="margin-top:22px">
+      <b style="color:#8A99A6">免责声明</b>　本页面为健康科普内容，不构成任何诊疗建议，不作为诊断或用药依据。如有相关症状，请及时到正规医疗机构就诊。
+    </p>
+
+      <div class="srcnote">
+      <b>推文来源与脱敏说明</b>
+      页内“拓展阅读”的 30 篇长图，均为公众号原创推文，经授权用于本作品的非商业科普展示。
+      为保护个人信息，<b>公众号名称、作者与审核人员署名、图片水印均已作模糊或裁切处理，正文内容未作删改</b>；
+      版权归原作者所有。如需核验原文，可向大赛组委会提供对应公众号信息。
+      页内其余影像与现场照片同样已去除姓名、住院号与可识别信息，仅作科普示意，不构成诊疗建议。
+    </div>
+
+      <div class="extread">
+        <div class="extread-hd">更多同系列科普<b>公众号推文</b><i class="exnote">原创授权 · 名称与图片水印已脱敏</i></div>
+        <ul>
+        <li><a class="wxcard" href="assets/wx/view.html?i=2&back=../../index.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普 | 高血糖不止伤血管！糖尿病在悄悄啃噬你的骨关节</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=7&back=../../index.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普 丨 更年期关节痛别硬扛！分清更年期关节痛与类风湿关节炎，守护你的关节健康</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=16&back=../../index.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普丨老年人膝关节骨性关节炎防治建议</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=17&back=../../index.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普丨腰肌劳损别硬扛，拖久易腰突</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=23&back=../../index.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普丨关于痛风，这些关键认知你可能从未真正搞懂</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=20&back=../../index.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普丨春季养骨正当时：科学护关节，别再交“智商税”</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=12&back=../../index.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普 | 人老了身高一年比一年矮？这不一定是正常的</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=24&back=../../index.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">一杯咖啡，到底会“偷”走多少钙？</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=27&back=../../index.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普丨骨头在“无声呐喊”：每天坐8小时，你的骨骼正在悄悄变脆！</span></a></li>
+        <li><a class="wxcard" href="assets/wx/view.html?i=29&back=../../index.html&v=3" ><img src="assets/wx/logo.png" alt="" loading="lazy" class="wxlogo"><span class="t">骨松科普丨骨科常见疑问大揭秘：这些“常识”可能都是错的！</span></a></li>
+        </ul>
+      </div>
+
+    <div class="follow">
+      <div class="qrw">
+        <img src="assets/qr_blur.png" alt="公众号二维码，已作模糊处理，无法扫描" width="480" height="480" loading="lazy">
+        <div class="qrcap">已模糊处理（示意）</div>
+      </div>
+      <div class="ftxt">
+        <b>关注公众号 · 访问网站</b>
+        <p>公众号持续分享<b>健康科普</b>、<b>临床经验</b>与<b>科研进展</b>——把指南里的结论，翻译成能一次看懂的话。</p>
+        <a class="fu" href="https://zzzqqqkkk-cell.github.io/bone-health/" target="_blank" rel="noopener">zzzqqqkkk-cell.github.io/bone-health</a>
+        <p class="fnote">已脱敏：文中病例、影像与现场照片均去除姓名、面部与可识别信息；本页为健康科普，不构成诊疗建议。</p>
+      </div>
+    </div>
+
+      <div class="tiernote"><b>这份科普到这里结束</b><span class="tn-sub">前面每一句话的出处，都在上面的附录里。</span><button class="share-link" id="backTop" type="button">回到开头，再看一遍</button></div>
+    </div>
+    </section>
 </main>
 <footer>
-  <div class="row">
-    <div><b>医心护骨</b> · 从骨量流失到不再骨折</div>
-    <div>三维示意 · 非真实病例影像 · 影像已脱敏</div>
-  </div>
+  <p>
+    <b>本页性质</b>　健康科普 · 非诊疗建议<br>
+    <b>AI 声明</b>　图文与代码由 AI 辅助生成，医学内容经临床医生审核<br>
+    <b>网址</b>　<a href="https://zzzqqqkkk-cell.github.io/bone-health/" target="_blank" rel="noopener" style="color:#00E5C0;text-decoration:none">zzzqqqkkk-cell.github.io/bone-health</a>
+  </p>
 </footer>
-<script src="assets/js/site.js"></script>
-</body>
-</html>
+<script>
+(function(){
+  "use strict";
+
+  /* ---------- 章节导航（仅统计屏数，跳转栏在页面尾部单独初始化） ---------- */
+  var secs = [].slice.call(document.querySelectorAll('section'));
+  var cntEl = document.getElementById('secCount');
+  if (cntEl) cntEl.textContent = secs.length;
+
+  /* ---------- 进度条 ---------- */
+  var bar = document.getElementById('bar');
+  function onScroll(){
+    var h = document.documentElement;
+    bar.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight || 1) * 100) + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  /* ---------- 数字滚动 ---------- */
+  function countUp(el){
+    if (el.dataset.done) return;
+    el.dataset.done = '1';
+    var target = parseFloat(el.dataset.cnt);
+    var dec = parseInt(el.dataset.dec || '0', 10);
+    var small = el.querySelector('small');
+    var suffix = small ? small.outerHTML : '';
+    var dur = 1100, t0 = performance.now();
+    function frame(t){
+      var k = Math.min(1, (t - t0) / dur);
+      var e = 1 - Math.pow(1 - k, 3);
+      var v = target * e;
+      el.innerHTML = (dec ? v.toFixed(dec) : Math.round(v).toLocaleString('en-US')) + suffix;
+      if (k < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+
+  /* ---------- 入场 + 导航高亮 ---------- */
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      var t = en.target;
+      if (!en.isIntersecting) return;
+      if (t.classList.contains('rv')) t.classList.add('in');
+      t.querySelectorAll('[data-cnt]').forEach(countUp);
+      /* 当前屏高亮由侧边跳转栏自行维护 */
+    });
+  }, {threshold:0, rootMargin:'0px 0px -8% 0px'});
+  secs.forEach(function(s){ io.observe(s); });
+  document.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
+
+  /* ---------- 首屏 3D 脊柱（空闲播视频，拖动切序列帧） ---------- */
+  var hero = document.getElementById('hero3d');
+  if (hero) {
+    var hv = document.getElementById('heroVid');
+    var hi = document.getElementById('heroImg');
+    var N = 30, cur = 0, dragging = false, startX = 0, startIdx = 0;
+
+    function framePath(k){ return 'assets/spine_frames/f' + (k < 10 ? '0' : '') + k + '.webp'; }
+    var FRAMES = (window.__heroFrames && window.__heroFrames.length === N)
+      ? window.__heroFrames
+      : (function(){ var a = []; for (var k = 0; k < N; k++) a.push(framePath(k)); return a; })();
+
+    (function preload(){
+      if (!hi) return;
+      var idle = function(f){ setTimeout(f, 0); };
+      idle(function(){
+        for (var k = 0; k < N; k++){
+          var im = new Image();
+          im.src = FRAMES[k];
+          if (im.decode) im.decode().catch(function(){});
+        }
+      });
+    })();
+
+    function showFrame(k){
+      if (!hi) return;
+      k = ((k % N) + N) % N;
+      if (k === cur && !hi.hidden && hi.getAttribute('data-k') === String(k)) return;
+      hi.setAttribute('data-k', String(k));
+      cur = k;
+      hi.hidden = false;
+      hi.src = FRAMES[k];
+    }
+
+    function playVideo(){ if (hv) { try { hv.play(); } catch (e) {} } }
+    if (hv){
+      hv.addEventListener('canplay', function(){ if (!dragging) playVideo(); }, { once: true });
+      playVideo();
+    }
+
+    hero.addEventListener('pointerdown', function(e){
+      dragging = true;
+      startX = e.clientX;
+      /* 先把视频当前角度换算成帧号，保证按下去的那一帧和正在播放的画面一致 */
+      if (hv && hv.duration){
+        cur = Math.round((hv.currentTime / hv.duration) * N) % N;
+      }
+      startIdx = cur;
+      if (hv) { try { hv.pause(); } catch (err) {} }
+      hero.classList.add('dragging', 'touched');
+      showFrame(cur);
+      if (hero.setPointerCapture){ try { hero.setPointerCapture(e.pointerId); } catch (err) {} }
+      e.preventDefault();
+    }, { passive: false });
+
+    hero.addEventListener('pointermove', function(e){
+      if (!dragging) return;
+      var step = (e.clientX - startX) / 320;
+      showFrame(startIdx + Math.round(step * N));
+      e.preventDefault();
+    }, { passive: false });
+
+    function endDrag(){
+      if (!dragging) return;
+      dragging = false;
+      hero.classList.remove('dragging');
+      if (hv){
+        try { hv.currentTime = (cur / N) * (hv.duration || 10); } catch (err) {}
+        playVideo();
+      }
+      if (hi) hi.hidden = true;
+    }
+    window.addEventListener('pointerup', endDrag);
+    window.addEventListener('pointercancel', endDrag);
+  }
+
+  /* ---------- 第 05 屏：影像读片 ---------- */
+  var film = document.getElementById('stage');
+  var readBtn = document.getElementById('readBtn');
+  readBtn.addEventListener('click', function(){
+    film.classList.remove('scanning', 'done');
+    void film.offsetWidth;
+    film.classList.add('scanning');
+    readBtn.disabled = true;
+    readBtn.textContent = '分析中…';
+    setTimeout(function(){
+      film.classList.add('done');
+      readBtn.textContent = '再读一次';
+      readBtn.disabled = false;
+    }, 1500);
+  });
+
+
+/* ---------- 第 12 屏：多选题 → 逐条揭示真相 ---------- */
+  (function(){
+    var box = document.getElementById('mquiz');
+    if (!box) return;
+    var fb = document.getElementById('mqFb');
+    var btn = document.getElementById('mqBtn');
+    var pivot = document.getElementById('mqPivot');
+    var opts = [].slice.call(box.querySelectorAll('input[type="checkbox"]'));
+    var items = [].slice.call(box.querySelectorAll('.mq-item'));
+
+    box.addEventListener('change', function(e){
+      var el = e.target;
+      if (!el.matches('input[type="checkbox"]')) return;
+      if (el.value === 'none' && el.checked) {
+        opts.forEach(function(o){ if (o !== el) o.checked = false; });
+      } else if (el.checked) {
+        var none = opts.filter(function(o){ return o.value === 'none'; })[0];
+        if (none) none.checked = false;
+      }
+    });
+
+    btn.addEventListener('click', function(){
+      var picked = opts.filter(function(o){ return o.checked && o.value !== 'none'; })
+                       .map(function(o){ return parseInt(o.value, 10); });
+      var nonePicked = opts.some(function(o){ return o.checked && o.value === 'none'; });
+
+      if (!picked.length && !nonePicked) {
+        fb.innerHTML = '先选一个再点“看真相”。';
+        return;
+      }
+
+      var n = picked.length;
+      var msg;
+      if (nonePicked) msg = '<b>你比大多数人清醒。</b>把这页转给家里那位“没事”的人。';
+      else if (n === 1) msg = '中了 <b>1 条</b>。红线划掉的就是你信过的那条。';
+      else if (n <= 3) msg = '中了 <b>' + n + ' 条</b>——一半以上的人都中过招，这些说法太像“常识”了。';
+      else msg = '<b>四条全中。</b>说明这些说法有多顽固。下面逐条拆。';
+      fb.innerHTML = msg;
+
+      items.forEach(function(it){
+        var inp = it.querySelector('input');
+        var isNone = it.dataset.i === 'none';
+        if (isNone) {
+          if (nonePicked) it.classList.add('right');
+        } else if (inp && inp.checked) {
+          it.classList.add('wrong');
+        }
+        var tag = it.querySelector('.mq-tag');
+        if (tag) tag.textContent = (isNone ? (nonePicked ? '✓ 答对了' : '') : (inp && inp.checked ? '你选了' : ''));
+      });
+
+      box.classList.add('revealed');
+      if (pivot) pivot.hidden = false;
+      btn.textContent = '已揭晓';
+      btn.disabled = true;
+      opts.forEach(function(o){ o.disabled = true; });
+      var first = box.querySelector('.mq-item.wrong') || box.querySelector('.mq-item');
+      if (first) first.scrollIntoView({behavior:'smooth', block:'center'});
+    });
+  })();
+
+
+  /* ---------- 自测 ---------- */
+  var quiz = document.getElementById('quiz');
+  var res = document.getElementById('res');
+  var qprog = document.getElementById('qprog');
+  var ALLQ = [].slice.call(quiz.querySelectorAll('[data-q]'));
+  var answers = {};
+  var qs = ALLQ.slice();
+  var NQ = qs.length;
+  var FEMALE_ONLY = 5;   // 第 6 题（索引 5）：45 岁前绝经 / 双侧卵巢切除
+  function refreshSet(){
+    qs = ALLQ.filter(function(q){ return !q.hidden; });
+    NQ = qs.length;
+    if (qprog) qprog.innerHTML = '已答 <b>' + Object.keys(answers).length + '</b> / ' + NQ + ' 题';
+  }
+  var sexBtns = document.querySelectorAll('#sexPick button');
+  [].forEach.call(sexBtns, function(b){
+    b.addEventListener('click', function(){
+      [].forEach.call(sexBtns, function(x){ x.classList.remove('on'); });
+      b.classList.add('on');
+      var male = b.dataset.sex === 'm';
+      quiz.classList.toggle('male', male);
+      // 题干随性别变化的那一题，答案必须清掉，否则会把“已绝经=是”算成“年龄≥70=是”
+      var swapped = ALLQ[4];
+      if (swapped) {
+        delete answers[4];
+        swapped.classList.remove('ans');
+        [].forEach.call(swapped.querySelectorAll('.yn button'), function(x){ x.classList.remove('on'); });
+      }
+      // 男士：OSTA 不适用，直接置灰禁用
+      var osta = document.getElementById('osta');
+      if (osta) {
+        osta.classList.toggle('disabled', male);
+        [].forEach.call(osta.querySelectorAll('input,button'), function(el){ el.disabled = male; });
+        var ores = document.getElementById('ostaRes');
+        if (ores && !male) ores.textContent = '填两个数字，立刻给出指数与建议。';
+        if (ores && male) ores.textContent = '';
+        var oh = document.getElementById('ostaHint');
+        if (oh) {
+          oh.hidden = !male;
+          oh.textContent = male ? '仅适用于绝经后女性，男性不能用；请参考上方自测结果。' : '';
+        }
+      }
+      refreshSet();
+      res.classList.remove('show');
+      render();
+    });
+  });
+  quiz.addEventListener('click', function(e){
+    var btn = e.target.closest('button');
+    if (!btn) return;
+    var q = btn.closest('[data-q]');
+    var idx = qs.indexOf(q);
+    if (idx < 0) return;
+    answers[idx] = parseInt(btn.dataset.v, 10);
+    q.classList.add('ans');
+    q.querySelectorAll('.yn button').forEach(function(b){ b.classList.remove('on'); });
+    btn.classList.add('on');
+    if (qprog) qprog.innerHTML = '已答 <b>' + Object.keys(answers).length + '</b> / ' + NQ + ' 题';
+    render();
+  });
+
+  function render(){
+    var keys = Object.keys(answers);
+    if (keys.length < NQ) return;
+    var flags = 0, others = 0;
+    qs.forEach(function(q, i){
+      if (answers[i] !== 1) return;
+      if (q.dataset.flag) flags++; else others++;
+    });
+    var lv, t2, d;
+    if (flags > 0){
+      lv = '建议专科评估';
+      t2 = '到骨科 / 骨质疏松专科门诊，让医生综合判断';
+      d = '命中的红旗信号（共 ' + flags + ' 条）里，任意一条都不适合自己判断——需要医生结合病史、查体和双能 X 线骨密度（DXA），必要时用 FRAX 估 10 年骨折风险，再决定要不要用药。就诊时带上门诊记录和近期片子；如果已经骨折过，多问一句：我现在有没有在治骨质疏松？';
+    } else if (others >= 3){
+      lv = '建议近期筛查';
+      t2 = '3 个月内做一次 DXA，建立基线';
+      d = '命中 ' + others + ' 条危险因素。单条通常不足以改变行为，叠加到 3 条以上则提示风险已不可忽略。建议 3 个月内做一次 DXA 建立基线，同时开始负重运动、补足钙与维生素 D、把家里的防跌倒改造做掉；若身高继续下降或疼痛加重，请提前就诊。';
+    } else if (others >= 1){
+      lv = '轻度关注';
+      t2 = '记录变化，按年龄定期筛查';
+      d = '命中 ' + others + ' 条危险因素，暂未达到“近期筛查”的门槛。建议每年量一次身高、留意跌倒与腰背痛，保证蛋白质与日照；女性 65 岁以上、男性 70 岁以上，或危险因素继续增加时，做一次骨密度检查。';
+    } else {
+      lv = '目前低风险';
+      t2 = '保持好习惯，按年龄定期筛查';
+      d = '目前没有命中红旗信号，危险因素也不多。建议保持每周负重与抗阻运动、充足日照与蛋白质摄入；女性 65 岁以上、男性 70 岁以上每 1–2 年筛查一次骨密度。一旦发生脆性骨折，无论此前评分如何，都要评估骨密度。';
+    }
+    var hitEl = document.getElementById('hit');
+    if (hitEl) {
+      hitEl.innerHTML =
+        '<span class="' + (flags ? 'hit-red' : 'hit-off') + '">红旗 ' + flags + ' 条</span>' +
+        '<span class="' + (others ? 'hit-mute' : 'hit-off') + '">其他危险因素 ' + others + ' 条</span>';
+    }
+    document.getElementById('lv').textContent = lv;
+    document.getElementById('rt').textContent = t2;
+    document.getElementById('rd').textContent = d;
+    res.classList.add('show');
+    res.scrollIntoView({behavior:'smooth', block:'center'});
+  }
+
+
+  /* ---------- OSTA 速算 ---------- */
+  (function(){
+    var age = document.getElementById('ostaAge');
+    var wt = document.getElementById('ostaWt');
+    var btn = document.getElementById('ostaBtn');
+    var out = document.getElementById('ostaRes');
+    if (!btn) return;
+    function calc(){
+      var a = parseFloat(age.value), w = parseFloat(wt.value);
+      if (!(a > 0 && w > 0)) { out.textContent = '请输入年龄与体重。'; return; }
+      var idx = (w - a) * 0.2;
+      var s = idx.toFixed(1);
+      var txt;
+      if (idx > -1) txt = '低风险（指数 ' + s + '）：按年龄常规筛查即可，女性 65 岁、男性 70 岁后每 1–2 年查一次。';
+      else if (idx >= -4) txt = '中等风险（指数 ' + s + '）：建议做一次 DXA 建立基线，同时评估跌倒风险。';
+      else txt = '高风险（指数 ' + s + '）：建议尽快做 DXA，并由骨科 / 骨质疏松专科评估是否需要治疗。';
+      if (document.getElementById('quiz') &&
+          document.getElementById('quiz').classList.contains('male')) {
+        txt += '（本指数仅适用于绝经后女性，男性结果仅供参考，请以上方自测和医生评估为准。）';
+      }
+      out.textContent = txt;
+    }
+    btn.addEventListener('click', calc);
+    [age, wt].forEach(function(el){
+      el.addEventListener('keydown', function(e){ if (e.key === 'Enter') calc(); });
+    });
+  })();
+  /* ---------- 第 10 屏：序贯交棒动画（15s，滚动到即播放） ---------- */
+  (function(){
+    var box = document.getElementById('seqBlock');
+    if (!box) return;
+    var film  = document.getElementById('seqFilm'),
+        common= document.getElementById('seqCommon'),
+        green = document.getElementById('seqGreen'),
+        red   = document.getElementById('seqRed'),
+        dotG  = document.getElementById('seqDotG'),
+        dotR  = document.getElementById('seqDotR'),
+        flash = document.getElementById('seqFlash'),
+        burst = document.getElementById('seqBurstC'),
+        r1 = document.getElementById('seqR1'), r2 = document.getElementById('seqR2'), r3 = document.getElementById('seqR3'),
+        hand  = document.getElementById('seqHandoff'),
+        labG  = document.getElementById('seqLabG'),
+        labR  = document.getElementById('seqLabR'),
+        head  = document.getElementById('seqHead'),
+        sub   = document.getElementById('seqSub'),
+        btn   = document.getElementById('seqBtn');
+
+    var TOTAL = 15000, raf = null, t0 = 0, running = false, shook = false;
+    var lenG = 0, lenR = 0;
+    try { lenG = green.getTotalLength(); lenR = red.getTotalLength(); } catch (e) {}
+
+    function cl(v){ return Math.max(0, Math.min(1, v)); }
+    function eOut(p){ return 1 - Math.pow(1 - p, 3); }
+    function eIn(p){ return p * p * p; }
+    function draw(el, p){ if (el) el.style.strokeDashoffset = String(1 - cl(p)); }
+    function on(el, v){ if (el) el.classList.toggle('on', !!v); }
+    function setOp(el, v){ if (el) el.style.opacity = v; }
+    function attr(el, k, v){ if (el) el.setAttribute(k, v); }
+
+    function lead(el, len, p, dot){
+      if (!el || !dot || !len) return;
+      try {
+        var pt = el.getPointAtLength(len * cl(p));
+        dot.setAttribute('cx', pt.x.toFixed(2));
+        dot.setAttribute('cy', pt.y.toFixed(2));
+        dot.style.opacity = (p > 0.04 && p < 0.96) ? '1' : '0';
+      } catch (e) {}
+    }
+    function ring(el, t, start, dur){
+      if (!el) return;
+      var q = cl((t - start) / dur);
+      el.setAttribute('r', (2 + q * 30).toFixed(1));
+      el.setAttribute('opacity', (q > 0 && q < 1) ? (1 - q).toFixed(2) : '0');
+    }
+
+    var IMPACT = 7400;
+
+    function frame(now){
+      if (!t0) t0 = now;
+      var t = now - t0;
+
+      draw(common, eOut(cl((t - 200) / 3600)));
+      on(hand, t >= 3800);
+
+      // 分岔瞬间的红光
+      if (flash){
+        var f = (t >= 4700 && t < 5300) ? (1 - Math.abs((t - 4700) / 300 - 1)) : 0;
+        attr(flash, 'opacity', (f * 0.26).toFixed(3));
+      }
+
+      // 红色 2.7s 俯冲，绿色 4s 走平
+      var pr = eIn(cl((t - 4800) / 2700));
+      var pg = eOut(cl((t - 4800) / 4000));
+      draw(red, pr);   lead(red,   lenR, pr, dotR);
+      draw(green, pg); lead(green, lenG, pg, dotG);
+
+      // 落底：三层冲击波 + 爆闪 + 缩放 + 震动
+      ring(r1, t, IMPACT,        900);
+      ring(r2, t, IMPACT + 180, 1000);
+      ring(r3, t, IMPACT + 360, 1100);
+      if (burst){
+        var bq = cl((t - IMPACT) / 700);
+        attr(burst, 'r', (bq * 70).toFixed(1));
+        attr(burst, 'opacity', (bq > 0 && bq < 1) ? ((1 - bq) * 0.9).toFixed(2) : '0');
+      }
+      if (film && t >= IMPACT && !shook){
+        shook = true;
+        film.classList.add('crash', 'zap');
+        setTimeout(function(){ film.classList.remove('crash'); }, 560);
+        setTimeout(function(){ film.classList.remove('zap'); }, 430);
+      }
+
+      on(labG, t >= 8800);
+      on(labR, t >= 9200);
+      on(head, t >= 10600);
+      on(sub,  t >= 12600);
+
+      if (t < TOTAL) { raf = requestAnimationFrame(frame); }
+      else { running = false; setOp(dotG,'0'); setOp(dotR,'0'); }
+    }
+
+    function reset(){
+      draw(common,0); draw(green,0); draw(red,0);
+      [hand, labG, labR, head, sub].forEach(function(e){ if(e) e.classList.remove('on'); });
+      attr(flash,'opacity','0');
+      [r1,r2,r3].forEach(function(e){ attr(e,'opacity','0'); attr(e,'r','2'); });
+      if (burst){ attr(burst,'opacity','0'); attr(burst,'r','0'); }
+      setOp(dotG,'0'); setOp(dotR,'0');
+      shook = false;
+    }
+
+    function play(){
+      if (running) return;
+      if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches){
+        [common,green,red].forEach(function(e){ draw(e,1); });
+        [hand,labG,labR,head,sub].forEach(function(e){ if(e) e.classList.add('on'); });
+        return;
+      }
+      cancelAnimationFrame(raf);
+      reset();
+      t0 = 0; running = true;
+      raf = requestAnimationFrame(frame);
+    }
+
+    // 滚动到该区块时自动播放一次
+    if ('IntersectionObserver' in window){
+      var io = new IntersectionObserver(function(es){
+        es.forEach(function(en){
+          if (en.isIntersecting){ play(); io.disconnect(); }
+        });
+      }, { threshold: 0.05, rootMargin: '0px 0px -8% 0px' });
+      io.observe(box);
+      /* 兜底 0：若渲染管线异常导致曲线一直没画出来，7 秒后直接定格最终画面 */
+      setTimeout(function(){
+        var probe = document.getElementById('seqCommon');
+        if (!probe) return;
+        var off = getComputedStyle(probe).strokeDashoffset;
+        if (off === '1px' || off === '1'){
+          [common, green, red].forEach(function(e){ if (e) draw(e, 1); });
+          [hand, labG, labR, head, sub].forEach(function(e){ if (e) e.classList.add('on'); });
+        }
+      }, 7000);
+      /* 兜底 1：加载后若已在视口内而动画没跑，补播 */
+      setTimeout(function(){
+        if (running) return;
+        var r = box.getBoundingClientRect();
+        if (r.top < (window.innerHeight || 800) && r.bottom > 0) play();
+      }, 2000);
+      /* 兜底 2：个别机型 IO 不回调，滚到附近也播放一次 */
+      var seqFallback = false;
+      window.addEventListener('scroll', function(){
+        if (seqFallback) return;
+        var r = box.getBoundingClientRect();
+        if (r.top < (window.innerHeight || 800) - 40 && r.bottom > 0){
+          seqFallback = true;
+          if (!running) play();
+        }
+      }, { passive: true });
+    }
+    if (btn) btn.addEventListener('click', function(e){ e.preventDefault(); running = false; play(); });
+  })();
+
+  /* ---------- 第 06 屏：PVP 透视视频（折叠内播放 + 同步字幕） ---------- */
+  (function(){
+    var box = document.getElementById('svcDetails');
+    if (!box) return;
+    var vid  = document.getElementById('svcVid'),
+        play = document.getElementById('svcPlay'),
+        bar  = document.getElementById('svcBar'),
+        btn  = document.getElementById('svcBtn'),
+        caps = [1,2,3,4,5,6,7,8,9].map(function(n){ return document.getElementById('c'+n); });
+    if (!vid) return;
+
+    // 与 40 秒动画对应：全景 / 推近 / 穿刺 / 球囊(PKP) / PVP 说明 / 空腔 / 水泥 / 收束
+    var CUE = [[0,3.2],[3.2,6.4],[6.4,10.2],[10.2,11.8],[11.8,17.2],[17.2,19.6],[19.6,22.2],[22.2,27.4],[27.4,99]];
+
+    function sync(){
+      var t = vid.currentTime || 0;
+      if (bar) bar.style.width = ((t / (vid.duration || 40)) * 100).toFixed(2) + '%';
+      var hit = -1;
+      for (var i = 0; i < CUE.length; i++){
+        if (t >= CUE[i][0] && t < CUE[i][1]) { hit = i; break; }
+      }
+      caps.forEach(function(c, k){ if (c) c.classList.toggle('on', k === hit); });
+    }
+
+    vid.addEventListener('timeupdate', sync);
+    vid.addEventListener('loadedmetadata', sync);
+    vid.addEventListener('play', function(){ play && play.classList.add('hide'); });
+    vid.addEventListener('ended', function(){
+      caps.forEach(function(c){ if (c) c.classList.remove('on'); });
+      if (play) play.classList.remove('hide');
+      if (bar) bar.style.width = '100%';
+    });
+
+    function start(){
+      play && play.classList.add('hide');
+      try { vid.playbackRate = 0.68; } catch (e) {}   /* 放慢，给朗读留时间 */
+      var pr = vid.play();
+      if (pr && pr.catch) pr.catch(function(){ play && play.classList.remove('hide'); });
+    }
+
+    if (play) play.addEventListener('click', function(e){ e.preventDefault(); start(); });
+    if (btn) btn.addEventListener('click', function(e){
+      e.preventDefault();
+      vid.currentTime = 0; sync(); start();
+    });
+
+    // 展开即播放，收起即暂停
+    box.addEventListener('toggle', function(){
+      if (box.open){ start(); }
+      else { try { vid.pause(); } catch (e) {} }
+    });
+    sync();
+  })();
+
+
+})();
+</script>
+<script>
+/* ---------- 滚动与排版增强 ---------- */
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* 1) 回到顶部按钮 */
+  var btn = document.createElement('button');
+  btn.id = 'toTop';
+  btn.type = 'button';
+  btn.setAttribute('aria-label', '回到顶部');
+  btn.innerHTML = '↑';
+  document.body.appendChild(btn);
+  btn.addEventListener('click', function(){
+    window.scrollTo({top:0, behavior: reduce ? 'auto' : 'smooth'});
+  });
+
+  /* 触屏判定：手机端跳过视差等装饰性计算 */
+  function isCoarse(){
+    return window.matchMedia('(pointer: coarse)').matches || ('ontouchstart' in window) || (navigator.maxTouchPoints || 0) > 0;
+  }
+
+  /* 2) 首屏模型轻微视差 */
+  var heroVid = document.getElementById('heroVid');
+  var heroWrap = heroVid ? heroVid.parentElement : null;
+  var ticking = false;
+  function onScroll(){
+    var y = window.scrollY || document.documentElement.scrollTop;
+    if (btn) btn.classList.toggle('on', y > 640);
+    if (heroWrap && !reduce && y < 900){
+      heroWrap.style.transform = 'translate3d(0,' + (y * 0.06) + 'px,0) scale(' + (1 + y * 0.00006) + ')';
+    }
+    ticking = false;
+  }
+  window.addEventListener('scroll', function(){
+    if (!ticking){ ticking = true; requestAnimationFrame(onScroll); }
+  }, {passive:true});
+  onScroll();
+})();
+</script>
+<script>
+/* 相片墙：大荧幕立体 + 自动巡游 + 鼠标拖动 + 滑块 */
+(function () {
+  var figs = document.querySelectorAll('.gallery');
+  if (!figs.length) return;
+  var MANUAL = false;                 /* 手动交互已关闭：只自动巡游 */
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var SPEED = reduce ? 10 : 24; // 像素/秒
+
+  Array.prototype.forEach.call(figs, function (fig) {
+    var track = fig.querySelector('.gallery-track');
+    var rail = fig.querySelector('.wrail');
+    var thumb = fig.querySelector('.wthumb');
+    if (!track) return;
+
+    var paused = false, timer = null, dir = 1, last = 0, drag = null, thumbDrag = false;
+
+    function pause(ms) {
+      paused = true;
+      if (timer) clearTimeout(timer);
+      timer = setTimeout(function () { paused = false; }, ms || 1600);
+    }
+
+    /* ---- 立体：越靠边，上下越高、外侧微收 ---- */
+    function shape() {
+      var shots = track.querySelectorAll('.shot');
+      var viewCenter = track.scrollLeft + track.clientWidth / 2;
+      var half = track.clientWidth / 2;
+      for (var i = 0; i < shots.length; i++) {
+        var el = shots[i];
+        // 用布局坐标计算，避免读取被 transform 影响后的位置
+        var xc = el.offsetLeft + el.offsetWidth / 2 + (el.offsetParent === track ? 0 : 0);
+        var t = (xc - viewCenter) / half;
+        if (t > 1.35) t = 1.35; if (t < -1.35) t = -1.35;
+        var ac = Math.min(1, Math.abs(t));
+        var ky = 0.90 + 0.13 * ac * ac;      // 上下高度：中间 0.90，两侧 1.03（相差 1.14 倍）
+        var kx = 0.99 + 0.025 * ac;
+        var ry = -t * 8;
+        // 弧形：上下两行随位置上下偏移，行距保持不变
+        var h = el.offsetHeight || 0;
+        var row = i % 3;
+        var dy = (row === 0 ? 1 : (row === 2 ? -1 : 0)) * h * (1 - ky);
+        el.style.transform =
+          'translateY(' + dy.toFixed(1) + 'px) perspective(900px) rotateY(' +
+          ry.toFixed(2) + 'deg) scaleY(' + ky.toFixed(3) + ') scaleX(' + kx.toFixed(3) + ')';
+        el.style.zIndex = String(Math.round(20 - ac * 10));
+      }
+    }
+
+    /* ---- 滑块同步 ---- */
+    function sync() {
+      if (!rail || !thumb) return;
+      var max = track.scrollWidth - track.clientWidth;
+      var rw = rail.clientWidth - thumb.offsetWidth - 6;
+      var p = max > 0 ? track.scrollLeft / max : 0;
+      thumb.style.left = (3 + p * Math.max(rw, 0)) + 'px';
+    }
+
+    /* ---- 自动巡游（双驱动，按时间累积） ---- */
+    function step() {
+      var now = performance.now();
+      var dt = last ? Math.min((now - last) / 1000, 0.3) : 0;
+      last = now;
+      if (!dt || paused || drag || thumbDrag) return;
+      var max = track.scrollWidth - track.clientWidth;
+      if (max < 8) return;
+      var r = track.getBoundingClientRect();
+      if (r.bottom < 40 || r.top > (window.innerHeight || 800) - 40) return;
+      var next = track.scrollLeft + SPEED * dt * dir;
+      if (next >= max) { next = max; dir = -1; }
+      else if (next <= 0) { next = 0; dir = 1; }
+      track.scrollLeft = next;
+    }
+    (function loop() { step(); requestAnimationFrame(loop); })();
+    setInterval(step, 120);
+
+    var shapeQueued = false;
+    function onScroll() {
+      if (thumbDrag) return;                 /* 拖滑块时不做 3D 变形，避免掉帧 */
+      if (shapeQueued) return;
+      shapeQueued = true;
+      requestAnimationFrame(function () { shapeQueued = false; shape(); sync(); });
+      sync();
+    }
+    track.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', function () { shape(); sync(); });
+
+    /* ---- 鼠标 / 手指拖动 ---- */
+    track.addEventListener('pointerdown', function (e) {
+      if (!MANUAL) return;
+      if (e.pointerType === 'mouse' && e.button !== 0) return;
+      drag = { x: e.clientX, left: track.scrollLeft };
+      track.classList.add('dragging');
+      try { track.setPointerCapture(e.pointerId); } catch (err) {}
+      last = 0;
+    });
+    track.addEventListener('pointermove', function (e) {
+      if (!MANUAL || !drag) return;
+      var dx = e.clientX - drag.x;
+      if (Math.abs(dx) > 2) e.preventDefault();
+      track.scrollLeft = drag.left - dx;
+    });
+    function endDrag() {
+      if (!drag) return;
+      drag = null;
+      track.classList.remove('dragging');
+      pause(1800);
+    }
+    track.addEventListener('pointerup', endDrag);
+    track.addEventListener('pointercancel', endDrag);
+    track.addEventListener('pointerleave', endDrag);
+
+    /* ---- 下方滑块 ---- */
+    if (rail && thumb) {
+      var thumbRaf = 0, pendingX = 0;
+      function applyThumb(){
+        thumbRaf = 0;
+        var box = rail.getBoundingClientRect();
+        var rw = box.width - thumb.offsetWidth - 6;
+        var p = (pendingX - box.left - thumb.offsetWidth / 2 - 3) / Math.max(rw, 1);
+        p = Math.max(0, Math.min(1, p));
+        var max = track.scrollWidth - track.clientWidth;
+        track.scrollLeft = p * max;
+        /* 滑块位置直接跟随手指，不等滚动事件 */
+        thumb.style.left = (3 + p * Math.max(rw, 0)) + 'px';
+      }
+      function setFromX(clientX) {
+        pendingX = clientX;
+        if (!thumbRaf) thumbRaf = requestAnimationFrame(applyThumb);
+      }
+      thumb.addEventListener('pointerdown', function (e) {
+        if (!MANUAL) return;
+        e.preventDefault(); e.stopPropagation();
+        thumbDrag = true; pause(4000);
+        try { thumb.setPointerCapture(e.pointerId); } catch (err) {}
+      });
+      thumb.addEventListener('pointermove', function (e) {
+        if (thumbDrag) { e.preventDefault(); setFromX(e.clientX); }
+      });
+      thumb.addEventListener('pointerup', function () {
+        thumbDrag = false; pause(1800);
+        setTimeout(function(){ shape(); sync(); }, 60);   /* 松手补算一次变形 */
+      });
+      rail.addEventListener('pointerdown', function (e) {
+        if (!MANUAL) return;
+        if (e.target === thumb) return;
+        pause(2600); setFromX(e.clientX);
+      });
+      var btns = fig.querySelectorAll('.wbtn');
+      Array.prototype.forEach.call(btns, function (b) {
+        b.addEventListener('click', function () {
+          if (!MANUAL) return;
+          var col = track.clientWidth / 3;
+          pause(2200);
+          var target = track.scrollLeft + col * Number(b.dataset.dir);
+          var maxL = track.scrollWidth - track.clientWidth;
+          track.scrollLeft = Math.max(0, Math.min(maxL, target));
+        });
+      });
+    }
+
+    shape(); sync();
+    setTimeout(function () { shape(); sync(); }, 300);
+  });
+})();
+</script>
+<script>
+/* 全身骨骼图：进入视口后依次点亮三处部位 */
+(function () {
+  var figs = document.querySelectorAll('.bodyfig');
+  if (!figs.length || !window.IntersectionObserver) {
+    Array.prototype.forEach.call(figs, function (f) { f.classList.add('in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (e.isIntersecting) {
+        e.target.classList.remove('pre');
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.05, rootMargin: '0px 0px -8% 0px' });
+  Array.prototype.forEach.call(figs, function (f) {
+    f.classList.add('pre');
+    io.observe(f);
+  });
+})();
+</script>
+<script>
+/* 兜底：超长版块（如第 14 屏）无法达到 IntersectionObserver 的比例阈值，
+   这里按“是否进入视口”补一次显示，保证不会整屏空白 */
+(function(){
+  function reveal(){
+    var vh = window.innerHeight || 800;
+    var list = document.querySelectorAll('.rv:not(.in)');
+    for (var i = 0; i < list.length; i++){
+      var r = list[i].getBoundingClientRect();
+      if (r.top < vh * 0.92 && r.bottom > 0) list[i].classList.add('in');
+    }
+  }
+  window.addEventListener('scroll', reveal, {passive:true});
+  window.addEventListener('resize', reveal);
+  setInterval(reveal, 400);
+  document.addEventListener('DOMContentLoaded', reveal);
+  reveal();
+})();
+</script>
+<script>
+(function(){
+  var v = document.getElementById('wxview');
+  var img = document.getElementById('wximg');
+  var body = document.getElementById('wxbody');
+  if (!v) return;
+  document.addEventListener('click', function(e){
+    var a = e.target.closest && e.target.closest('a.wxcard');
+    if (!a) return;
+    var href = a.getAttribute('href') || '';
+    if (!/\.jpe?g$/i.test(href)) return;
+    e.preventDefault();
+    img.src = href;
+    body.scrollTop = 0;
+    v.classList.add('on');
+    v.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  });
+  function close(){
+    v.classList.remove('on');
+    v.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    img.removeAttribute('src');
+  }
+  document.getElementById('wxclose').addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') close(); });
+})();
+</script>
+<script>
+(function(){
+  var KEY = 'wxScrollBack';
+  // 打开长图前记录位置
+  document.addEventListener('click', function(e){
+    var a = e.target.closest && e.target.closest('a.wxcard');
+    if (!a) return;
+    try {
+      sessionStorage.setItem(KEY, JSON.stringify({
+        u: location.href.split('#')[0],
+        y: window.scrollY || window.pageYOffset || 0
+      }));
+    } catch (err) {}
+  });
+  // 回到本页时还原
+  try {
+    var raw = sessionStorage.getItem(KEY);
+    if (raw) {
+      var s = JSON.parse(raw);
+      if (s && s.u === location.href.split('#')[0]) {
+        var go = function(){
+          window.scrollTo(0, s.y || 0);
+          document.documentElement.scrollTop = s.y || 0;
+          document.body.scrollTop = s.y || 0;
+        };
+        go();
+        setTimeout(go, 60);
+        setTimeout(go, 220);
+        sessionStorage.removeItem(KEY);
+      }
+    }
+  } catch (err) {}
+})();
+</script>
+<script>
+(function(){
+  var b = document.getElementById('backTop');
+  if (!b) return;
+  b.addEventListener('click', function(){
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+})();
+</script>
+<script>
+/* ================= 侧边快速跳转栏 ================= */
+(function(){
+  var secs = [].slice.call(document.querySelectorAll('section'));
+  var box = document.getElementById('jump');
+  if (!box || !secs.length) return;
+
+  function titleOf(sec){
+    var h = sec.querySelector('h1, h2');
+    var txt = h ? h.textContent.replace(/\s+/g, ' ').trim() : '';
+    return txt.replace(/[，。]$/, '');
+  }
+  function tagOf(sec){
+    var i = sec.querySelector('.tag i');
+    return i ? i.textContent.trim() : '';
+  }
+
+  var rail = document.createElement('div');
+  rail.className = 'jump-rail';
+  var items = [];
+  secs.forEach(function(sec, idx){
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.textContent = (idx + 1);
+    b.setAttribute('aria-label', '第 ' + (idx + 1) + ' 屏：' + titleOf(sec));
+    b.addEventListener('click', function(){ go(sec); });
+    rail.appendChild(b);
+    items.push(b);
+  });
+
+  var toggle = document.createElement('button');
+  toggle.type = 'button';
+  toggle.className = 'jump-toggle';
+  toggle.textContent = '目录';
+  toggle.setAttribute('aria-label', '打开章节目录');
+  box.appendChild(rail);
+  box.appendChild(toggle);
+
+  var mask = document.createElement('div');
+  mask.className = 'jump-mask';
+  var panel = document.createElement('aside');
+  panel.className = 'jump-panel';
+  panel.setAttribute('aria-hidden', 'true');
+  panel.innerHTML = '<h3>目录 · ' + secs.length + ' 屏</h3>';
+
+  var rows = [];
+  secs.forEach(function(sec, idx){
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'jump-item';
+    b.innerHTML = '<b>' + String(idx + 1).padStart(2, '0') + '</b><span>' +
+                  titleOf(sec) + '</span><i>' + tagOf(sec) + '</i>';
+    b.addEventListener('click', function(){ go(sec); close(); });
+    panel.appendChild(b);
+    rows.push(b);
+  });
+  document.body.appendChild(mask);
+  document.body.appendChild(panel);
+
+  function go(sec){
+    var i = secs.indexOf(sec);
+    sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (i >= 0) mark(i);
+  }
+  function open(){
+    rail.classList.add('show');
+    panel.classList.add('on');
+    mask.classList.add('on');
+    panel.setAttribute('aria-hidden', 'false');
+  }
+  function close(){
+    panel.classList.remove('on');
+    mask.classList.remove('on');
+    panel.setAttribute('aria-hidden', 'true');
+  }
+  toggle.addEventListener('click', function(){
+    panel.classList.contains('on') ? close() : open();
+  });
+
+  /* 编号栏：滚动时出现、停手 2.6 秒后收起（避免长期压住正文右缘） */
+  var hideTimer = null;
+  function showRail(){
+    rail.classList.add('show');
+    clearTimeout(hideTimer);
+    hideTimer = setTimeout(function(){
+      if (!panel.classList.contains('on')) rail.classList.remove('show');
+    }, 2600);
+  }
+  window.addEventListener('scroll', showRail, { passive: true });
+  showRail();
+  mask.addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') close(); });
+
+  /* 当前屏高亮 */
+  function mark(i){
+    items.forEach(function(b, k){ b.classList.toggle('on', k === i); });
+    rows.forEach(function(b, k){ b.classList.toggle('on', k === i); });
+  }
+
+  var current = 0;
+  function computeActive(){
+    var mid = window.innerHeight * 0.45, best = 0;
+    for (var i = 0; i < secs.length; i++){
+      if (secs[i].getBoundingClientRect().top - mid <= 0) best = i;
+    }
+    return best;
+  }
+  function sync(){
+    var i = computeActive();
+    if (i !== current){ current = i; mark(i); }
+  }
+  var lastRun = 0;
+  window.addEventListener('scroll', function(){
+    var now = Date.now();
+    if (now - lastRun < 90) return;   // 轻量节流，不依赖 requestAnimationFrame
+    lastRun = now;
+    sync();
+  }, { passive: true });
+  window.addEventListener('resize', sync);
+  window.addEventListener('hashchange', sync);
+  sync();
+})();
+</script>
+<script>
+/* 兜底：个别机型 IntersectionObserver 触发延迟，进视口后仍是空框 —— 加载后与滚动时各补一次 */
+(function(){
+  function force(){
+    var rv = document.querySelectorAll('.rv:not(.in)');
+    Array.prototype.forEach.call(rv, function(el){
+      var r = el.getBoundingClientRect();
+      if (r.top < (window.innerHeight || 800) && r.bottom > 0) el.classList.add('in');
+    });
+    var bf = document.querySelectorAll('.bodyfig.pre');
+    Array.prototype.forEach.call(bf, function(el){
+      var r = el.getBoundingClientRect();
+      if (r.top < (window.innerHeight || 800) && r.bottom > -80){
+        el.classList.remove('pre'); el.classList.add('in');
+      }
+    });
+  }
+  window.addEventListener('load', function(){ setTimeout(force, 1000); });
+  window.addEventListener('scroll', function(){
+    if (window.__forceT) return;
+    window.__forceT = 1;
+    requestAnimationFrame(function(){ window.__forceT = 0; force(); });
+  }, { passive: true });
+})();
+</script>
+<script>
+/* ---------- 朗读本屏：系统语音（Web Speech API），无音频素材 ---------- */
+(function(){
+  if (!('speechSynthesis' in window) || !window.SpeechSynthesisUtterance) return;
+
+  var btn = document.createElement('button');
+  btn.id = 'ttsBtn';
+  btn.type = 'button';
+  btn.setAttribute('aria-pressed', 'false');
+  btn.setAttribute('aria-label', '朗读本屏（使用系统语音）');
+  btn.innerHTML = '<i aria-hidden="true">🔊</i><b>朗读本屏</b>';
+  document.body.appendChild(btn);
+
+  var syn = window.speechSynthesis;
+  var speaking = false, curSec = null, zhVoice = null;
+
+  function pickVoice(){
+    var vs = syn.getVoices() || [];
+    for (var i = 0; i < vs.length; i++){
+      if (/^zh(-|_)?(CN|Hans)?/i.test(vs[i].lang)) { zhVoice = vs[i]; return; }
+    }
+    for (var j = 0; j < vs.length; j++){
+      if (/zh/i.test(vs[j].lang)) { zhVoice = vs[j]; return; }
+    }
+  }
+  pickVoice();
+  if (syn.onvoiceschanged !== undefined) syn.onvoiceschanged = pickVoice;
+
+  function currentSection(){
+    var secs = document.querySelectorAll('section');
+    var mid = window.innerHeight * 0.45, best = secs[0];
+    for (var i = 0; i < secs.length; i++){
+      if (secs[i].getBoundingClientRect().top - mid <= 0) best = secs[i];
+    }
+    return best;
+  }
+
+  /* 去掉不适合朗读的块（链接列表、脚注、扩展阅读等） */
+  function plainText(sec){
+    var clone = sec.cloneNode(true);
+    ['.tag', '.extread', '.vnote', '.fnote', '.qrcap', '.follow', '.tiernote',
+     '.herotip', '.hint', '.hero-note', 'button', 'nav', 'svg', 'script', 'style'
+    ].forEach(function(sel){
+      Array.prototype.forEach.call(clone.querySelectorAll(sel), function(el){ el.remove(); });
+    });
+    var txt = (clone.textContent || '').replace(/\s+/g, ' ').trim();
+    return txt;
+  }
+
+  /* 术语与单位的口语化，避免系统念错 */
+  var FIX = [
+    [/OVCF/g, '骨质疏松性椎体压缩骨折'],
+    [/PVP/g, 'P V P'],
+    [/PKP/g, 'P K P'],
+    [/DXA/g, 'D X A'],
+    [/Kümmell/gi, '库梅尔'],
+    [/FRAX/g, '弗拉克斯'],
+    [/μg/g, '微克'],
+    [/mmol\/L/g, '毫摩尔每升'],
+    [/mg\/dL/g, '毫克每分升'],
+    [/mg/g, '毫克'],
+    [/(\d)\s*%/g, '$1%'],
+    [/\+\+/g, ''],
+    [/[·•]/g, '，']
+  ];
+
+  function prepare(txt){
+    FIX.forEach(function(p){ txt = txt.replace(p[0], p[1]); });
+    return txt.replace(/[ \t]+/g, ' ').slice(0, 1600);
+  }
+
+  function setState(on){
+    speaking = on;
+    btn.classList.toggle('on', on);
+    btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    btn.querySelector('b').textContent = on ? '停止朗读' : '朗读本屏';
+  }
+
+  function stop(){
+    try { syn.cancel(); } catch (e) {}
+    setState(false);
+  }
+
+  function speak(sec){
+    var text = prepare(plainText(sec));
+    if (!text) return;
+    try { syn.cancel(); } catch (e) {}
+    var parts = text.match(/[^。！？；!?;]+[。！？；!?;]?/g) || [text];
+    setState(true);
+    parts.forEach(function(p, idx){
+      var s = p.trim();
+      if (!s) return;
+      var u = new SpeechSynthesisUtterance(s);
+      u.lang = 'zh-CN';
+      u.rate = 0.95;
+      u.pitch = 1;
+      if (zhVoice) u.voice = zhVoice;
+      if (idx === parts.length - 1) u.onend = function(){ setState(false); };
+      syn.speak(u);
+    });
+    curSec = sec;
+  }
+
+  btn.addEventListener('click', function(){
+    if (speaking) { stop(); return; }
+    speak(currentSection());
+  });
+
+  /* 换屏就停，避免继续念上一屏 */
+  var lastSec = currentSection(), scrollTimer = 0;
+  window.addEventListener('scroll', function(){
+    if (!speaking) { lastSec = currentSection(); return; }
+    clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(function(){
+      var now = currentSection();
+      if (now !== curSec) stop();
+    }, 320);
+  }, { passive: true });
+
+  /* 视频播放时让路 */
+  Array.prototype.forEach.call(document.querySelectorAll('video'), function(v){
+    v.addEventListener('play', function(){ if (speaking) stop(); });
+  });
+
+  window.addEventListener('pagehide', function(){ try { syn.cancel(); } catch (e) {} });
+})();
+</script>
+<script>
+/* ---------- PKP 动画：按时间轴朗读字幕（队列式，不打断句子） ---------- */
+(function(){
+  var vid = document.getElementById('svcVid');
+  var btn = document.getElementById('svcTts');
+  if (!vid || !btn) return;
+  if (!('speechSynthesis' in window)){ btn.style.display = 'none'; return; }
+
+  var CUE = [[0,3.2],[3.2,6.4],[6.4,10.2],[10.2,11.8],[11.8,17.2],
+             [17.2,19.6],[19.6,22.2],[22.2,27.4],[27.4,99]];
+  var caps = [];
+  for (var n = 1; n <= 9; n++) caps.push(document.getElementById('c' + n));
+
+  var on = false, lastCue = -1, zhVoice = null;
+  var queue = [], speaking = false, RATE = 1.32, MAXQ = 2;
+
+  function pickVoice(){
+    var vs = window.speechSynthesis.getVoices() || [];
+    for (var i = 0; i < vs.length; i++){
+      if (/^zh(-|_)?(CN|Hans)?/i.test(vs[i].lang)) { zhVoice = vs[i]; return; }
+    }
+    for (var j = 0; j < vs.length; j++){
+      if (/zh/i.test(vs[j].lang)) { zhVoice = vs[j]; return; }
+    }
+  }
+  pickVoice();
+  if (window.speechSynthesis.onvoiceschanged !== undefined){
+    window.speechSynthesis.onvoiceschanged = pickVoice;
+  }
+
+  function cueIndex(time){
+    for (var i = 0; i < CUE.length; i++){
+      if (time >= CUE[i][0] && time < CUE[i][1]) return i;
+    }
+    return -1;
+  }
+
+  function textOf(i){
+    var el = caps[i];
+    if (!el) return '';
+    return (el.textContent || '').replace(/\s+/g, ' ').trim();
+  }
+
+  /* 队列式播报：上一条没念完就排队，绝不掐断；积压超过 2 条则跳过旧句重新对齐 */
+  function pump(){
+    if (!on || speaking || !queue.length) return;
+    var txt = queue.shift();
+    var u = new SpeechSynthesisUtterance(txt);
+    u.lang = 'zh-CN';
+    u.rate = RATE;
+    u.pitch = 1;
+    if (zhVoice) u.voice = zhVoice;
+    speaking = true;
+    u.onend = u.onerror = function(){ speaking = false; pump(); };
+    try { window.speechSynthesis.speak(u); } catch (e) { speaking = false; }
+  }
+
+  function say(text){
+    if (!text) return;
+    if (queue.length >= MAXQ) queue = queue.slice(-1);   /* 落后太多：丢掉积压，保最新 */
+    queue.push(text);
+    pump();
+  }
+
+  function flush(){
+    queue = [];
+    speaking = false;
+    try { window.speechSynthesis.cancel(); } catch (e) {}
+  }
+
+  vid.addEventListener('timeupdate', function(){
+    if (!on) return;
+    var i = cueIndex(vid.currentTime);
+    if (i !== lastCue){
+      lastCue = i;
+      if (i >= 0) say(textOf(i));
+    }
+  });
+
+  vid.addEventListener('seeking', function(){ lastCue = -1; });
+  /* 只有用户主动暂停才停声；播到结尾让最后一句话念完 */
+  vid.addEventListener('pause', function(){ if (on && !vid.ended) flush(); });
+
+  btn.addEventListener('click', function(){
+    on = !on;
+    btn.classList.toggle('on', on);
+    btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    btn.textContent = on ? '停止朗读' : '朗读字幕';
+    if (!on){ flush(); return; }
+
+    /* iOS 需要一次用户手势解锁语音 */
+    try { window.speechSynthesis.speak(new SpeechSynthesisUtterance(' ')); } catch (e) {}
+
+    var i = cueIndex(vid.currentTime);
+    lastCue = i;
+    if (i >= 0) say(textOf(i));
+    if (vid.paused){ try { vid.play(); } catch (e) {} }
+  });
+})();
+</script>
+<script>
+(function(){
+  var KEY = 'bcw_fs';
+  var range = document.getElementById('fsRange');
+  var out = document.getElementById('fsOut');
+  var btn = document.getElementById('fsBtn');
+  var panel = document.getElementById('fsPanel');
+  if (!range || !btn) return;
+  function apply(v){
+    v = Math.max(90, Math.min(140, parseInt(v, 10) || 100));
+    document.documentElement.style.setProperty('--fs', (v / 100).toFixed(2));
+    if (out) out.textContent = v + '%';
+    range.value = v;
+    try { localStorage.setItem(KEY, v); } catch (e) {}
+  }
+  var saved = 100;
+  try { saved = parseInt(localStorage.getItem(KEY), 10) || 100; } catch (e) {}
+  apply(saved);
+  range.addEventListener('input', function(){ apply(range.value); });
+  btn.addEventListener('click', function(e){
+    e.stopPropagation();
+    panel.hidden = !panel.hidden;
+    btn.setAttribute('aria-expanded', panel.hidden ? 'false' : 'true');
+  });
+  document.addEventListener('click', function(e){
+    if (!panel.hidden && !e.target.closest('#fsCtl')){
+      panel.hidden = true; btn.setAttribute('aria-expanded', 'false');
+    }
+  });
+})();
+</script>
+
+<script>
+/* 顶部导航：滚到哪一章，哪一项下方亮绿线 */
+(function(){
+  var nav = document.getElementById('sitenav');
+  if (!nav) return;
+  var links = [].slice.call(nav.querySelectorAll('a[data-from]'));
+  var secs = [].slice.call(document.querySelectorAll('section'));
+  var last = -1;
+  function sync(){
+    var mid = window.innerHeight * 0.42, idx = 1;
+    for (var i = 0; i < secs.length; i++){
+      if (secs[i].getBoundingClientRect().top - mid <= 0) idx = i + 1;
+    }
+    if (idx === last) return;
+    last = idx;
+    links.forEach(function(a){
+      var f = +a.getAttribute('data-from'), t2 = +a.getAttribute('data-to');
+      a.classList.toggle('cur', !!f && idx >= f && idx <= t2);
+    });
+  }
+  var timer = 0;
+  window.addEventListener('scroll', function(){
+    if (timer) return;
+    timer = setTimeout(function(){ timer = 0; sync(); }, 80);
+  }, { passive: true });
+  sync();
+})();
+</script>
+
+<script>
+/* 顶部导航：点击后精确滚到目标屏（留出吸顶栏高度） */
+(function(){
+  var nav = document.getElementById('sitenav');
+  if (!nav) return;
+  nav.addEventListener('click', function(e){
+    var a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
+    if (!a) return;
+    var id = a.getAttribute('href').slice(1);
+    var el = document.getElementById(id);
+    if (!el) return;
+    e.preventDefault();
+    var header = document.querySelector('.sitehdr');
+    var off = (header ? header.getBoundingClientRect().height : 60) + 8;
+    var top = el.getBoundingClientRect().top + window.pageYOffset - off;
+    function jumpY(){
+      var h = document.querySelector('.sitehdr');
+      var offs = (h ? h.getBoundingClientRect().height : 60) + 8;
+      return Math.max(0, el.getBoundingClientRect().top + window.pageYOffset - offs);
+    }
+    function hardJump(){
+      var doc = document.documentElement;
+      var prevBeh = doc.style.scrollBehavior;
+      doc.style.scrollBehavior = 'auto';
+      window.scrollTo(0, jumpY());
+      doc.style.scrollBehavior = prevBeh;
+    }
+    var before = window.pageYOffset;
+    window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+    setTimeout(function(){
+      if (Math.abs(window.pageYOffset - before) < 4) hardJump();
+    }, 420);
+    /* 懒加载图片会把后面的内容顶动，落点偏了就再校正一次 */
+    setTimeout(function(){
+      var gap = el.getBoundingClientRect().top;
+      if (gap < 40 || gap > 130) hardJump();
+    }, 950);
+    window.addEventListener('load', function(){
+      setTimeout(function(){
+        if (location.hash === '#' + id){
+          var gap2 = el.getBoundingClientRect().top;
+          if (gap2 < 40 || gap2 > 130) hardJump();
+        }
+      }, 200);
+    }, { once: true });
+    if (history.replaceState) history.replaceState(null, '', '#' + id);
+  });
+})();
+</script>
+
+<script>
+/* ===== 桌面目录：滚动高亮 ===== */
+(function(){
+  var secs = [].slice.call(document.querySelectorAll('section'));
+  var toc = document.getElementById('toc');
+  if (!toc) return;
+  function titleOf(sec){
+    var h = sec.querySelector('h1, h2');
+    return h ? h.textContent.replace(/\s+/g, ' ').trim().replace(/[，。]$/, '') : '';
+  }
+  function tagOf(sec){
+    var i = sec.querySelector('.tag i');
+    return i ? i.textContent.trim() : '';
+  }
+  var links = [];
+  secs.forEach(function(sec, idx){
+    var a = document.createElement('a');
+    a.href = '#' + sec.id;
+    a.innerHTML = '<b>' + String(idx + 1).padStart(2, '0') + '</b><span>' +
+                  titleOf(sec) + '</span><i>' + tagOf(sec) + '</i>';
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      history.replaceState(null, '', '#' + sec.id);
+    });
+    toc.appendChild(a);
+    links.push(a);
+  });
+  var cur = 0;
+  function sync(){
+    var mid = window.innerHeight * 0.42, best = 0;
+    for (var i = 0; i < secs.length; i++){
+      if (secs[i].getBoundingClientRect().top - mid <= 0) best = i;
+    }
+    if (best !== cur){ cur = best; links.forEach(function(a, k){ a.classList.toggle('on', k === best); }); }
+  }
+  var last = 0;
+  window.addEventListener('scroll', function(){
+    var now = Date.now();
+    if (now - last < 90) return;
+    last = now; sync();
+  }, { passive: true });
+  sync();
+})();
+</script>
+
+<div class="fsctl" id="fsCtl">
+  <button class="fsbtn" id="fsBtn" type="button" aria-expanded="false" aria-controls="fsPanel" title="调节字号">A</button>
+  <div class="fspanel" id="fsPanel" hidden>
+    <div class="fs-row"><span>正文字号</span><output id="fsOut">100%</output></div>
+    <input id="fsRange" type="range" min="90" max="140" step="5" value="100" aria-label="正文字号">
+    <p class="fs-hint">拖动滑块，全篇文字随之放大或缩小；设置在下次打开时保留。</p>
+  </div>
+</div>
+<script>
+(function(){
+  var KEY = 'bcw_fs';
+  var range = document.getElementById('fsRange');
+  var out = document.getElementById('fsOut');
+  var btn = document.getElementById('fsBtn');
+  var panel = document.getElementById('fsPanel');
+  if (!range || !btn) return;
+  function apply(v){
+    v = Math.max(90, Math.min(140, parseInt(v, 10) || 100));
+    document.documentElement.style.setProperty('--fs', (v / 100).toFixed(2));
+    if (out) out.textContent = v + '%';
+    range.value = v;
+    try { localStorage.setItem(KEY, v); } catch (e) {}
+  }
+  var saved = 100;
+  try { saved = parseInt(localStorage.getItem(KEY), 10) || 100; } catch (e) {}
+  apply(saved);
+  range.addEventListener('input', function(){ apply(range.value); });
+  btn.addEventListener('click', function(e){
+    e.stopPropagation();
+    panel.hidden = !panel.hidden;
+    btn.setAttribute('aria-expanded', panel.hidden ? 'false' : 'true');
+  });
+  document.addEventListener('click', function(e){
+    if (!panel.hidden && !e.target.closest('#fsCtl')){
+      panel.hidden = true; btn.setAttribute('aria-expanded', 'false');
+    }
+  });
+})();
+</script>
+</body></html>
