@@ -1641,11 +1641,11 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
         <span class="idx">02</span><h3>微创强化 · PVP / PKP</h3>
         <p>往椎体里注入骨水泥。适合<b>疼痛剧烈、又不耐受长期卧床</b>的高龄患者，通常在伤后数周内完成。它快速止痛、让人早离床，但<b>不治疗骨质疏松本身</b>。</p>
 <details class="svcblock" id="svcDetails">
-      <summary>一针骨水泥，能把塌掉的椎体撑起来吗（42″）</summary>
+      <summary>一针骨水泥，能把塌掉的椎体撑起来吗（44″）</summary>
       <div class="dbody">
         <div class="svchd">
           <span class="svceyebrow">胸腰段 · T12</span>
-          <span class="svcmeta">PKP 示意 · 42″</span>
+          <span class="svcmeta">PKP 示意 · 44″</span>
         </div>
 
         <div class="svcfilm" id="svcFilm">
@@ -1656,7 +1656,7 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
           </video>
           <button class="svcplay" id="svcPlay" type="button" aria-label="播放动画">
             <span class="tri"></span>
-            <span>播放 · 42″</span>
+            <span>播放 · 44″</span>
           </button>
         </div>
 
@@ -3002,7 +3002,7 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
 
     function start(){
       play && play.classList.add('hide');
-      try { vid.playbackRate = 0.72; } catch (e) {}   /* 放慢，给朗读留时间 */
+      try { vid.playbackRate = 0.68; } catch (e) {}   /* 放慢，给朗读留时间 */
       var pr = vid.play();
       if (pr && pr.catch) pr.catch(function(){ play && play.classList.remove('hide'); });
     }
@@ -3601,7 +3601,7 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
 })();
 </script>
 <script>
-/* ---------- PKP 动画：按时间轴朗读字幕 ---------- */
+/* ---------- PKP 动画：按时间轴朗读字幕（队列式，不打断句子） ---------- */
 (function(){
   var vid = document.getElementById('svcVid');
   var btn = document.getElementById('svcTts');
@@ -3614,10 +3614,15 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
   for (var n = 1; n <= 9; n++) caps.push(document.getElementById('c' + n));
 
   var on = false, lastCue = -1, zhVoice = null;
+  var queue = [], speaking = false, RATE = 1.32, MAXQ = 2;
+
   function pickVoice(){
     var vs = window.speechSynthesis.getVoices() || [];
     for (var i = 0; i < vs.length; i++){
-      if (/^zh/i.test(vs[i].lang)) { zhVoice = vs[i]; return; }
+      if (/^zh(-|_)?(CN|Hans)?/i.test(vs[i].lang)) { zhVoice = vs[i]; return; }
+    }
+    for (var j = 0; j < vs.length; j++){
+      if (/zh/i.test(vs[j].lang)) { zhVoice = vs[j]; return; }
     }
   }
   pickVoice();
@@ -3625,24 +3630,44 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
     window.speechSynthesis.onvoiceschanged = pickVoice;
   }
 
-  function cueIndex(t){
+  function cueIndex(time){
     for (var i = 0; i < CUE.length; i++){
-      if (t >= CUE[i][0] && t < CUE[i][1]) return i;
+      if (time >= CUE[i][0] && time < CUE[i][1]) return i;
     }
     return -1;
   }
 
-  function speakCue(i){
+  function textOf(i){
     var el = caps[i];
-    if (!el) return;
-    var txt = (el.textContent || '').replace(/\s+/g, ' ').trim();
-    if (!txt) return;
-    try { window.speechSynthesis.cancel(); } catch (e) {}
+    if (!el) return '';
+    return (el.textContent || '').replace(/\s+/g, ' ').trim();
+  }
+
+  /* 队列式播报：上一条没念完就排队，绝不掐断；积压超过 2 条则跳过旧句重新对齐 */
+  function pump(){
+    if (!on || speaking || !queue.length) return;
+    var txt = queue.shift();
     var u = new SpeechSynthesisUtterance(txt);
     u.lang = 'zh-CN';
-    u.rate = 1.5;                  /* 视频 0.72× 播放，语速相应提高 */
+    u.rate = RATE;
+    u.pitch = 1;
     if (zhVoice) u.voice = zhVoice;
-    window.speechSynthesis.speak(u);
+    speaking = true;
+    u.onend = u.onerror = function(){ speaking = false; pump(); };
+    try { window.speechSynthesis.speak(u); } catch (e) { speaking = false; }
+  }
+
+  function say(text){
+    if (!text) return;
+    if (queue.length >= MAXQ) queue = queue.slice(-1);   /* 落后太多：丢掉积压，保最新 */
+    queue.push(text);
+    pump();
+  }
+
+  function flush(){
+    queue = [];
+    speaking = false;
+    try { window.speechSynthesis.cancel(); } catch (e) {}
   }
 
   vid.addEventListener('timeupdate', function(){
@@ -3650,15 +3675,13 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
     var i = cueIndex(vid.currentTime);
     if (i !== lastCue){
       lastCue = i;
-      if (i >= 0) speakCue(i);
+      if (i >= 0) say(textOf(i));
     }
   });
-  ['pause', 'ended', 'seeking'].forEach(function(ev){
-    vid.addEventListener(ev, function(){
-      if (!on) return;
-      if (ev === 'seeking'){ lastCue = -1; return; }
-      try { window.speechSynthesis.cancel(); } catch (e) {}
-    });
+
+  vid.addEventListener('seeking', function(){ lastCue = -1; });
+  ['pause', 'ended'].forEach(function(ev){
+    vid.addEventListener(ev, function(){ if (on) flush(); });
   });
 
   btn.addEventListener('click', function(){
@@ -3666,14 +3689,14 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
     btn.classList.toggle('on', on);
     btn.setAttribute('aria-pressed', on ? 'true' : 'false');
     btn.textContent = on ? '停止朗读' : '朗读字幕';
-    if (!on){ try { window.speechSynthesis.cancel(); } catch (e) {} return; }
+    if (!on){ flush(); return; }
 
-    /* iOS 需要一次用户手势解锁语音，这里先播一个空白音 */
+    /* iOS 需要一次用户手势解锁语音 */
     try { window.speechSynthesis.speak(new SpeechSynthesisUtterance(' ')); } catch (e) {}
 
     var i = cueIndex(vid.currentTime);
     lastCue = i;
-    if (i >= 0) speakCue(i);
+    if (i >= 0) say(textOf(i));
     if (vid.paused){ try { vid.play(); } catch (e) {} }
   });
 })();
