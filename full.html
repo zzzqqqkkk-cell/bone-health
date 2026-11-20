@@ -1149,6 +1149,28 @@ details.flow .vnote{margin:12px 0 0}
 @media (min-width:1024px){.outreach .og{grid-template-columns:repeat(3,1fr)}}
 </style>
 <style>
+/* 折叠卡片更明显 */
+details{position:relative}
+details > summary{list-style:none;cursor:pointer;padding:14px 44px 14px 15px;border-radius:12px;
+  border:1px solid rgba(0,229,192,.28);
+  background:linear-gradient(180deg,rgba(0,229,192,.09),rgba(0,229,192,.03));
+  color:var(--text);font-weight:700;font-size:14px;line-height:1.6;position:relative;
+  transition:border-color .2s,background .2s}
+details > summary::-webkit-details-marker{display:none}
+details > summary::after{content:"";position:absolute;right:15px;top:50%;width:8px;height:8px;
+  border-right:2px solid var(--accent);border-bottom:2px solid var(--accent);
+  transform:translateY(-70%) rotate(45deg);transition:transform .25s}
+details[open] > summary::after{transform:translateY(-30%) rotate(-135deg)}
+details > summary:hover{border-color:rgba(0,229,192,.5)}
+details[open] > summary{border-color:rgba(0,229,192,.45);
+  background:linear-gradient(180deg,rgba(0,229,192,.14),rgba(0,229,192,.05))}
+details + details{margin-top:10px}
+</style>
+<style>
+.hl-warn{color:#FF6B57;font-weight:800;background:rgba(255,107,87,.12);
+  padding:1px 5px;border-radius:5px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+</style>
+<style>
 .ov-role,.ov-stage{margin:26px 0 22px}
 .ov-hd{font-size:17px;font-weight:700;color:#EAF0F5;margin:0 0 8px}
 .ov-sub{font-size:13.5px;line-height:1.78;color:#9FB0BF;margin:0 0 14px}
@@ -1520,7 +1542,7 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
 
         <div class="osta" id="osta">
       <div class="osta-hd">只记得一件事：OSTA 速算</div>
-      <p class="osta-sub">亚洲绝经后女性筛查研究的经验公式，只需年龄和体重两项：<b>指数 =（体重 kg − 年龄）× 0.2</b>，切点 −1 与 −4。<b>仅适用于绝经后女性</b>；男性请直接参考上方自测结果。</p>
+      <p class="osta-sub">亚洲绝经后女性筛查研究的经验公式，只需年龄和体重两项：<b>指数 =（体重 kg − 年龄）× 0.2</b>，切点 −1 与 −4。<b class="hl-warn">仅适用于绝经后女性，男性不能用</b>，请直接参考上方自测结果。</p>
       <div class="osta-row">
         <label>年龄<input id="ostaAge" type="number" inputmode="numeric" min="40" max="110" placeholder="65"><span>岁</span></label>
         <label>体重<input id="ostaWt" type="number" inputmode="decimal" min="25" max="160" placeholder="55"><span>kg</span></label>
@@ -2944,6 +2966,7 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
 
     function start(){
       play && play.classList.add('hide');
+      try { vid.playbackRate = 0.8; } catch (e) {}   /* 放慢，给朗读留时间 */
       var pr = vid.play();
       if (pr && pr.catch) pr.catch(function(){ play && play.classList.remove('hide'); });
     }
@@ -3046,8 +3069,8 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
         var xc = geo[i] != null ? geo[i] : 0;
         var t = (xc - viewCenter) / half;
         if (t > 1.35) t = 1.35; if (t < -1.35) t = -1.35;
-        var ac = Math.min(1, Math.abs(t));
-        var ky = 0.90 + 0.13 * ac * ac;      // 上下高度：中间 0.90，两侧 1.03（相差 1.14 倍）
+        var ac = Math.min(1, Math.abs(t) / 0.62);   // 以可见第一列为“边缘”
+        var ky = 0.84 + 0.18 * ac * ac;             // 中间 0.84、两侧 1.02
         var kx = 0.99 + 0.025 * ac;
         var ry = -t * 8;
         // 弧形：上下两行随位置上下偏移，行距保持不变
@@ -3623,7 +3646,7 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
     try { window.speechSynthesis.cancel(); } catch (e) {}
     var u = new SpeechSynthesisUtterance(txt);
     u.lang = 'zh-CN';
-    u.rate = 1.45;                 /* 语速要跟上字幕节奏 */
+    u.rate = 1.3;                  /* 视频已放慢，语速略快即可 */
     if (zhVoice) u.voice = zhVoice;
     window.speechSynthesis.speak(u);
   }
