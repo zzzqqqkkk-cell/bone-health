@@ -1209,6 +1209,36 @@ details > summary{display:block;width:100%;box-sizing:border-box;margin-left:0;m
 }
 </style>
 <style>
+/* 第八屏：三张折叠卡完全同款 */
+#sTx .fold{
+  margin:14px 0 0;border:1px solid rgba(0,229,192,.52);border-radius:13px;
+  background:linear-gradient(180deg,rgba(0,229,192,.26),rgba(0,229,192,.10));
+  box-shadow:0 2px 10px rgba(0,229,192,.10);
+  overflow:hidden;
+}
+#sTx .fold > summary{
+  list-style:none;cursor:pointer;position:relative;display:block;
+  margin:0;padding:13px 42px 13px 15px;
+  font-size:13.5px;font-weight:700;line-height:1.55;color:#F2FFFC;
+  border:0;background:none;
+}
+#sTx .fold > summary::-webkit-details-marker{display:none}
+#sTx .fold > summary::after{
+  content:"\2039";position:absolute;right:14px;top:50%;margin-top:-11px;
+  width:auto;height:auto;border:0;background:none;
+  font-size:21px;line-height:1;color:#63FFE0;transform:rotate(-90deg);
+}
+#sTx .fold[open] > summary::after{transform:rotate(90deg)}
+#sTx .fold > .dbody{padding:4px 12px 10px;background:none}
+#sTx .fold .pathfig{margin:0;border:0;border-radius:10px;overflow:hidden}
+#sTx .fold .pathfig img{max-height:320px}
+
+/* 按钮再亮一档 */
+.svcbtn{color:#EAFFFA!important;border-color:rgba(0,229,192,.82)!important;
+  background:rgba(0,229,192,.26)!important;font-weight:700!important}
+.svcbtn:hover{background:rgba(0,229,192,.36)!important}
+</style>
+<style>
 .ov-role,.ov-stage{margin:26px 0 22px}
 .ov-hd{font-size:17px;font-weight:700;color:#EAF0F5;margin:0 0 8px}
 .ov-sub{font-size:13.5px;line-height:1.78;color:#9FB0BF;margin:0 0 14px}
@@ -1660,7 +1690,7 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
       <div class="card">
         <span class="idx">01</span><h3>保守治疗</h3>
         <p>支具保护 + 镇痛 + <b>尽早离床</b>。适合压缩程度轻、疼痛可控、没有进行性塌陷的人。卧床时间越短越好——长期卧床带来的肌肉萎缩与骨量流失，代价往往比骨折本身更大。</p>
-        <details class="svcblock">
+        <details class="fold">
           <summary>保守治疗的工具：胸腰骶支具（点开看示意）</summary>
           <div class="dbody">
             <figure class="pathfig">
@@ -1674,7 +1704,7 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
       <div class="card">
         <span class="idx">02</span><h3>微创强化 · PVP / PKP</h3>
         <p>往椎体里注入骨水泥。适合<b>疼痛剧烈、又不耐受长期卧床</b>的高龄患者，通常在伤后数周内完成。它快速止痛、让人早离床，但<b>不治疗骨质疏松本身</b>。</p>
-<details class="svcblock" id="svcDetails">
+<details class="fold" id="svcDetails">
       <summary>一针骨水泥，能把塌掉的椎体撑起来吗（44″）</summary>
       <div class="dbody">
         <div class="svchd">
@@ -1723,7 +1753,7 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
       <div class="card">
         <span class="idx">03</span><h3>开放手术 · 少数人</h3>
         <p>做的是<b>减压 + 复位 + 固定 + 融合</b>：后路切开，去掉压迫神经的骨块，用椎弓根螺钉把骨折椎体上下固定，再植骨让它长成一体；后凸明显时先撑开复位，骨质量太差还会加骨水泥强化螺钉。适用于<b>进行性后凸、椎体不稳、神经受压</b>，创伤和出血都明显大于微创，需要专科评估指征，不是常规选项。</p>
-        <details class="svcblock">
+        <details class="fold">
           <summary>开放手术的影像：椎弓根螺钉 + 连接棒（点开看 X 光片）</summary>
           <div class="dbody">
             <figure class="pathfig">
@@ -1859,7 +1889,7 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
                alt="同一病例腰椎矢状位 MRI 三联对照：左 T1WI、中 T2WI、右 T2WI 压脂；中图以「11」与虚线圈标出病变椎体，右图该椎体及邻近终板呈高信号（含液与水肿）"
     >
           <span class="filmScan" aria-hidden="true"></span>
-          <span class="filmcap">左 T1WI · 中 T2WI · 右 T2WI 压脂（同一病例）</span>
+          <span class="filmcap">左 T1WI（脑脊液暗、脂肪亮）· 中 T2WI（脑脊液与椎间盘发亮）· 右 T2WI 压脂（皮下脂肪变暗、水肿更显眼）· 同一病例</span>
         </div>
 
         <div class="resultpanel">
@@ -3732,7 +3762,7 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
 
   vid.addEventListener('seeking', function(){ lastCue = -1; });
   /* 只有用户主动暂停才停声；播到结尾让最后一句话念完 */
-  vid.addEventListener('pause', function(){ if (on) flush(); });
+  vid.addEventListener('pause', function(){ if (on && !vid.ended) flush(); });
 
   btn.addEventListener('click', function(){
     on = !on;
@@ -3796,17 +3826,36 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
     var header = document.querySelector('.sitehdr');
     var off = (header ? header.getBoundingClientRect().height : 60) + 8;
     var top = el.getBoundingClientRect().top + window.pageYOffset - off;
+    function jumpY(){
+      var h = document.querySelector('.sitehdr');
+      var offs = (h ? h.getBoundingClientRect().height : 60) + 8;
+      return Math.max(0, el.getBoundingClientRect().top + window.pageYOffset - offs);
+    }
+    function hardJump(){
+      var doc = document.documentElement;
+      var prevBeh = doc.style.scrollBehavior;
+      doc.style.scrollBehavior = 'auto';
+      window.scrollTo(0, jumpY());
+      doc.style.scrollBehavior = prevBeh;
+    }
     var before = window.pageYOffset;
     window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
     setTimeout(function(){
-      if (Math.abs(window.pageYOffset - before) < 4){
-        var doc = document.documentElement;
-        var prevBeh = doc.style.scrollBehavior;
-        doc.style.scrollBehavior = 'auto';
-        window.scrollTo(0, Math.max(0, top));
-        doc.style.scrollBehavior = prevBeh;
-      }
+      if (Math.abs(window.pageYOffset - before) < 4) hardJump();
     }, 420);
+    /* 懒加载图片会把后面的内容顶动，落点偏了就再校正一次 */
+    setTimeout(function(){
+      var gap = el.getBoundingClientRect().top;
+      if (gap < 40 || gap > 130) hardJump();
+    }, 950);
+    window.addEventListener('load', function(){
+      setTimeout(function(){
+        if (location.hash === '#' + id){
+          var gap2 = el.getBoundingClientRect().top;
+          if (gap2 < 40 || gap2 > 130) hardJump();
+        }
+      }, 200);
+    }, { once: true });
     if (history.replaceState) history.replaceState(null, '', '#' + id);
   });
 })();
