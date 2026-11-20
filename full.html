@@ -1171,6 +1171,24 @@ details + details{margin-top:10px}
   padding:1px 5px;border-radius:5px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
 </style>
 <style>
+/* 第八屏：三条路径各自配一张图或一段视频 */
+#sTx .cards-path{display:flex;flex-direction:column;gap:12px}
+#sTx .cards-path .card{width:100%}
+.pathfig{margin:14px 0 2px;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#0A0F14}
+.pathfig img{display:block;width:100%;height:auto;max-height:360px;object-fit:cover;object-position:center}
+.pathfig figcaption{padding:9px 12px;font-size:11.5px;line-height:1.7;color:#8FA0AE;text-align:center}
+#sTx .card .svcblock{margin:14px 0 0}
+#sTx .card .svcblock > summary{margin-top:12px}
+#sTx .card details.dbody, #sTx .card .dbody{padding-top:10px}
+
+/* 折叠按钮与容器同宽 */
+details > summary{display:block;width:100%;box-sizing:border-box;margin-left:0;margin-right:0}
+
+/* OSTA 男性提示：唯一一条，标红 */
+.osta-hint{color:#FF6B57;font-weight:700;font-size:12.5px;line-height:1.7}
+.osta.disabled{opacity:.72}
+</style>
+<style>
 .ov-role,.ov-stage{margin:26px 0 22px}
 .ov-hd{font-size:17px;font-weight:700;color:#EAF0F5;margin:0 0 8px}
 .ov-sub{font-size:13.5px;line-height:1.78;color:#9FB0BF;margin:0 0 14px}
@@ -1542,7 +1560,7 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
 
         <div class="osta" id="osta">
       <div class="osta-hd">只记得一件事：OSTA 速算</div>
-      <p class="osta-sub">亚洲绝经后女性筛查研究的经验公式，只需年龄和体重两项：<b>指数 =（体重 kg − 年龄）× 0.2</b>，切点 −1 与 −4。<b class="hl-warn">仅适用于绝经后女性，男性不能用</b>，请直接参考上方自测结果。</p>
+      <p class="osta-sub">亚洲绝经后女性筛查研究的经验公式，只需年龄和体重两项：<b>指数 =（体重 kg − 年龄）× 0.2</b>，切点 −1 与 −4。仅适用于绝经后女性；男性请直接参考上方自测结果。</p>
       <div class="osta-row">
         <label>年龄<input id="ostaAge" type="number" inputmode="numeric" min="40" max="110" placeholder="65"><span>岁</span></label>
         <label>体重<input id="ostaWt" type="number" inputmode="decimal" min="25" max="160" placeholder="55"><span>kg</span></label>
@@ -1609,26 +1627,25 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
     <h2>刚骨折，<br>先要做一个<em>选择</em></h2>
     <p class="lead">椎体压缩骨折之后，不是“躺着等它长好”一条路。分岔点看三件事：<b>疼到什么程度、椎体塌了多少、还在继续塌吗</b>。</p>
 
-    <div class="cards">
-      <div class="card"><span class="idx">01</span><h3>保守治疗</h3><p>支具保护 + 镇痛 + <b>尽早离床</b>。适合压缩程度轻、疼痛可控、没有进行性塌陷的人。卧床时间越短越好——长期卧床带来的肌肉萎缩与骨量流失，代价往往比骨折本身更大。</p></div>
-      <div class="card"><span class="idx">02</span><h3>微创强化 · PVP / PKP</h3><p>往椎体里注入骨水泥。适合<b>疼痛剧烈、又不耐受长期卧床</b>的高龄患者，通常在伤后数周内完成。它快速止痛、让人早离床，但<b>不治疗骨质疏松本身</b>。</p></div>
-      <div class="card"><span class="idx">03</span><h3>开放手术 · 少数人</h3><p>做的是<b>减压 + 复位 + 固定 + 融合</b>：后路切开，去掉压迫神经的骨块，用椎弓根螺钉把骨折椎体上下固定，再植骨让它长成一体；后凸明显时先撑开复位，骨质量太差还会加骨水泥强化螺钉。适用于<b>进行性后凸、椎体不稳、神经受压</b>，创伤和出血都明显大于微创，需要专科评估指征，不是常规选项。</p></div>
-    </div>
+    <div class="cards cards-path">
+      <div class="card">
+        <span class="idx">01</span><h3>保守治疗</h3>
+        <p>支具保护 + 镇痛 + <b>尽早离床</b>。适合压缩程度轻、疼痛可控、没有进行性塌陷的人。卧床时间越短越好——长期卧床带来的肌肉萎缩与骨量流失，代价往往比骨折本身更大。</p>
+        <figure class="pathfig">
+          <img src="assets/brace.jpg" alt="胸腰骶支具（外固定）示意：白色可调式硬质支具，肩带与腰部绑带固定，用于下床活动时限制脊柱屈伸" loading="lazy">
+          <figcaption>保守治疗的核心工具：胸腰骶支具 · 下床时佩戴，卧床时取下（示意，具体佩戴时间由医生定）</figcaption>
+        </figure>
+      </div>
 
-    <div class="path">
-      <div class="path-hd">医生通常会看这四项</div>
-      <div class="step"><span class="num">·</span><div class="txt"><b>疼痛强度</b><span>能不能翻身、起床，还是只能躺着不动</span></div></div>
-      <div class="step"><span class="num">·</span><div class="txt"><b>塌了多少</b><span>椎体高度丢失程度与后凸角</span></div></div>
-      <div class="step"><span class="num">·</span><div class="txt"><b>新不新</b><span>MRI 上看有没有水肿／液体信号，判断是不是新鲜骨折</span></div></div>
-      <div class="step"><span class="num">·</span><div class="txt"><b>底子如何</b><span>骨质量、基础病与能不能耐受卧床</span></div></div>
-    </div>
-
+      <div class="card">
+        <span class="idx">02</span><h3>微创强化 · PVP / PKP</h3>
+        <p>往椎体里注入骨水泥。适合<b>疼痛剧烈、又不耐受长期卧床</b>的高龄患者，通常在伤后数周内完成。它快速止痛、让人早离床，但<b>不治疗骨质疏松本身</b>。</p>
 <details class="svcblock" id="svcDetails">
-      <summary>一针骨水泥，能把塌掉的椎体撑起来吗（30″）</summary>
+      <summary>一针骨水泥，能把塌掉的椎体撑起来吗（42″）</summary>
       <div class="dbody">
         <div class="svchd">
           <span class="svceyebrow">胸腰段 · T12</span>
-          <span class="svcmeta">PKP 示意 · 30″</span>
+          <span class="svcmeta">PKP 示意 · 42″</span>
         </div>
 
         <div class="svcfilm" id="svcFilm">
@@ -1639,7 +1656,7 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
           </video>
           <button class="svcplay" id="svcPlay" type="button" aria-label="播放动画">
             <span class="tri"></span>
-            <span>播放 · 30″</span>
+            <span>播放 · 42″</span>
           </button>
         </div>
 
@@ -1667,6 +1684,26 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
         </div>
       </div>
     </details>
+      </div>
+
+      <div class="card">
+        <span class="idx">03</span><h3>开放手术 · 少数人</h3>
+        <p>做的是<b>减压 + 复位 + 固定 + 融合</b>：后路切开，去掉压迫神经的骨块，用椎弓根螺钉把骨折椎体上下固定，再植骨让它长成一体；后凸明显时先撑开复位，骨质量太差还会加骨水泥强化螺钉。适用于<b>进行性后凸、椎体不稳、神经受压</b>，创伤和出血都明显大于微创，需要专科评估指征，不是常规选项。</p>
+        <figure class="pathfig">
+          <img src="assets/open_surgery.jpg" alt="腰椎侧位 X 线：五枚椎弓根螺钉与两根连接棒固定于骨折椎体上下节段，可见减压后骨性结构缺损" loading="lazy">
+          <figcaption>开放手术的影像：椎弓根螺钉 + 连接棒固定（术后侧位 X 线，已去除标识信息，仅作示意）</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="path">
+      <div class="path-hd">医生通常会看这四项</div>
+      <div class="step"><span class="num">·</span><div class="txt"><b>疼痛强度</b><span>能不能翻身、起床，还是只能躺着不动</span></div></div>
+      <div class="step"><span class="num">·</span><div class="txt"><b>塌了多少</b><span>椎体高度丢失程度与后凸角</span></div></div>
+      <div class="step"><span class="num">·</span><div class="txt"><b>新不新</b><span>MRI 上看有没有水肿／液体信号，判断是不是新鲜骨折</span></div></div>
+      <div class="step"><span class="num">·</span><div class="txt"><b>底子如何</b><span>骨质量、基础病与能不能耐受卧床</span></div></div>
+    </div>
+
 
         <div class="quote">
       手术解决的是这一次，<br>药物决定的是<em>下一次</em>。
@@ -2682,12 +2719,12 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
         osta.classList.toggle('disabled', male);
         [].forEach.call(osta.querySelectorAll('input,button'), function(el){ el.disabled = male; });
         var ores = document.getElementById('ostaRes');
-        if (ores && male) ores.textContent = 'OSTA 仅适用于绝经后女性，男性请参考上方自测结果。';
         if (ores && !male) ores.textContent = '填两个数字，立刻给出指数与建议。';
+        if (ores && male) ores.textContent = '';
         var oh = document.getElementById('ostaHint');
         if (oh) {
           oh.hidden = !male;
-          oh.textContent = male ? '男性不适用：本指数基于亚洲绝经后女性研究，请参考上方自测结果。' : '';
+          oh.textContent = male ? '仅适用于绝经后女性，男性不能用；请参考上方自测结果。' : '';
         }
       }
       refreshSet();
@@ -2966,7 +3003,7 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
 
     function start(){
       play && play.classList.add('hide');
-      try { vid.playbackRate = 0.8; } catch (e) {}   /* 放慢，给朗读留时间 */
+      try { vid.playbackRate = 0.72; } catch (e) {}   /* 放慢，给朗读留时间 */
       var pr = vid.play();
       if (pr && pr.catch) pr.catch(function(){ play && play.classList.remove('hide'); });
     }
@@ -3070,8 +3107,8 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
         var t = (xc - viewCenter) / half;
         if (t > 1.35) t = 1.35; if (t < -1.35) t = -1.35;
         var ac = Math.min(1, Math.abs(t) / 0.62);   // 以可见第一列为“边缘”
-        var ky = 0.84 + 0.18 * ac * ac;             // 中间 0.84、两侧 1.02
-        var kx = 0.99 + 0.025 * ac;
+        var sc = 0.82 + 0.22 * ac * ac;             // 等比缩放：中间 0.82、两侧 1.04
+        var ky = sc, kx = sc;
         var ry = -t * 8;
         // 弧形：上下两行随位置上下偏移，行距保持不变
         var h = el.offsetHeight || 0;
@@ -3646,7 +3683,7 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
     try { window.speechSynthesis.cancel(); } catch (e) {}
     var u = new SpeechSynthesisUtterance(txt);
     u.lang = 'zh-CN';
-    u.rate = 1.3;                  /* 视频已放慢，语速略快即可 */
+    u.rate = 1.5;                  /* 视频 0.72× 播放，语速相应提高 */
     if (zhVoice) u.voice = zhVoice;
     window.speechSynthesis.speak(u);
   }
