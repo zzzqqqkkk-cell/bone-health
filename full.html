@@ -1189,6 +1189,26 @@ details > summary{display:block;width:100%;box-sizing:border-box;margin-left:0;m
 .osta.disabled{opacity:.72}
 </style>
 <style>
+#sTx .card .svcblock .dbody{padding:10px 0 2px}
+#sTx .card .svcblock .pathfig{margin:0}
+#sTx .card .svcblock .pathfig img{max-height:320px}
+</style>
+<style>
+#sTx .card .svcblock > summary::after,
+#sTx .card .svcblock > summary:hover::after{
+  content:"\2039"!important;         /* ‹ 旋转变向下 */
+  position:absolute!important;right:15px!important;top:50%!important;
+  width:auto!important;height:auto!important;margin:-12px 0 0 0!important;
+  border:0!important;background:none!important;
+  font-size:20px!important;line-height:1!important;color:var(--accent)!important;
+  transform:rotate(-90deg)!important;
+}
+#sTx .card .svcblock[open] > summary::after{
+  content:"\2039"!important;
+  transform:rotate(90deg)!important;
+}
+</style>
+<style>
 .ov-role,.ov-stage{margin:26px 0 22px}
 .ov-hd{font-size:17px;font-weight:700;color:#EAF0F5;margin:0 0 8px}
 .ov-sub{font-size:13.5px;line-height:1.78;color:#9FB0BF;margin:0 0 14px}
@@ -1640,10 +1660,15 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
       <div class="card">
         <span class="idx">01</span><h3>保守治疗</h3>
         <p>支具保护 + 镇痛 + <b>尽早离床</b>。适合压缩程度轻、疼痛可控、没有进行性塌陷的人。卧床时间越短越好——长期卧床带来的肌肉萎缩与骨量流失，代价往往比骨折本身更大。</p>
-        <figure class="pathfig">
-          <img src="assets/brace.jpg" alt="胸腰骶支具（外固定）示意：白色可调式硬质支具，肩带与腰部绑带固定，用于下床活动时限制脊柱屈伸" loading="lazy">
-          <figcaption>保守治疗的核心工具：胸腰骶支具 · 下床时佩戴，卧床时取下（示意，具体佩戴时间由医生定）</figcaption>
-        </figure>
+        <details class="svcblock">
+          <summary>保守治疗的工具：胸腰骶支具（点开看示意）</summary>
+          <div class="dbody">
+            <figure class="pathfig">
+              <img src="assets/brace.jpg" alt="胸腰骶支具（外固定）示意：白色可调式硬质支具，肩带与腰部绑带固定，用于下床活动时限制脊柱屈伸" loading="lazy">
+              <figcaption>下床时佩戴，卧床时取下（示意，具体佩戴时间由医生定）</figcaption>
+            </figure>
+          </div>
+        </details>
       </div>
 
       <div class="card">
@@ -1698,10 +1723,15 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
       <div class="card">
         <span class="idx">03</span><h3>开放手术 · 少数人</h3>
         <p>做的是<b>减压 + 复位 + 固定 + 融合</b>：后路切开，去掉压迫神经的骨块，用椎弓根螺钉把骨折椎体上下固定，再植骨让它长成一体；后凸明显时先撑开复位，骨质量太差还会加骨水泥强化螺钉。适用于<b>进行性后凸、椎体不稳、神经受压</b>，创伤和出血都明显大于微创，需要专科评估指征，不是常规选项。</p>
-        <figure class="pathfig">
-          <img src="assets/open_surgery.jpg" alt="腰椎侧位 X 线：五枚椎弓根螺钉与两根连接棒固定于骨折椎体上下节段，可见减压后骨性结构缺损" loading="lazy">
-          <figcaption>开放手术的影像：椎弓根螺钉 + 连接棒固定（术后侧位 X 线，已去除标识信息，仅作示意）</figcaption>
-        </figure>
+        <details class="svcblock">
+          <summary>开放手术的影像：椎弓根螺钉 + 连接棒（点开看 X 光片）</summary>
+          <div class="dbody">
+            <figure class="pathfig">
+              <img src="assets/open_surgery.jpg" alt="腰椎侧位 X 线：五枚椎弓根螺钉与两根连接棒固定于骨折椎体上下节段，可见减压后骨性结构缺损" loading="lazy">
+              <figcaption>术后侧位 X 线，已去除标识信息，仅作示意</figcaption>
+            </figure>
+          </div>
+        </details>
       </div>
     </div>
 
@@ -3149,6 +3179,7 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
 
     var shapeQueued = false;
     function onScroll() {
+      if (thumbDrag) return;                 /* 拖滑块时不做 3D 变形，避免掉帧 */
       if (shapeQueued) return;
       shapeQueued = true;
       requestAnimationFrame(function () { shapeQueued = false; shape(); sync(); });
@@ -3183,13 +3214,21 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
 
     /* ---- 下方滑块 ---- */
     if (rail && thumb) {
-      function setFromX(clientX) {
+      var thumbRaf = 0, pendingX = 0;
+      function applyThumb(){
+        thumbRaf = 0;
         var box = rail.getBoundingClientRect();
         var rw = box.width - thumb.offsetWidth - 6;
-        var p = (clientX - box.left - thumb.offsetWidth / 2 - 3) / Math.max(rw, 1);
+        var p = (pendingX - box.left - thumb.offsetWidth / 2 - 3) / Math.max(rw, 1);
         p = Math.max(0, Math.min(1, p));
         var max = track.scrollWidth - track.clientWidth;
         track.scrollLeft = p * max;
+        /* 滑块位置直接跟随手指，不等滚动事件 */
+        thumb.style.left = (3 + p * Math.max(rw, 0)) + 'px';
+      }
+      function setFromX(clientX) {
+        pendingX = clientX;
+        if (!thumbRaf) thumbRaf = requestAnimationFrame(applyThumb);
       }
       thumb.addEventListener('pointerdown', function (e) {
         e.preventDefault(); e.stopPropagation();
@@ -3199,7 +3238,10 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
       thumb.addEventListener('pointermove', function (e) {
         if (thumbDrag) { e.preventDefault(); setFromX(e.clientX); }
       });
-      thumb.addEventListener('pointerup', function () { thumbDrag = false; pause(1800); });
+      thumb.addEventListener('pointerup', function () {
+        thumbDrag = false; pause(1800);
+        setTimeout(function(){ shape(); sync(); }, 60);   /* 松手补算一次变形 */
+      });
       rail.addEventListener('pointerdown', function (e) {
         if (e.target === thumb) return;
         pause(2600); setFromX(e.clientX);
@@ -3689,9 +3731,8 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
   });
 
   vid.addEventListener('seeking', function(){ lastCue = -1; });
-  ['pause', 'ended'].forEach(function(ev){
-    vid.addEventListener(ev, function(){ if (on) flush(); });
-  });
+  /* 只有用户主动暂停才停声；播到结尾让最后一句话念完 */
+  vid.addEventListener('pause', function(){ if (on) flush(); });
 
   btn.addEventListener('click', function(){
     on = !on;
