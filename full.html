@@ -1277,6 +1277,11 @@ footer p{color:#8494A4!important}
 .jump-rail button{color:#8A97A4!important}
 </style>
 <style>
+/* 相片墙：只自动巡游，隐藏手动控件 */
+.gallery .wrail,.gallery .wthumb,.gallery .wbtn{display:none!important}
+.gallery-track{cursor:default!important;touch-action:auto!important}
+</style>
+<style>
 .ov-role,.ov-stage{margin:26px 0 22px}
 .ov-hd{font-size:17px;font-weight:700;color:#EAF0F5;margin:0 0 8px}
 .ov-sub{font-size:13.5px;line-height:1.78;color:#9FB0BF;margin:0 0 14px}
@@ -1924,16 +1929,16 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
     <div class="figrow stacked">
         <div class="film" id="stage">
           <img id="filmImg" src="assets/film_mri3.png"
-               alt="同一病例腰椎矢状位 MRI 三联对照：左 T1WI、中 T2WI、右 T2WI 压脂；中图以「11」与虚线圈标出病变椎体，右图该椎体及邻近终板呈高信号（含液与水肿）"
+               alt="同一病例腰椎矢状位 MRI 三联对照：中图以「11」与虚线圈标出病变椎体，右图该椎体及邻近终板呈高信号（含液与水肿）"
     >
           <span class="filmScan" aria-hidden="true"></span>
-          <span class="filmcap">左 T1WI（脑脊液暗、脂肪亮）· 中 T2WI（脑脊液与椎间盘发亮）· 右 T2WI 压脂（皮下脂肪变暗、水肿更显眼）· 同一病例</span>
+          <span class="filmcap">同一病例腰椎矢状位 MRI 三联对照 · 左：脑脊液呈低信号，脂肪亮；右：皮下脂肪信号被抑制，含液与水肿区更显眼 · 具体序列命名以原影像报告为准</span>
         </div>
 
         <div class="resultpanel">
           <div class="rp-hint">点击下方「开始读片」</div>
         <div class="result">
-          <div class="rline"><i class="dot"></i><div><b>看到什么</b> <span>· 病变椎体变扁，T2WI 压脂上椎体内与邻近终板呈高信号（含液 / 水肿），T1WI 上低信号</span></div></div>
+          <div class="rline"><i class="dot"></i><div><b>看到什么</b> <span>· 病变椎体变扁，抑脂（含水）序列上椎体内与邻近终板呈高信号（含液 / 水肿），另一序列呈低信号</span></div></div>
           <div class="rline"><i class="dot"></i><div><b>意味着什么</b> <span>· 骨断端之间仍有水肿与液体信号，是<strong>不愈合的线索</strong>，<strong>不等于确诊</strong></span></div></div>
           <div class="rline"><i class="dot"></i><div><b>还要看什么</b> <span>· 病史（轻微外力、迟发疼痛）、体征（后凸、椎旁压痛）、X 线 / CT 看骨性结构、骨密度看“土壤”</span></div></div>
         </div>
@@ -1970,7 +1975,7 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
     </details>
 
 
-    <p class="vnote">本页为同一病例的腰椎矢状位 MRI 三联对照（T1WI / T2WI / T2WI 压脂），已脱敏。X 线上的椎体内裂隙征（IVC）敏感性较低，阴性不能排除；影像判读需结合临床，本演示不可用于诊断。</p>
+    <p class="vnote">本页为同一病例的腰椎矢状位 MRI 三联对照，已脱敏，序列命名以原影像报告为准。X 线上的椎体内裂隙征（IVC）敏感性较低，阴性不能排除；影像判读需结合临床，本演示不可用于诊断。</p>
 
 <p class="qgroup">片子之外，只有这三条属于“不愈合”</p>
 
@@ -2434,7 +2439,7 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
           <div class="shot"><img src="assets/wall_11.jpg" alt="基层影像检查现场" loading="lazy"></div>
           <div class="shot"><img src="assets/wall_21.jpg" alt="社区骨松风险筛查现场" loading="lazy"></div>
         </div>
-        <figcaption>基层义诊现场 · 资料照片（15 张） · 可左右拖动，或拖下方滑块</figcaption>
+        <figcaption>基层义诊现场 · 资料照片（15 张） · 自动轮播</figcaption>
         <div class="wallbar">
           <button class="wbtn" type="button" data-dir="-1" aria-label="向左">‹</button>
           <div class="wrail"><div class="wthumb"></div></div>
@@ -3175,6 +3180,7 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
 (function () {
   var figs = document.querySelectorAll('.gallery');
   if (!figs.length) return;
+  var MANUAL = false;                 /* 手动交互已关闭：只自动巡游 */
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var SPEED = reduce ? 10 : 24; // 像素/秒
 
@@ -3258,6 +3264,7 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
 
     /* ---- 鼠标 / 手指拖动 ---- */
     track.addEventListener('pointerdown', function (e) {
+      if (!MANUAL) return;
       if (e.pointerType === 'mouse' && e.button !== 0) return;
       drag = { x: e.clientX, left: track.scrollLeft };
       track.classList.add('dragging');
@@ -3265,7 +3272,7 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
       last = 0;
     });
     track.addEventListener('pointermove', function (e) {
-      if (!drag) return;
+      if (!MANUAL || !drag) return;
       var dx = e.clientX - drag.x;
       if (Math.abs(dx) > 2) e.preventDefault();
       track.scrollLeft = drag.left - dx;
@@ -3299,6 +3306,7 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
         if (!thumbRaf) thumbRaf = requestAnimationFrame(applyThumb);
       }
       thumb.addEventListener('pointerdown', function (e) {
+        if (!MANUAL) return;
         e.preventDefault(); e.stopPropagation();
         thumbDrag = true; pause(4000);
         try { thumb.setPointerCapture(e.pointerId); } catch (err) {}
@@ -3311,12 +3319,14 @@ body.fullpage{display:block;max-width:100%;padding:0;overflow-x:hidden}
         setTimeout(function(){ shape(); sync(); }, 60);   /* 松手补算一次变形 */
       });
       rail.addEventListener('pointerdown', function (e) {
+        if (!MANUAL) return;
         if (e.target === thumb) return;
         pause(2600); setFromX(e.clientX);
       });
       var btns = fig.querySelectorAll('.wbtn');
       Array.prototype.forEach.call(btns, function (b) {
         b.addEventListener('click', function () {
+          if (!MANUAL) return;
           var col = track.clientWidth / 3;
           pause(2200);
           var target = track.scrollLeft + col * Number(b.dataset.dir);
